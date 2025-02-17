@@ -66,7 +66,7 @@ int main() {
                 level.afficherTexte = true;
             }
 
-            level.update(deltaTime, window);
+            level.update(deltaTime, window, player.getHitbox());
             
             window.clear(sf::Color::Blue);
             level.draw(window);

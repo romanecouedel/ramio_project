@@ -1,5 +1,7 @@
 #include "Level.h"
 #include "Confetti.h"
+#include "Bloc.h"
+#include "Player.h"
 #include <fstream>
 #include <iostream>
 
@@ -94,7 +96,7 @@ void Level::startConfetti()
     confettiActive = true;
 }
 
-void Level::update(float deltaTime, sf::RenderWindow &window)
+void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &playerHitbox)
 {
     // Animation de confettis (déjà existante)
     if (confettiActive)
@@ -104,7 +106,32 @@ void Level::update(float deltaTime, sf::RenderWindow &window)
             confetti.update(deltaTime);
         }
     }
+    for (auto &bloc : blocs)
+    {
+        auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
+        if (blocMystere)
+        {
+            blocMystere->update(deltaTime);
 
+            // Hitbox avec tolérance
+            sf::FloatRect hitboxAvecTolerance = blocMystere->getGlobalBounds();
+            hitboxAvecTolerance.top -= 5.0f;
+            hitboxAvecTolerance.height += 10.0f;
+
+            if (playerHitbox.intersects(hitboxAvecTolerance))
+            {
+
+                if (!blocMystere->isAnimating())
+                {
+
+                    blocMystere->onHit();
+                }
+            }
+        }
+    }
+    
+
+    
     // Animation de zoom avec centrage dynamique
     if (afficherTexte)
     {

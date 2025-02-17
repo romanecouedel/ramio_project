@@ -22,7 +22,7 @@ public:
     int getHeight() const { return grid.size(); }
 
     const Drapeau &getDrapeau() const { return drapeau; }
-    void update(float deltaTime, sf::RenderWindow &window);
+    void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &playerBounds);
 
     // Confetti
     void startConfetti();
@@ -31,13 +31,14 @@ public:
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
+    void spawnPiece(const sf::Vector2f& position);
+    void updatePieces(float deltaTime, const sf::FloatRect& playerHitbox);
+    void drawPieces(sf::RenderWindow& window);
+
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
     Drapeau drapeau;
-
-    
-
     // Animation fin
 
     float confettiTimer = 0.0f;
