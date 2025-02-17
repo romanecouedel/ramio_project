@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH "/usr/lib/cmake/SFML")
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_executable(mario src/main.cpp src/Level.cpp src/Player.cpp src/Entity.cpp src/Bloc.cpp src/Confetti.cpp)
+add_executable(mario src/main.cpp src/Level.cpp src/Player.cpp src/Entity.cpp src/Bloc.cpp src/Confetti.cpp src/Menu.cpp)
 
 target_link_libraries(mario sfml-graphics sfml-window sfml-system)
 
