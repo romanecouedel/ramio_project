@@ -28,4 +28,3 @@ Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
     sprite.setScale(0.1f, 0.1f); 
     
 }
-

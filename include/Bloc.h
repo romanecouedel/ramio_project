@@ -7,8 +7,8 @@ class Bloc {
 protected:
     sf::Sprite sprite;
     sf::Texture texture;
-
-public:
+ 
+public: 
     Bloc() = default;
     Bloc(const std::string& texturePath); 
     virtual ~Bloc() = default;
@@ -38,5 +38,14 @@ public:
 class BlocMystere : public Bloc {
 public:
     BlocMystere();
-};
+    void update(float deltaTime);
+    void onHit();
+    bool isAnimating() const;
 
+private:
+    sf::Vector2f startPosition;
+    bool animating = false;
+    float animationTime = 0.0f;
+    const float animationDuration = 0.2f; // Durée totale montée/descente
+    const float animationHeight = 5.0f;   // Hauteur du déplacement
+};
