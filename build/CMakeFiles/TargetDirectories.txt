@@ -1,3 +1,0 @@
-/home/romanecdl/Documents/info_obj/prog_c_obj/projet/Projet_mario/build/CMakeFiles/mario.dir
-/home/romanecdl/Documents/info_obj/prog_c_obj/projet/Projet_mario/build/CMakeFiles/edit_cache.dir
-/home/romanecdl/Documents/info_obj/prog_c_obj/projet/Projet_mario/build/CMakeFiles/rebuild_cache.dir
