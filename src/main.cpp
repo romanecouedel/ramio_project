@@ -8,9 +8,9 @@ enum class GameState { MENU, GAME };  // États possibles du jeu
 
 int main() {
     GameState gameState = GameState::MENU;  // Démarrage dans le menu
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Mario - Menu");
+    sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
     
-    Menu menu(800, 600);
+    Menu menu(900, 600);
     Level level;
     Player player;
     bool niveauTermine = false;
