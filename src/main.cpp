@@ -3,8 +3,9 @@
 #include "Level.h"
 #include "Player.h"
 #include "Menu.h"
+#include "FinJeu.h"
 
-enum class GameState { MENU, GAME };  // États possibles du jeu
+enum class GameState { MENU, GAME, FDG };  // États possibles du jeu
 
 int main() {
     GameState gameState = GameState::MENU;  // Démarrage dans le menu
@@ -15,10 +16,11 @@ int main() {
     Player player;
     bool niveauTermine = false;
     sf::Clock clock;
+    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);  // Écran de fin de jeu
+    float deltaTime;
 
     while (window.isOpen()) {
         sf::Event event;
-        
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
 
@@ -46,6 +48,15 @@ int main() {
                     clock.restart();
                 }
             }
+            
+            if (gameState == GameState::FDG) {
+                // Gérer l'entrée de l'utilisateur
+                if (finDeJeu.handleInput(event)) {
+                    gameState = GameState::MENU;
+                    
+                    window.create(sf::VideoMode(900, 600), "Mario - Menu");  // Réinitialiser la fenêtre
+                }
+            }
         }
 
         if (gameState == GameState::MENU) {
@@ -54,7 +65,7 @@ int main() {
             window.display();
         } 
         else if (gameState == GameState::GAME) {
-            float deltaTime = clock.restart().asSeconds();
+            deltaTime = clock.restart().asSeconds();
             
             player.handleInput();
             player.update(deltaTime, level);
@@ -62,15 +73,24 @@ int main() {
             if (player.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) && !niveauTermine) {
                 std::cout << "Niveau terminé !" << std::endl;
                 niveauTermine = true;
-                level.startConfetti();
-                level.afficherTexte = true;
-            }
+                gameState = GameState::FDG;
 
-            level.update(deltaTime, window, player.getHitbox());
+                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");  // Réinitialiser la fenêtre
+            }
             
             window.clear(sf::Color::Blue);
             level.draw(window);
             player.draw(window);
+            window.display();
+        }
+
+        else if (gameState == GameState::FDG) {
+            int score = 0;
+
+            finDeJeu.afficher(window, deltaTime, score);
+
+            level.update(deltaTime, window, sf::FloatRect());
+
             window.display();
         }
     }
