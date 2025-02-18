@@ -27,6 +27,7 @@ public:
     // Confetti
     void startConfetti();
     bool confettiActive = false;
+    bool areConfettisFinished() const;
 
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
@@ -55,5 +56,6 @@ private:
     sf::Clock texteClock; 
     bool texteAnimationActive = false;
 };
+
 
 #endif

@@ -193,3 +193,8 @@ void Level::initTexte()
     niveauTermineText.setOutlineColor(sf::Color::Red);
     niveauTermineText.setOutlineThickness(4);
 }
+
+bool Level::areConfettisFinished() const
+{
+    return confettis.empty();
+}

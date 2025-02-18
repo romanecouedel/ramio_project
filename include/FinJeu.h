@@ -18,6 +18,12 @@ private:
     sf::Text texteScore;
     sf::Text texteInstructions;
     sf::RectangleShape background;
+    sf::Texture backgroundTexture; // Ajout de la texture pour le fond d'écran
+    sf::Sprite backgroundSprite;   // Ajout du sprite pour le fond d'écran
+
+
+    sf::RectangleShape bouton; // Ajout du bouton
+    sf::Text boutonTexte;      // Texte du bouton
 
     void setupText(sf::Text& text, const std::string& content, float x, float y, unsigned int size);
 };
