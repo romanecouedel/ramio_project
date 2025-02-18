@@ -114,7 +114,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             if (playerHitbox.intersects(hitboxAvecTolerance))
             {
                 // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
-                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.5f;
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.8f;
                 if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
                 {
                     blocMystere->onHit();

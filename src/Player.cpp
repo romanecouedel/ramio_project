@@ -95,5 +95,3 @@ sf::FloatRect Player::getHitbox() const
     sf::FloatRect bounds = sprite.getGlobalBounds();
     return bounds; //coucou c moi
 }
-
-//Wesh ça dit !! <3

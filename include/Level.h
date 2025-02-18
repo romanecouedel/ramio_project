@@ -31,10 +31,6 @@ public:
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
-    void spawnPiece(const sf::Vector2f& position);
-    void updatePieces(float deltaTime, const sf::FloatRect& playerHitbox);
-    void drawPieces(sf::RenderWindow& window);
-
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs

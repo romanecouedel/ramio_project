@@ -67,8 +67,6 @@ int main() {
             }
 
             level.update(deltaTime, window, player.getHitbox());
-            
-            //window.clear(sf::Color::Blue);
             level.draw(window);
             player.draw(window);
             window.display();
