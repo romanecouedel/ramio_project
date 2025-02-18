@@ -3,8 +3,9 @@
 #include "Level.h"
 #include "Player.h"
 #include "Menu.h"
+#include "FinJeu.h"
 
-enum class GameState { MENU, GAME };  // États possibles du jeu
+enum class GameState { MENU, GAME, FDG };  // États possibles du jeu
 
 int main() {
     GameState gameState = GameState::MENU;  // Démarrage dans le menu
@@ -15,6 +16,9 @@ int main() {
     Player player;
     bool niveauTermine = false;
     sf::Clock clock;
+    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);  // Écran de fin de jeu
+    float deltaTime;
+
 
     while (window.isOpen()) {
         sf::Event event;
@@ -54,7 +58,7 @@ int main() {
             window.display();
         } 
         else if (gameState == GameState::GAME) {
-            float deltaTime = clock.restart().asSeconds();
+            deltaTime = clock.restart().asSeconds();
             
             player.handleInput();
             player.update(deltaTime, level);
@@ -64,6 +68,7 @@ int main() {
                 niveauTermine = true;
                 level.startConfetti();
                 level.afficherTexte = true;
+                gameState = GameState::FDG;
             }
 
             level.update(deltaTime, window, player.getHitbox());
@@ -72,6 +77,23 @@ int main() {
             level.draw(window);
             player.draw(window);
             window.display();
+        }
+
+        else if (gameState == GameState::FDG) {
+            // Calculer le temps écoulé et le score
+            int score =0;
+            //int score = player.getScore();  // Assurez-vous que le joueur a une méthode getScore()
+
+            finDeJeu.afficher(window, deltaTime, score);
+
+            // Gérer l'entrée de l'utilisateur
+            if (finDeJeu.handleInput(event)) {
+                gameState = GameState::MENU;
+                window.create(sf::VideoMode(900, 600), "Mario - Menu");  // Réinitialiser la fenêtre
+            }
+
+            window.display();
+            
         }
     }
 
