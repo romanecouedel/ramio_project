@@ -1,6 +1,7 @@
 // Entity.cpp
 #include "Entity.h"
 #include <iostream>
+#include <math.h>
 
 Entity::Entity(const std::string& texturePath) {
     if (!texture.loadFromFile(texturePath)) {
@@ -29,4 +30,42 @@ ObjetInteractif::ObjetInteractif(const std::string& texturePath) : Entity(textur
 Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
     sprite.setScale(0.1f, 0.1f); 
     
+}
+
+// ======================== Constructeur Piece ========================
+
+//ajouter code
+Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
+    if (!texture.loadFromFile("../img/piece.png")) {
+        std::cerr << "Erreur chargement texture pièce" << std::endl;
+    } 
+    sprite.setTexture(texture);
+    sprite.setScale(32.0f / texture.getSize().x, 32.0f / texture.getSize().y);
+    sprite.setPosition(x, y);
+    startPosition = sprite.getPosition();
+    
+}
+
+
+void Piece::update(float deltaTime) {
+    if (animating) {
+        animationTime += deltaTime;
+
+        // Animation de montée/descente
+        float offset = animationHeight * std::sin((animationTime / animationDuration) * 3.14159f);
+        sprite.setPosition(startPosition.x, startPosition.y - offset);
+
+        if (animationTime >= animationDuration) {
+            // Animation terminée, réinitialiser
+            sprite.setPosition(startPosition.x, startPosition.y);
+            animating = false;
+            animationTime = 0.0f;
+        }
+    }
+}
+
+void Piece::draw(sf::RenderWindow& window) const {
+    if (!collected) {
+        window.draw(sprite);
+    }
 }

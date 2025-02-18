@@ -66,14 +66,6 @@ void Level::draw(sf::RenderWindow &window)
     }
     drapeau.draw(window);
 
-    // Mario sera dessous, donc on le dessine AVANT les confettis dans le main
-    if (confettiActive)
-    {
-        for (auto &confetti : confettis)
-        {
-            confetti.draw(window);
-        }
-    }
     if (afficherTexte)
     {
         window.draw(niveauTermineText);
@@ -111,27 +103,25 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
         if (blocMystere)
         {
-            blocMystere->update(deltaTime);
+            blocMystere->update(deltaTime, window);
 
             // Hitbox avec tolérance
             sf::FloatRect hitboxAvecTolerance = blocMystere->getGlobalBounds();
-            hitboxAvecTolerance.top -= 5.0f;
-            hitboxAvecTolerance.height += 10.0f;
+            hitboxAvecTolerance.top -= 3.0f;
+            hitboxAvecTolerance.height += 6.0f;
 
+            // Vérifie si le joueur frappe par en dessous uniquement
             if (playerHitbox.intersects(hitboxAvecTolerance))
             {
-
-                if (!blocMystere->isAnimating())
+                // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.5f;
+                if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
                 {
-
                     blocMystere->onHit();
                 }
             }
         }
     }
-    
-
-    
     // Animation de zoom avec centrage dynamique
     if (afficherTexte)
     {

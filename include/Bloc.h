@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Entity.h"
 
 // ========================== Classe mère ==========================
 class Bloc {
@@ -38,9 +39,10 @@ public:
 class BlocMystere : public Bloc {
 public:
     BlocMystere();
-    void update(float deltaTime);
+    void update(float deltaTime, sf::RenderWindow& window);
     void onHit();
     bool isAnimating() const;
+    std::unique_ptr<Piece>& getPiece() { return piece; } 
 
 private:
     sf::Vector2f startPosition;
@@ -48,4 +50,8 @@ private:
     float animationTime = 0.0f;
     const float animationDuration = 0.2f; // Durée totale montée/descente
     const float animationHeight = 5.0f;   // Hauteur du déplacement
+
+    std::unique_ptr<Piece> piece;
+ 
 };
+

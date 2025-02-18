@@ -44,3 +44,26 @@ class Drapeau : public ObjetInteractif {
 public:
     Drapeau(); // Déclaration seulement
 };
+
+// ===================== Classe Piece =====================
+
+//ajouter code 
+class Piece : public ObjetInteractif {
+public:
+    Piece(float x, float y);
+    void update(float deltaTime);
+    void draw(sf::RenderWindow& window) const;
+    sf::Sprite& getSprite() {
+    return sprite;  // Supposant que 'sprite' est un attribut de type sf::Sprite dans la classe Piece
+}
+private:
+    sf::Sprite sprite;
+    sf::Texture texture;
+    sf::Vector2f startPosition;
+    bool collected = false;
+    bool animating = false;
+    float animationTime = 0.0f;
+    const float animationDuration = 0.5f;  // Durée totale montée/descente
+    const float animationHeight = 10.0f;   // Hauteur du déplacement
+
+};
