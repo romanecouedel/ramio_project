@@ -265,6 +265,7 @@ CMakeFiles/mario.dir/src/Level.cpp.o: \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Confetti.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Player.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Level.h \
+ /home/alberic/Documents/Cours/MARIO/ramio_project/include/ScoreManager.h \
  /usr/include/c++/9/fstream \
  /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \

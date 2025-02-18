@@ -31,6 +31,13 @@ public:
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
+    int pieceCount = 0;        // Compteur de pièces
+    sf::Font pieceFont;        // Police pour le compteur
+    sf::Text pieceText;        // Texte du compteur
+    
+    void initPieceCounter();
+    void updatePieceCounter();
+
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
