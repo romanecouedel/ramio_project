@@ -4,12 +4,8 @@
 
 class Player : public Entity {
 private:
-    sf::Vector2f velocity;
-    float speed = 200.f;
-    float jumpForce = -500.f;
-    float gravity = 980.f;
-    bool canJump = false;
-    bool onGround = false;
+    
+    float jumpForce = -500.f; 
 
 public:
     Player();

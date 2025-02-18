@@ -25,7 +25,7 @@ void Player::handleInput()
 }
 
 void Player::jump()
-{
+{ 
     velocity.y = jumpForce;
     canJump = false;
 }
@@ -95,3 +95,5 @@ sf::FloatRect Player::getHitbox() const
     sf::FloatRect bounds = sprite.getGlobalBounds();
     return bounds;
 }
+
+//Wesh ça dit !! <3

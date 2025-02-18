@@ -13,6 +13,8 @@ void Entity::move(float dx, float dy) {
     sprite.move(dx, dy);
 }
 
+
+
 sf::FloatRect Entity::getGlobalBounds() const {
     return sprite.getGlobalBounds();
 }
