@@ -9,7 +9,7 @@ class FinDeJeu {
 public:
     FinDeJeu(float windowWidth, float windowHeight);
     void afficher(sf::RenderWindow& window, float tempsEcoule, int score);
-    bool handleInput(const sf::Event& event);
+    bool handleInput(sf::Event event);
 
 private:
     sf::Font font;

@@ -51,12 +51,9 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score) 
     window.draw(boutonTexte);
 }
 
-bool FinDeJeu::handleInput(const sf::Event& event) {
-    bool retour_menu = false;
-    if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Enter) {
-            retour_menu = true;
-        }
+bool FinDeJeu::handleInput(sf::Event event) {
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+        return true;
     }
-    return retour_menu;
+    return false;
 }

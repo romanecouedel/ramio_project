@@ -19,10 +19,8 @@ int main() {
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);  // Écran de fin de jeu
     float deltaTime;
 
-
     while (window.isOpen()) {
         sf::Event event;
-        
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
 
@@ -51,11 +49,13 @@ int main() {
                 }
             }
             
-            if(gameState==GameState::FDG){
-               // Gérer l'entrée de l'utilisateur
+            if (gameState == GameState::FDG) {
+                // Gérer l'entrée de l'utilisateur
                 if (finDeJeu.handleInput(event)) {
                     gameState = GameState::MENU;
-                   }
+                    
+                    window.create(sf::VideoMode(900, 600), "Mario - Menu");  // Réinitialiser la fenêtre
+                }
             }
         }
 
@@ -85,14 +85,13 @@ int main() {
         }
 
         else if (gameState == GameState::FDG) {
-            int score =0;
+            int score = 0;
 
             finDeJeu.afficher(window, deltaTime, score);
 
             level.update(deltaTime, window, sf::FloatRect());
 
             window.display();
-            
         }
     }
 
