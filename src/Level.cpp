@@ -201,7 +201,3 @@ void Level::initPieceCounter() {
     pieceText.setPosition(20, 20);
     pieceText.setString("Pieces: 0");
 }
-
-void Level::updatePieceCounter() {
-    pieceText.setString("Pièces: " + std::to_string(ScoreManager::getInstance().getPieceCount()));
-}

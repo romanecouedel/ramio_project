@@ -7,7 +7,7 @@ find_package(SFML 2.5 REQUIRED COMPONENTS graphics window system)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_executable(mario src/main.cpp src/Level.cpp src/Player.cpp src/Entity.cpp src/Bloc.cpp src/Confetti.cpp src/Menu.cpp src/FinJeu.cpp src/ScoreManager.cpp)
+add_executable(mario src/main.cpp src/Level.cpp src/Player.cpp src/Entity.cpp src/Bloc.cpp src/Confetti.cpp src/Menu.cpp src/FinJeu.cpp )
 
 target_link_libraries(mario sfml-graphics sfml-window sfml-system)
 

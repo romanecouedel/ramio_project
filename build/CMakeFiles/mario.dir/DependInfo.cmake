@@ -15,7 +15,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/alberic/Documents/Cours/MARIO/ramio_project/src/Level.cpp" "CMakeFiles/mario.dir/src/Level.cpp.o" "gcc" "CMakeFiles/mario.dir/src/Level.cpp.o.d"
   "/home/alberic/Documents/Cours/MARIO/ramio_project/src/Menu.cpp" "CMakeFiles/mario.dir/src/Menu.cpp.o" "gcc" "CMakeFiles/mario.dir/src/Menu.cpp.o.d"
   "/home/alberic/Documents/Cours/MARIO/ramio_project/src/Player.cpp" "CMakeFiles/mario.dir/src/Player.cpp.o" "gcc" "CMakeFiles/mario.dir/src/Player.cpp.o.d"
-  "/home/alberic/Documents/Cours/MARIO/ramio_project/src/ScoreManager.cpp" "CMakeFiles/mario.dir/src/ScoreManager.cpp.o" "gcc" "CMakeFiles/mario.dir/src/ScoreManager.cpp.o.d"
   "/home/alberic/Documents/Cours/MARIO/ramio_project/src/main.cpp" "CMakeFiles/mario.dir/src/main.cpp.o" "gcc" "CMakeFiles/mario.dir/src/main.cpp.o.d"
   )
 

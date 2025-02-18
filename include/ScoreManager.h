@@ -26,7 +26,7 @@ private:
     sf::Text pieceText;
 
     ScoreManager() {
-        if (!font.loadFromFile("assets/fonts/arial.ttf")) {
+        if (!font.loadFromFile("../fonts/arial.ttf")) {
             std::cerr << "Erreur : Impossible de charger la police." << std::endl;
         }
         pieceText.setFont(font);
