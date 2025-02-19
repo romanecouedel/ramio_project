@@ -5,34 +5,47 @@
 #include "Menu.h"
 #include "FinJeu.h"
 
-enum class GameState { MENU, GAME, FDG };  // États possibles du jeu
+enum class GameState
+{
+    MENU,
+    GAME,
+    FDG
+}; // États possibles du jeu
 
-int main() {
-    GameState gameState = GameState::MENU;  // Démarrage dans le menu
+int main()
+{
+    GameState gameState = GameState::MENU; // Démarrage dans le menu
     sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
-    
+
     Menu menu(900, 600);
     Level level;
     Player player;
     bool niveauTermine = false;
     sf::Clock clock;
-    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);  // Écran de fin de jeu
+    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y); // Écran de fin de jeu
     float deltaTime;
+    sf::View view(sf::FloatRect(0, 0, 900, 600));
 
-    while (window.isOpen()) {
+    while (window.isOpen())
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) window.close();
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
 
-            if (gameState == GameState::MENU) {
+            if (gameState == GameState::MENU)
+            {
                 menu.handleInput(event, window);
-                if (menu.isGameStarting()) {  // Vérifier si l'utilisateur a validé "Jouer"
+                if (menu.isGameStarting())
+                { // Vérifier si l'utilisateur a validé "Jouer"
                     gameState = GameState::GAME;
 
                     // Charger le niveau sélectionné
                     int selectedLevel = menu.getSelectedLevel();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
-                    if (!level.loadFromFile(levelPath)) {
+                    if (!level.loadFromFile(levelPath))
+                    {
                         std::cerr << "Erreur chargement niveau !" << std::endl;
                         return -1;
                     }
@@ -48,35 +61,50 @@ int main() {
                     clock.restart();
                 }
             }
-            
-            if (gameState == GameState::FDG) {
+
+            if (gameState == GameState::FDG)
+            {
                 // Gérer l'entrée de l'utilisateur
-                if (finDeJeu.handleInput(event)) {
+                if (finDeJeu.handleInput(event))
+                {
                     gameState = GameState::MENU;
-                    
-                    window.create(sf::VideoMode(900, 600), "Mario - Menu");  // Réinitialiser la fenêtre
+
+                    window.create(sf::VideoMode(900, 600), "Mario - Menu"); // Réinitialiser la fenêtre
                 }
             }
         }
 
-        if (gameState == GameState::MENU) {
+        if (gameState == GameState::MENU)
+        {
             window.clear();
             menu.draw(window);
             window.display();
-        } 
-        else if (gameState == GameState::GAME) {
+        }
+        else if (gameState == GameState::GAME)
+        {
             deltaTime = clock.restart().asSeconds();
-            
+
             player.handleInput();
             player.update(deltaTime, level);
 
-            if (player.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) && !niveauTermine) {
+            if (player.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) && !niveauTermine)
+            {
                 std::cout << "Niveau terminé !" << std::endl;
                 niveauTermine = true;
                 gameState = GameState::FDG;
 
-                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");  // Réinitialiser la fenêtre
+                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau"); // Réinitialiser la fenêtre
             }
+            // Récupère la position actuelle de Mario
+            sf::Vector2f playerPos = player.getPosition();
+
+            // Centre la vue sur Mario (en limitant le défilement pour éviter de sortir des bords)
+            float centerX = std::max(playerPos.x, 450.0f); // Ne bouge que si Mario dépasse la moitié de l'écran
+            float centerY = std::max(playerPos.y, 300.0f); // Ajuste selon les besoins
+            float playerX = player.getHitbox().left + player.getHitbox().width / 2;
+            view.setSize(window.getSize().x * 1.f, window.getSize().y); // Multiplie la largeur
+            view.setCenter(playerX, window.getSize().y / 2);
+            window.setView(view);
 
             level.update(deltaTime, window, player.getHitbox());
             level.draw(window);
@@ -85,7 +113,8 @@ int main() {
             window.clear(sf::Color::Blue);
         }
 
-        else if (gameState == GameState::FDG) {
+        else if (gameState == GameState::FDG)
+        {
             int score = 0;
 
             finDeJeu.afficher(window, deltaTime, score);
@@ -96,7 +125,8 @@ int main() {
             window.clear(sf::Color::Blue);
         }
 
-        else if (gameState == GameState::FDG) {
+        else if (gameState == GameState::FDG)
+        {
             int score = 0;
 
             finDeJeu.afficher(window, deltaTime, score);
@@ -109,4 +139,3 @@ int main() {
 
     return 0;
 }
-
