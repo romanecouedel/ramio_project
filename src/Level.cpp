@@ -6,6 +6,10 @@
 #include <iostream>
 
 Level::Level() {
+    if (!backgroundTexture.loadFromFile("../img/background_simple.jpg")) { // Mets le bon chemin
+        std::cerr << "Erreur chargement du fond d'écran" << std::endl;
+    }
+    backgroundSprite.setTexture(backgroundTexture);
 }
 
 
@@ -62,6 +66,7 @@ bool Level::loadFromFile(const std::string &filename)
 // ======================== Affichage du Niveau ========================
 void Level::draw(sf::RenderWindow &window)
 {
+    //window.draw(backgroundSprite);
     for (const auto &bloc : blocs)
     {
         bloc->draw(window);

@@ -54,6 +54,9 @@ private:
 
     sf::Clock texteClock; 
     bool texteAnimationActive = false;
+
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
 };
 
 #endif
