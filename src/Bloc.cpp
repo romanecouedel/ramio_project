@@ -2,7 +2,6 @@
 #include "Bloc.h"
 #include "Entity.h"
 #include "Level.h"
-#include "ScoreManager.h"
 #include <iostream>
 #include <math.h>
 
@@ -50,10 +49,6 @@ void BlocMystere::onHit()
 
         // Change la texture du bloc
         changerTexture();
-        
-        // Après avoir ajouté une pièce :
-        ScoreManager::getInstance().incrementPieceCount();
-        ScoreManager::getInstance().updatePieceCounter();
 
     }
 }
