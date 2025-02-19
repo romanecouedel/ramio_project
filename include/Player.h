@@ -8,11 +8,14 @@
 
 class Player : public Entity {
 private:
-    float jumpForce = -500.f;
+    float jumpForce = -700.f;
     Animation animationWalkLeft;
     Animation animationWalkRight;
     Animation animationJumpRight;
     Animation animationJumpLeft;
+
+    Animation animationIdleRight;
+    Animation animationIdleLeft;
     Animation* currentAnimation;
     sf::Texture texture;
     bool faceRight = true;

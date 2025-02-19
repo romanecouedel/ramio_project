@@ -12,16 +12,19 @@ Player::Player()
         std::cerr << "Erreur chargement Mario" << std::endl;
     }
     sprite.setTexture(texture);
-    sprite.setScale(0.20f, 0.20f);
+    sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(100, 100);
 
-    // Initialisation des animations
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f); // 1ère image ligne 1
+    // init des animations
+    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
     animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
     animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.15f);
+    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
 
-        currentAnimation = &animationWalkRight;
+    animationIdleRight = Animation(&texture,{1,1} ,0.f);
+    animationIdleLeft = Animation(&texture,{1,2},0.f);
+
+    currentAnimation = &animationWalkRight;
 }
 
 void Player::handleInput()
@@ -75,17 +78,19 @@ void Player::update(float deltaTime, const Level &level)
     { 
         isJumping = false;
     }
-    
-
+    if (velocity.x==0 && onGround)
+    { 
+        currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
+    }
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
 
     if (velocity.y < 0)
-    { // Si Mario monte → il saute
+    { 
         isJumping = true;
     }
     else if (velocity.y == 0)
-    { // Si Mario touche le sol → il ne saute plus
+    { 
         isJumping = false;
     }
     // Collisions horizontales
