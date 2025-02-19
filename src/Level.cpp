@@ -2,12 +2,10 @@
 #include "Confetti.h"
 #include "Bloc.h"
 #include "Player.h"
-#include "ScoreManager.h"
 #include <fstream>
 #include <iostream>
 
 Level::Level() {
-    initPieceCounter();
 }
 
 
@@ -189,19 +187,5 @@ void Level::initTexte()
     niveauTermineText.setOutlineThickness(4);
 }
 
-void Level::initPieceCounter() {
-    if (!pieceFont.loadFromFile("../fonts/arial.ttf")) {
-        std::cerr << "Erreur chargement police!" << std::endl;
-    }
-    pieceText.setFont(pieceFont);
-    pieceText.setCharacterSize(40);
-    pieceText.setFillColor(sf::Color::White);
-    pieceText.setOutlineColor(sf::Color::Black);
-    pieceText.setOutlineThickness(2);
-    pieceText.setPosition(20, 20);
-    pieceText.setString("Pieces: 0");
-}
 
-void Level::updatePieceCounter() {
-    pieceText.setString("Pièces: " + std::to_string(ScoreManager::getInstance().getPieceCount()));
-}
+

@@ -263,4 +263,5 @@ CMakeFiles/mario.dir/src/main.cpp.o: \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Confetti.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Player.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Level.h \
+ /home/alberic/Documents/Cours/MARIO/ramio_project/include/Animation.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Menu.h

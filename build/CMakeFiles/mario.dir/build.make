@@ -181,19 +181,19 @@ CMakeFiles/mario.dir/src/FinJeu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mario.dir/src/FinJeu.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alberic/Documents/Cours/MARIO/ramio_project/src/FinJeu.cpp -o CMakeFiles/mario.dir/src/FinJeu.cpp.s
 
-CMakeFiles/mario.dir/src/ScoreManager.cpp.o: CMakeFiles/mario.dir/flags.make
-CMakeFiles/mario.dir/src/ScoreManager.cpp.o: ../src/ScoreManager.cpp
-CMakeFiles/mario.dir/src/ScoreManager.cpp.o: CMakeFiles/mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alberic/Documents/Cours/MARIO/ramio_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mario.dir/src/ScoreManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mario.dir/src/ScoreManager.cpp.o -MF CMakeFiles/mario.dir/src/ScoreManager.cpp.o.d -o CMakeFiles/mario.dir/src/ScoreManager.cpp.o -c /home/alberic/Documents/Cours/MARIO/ramio_project/src/ScoreManager.cpp
+CMakeFiles/mario.dir/src/Animation.cpp.o: CMakeFiles/mario.dir/flags.make
+CMakeFiles/mario.dir/src/Animation.cpp.o: ../src/Animation.cpp
+CMakeFiles/mario.dir/src/Animation.cpp.o: CMakeFiles/mario.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alberic/Documents/Cours/MARIO/ramio_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mario.dir/src/Animation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mario.dir/src/Animation.cpp.o -MF CMakeFiles/mario.dir/src/Animation.cpp.o.d -o CMakeFiles/mario.dir/src/Animation.cpp.o -c /home/alberic/Documents/Cours/MARIO/ramio_project/src/Animation.cpp
 
-CMakeFiles/mario.dir/src/ScoreManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mario.dir/src/ScoreManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alberic/Documents/Cours/MARIO/ramio_project/src/ScoreManager.cpp > CMakeFiles/mario.dir/src/ScoreManager.cpp.i
+CMakeFiles/mario.dir/src/Animation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mario.dir/src/Animation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alberic/Documents/Cours/MARIO/ramio_project/src/Animation.cpp > CMakeFiles/mario.dir/src/Animation.cpp.i
 
-CMakeFiles/mario.dir/src/ScoreManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mario.dir/src/ScoreManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alberic/Documents/Cours/MARIO/ramio_project/src/ScoreManager.cpp -o CMakeFiles/mario.dir/src/ScoreManager.cpp.s
+CMakeFiles/mario.dir/src/Animation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mario.dir/src/Animation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alberic/Documents/Cours/MARIO/ramio_project/src/Animation.cpp -o CMakeFiles/mario.dir/src/Animation.cpp.s
 
 # Object files for target mario
 mario_OBJECTS = \
@@ -205,7 +205,7 @@ mario_OBJECTS = \
 "CMakeFiles/mario.dir/src/Confetti.cpp.o" \
 "CMakeFiles/mario.dir/src/Menu.cpp.o" \
 "CMakeFiles/mario.dir/src/FinJeu.cpp.o" \
-"CMakeFiles/mario.dir/src/ScoreManager.cpp.o"
+"CMakeFiles/mario.dir/src/Animation.cpp.o"
 
 # External object files for target mario
 mario_EXTERNAL_OBJECTS =
@@ -218,7 +218,7 @@ mario: CMakeFiles/mario.dir/src/Bloc.cpp.o
 mario: CMakeFiles/mario.dir/src/Confetti.cpp.o
 mario: CMakeFiles/mario.dir/src/Menu.cpp.o
 mario: CMakeFiles/mario.dir/src/FinJeu.cpp.o
-mario: CMakeFiles/mario.dir/src/ScoreManager.cpp.o
+mario: CMakeFiles/mario.dir/src/Animation.cpp.o
 mario: CMakeFiles/mario.dir/build.make
 mario: ../external/SFML-install/lib/libsfml-graphics.so.2.5.1
 mario: ../external/SFML-install/lib/libsfml-window.so.2.5.1

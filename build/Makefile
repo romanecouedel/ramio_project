@@ -129,6 +129,30 @@ mario/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/build
 .PHONY : mario/fast
 
+src/Animation.o: src/Animation.cpp.o
+.PHONY : src/Animation.o
+
+# target to build an object file
+src/Animation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/Animation.cpp.o
+.PHONY : src/Animation.cpp.o
+
+src/Animation.i: src/Animation.cpp.i
+.PHONY : src/Animation.i
+
+# target to preprocess a source file
+src/Animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/Animation.cpp.i
+.PHONY : src/Animation.cpp.i
+
+src/Animation.s: src/Animation.cpp.s
+.PHONY : src/Animation.s
+
+# target to generate assembly for a file
+src/Animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/Animation.cpp.s
+.PHONY : src/Animation.cpp.s
+
 src/Bloc.o: src/Bloc.cpp.o
 .PHONY : src/Bloc.o
 
@@ -297,30 +321,6 @@ src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
-src/ScoreManager.o: src/ScoreManager.cpp.o
-.PHONY : src/ScoreManager.o
-
-# target to build an object file
-src/ScoreManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/ScoreManager.cpp.o
-.PHONY : src/ScoreManager.cpp.o
-
-src/ScoreManager.i: src/ScoreManager.cpp.i
-.PHONY : src/ScoreManager.i
-
-# target to preprocess a source file
-src/ScoreManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/ScoreManager.cpp.i
-.PHONY : src/ScoreManager.cpp.i
-
-src/ScoreManager.s: src/ScoreManager.cpp.s
-.PHONY : src/ScoreManager.s
-
-# target to generate assembly for a file
-src/ScoreManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mario.dir/build.make CMakeFiles/mario.dir/src/ScoreManager.cpp.s
-.PHONY : src/ScoreManager.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -354,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mario"
+	@echo "... src/Animation.o"
+	@echo "... src/Animation.i"
+	@echo "... src/Animation.s"
 	@echo "... src/Bloc.o"
 	@echo "... src/Bloc.i"
 	@echo "... src/Bloc.s"
@@ -375,9 +378,6 @@ help:
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
-	@echo "... src/ScoreManager.o"
-	@echo "... src/ScoreManager.i"
-	@echo "... src/ScoreManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

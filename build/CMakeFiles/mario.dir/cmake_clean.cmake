@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mario.dir/src/Animation.cpp.o"
+  "CMakeFiles/mario.dir/src/Animation.cpp.o.d"
   "CMakeFiles/mario.dir/src/Bloc.cpp.o"
   "CMakeFiles/mario.dir/src/Bloc.cpp.o.d"
   "CMakeFiles/mario.dir/src/Confetti.cpp.o"
@@ -13,8 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/mario.dir/src/Menu.cpp.o.d"
   "CMakeFiles/mario.dir/src/Player.cpp.o"
   "CMakeFiles/mario.dir/src/Player.cpp.o.d"
-  "CMakeFiles/mario.dir/src/ScoreManager.cpp.o"
-  "CMakeFiles/mario.dir/src/ScoreManager.cpp.o.d"
   "CMakeFiles/mario.dir/src/main.cpp.o"
   "CMakeFiles/mario.dir/src/main.cpp.o.d"
   "mario"

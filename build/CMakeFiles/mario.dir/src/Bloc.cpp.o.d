@@ -261,7 +261,6 @@ CMakeFiles/mario.dir/src/Bloc.cpp.o: \
  /usr/include/c++/9/backward/auto_ptr.h \
  /usr/include/c++/9/pstl/glue_memory_defs.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Confetti.h \
- /home/alberic/Documents/Cours/MARIO/ramio_project/include/ScoreManager.h \
  /usr/include/c++/9/math.h /usr/include/c++/9/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

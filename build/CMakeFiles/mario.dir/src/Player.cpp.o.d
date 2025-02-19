@@ -261,4 +261,6 @@ CMakeFiles/mario.dir/src/Player.cpp.o: \
  /usr/include/c++/9/pstl/glue_memory_defs.h \
  /home/alberic/Documents/Cours/MARIO/ramio_project/include/Bloc.h \
  /usr/include/c++/9/iostream \
- /home/alberic/Documents/Cours/MARIO/ramio_project/include/Confetti.h
+ /home/alberic/Documents/Cours/MARIO/ramio_project/include/Confetti.h \
+ /home/alberic/Documents/Cours/MARIO/ramio_project/include/Animation.h \
+ /home/alberic/Documents/Cours/MARIO/ramio_project/include/Animation.h
