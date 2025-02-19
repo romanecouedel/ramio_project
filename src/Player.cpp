@@ -77,6 +77,7 @@ void Player::update(float deltaTime, const Level &level)
     { 
         isJumping = false;
     }
+    
     // Collisions horizontales
     sf::FloatRect hitbox = getHitbox();
     hitbox.left += velocity.x * deltaTime;

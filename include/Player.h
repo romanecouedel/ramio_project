@@ -6,7 +6,7 @@
 
 class Player : public Entity {
 private:
-    float jumpForce = -700.f;
+    float jumpForce = -650.f;
     Animation animationWalkLeft;
     Animation animationWalkRight;
     Animation animationJumpRight;
