@@ -14,10 +14,8 @@ void Entity::move(float dx, float dy) {
     sprite.move(dx, dy);
 }
 
-
-
 sf::FloatRect Entity::getGlobalBounds() const {
-    return sprite.getGlobalBounds();
+    return sprite.getGlobalBounds();  // Exemple d'implémentation
 }
 
 
@@ -43,6 +41,8 @@ Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     sprite.setScale(64.0f / texture.getSize().x, 64.0f / texture.getSize().y);
     sprite.setPosition(x, y);
     startPosition = sprite.getPosition();
+    std::cout << "Piece créée à : " << startPosition.x << ", " << startPosition.y << std::endl;
+
     
 }
 
@@ -68,4 +68,6 @@ void Piece::draw(sf::RenderWindow& window) const {
     if (!collected) {
         window.draw(sprite);
     }
+    //std::cout << "Opacité de la pièce : " << (int)sprite.getColor().a << std::endl;
+
 }
