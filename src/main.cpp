@@ -20,12 +20,13 @@ int main()
     Menu menu(900, 600);
     Level level;
     Player player;
+
     bool niveauTermine = false;
     sf::Clock clock;
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y); // Écran de fin de jeu
     float deltaTime;
     sf::View view(sf::FloatRect(0, 0, 900, 600));
-
+    sf::Vector2f startPosition(100, 100); // Position de départ (exemple)
     while (window.isOpen())
     {
         sf::Event event;
@@ -49,7 +50,7 @@ int main()
                         std::cerr << "Erreur chargement niveau !" << std::endl;
                         return -1;
                     }
-
+                    player.setPosition(startPosition.x, startPosition.y);
                     // Ajuster la taille de la fenêtre en fonction du niveau
                     float blockSize = 64.0f;
                     unsigned int windowWidth = level.getWidth() * blockSize;
@@ -70,6 +71,8 @@ int main()
                     gameState = GameState::MENU;
 
                     window.create(sf::VideoMode(900, 600), "Mario - Menu"); // Réinitialiser la fenêtre
+                    view.setCenter(450, 300);                               // Recentrer la vue sur le menu
+                    window.setView(view);                                   // Appliquer la vue normale pour le menu
                 }
             }
         }
@@ -91,26 +94,34 @@ int main()
             {
                 std::cout << "Niveau terminé !" << std::endl;
                 niveauTermine = true;
+                player.setPosition(startPosition.x, startPosition.y);
                 gameState = GameState::FDG;
 
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau"); // Réinitialiser la fenêtre
             }
+            
             // Récupère la position actuelle de Mario
             sf::Vector2f playerPos = player.getPosition();
 
-            // Centre la vue sur Mario (en limitant le défilement pour éviter de sortir des bords)
-            float centerX = std::max(playerPos.x, 450.0f); // Ne bouge que si Mario dépasse la moitié de l'écran
-            float centerY = std::max(playerPos.y, 300.0f); // Ajuste selon les besoins
-            float playerX = player.getHitbox().left + player.getHitbox().width / 2;
-            view.setSize(window.getSize().x * 1.f, window.getSize().y); // Multiplie la largeur
-            view.setCenter(playerX, window.getSize().y / 2);
+            // Taille du niveau en pixels
+            float levelWidth = level.getWidth() * 64.0f;
+            float halfScreenWidth = window.getSize().x / 2.0f;
+
+            // Limiter la position X de la caméra
+            float minX = halfScreenWidth;                        // Bord gauche
+            float maxX = levelWidth - halfScreenWidth;           // Bord droit
+            float centerX = std::clamp(playerPos.x, minX, maxX); // Empêcher la caméra d'aller trop loin
+
+            // Appliquer la vue avec les limites
+            view.setSize(window.getSize().x, window.getSize().y);
+            view.setCenter(centerX, window.getSize().y / 2);
             window.setView(view);
 
             level.update(deltaTime, window, player.getHitbox());
             level.draw(window);
             player.draw(window);
             window.display();
-            window.clear(sf::Color::Blue);
+            window.clear();
         }
 
         else if (gameState == GameState::FDG)

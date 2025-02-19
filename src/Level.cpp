@@ -4,14 +4,21 @@
 #include "Player.h"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
-Level::Level() {
-    if (!backgroundTexture.loadFromFile("../img/background_simple.jpg")) { // Mets le bon chemin
-        std::cerr << "Erreur chargement du fond d'écran" << std::endl;
+Level::Level()
+{
+
+    if (!bgTextureLeft.loadFromFile("../img/background1.png") ||
+        !bgTextureRight.loadFromFile("../img/background2.png"))
+    {
+        std::cerr << "Erreur chargement textures de fond" << std::endl;
     }
-    backgroundSprite.setTexture(backgroundTexture);
-}
+    bgWidth = bgTextureLeft.getSize().x; // Largeur d'une image
 
+    // Créer un vertex array pour dessiner le fond
+    backgroundVertices.setPrimitiveType(sf::Quads);
+}
 
 // ======================== Chargement du Niveau ========================
 bool Level::loadFromFile(const std::string &filename)
@@ -66,18 +73,40 @@ bool Level::loadFromFile(const std::string &filename)
 // ======================== Affichage du Niveau ========================
 void Level::draw(sf::RenderWindow &window)
 {
-    //window.draw(backgroundSprite);
+    // Dessiner l'arrière-plan en utilisant un sf::RenderStates pour appliquer la texture
+    sf::RenderStates statesLeft;
+    statesLeft.texture = &bgTextureLeft;
+    sf::RenderStates statesRight;
+    statesRight.texture = &bgTextureRight;
+
+    // Dessiner séparément chaque moitié
+    for (size_t i = 0; i < backgroundVertices.getVertexCount(); i += 4)
+    {
+        if ((i / 4) % 2 == 0)
+            window.draw(&backgroundVertices[i], 4, sf::Quads, statesLeft);
+        else
+            window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
+    }
+
+    generateBackground(grid[0].size() * 64, grid.size() * 64);
+
+    // Dessiner les blocs
     for (const auto &bloc : blocs)
     {
         bloc->draw(window);
-    }
-    drapeau.draw(window);
 
-    if (afficherTexte)
-    {
-        window.draw(niveauTermineText);
+        // Vérifier si c'est un BlocMystere et dessiner la pièce s'il en a une
+        if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
+        {
+            if (blocMystere->isAnimating() && blocMystere->getPiece())
+            {
+                blocMystere->getPiece()->draw(window);
+            }
+        }
     }
-    window.draw(pieceText);
+
+    // Dessiner le drapeau
+    drapeau.draw(window);
 }
 
 void Level::startConfetti()
@@ -192,5 +221,29 @@ void Level::initTexte()
     niveauTermineText.setOutlineThickness(4);
 }
 
+void Level::generateBackground(float levelWidth, float levelHeight)
+{
+    backgroundVertices.clear();
+    float tileSize = bgWidth; // Taille d'un motif
 
+    for (float x = 0; x < levelWidth; x += tileSize)
+    {
+        sf::Vertex quad[4];
 
+        quad[0].position = sf::Vector2f(x, 0);
+        quad[1].position = sf::Vector2f(x + tileSize, 0);
+        quad[2].position = sf::Vector2f(x + tileSize, levelHeight);
+        quad[3].position = sf::Vector2f(x, levelHeight);
+
+        // Alterne entre bgLeft et bgRight
+        sf::Texture &texture = (static_cast<int>(x / tileSize) % 2 == 0) ? bgTextureLeft : bgTextureRight;
+
+        quad[0].texCoords = sf::Vector2f(0, 0);
+        quad[1].texCoords = sf::Vector2f(tileSize, 0);
+        quad[2].texCoords = sf::Vector2f(tileSize, levelHeight);
+        quad[3].texCoords = sf::Vector2f(0, levelHeight);
+
+        for (int i = 0; i < 4; i++)
+            backgroundVertices.append(quad[i]);
+    }
+}

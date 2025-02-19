@@ -27,18 +27,22 @@ public:
     // Confetti
     void startConfetti();
     bool confettiActive = false;
-    bool areConfettisFinished() const;
 
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
+    void generateBackground(float levelWidth, float levelHeight);
+
     int pieceCount = 0;        // Compteur de pièces
     sf::Font pieceFont;        // Police pour le compteur
     sf::Text pieceText;        // Texte du compteur
+    std::unique_ptr<Piece> piece;
 
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
+      // Ou std::shared_ptr<Piece> selon ton implémentation
+
     Drapeau drapeau;
     // Animation fin
 
@@ -58,6 +62,12 @@ private:
 
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
+
+    sf::Texture bgTextureLeft, bgTextureRight;
+    sf::VertexArray backgroundVertices;
+    float bgWidth;
+
+    
 };
 
 

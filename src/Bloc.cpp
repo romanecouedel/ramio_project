@@ -68,15 +68,12 @@ void BlocMystere::update(float deltaTime, sf::RenderWindow &window)
             animating = false;
             animationTime = 0.f;
         }
-
-        if (piece)
-        {
-            piece->draw(window);
-        }
     }
+
 }
 
 bool BlocMystere::isAnimating() const
 {
     return animating;
 }
+
