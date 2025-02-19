@@ -38,7 +38,7 @@ int main() {
                     }
 
                     // Ajuster la taille de la fenêtre en fonction du niveau
-                    float blockSize = 32.0f;
+                    float blockSize = 64.0f;
                     unsigned int windowWidth = level.getWidth() * blockSize;
                     unsigned int windowHeight = level.getHeight() * blockSize;
                     window.create(sf::VideoMode(windowWidth, windowHeight), "Mario");

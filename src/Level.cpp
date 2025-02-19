@@ -2,12 +2,14 @@
 #include "Confetti.h"
 #include "Bloc.h"
 #include "Player.h"
-#include "ScoreManager.h"
 #include <fstream>
 #include <iostream>
 
 Level::Level() {
-    initPieceCounter();
+    if (!backgroundTexture.loadFromFile("../img/background_simple.jpg")) { // Mets le bon chemin
+        std::cerr << "Erreur chargement du fond d'écran" << std::endl;
+    }
+    backgroundSprite.setTexture(backgroundTexture);
 }
 
 
@@ -24,7 +26,7 @@ bool Level::loadFromFile(const std::string &filename)
     grid.clear();
     blocs.clear();
 
-    float blockSize = 32.0f;
+    float blockSize = 64.0f;
     std::string line;
     int y = 0;
 
@@ -64,6 +66,7 @@ bool Level::loadFromFile(const std::string &filename)
 // ======================== Affichage du Niveau ========================
 void Level::draw(sf::RenderWindow &window)
 {
+    //window.draw(backgroundSprite);
     for (const auto &bloc : blocs)
     {
         bloc->draw(window);
@@ -119,7 +122,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             if (playerHitbox.intersects(hitboxAvecTolerance))
             {
                 // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
-                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.8f;
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
                 if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
                 {
                     blocMystere->onHit();
@@ -189,15 +192,5 @@ void Level::initTexte()
     niveauTermineText.setOutlineThickness(4);
 }
 
-void Level::initPieceCounter() {
-    if (!pieceFont.loadFromFile("../fonts/arial.ttf")) {
-        std::cerr << "Erreur chargement police!" << std::endl;
-    }
-    pieceText.setFont(pieceFont);
-    pieceText.setCharacterSize(40);
-    pieceText.setFillColor(sf::Color::White);
-    pieceText.setOutlineColor(sf::Color::Black);
-    pieceText.setOutlineThickness(2);
-    pieceText.setPosition(20, 20);
-    pieceText.setString("Pieces: 0");
-}
+
+
