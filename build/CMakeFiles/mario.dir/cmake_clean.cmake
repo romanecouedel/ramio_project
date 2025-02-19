@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mario.dir/src/Confetti.cpp.o.d"
   "CMakeFiles/mario.dir/src/Entity.cpp.o"
   "CMakeFiles/mario.dir/src/Entity.cpp.o.d"
+  "CMakeFiles/mario.dir/src/FinJeu.cpp.o"
+  "CMakeFiles/mario.dir/src/FinJeu.cpp.o.d"
   "CMakeFiles/mario.dir/src/Level.cpp.o"
   "CMakeFiles/mario.dir/src/Level.cpp.o.d"
   "CMakeFiles/mario.dir/src/Menu.cpp.o"

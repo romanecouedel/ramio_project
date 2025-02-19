@@ -77,11 +77,23 @@ int main() {
 
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");  // Réinitialiser la fenêtre
             }
-            
-            window.clear(sf::Color::Blue);
+
+            level.update(deltaTime, window, player.getHitbox());
             level.draw(window);
             player.draw(window);
             window.display();
+            window.clear(sf::Color::Blue);
+        }
+
+        else if (gameState == GameState::FDG) {
+            int score = 0;
+
+            finDeJeu.afficher(window, deltaTime, score);
+
+            level.update(deltaTime, window, sf::FloatRect());
+
+            window.display();
+            window.clear(sf::Color::Blue);
         }
 
         else if (gameState == GameState::FDG) {
@@ -97,3 +109,4 @@ int main() {
 
     return 0;
 }
+

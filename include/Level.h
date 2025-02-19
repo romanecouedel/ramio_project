@@ -32,9 +32,12 @@ public:
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
-    void spawnPiece(const sf::Vector2f& position);
-    void updatePieces(float deltaTime, const sf::FloatRect& playerHitbox);
-    void drawPieces(sf::RenderWindow& window);
+    int pieceCount = 0;        // Compteur de pièces
+    sf::Font pieceFont;        // Police pour le compteur
+    sf::Text pieceText;        // Texte du compteur
+    
+    void initPieceCounter();
+    void updatePieceCounter();
 
 private:
     std::vector<std::vector<int>> grid;

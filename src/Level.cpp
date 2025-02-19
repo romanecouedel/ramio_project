@@ -2,10 +2,14 @@
 #include "Confetti.h"
 #include "Bloc.h"
 #include "Player.h"
+#include "ScoreManager.h"
 #include <fstream>
 #include <iostream>
 
-Level::Level() {}
+Level::Level() {
+    initPieceCounter();
+}
+
 
 // ======================== Chargement du Niveau ========================
 bool Level::loadFromFile(const std::string &filename)
@@ -66,18 +70,11 @@ void Level::draw(sf::RenderWindow &window)
     }
     drapeau.draw(window);
 
-    // Mario sera dessous, donc on le dessine AVANT les confettis dans le main
-    if (confettiActive)
-    {
-        for (auto &confetti : confettis)
-        {
-            confetti.draw(window);
-        }
-    }
     if (afficherTexte)
     {
         window.draw(niveauTermineText);
     }
+    window.draw(pieceText);
 }
 
 void Level::startConfetti()
@@ -111,27 +108,25 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
         if (blocMystere)
         {
-            blocMystere->update(deltaTime);
+            blocMystere->update(deltaTime, window);
 
             // Hitbox avec tolérance
             sf::FloatRect hitboxAvecTolerance = blocMystere->getGlobalBounds();
-            hitboxAvecTolerance.top -= 5.0f;
-            hitboxAvecTolerance.height += 10.0f;
+            hitboxAvecTolerance.top -= 3.0f;
+            hitboxAvecTolerance.height += 6.0f;
 
+            // Vérifie si le joueur frappe par en dessous uniquement
             if (playerHitbox.intersects(hitboxAvecTolerance))
             {
-
-                if (!blocMystere->isAnimating())
+                // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.8f;
+                if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
                 {
-
                     blocMystere->onHit();
                 }
             }
         }
     }
-    
-
-    
     // Animation de zoom avec centrage dynamique
     if (afficherTexte)
     {
@@ -194,7 +189,15 @@ void Level::initTexte()
     niveauTermineText.setOutlineThickness(4);
 }
 
-bool Level::areConfettisFinished() const
-{
-    return confettis.empty();
+void Level::initPieceCounter() {
+    if (!pieceFont.loadFromFile("../fonts/arial.ttf")) {
+        std::cerr << "Erreur chargement police!" << std::endl;
+    }
+    pieceText.setFont(pieceFont);
+    pieceText.setCharacterSize(40);
+    pieceText.setFillColor(sf::Color::White);
+    pieceText.setOutlineColor(sf::Color::Black);
+    pieceText.setOutlineThickness(2);
+    pieceText.setPosition(20, 20);
+    pieceText.setString("Pieces: 0");
 }

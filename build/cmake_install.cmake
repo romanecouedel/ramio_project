@@ -1,4 +1,4 @@
-# Install script for directory: /home/mehdy/Bureau/ROB4/S8/INFO_MILLAN/ramio_project
+# Install script for directory: /home/alberic/Documents/Cours/MARIO/ramio_project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mehdy/Bureau/ROB4/S8/INFO_MILLAN/ramio_project/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/alberic/Documents/Cours/MARIO/ramio_project/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
