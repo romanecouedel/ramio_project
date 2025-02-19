@@ -13,7 +13,7 @@ Bloc::Bloc(const std::string &texturePath)
         std::cerr << "Erreur chargement texture : " << texturePath << std::endl;
     }
     sprite.setTexture(texture);
-    sprite.setScale(32.0f / texture.getSize().x, 32.0f / texture.getSize().y);
+    sprite.setScale(64.0f / texture.getSize().x, 64.0f / texture.getSize().y);
 }
 
 // ======================== BlocSol ========================
@@ -45,7 +45,7 @@ void BlocMystere::onHit()
         startPosition = sprite.getPosition();
 
         // Crée la pièce seulement si texture originale
-        piece = std::make_unique<Piece>(startPosition.x, startPosition.y - 35.0f);
+        piece = std::make_unique<Piece>(startPosition.x, startPosition.y - 64.0f);
 
         // Change la texture du bloc
         changerTexture();

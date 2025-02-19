@@ -35,9 +35,6 @@ public:
     int pieceCount = 0;        // Compteur de pièces
     sf::Font pieceFont;        // Police pour le compteur
     sf::Text pieceText;        // Texte du compteur
-    
-    void initPieceCounter();
-    void updatePieceCounter();
 
 private:
     std::vector<std::vector<int>> grid;
