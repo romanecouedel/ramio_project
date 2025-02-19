@@ -27,6 +27,7 @@ public:
     // Confetti
     void startConfetti();
     bool confettiActive = false;
+    bool areConfettisFinished() const;
 
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
@@ -58,5 +59,6 @@ private:
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
 };
+
 
 #endif

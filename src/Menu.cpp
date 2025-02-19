@@ -131,5 +131,11 @@ void Menu::changeSelection(std::vector<MenuOption> &menu, int direction) {
 }
 
 bool Menu::isGameStarting() {
-    return currentState == MenuState::GAMEOK && selectedIndex != 3; // Si un niveau est sélectionné //3=nb niveau
+    if (currentState == MenuState::GAMEOK && selectedIndex != 3) {
+        currentState = MenuState::MAIN; // Réinitialisation pour éviter de relancer en boucle
+        return true;
+    }
+    return false;
 }
+
+
