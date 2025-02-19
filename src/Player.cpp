@@ -1,28 +1,27 @@
 // Player.cpp
 #include "Player.h"
 #include "Animation.h"
+#include "Animation.h"
 #include <iostream>
 
 Player::Player()
 {
     if (!texture.loadFromFile("../img/sprite_mario.png"))
+    if (!texture.loadFromFile("../img/sprite_mario.png"))
     {
         std::cerr << "Erreur chargement Mario" << std::endl;
     }
     sprite.setTexture(texture);
-    sprite.setScale(0.40f, 0.40f);
+    sprite.setScale(0.20f, 0.20f);
     sprite.setPosition(100, 100);
 
-    // init des animations
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
+    // Initialisation des animations
+    animationWalkRight = Animation(&texture, {1, 1}, 0.1f); // 1ère image ligne 1
     animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
     animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
+    animationJumpRight = Animation(&texture, {2, 1}, 0.15f);
 
-    animationIdleRight = Animation(&texture,{1,1} ,0.f);
-    animationIdleLeft = Animation(&texture,{1,2},0.f);
-
-    currentAnimation = &animationWalkRight;
+        currentAnimation = &animationWalkRight;
 }
 
 void Player::handleInput()
@@ -30,28 +29,42 @@ void Player::handleInput()
     velocity.x = 0;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
+    {
         velocity.x = -speed;
         faceRight = false;
         currentAnimation = &animationWalkLeft;
     }
+        faceRight = false;
+        currentAnimation = &animationWalkLeft;
+    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
     {
         velocity.x = speed;
         faceRight = true;
         currentAnimation = &animationWalkRight;
         
     }
+        faceRight = true;
+        currentAnimation = &animationWalkRight;
+        
+    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump)
     {
+    {
         jump();
+        currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
+    }
         currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
     }
 }
 
 void Player::jump()
 {
+{
     velocity.y = jumpForce;
     canJump = false;
+    currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
     currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
 }
 
@@ -62,19 +75,17 @@ void Player::update(float deltaTime, const Level &level)
     { 
         isJumping = false;
     }
-    if (velocity.x==0 && onGround)
-    { 
-        currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
-    }
+    
+
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
 
     if (velocity.y < 0)
-    { 
+    { // Si Mario monte → il saute
         isJumping = true;
     }
     else if (velocity.y == 0)
-    { 
+    { // Si Mario touche le sol → il ne saute plus
         isJumping = false;
     }
     // Collisions horizontales
@@ -120,6 +131,7 @@ void Player::update(float deltaTime, const Level &level)
             onGround = true;
             canJump = true;
             isJumping = false; 
+            isJumping = false; 
         }
     }
 }
@@ -137,5 +149,6 @@ void Player::draw(sf::RenderWindow &window) const
 sf::FloatRect Player::getHitbox() const
 {
     sf::FloatRect bounds = sprite.getGlobalBounds();
+    return bounds; // coucou c moi
     return bounds; // coucou c moi
 }

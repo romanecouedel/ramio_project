@@ -6,10 +6,6 @@
 #include <iostream>
 
 Level::Level() {
-    if (!backgroundTexture.loadFromFile("../img/background_simple.jpg")) { // Mets le bon chemin
-        std::cerr << "Erreur chargement du fond d'écran" << std::endl;
-    }
-    backgroundSprite.setTexture(backgroundTexture);
 }
 
 
