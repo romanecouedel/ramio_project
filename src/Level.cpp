@@ -22,7 +22,7 @@ bool Level::loadFromFile(const std::string &filename)
     grid.clear();
     blocs.clear();
 
-    float blockSize = 32.0f;
+    float blockSize = 64.0f;
     std::string line;
     int y = 0;
 
@@ -117,7 +117,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             if (playerHitbox.intersects(hitboxAvecTolerance))
             {
                 // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
-                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.8f;
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
                 if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
                 {
                     blocMystere->onHit();

@@ -28,7 +28,7 @@ ObjetInteractif::ObjetInteractif(const std::string& texturePath) : Entity(textur
 
 // ======================== Constructeur Drapeau ========================
 Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
-    sprite.setScale(0.1f, 0.1f); 
+    sprite.setScale(0.25f, 0.25f); 
     
 }
 
@@ -40,7 +40,7 @@ Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
         std::cerr << "Erreur chargement texture pièce" << std::endl;
     } 
     sprite.setTexture(texture);
-    sprite.setScale(32.0f / texture.getSize().x, 32.0f / texture.getSize().y);
+    sprite.setScale(64.0f / texture.getSize().x, 64.0f / texture.getSize().y);
     sprite.setPosition(x, y);
     startPosition = sprite.getPosition();
     

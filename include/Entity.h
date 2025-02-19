@@ -8,7 +8,7 @@ protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Vector2f velocity;
-    float speed = 200.f;
+    float speed = 350.f;
     float gravity = 980.f;
     bool canJump = false;
     bool onGround = false;
