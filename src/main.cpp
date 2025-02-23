@@ -20,7 +20,7 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi; // Créé ici mais utilisé uniquement si multijoueur
+    Luigi luigi(true, &level); // true = IA activée
     bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
 
     bool niveauTermine = false;
