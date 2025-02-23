@@ -24,7 +24,7 @@ public:
     Player();
     virtual void handleInput() = 0; // Méthode pure virtuelle
     virtual void update(float deltaTime) override;  
-    virtual void update(float deltaTime, const Level& level); // Ajout de virtual ✅
+    virtual void update(float deltaTime, const Level& level); 
     void draw(sf::RenderWindow& window) const override;
     void jump();
     sf::FloatRect getHitbox() const;
@@ -34,12 +34,12 @@ class Mario : public Player {
 public:
     Mario();
     void handleInput() override;
-    void update(float deltaTime, const Level& level); // Enlever override ✅
+    void update(float deltaTime, const Level& level); 
 };
 
 class Luigi : public Player {
 public:
     Luigi();
     void handleInput() override;
-    void update(float deltaTime, const Level& level); // Enlever override ✅
+    void update(float deltaTime, const Level& level); 
 };
