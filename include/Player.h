@@ -39,7 +39,11 @@ public:
 
 class Luigi : public Player {
 public:
+    bool isAI;
+    Level* level;
+
     Luigi();
+    Luigi(bool aiMode, Level* lvl); 
     void handleInput() override;
     void update(float deltaTime, const Level& level); 
 };

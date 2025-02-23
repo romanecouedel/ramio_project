@@ -138,7 +138,7 @@ void Mario::handleInput() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
 }
 
-Luigi::Luigi() {
+Luigi::Luigi(bool aiMode, Level* lvl) : isAI(aiMode), level(lvl) {
     if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
@@ -153,8 +153,24 @@ Luigi::Luigi() {
 }
 
 void Luigi::handleInput() {
-    velocity.x = 0;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump){ jump();}
+    if (isAI) {
+        // Luigi avance tout seul
+        velocity.x = speed;
+        faceRight = true;
+        currentAnimation = &animationWalkRight;
+
+        // Vérifie s'il y a un obstacle devant lui
+        sf::FloatRect hitbox = getHitbox();
+        hitbox.left += speed; // Simulation de la position future
+
+        if (level->isColliding(hitbox) && canJump) {
+            jump();
+        }
+    } else {
+        // Contrôle manuel
+        velocity.x = 0;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump) { jump(); }
+    }
 }
