@@ -24,7 +24,6 @@ BlocMystere::BlocMystere() : Bloc("../img/mystery_box.png")
 {
     startPosition = sprite.getPosition();
 
-    // Chargement de la texture foncée
     if (!textureFoncee.loadFromFile("../img/mystery_box_dark.png"))
     {
         std::cerr << "Erreur chargement texture foncée!" << std::endl;

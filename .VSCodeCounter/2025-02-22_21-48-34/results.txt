@@ -1,0 +1,33 @@
+Date : 2025-02-22 21:48:34
+Directory : /home/alberic/Documents/Cours/MARIO/ramio_project/src
+Total : 9 files,  754 codes, 58 comments, 152 blanks, all 964 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |          9 |        754 |         58 |        152 |        964 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                   |          9 |        754 |         58 |        152 |        964 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                            | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Animation.cpp | C++      |         23 |          4 |          7 |         34 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Bloc.cpp      | C++      |         57 |          6 |         16 |         79 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Confetti.cpp  | C++      |         23 |          0 |          7 |         30 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Entity.cpp    | C++      |         48 |          8 |         18 |         74 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/FinJeu.cpp    | C++      |         41 |          8 |         10 |         59 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Level.cpp     | C++      |        200 |         19 |         31 |        250 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Menu.cpp      | C++      |        123 |          0 |         19 |        142 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/Player.cpp    | C++      |        121 |          6 |         16 |        143 |
+| /home/alberic/Documents/Cours/MARIO/ramio_project/src/main.cpp      | C++      |        118 |          7 |         28 |        153 |
+| Total                                                               |          |        754 |         58 |        152 |        964 |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
