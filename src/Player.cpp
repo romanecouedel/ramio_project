@@ -139,9 +139,7 @@ void Mario::handleInput() {
 }
 
 Luigi::Luigi() {
-    if (!texture.loadFromFile("../img/sprite_mario.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
-    sprite.setColor(sf::Color(0, 255, 0)); // Teinte verte
-
+    if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(150, 100);
