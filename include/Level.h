@@ -7,6 +7,7 @@
 #include "Bloc.h"
 #include "Entity.h"
 #include "Confetti.h"
+#include "Player.h"
 
 class Level
 {
@@ -22,7 +23,7 @@ public:
     int getHeight() const { return grid.size(); }
 
     const Drapeau &getDrapeau() const { return drapeau; }
-    void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &playerBounds);
+    void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
     // Confetti
     void startConfetti();
@@ -41,11 +42,10 @@ public:
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
-      // Ou std::shared_ptr<Piece> selon ton implémentation
 
     Drapeau drapeau;
-    // Animation fin
 
+    // Animation fin
     float confettiTimer = 0.0f;
     const float confettiDuration = 5.0f;
     std::vector<Confetti> confettis;
@@ -53,22 +53,19 @@ private:
 
     sf::Font font;
     sf::Text niveauTermineText;
-    bool texteAnime = false;             // Nouveau : indique si l’animation est en cours
+    bool texteAnime = false;             // Indique si l’animation est en cours
     float zoomScale = 1.0f; // Facteur de zoom actuel
     bool zoomIn = true;     // Direction du zoom (avant ou arrière)
 
-    sf::Clock texteClock; 
+    sf::Clock texteClock;
     bool texteAnimationActive = false;
-
+    
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
 
     sf::Texture bgTextureLeft, bgTextureRight;
     sf::VertexArray backgroundVertices;
     float bgWidth;
-
-    
 };
-
 
 #endif

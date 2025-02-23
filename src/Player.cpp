@@ -1,75 +1,21 @@
 // Player.cpp
 #include "Player.h"
-#include "Animation.h"
+#include "Level.h"
 #include "Animation.h"
 #include <iostream>
 
-Player::Player()
-{
-    if (!texture.loadFromFile("../img/sprite_mario.png"))
-    if (!texture.loadFromFile("../img/sprite_mario.png"))
-    {
-        std::cerr << "Erreur chargement Mario" << std::endl;
-    }
-    sprite.setTexture(texture);
-    sprite.setScale(0.40f, 0.40f);
-    sprite.setPosition(100, 100);
-
-    // init des animations
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
-    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
-    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
-
-    animationIdleRight = Animation(&texture,{1,1} ,0.f);
-    animationIdleLeft = Animation(&texture,{1,2},0.f);
-
-    currentAnimation = &animationWalkRight;
+Player::Player() {
+    currentAnimation = &animationIdleRight;
 }
 
-void Player::handleInput()
-{
-    velocity.x = 0;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
-    {
-        velocity.x = -speed;
-        faceRight = false;
-        currentAnimation = &animationWalkLeft;
-    }
-        faceRight = false;
-        currentAnimation = &animationWalkLeft;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
-    {
-        velocity.x = speed;
-        faceRight = true;
-        currentAnimation = &animationWalkRight;
-        
-    }
-        faceRight = true;
-        currentAnimation = &animationWalkRight;
-        
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump)
-    {
-    {
-        jump();
-        currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
-    }
-        currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
-    }
-}
 
-void Player::jump()
-{
-{
+void Player::jump() {
     velocity.y = jumpForce;
     canJump = false;
     currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
     currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
 }
+
 
 void Player::update(float deltaTime, const Level &level)
 {
@@ -147,6 +93,16 @@ void Player::update(float deltaTime)
     handleInput();
 }
 
+void Mario::update(float deltaTime, const Level& level) {
+    Player::update(deltaTime, level);
+}
+
+void Luigi::update(float deltaTime, const Level& level) {
+    Player::update(deltaTime, level);
+}
+
+
+
 void Player::draw(sf::RenderWindow &window) const
 {
     window.draw(sprite);
@@ -156,5 +112,53 @@ sf::FloatRect Player::getHitbox() const
 {
     sf::FloatRect bounds = sprite.getGlobalBounds();
     return bounds; // coucou c moi
-    return bounds; // coucou c moi
+}
+
+
+
+
+//==========================Classe dérivée==========================//
+
+Mario::Mario() {
+    if (!texture.loadFromFile("../img/sprite_mario.png")) std::cerr << "Erreur chargement Mario" << std::endl;
+    sprite.setTexture(texture);
+    sprite.setScale(0.40f, 0.40f);
+    sprite.setPosition(100, 100);
+    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
+    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
+    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
+    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
+    animationIdleRight = Animation(&texture,{1,1},0.f);
+    animationIdleLeft = Animation(&texture,{1,2},0.f);
+    currentAnimation = &animationIdleRight;
+}
+
+void Mario::handleInput() {
+    velocity.x = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
+}
+
+Luigi::Luigi() {
+    if (!texture.loadFromFile("../img/sprite_mario.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
+    sprite.setColor(sf::Color(0, 255, 0)); // Teinte verte
+
+    sprite.setTexture(texture);
+    sprite.setScale(0.40f, 0.40f);
+    sprite.setPosition(150, 100);
+    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
+    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
+    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
+    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
+    animationIdleRight = Animation(&texture,{1,1},0.f);
+    animationIdleLeft = Animation(&texture,{1,2},0.f);
+    currentAnimation = &animationIdleRight;
+}
+
+void Luigi::handleInput() {
+    velocity.x = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump){ jump();}
 }

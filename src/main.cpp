@@ -19,14 +19,19 @@ int main()
 
     Menu menu(900, 600);
     Level level;
-    Player player;
+    Mario mario;
+    Luigi luigi; // Créé ici mais utilisé uniquement si multijoueur
+    bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
 
     bool niveauTermine = false;
     sf::Clock clock;
-    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y); // Écran de fin de jeu
+    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     float deltaTime;
     sf::View view(sf::FloatRect(0, 0, 900, 600));
-    sf::Vector2f startPosition(100, 100); // Position de départ (exemple)
+
+    sf::Vector2f startPositionMario(100, 100);
+    sf::Vector2f startPositionLuigi(150, 100);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -39,18 +44,25 @@ int main()
             {
                 menu.handleInput(event, window);
                 if (menu.isGameStarting())
-                { // Vérifier si l'utilisateur a validé "Jouer"
+                { 
+                    // Démarrer le jeu
                     gameState = GameState::GAME;
-
-                    // Charger le niveau sélectionné
                     int selectedLevel = menu.getSelectedLevel();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
+
                     if (!level.loadFromFile(levelPath))
                     {
                         std::cerr << "Erreur chargement niveau !" << std::endl;
                         return -1;
                     }
-                    player.setPosition(startPosition.x, startPosition.y);
+
+                    // Vérifier si le joueur a choisi 2 joueurs
+                    multijoueur = menu.isMultiplayerSelected();
+
+                    mario.setPosition(startPositionMario.x, startPositionMario.y);
+                    if (multijoueur)
+                        luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
+
                     // Ajuster la taille de la fenêtre en fonction du niveau
                     float blockSize = 64.0f;
                     unsigned int windowWidth = level.getWidth() * blockSize;
@@ -65,14 +77,12 @@ int main()
 
             if (gameState == GameState::FDG)
             {
-                // Gérer l'entrée de l'utilisateur
                 if (finDeJeu.handleInput(event))
                 {
                     gameState = GameState::MENU;
-
-                    window.create(sf::VideoMode(900, 600), "Mario - Menu"); // Réinitialiser la fenêtre
-                    view.setCenter(450, 300);                               // Recentrer la vue sur le menu
-                    window.setView(view);                                   // Appliquer la vue normale pour le menu
+                    window.create(sf::VideoMode(900, 600), "Mario - Menu");
+                    view.setCenter(450, 300);
+                    window.setView(view);
                 }
             }
         }
@@ -87,63 +97,61 @@ int main()
         {
             deltaTime = clock.restart().asSeconds();
 
-            player.handleInput();
-            player.update(deltaTime, level);
+            mario.handleInput();
+            mario.update(deltaTime, level);
 
-            if (player.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) && !niveauTermine)
+            if (multijoueur)
+            {
+                luigi.handleInput();
+                luigi.update(deltaTime, level);
+            }
+
+            if ((mario.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) ||
+                 (multijoueur && luigi.getHitbox().intersects(level.getDrapeau().getGlobalBounds()))) &&
+                !niveauTermine)
             {
                 std::cout << "Niveau terminé !" << std::endl;
                 niveauTermine = true;
-                player.setPosition(startPosition.x, startPosition.y);
+                mario.setPosition(startPositionMario.x, startPositionMario.y);
+                if (multijoueur)
+                    luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
                 gameState = GameState::FDG;
-
-                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau"); // Réinitialiser la fenêtre
+                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
-            
-            // Récupère la position actuelle de Mario
-            sf::Vector2f playerPos = player.getPosition();
 
-            // Taille du niveau en pixels
+            // Gestion de la caméra
+            sf::Vector2f posMario = mario.getPosition();
+            sf::Vector2f posLuigi = multijoueur ? luigi.getPosition() : sf::Vector2f(0, 0);
+            float playerPosX = multijoueur ? std::max(posMario.x, posLuigi.x) : posMario.x;
+
             float levelWidth = level.getWidth() * 64.0f;
             float halfScreenWidth = window.getSize().x / 2.0f;
+            float minX = halfScreenWidth;
+            float maxX = levelWidth - halfScreenWidth;
+            float centerX = std::clamp(playerPosX, minX, maxX);
 
-            // Limiter la position X de la caméra
-            float minX = halfScreenWidth;                        // Bord gauche
-            float maxX = levelWidth - halfScreenWidth;           // Bord droit
-            float centerX = std::clamp(playerPos.x, minX, maxX); // Empêcher la caméra d'aller trop loin
-
-            // Appliquer la vue avec les limites
             view.setSize(window.getSize().x, window.getSize().y);
             view.setCenter(centerX, window.getSize().y / 2);
             window.setView(view);
 
-            level.update(deltaTime, window, player.getHitbox());
+            if (multijoueur)
+                level.update(deltaTime, window, mario.getHitbox(), luigi.getHitbox());
+            else
+                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect()); 
+
             level.draw(window);
-            player.draw(window);
+            mario.draw(window);
+            if (multijoueur)
+                luigi.draw(window);
+
             window.display();
             window.clear();
         }
-
         else if (gameState == GameState::FDG)
         {
             int score = 0;
-
             finDeJeu.afficher(window, deltaTime, score);
-
-            level.update(deltaTime, window, sf::FloatRect());
-
-            window.display();
-            window.clear(sf::Color::Blue);
-        }
-
-        else if (gameState == GameState::FDG)
-        {
-            int score = 0;
-
-            finDeJeu.afficher(window, deltaTime, score);
-
-            level.update(deltaTime, window, sf::FloatRect());
-
+            level.update(deltaTime, window, sf::FloatRect(), sf::FloatRect());
             window.display();
         }
     }

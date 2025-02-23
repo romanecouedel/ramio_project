@@ -109,25 +109,10 @@ void Level::draw(sf::RenderWindow &window)
     drapeau.draw(window);
 }
 
-void Level::startConfetti()
+// ======================== Mise à Jour ========================
+void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
-    confettis.clear();
-    confettiStack.clear();
-
-    // Création massive de confettis sur toute la largeur
-    for (int i = 0; i < 500; ++i)
-    {
-        float x = static_cast<float>(std::rand() % 1280);
-        float y = static_cast<float>(std::rand() % 200 - 200); // Apparaît au-dessus
-        float speed = static_cast<float>(100 + std::rand() % 100);
-        confettis.emplace_back(x, y, speed);
-    }
-    confettiActive = true;
-}
-
-void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &playerHitbox)
-{
-    // Animation de confettis (déjà existante)
+    // Animation de confettis
     if (confettiActive)
     {
         for (auto &confetti : confettis)
@@ -135,6 +120,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             confetti.update(deltaTime);
         }
     }
+
     for (auto &bloc : blocs)
     {
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
@@ -142,55 +128,23 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
         {
             blocMystere->update(deltaTime, window);
 
-            // Hitbox avec tolérance
             sf::FloatRect hitboxAvecTolerance = blocMystere->getGlobalBounds();
             hitboxAvecTolerance.top -= 3.0f;
             hitboxAvecTolerance.height += 6.0f;
 
-            // Vérifie si le joueur frappe par en dessous uniquement
-            if (playerHitbox.intersects(hitboxAvecTolerance))
+            // Vérifie si Mario ou Luigi frappe le bloc mystère
+            if (hitboxMario.intersects(hitboxAvecTolerance) || hitboxLuigi.intersects(hitboxAvecTolerance))
             {
-                // Détecte si le joueur frappe par en dessous (player au-dessous du bloc)
                 float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
-                if (!blocMystere->isAnimating() && playerHitbox.top > milieuBloc)
+                if (!blocMystere->isAnimating())
                 {
-                    blocMystere->onHit();
+                    if (hitboxMario.top > milieuBloc || hitboxLuigi.top > milieuBloc)
+                    {
+                        blocMystere->onHit();
+                    }
                 }
             }
         }
-    }
-    // Animation de zoom avec centrage dynamique
-    if (afficherTexte)
-    {
-        // Animation de zoom
-        float zoomSpeed = 0.5f; // Vitesse de zoom
-        float epsilon = 0.01f;  // Tolérance pour éviter les blocages
-
-        // Animation de zoom aller-retour
-        if (zoomIn)
-        {
-            zoomScale += zoomSpeed * deltaTime;
-            if (zoomScale >= 1.5f - epsilon)
-            {
-                zoomScale = 1.5f; // Correction exacte
-                zoomIn = false;   // Passer au zoom arrière
-            }
-        }
-        else
-        {
-            zoomScale -= zoomSpeed * deltaTime;
-            if (zoomScale <= 1.0f + epsilon)
-            {
-                zoomScale = 1.0f; // Correction exacte
-                zoomIn = true;    // Repasser au zoom avant
-            }
-        }
-
-        // Centrage dynamique (garder le texte centré malgré le zoom)
-        sf::FloatRect bounds = niveauTermineText.getLocalBounds();
-        niveauTermineText.setOrigin(bounds.width / 2, bounds.height / 2);
-        niveauTermineText.setPosition(window.getSize().x / 2, window.getSize().y / 2);
-        niveauTermineText.setScale(zoomScale, zoomScale);
     }
 }
 
@@ -207,6 +161,7 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
     return false;
 }
 
+// ======================== Initialisation du Texte ========================
 void Level::initTexte()
 {
     if (!font.loadFromFile("../fonts/arial.ttf"))
@@ -214,13 +169,14 @@ void Level::initTexte()
         std::cerr << "Erreur chargement police!" << std::endl;
     }
     niveauTermineText.setFont(font);
-    niveauTermineText.setString("Niveau Termine");
+    niveauTermineText.setString("Niveau Terminé");
     niveauTermineText.setCharacterSize(70);
     niveauTermineText.setFillColor(sf::Color::Yellow);
     niveauTermineText.setOutlineColor(sf::Color::Red);
     niveauTermineText.setOutlineThickness(4);
 }
 
+// ======================== Génération du Fond ========================
 void Level::generateBackground(float levelWidth, float levelHeight)
 {
     backgroundVertices.clear();
@@ -247,3 +203,20 @@ void Level::generateBackground(float levelWidth, float levelHeight)
             backgroundVertices.append(quad[i]);
     }
 }
+
+void Level::startConfetti()
+{
+    confettis.clear();
+    confettiStack.clear();
+
+    // Création massive de confettis sur toute la largeur
+    for (int i = 0; i < 500; ++i)
+    {
+        float x = static_cast<float>(std::rand() % 1280);
+        float y = static_cast<float>(std::rand() % 200 - 200); // Apparaît au-dessus
+        float speed = static_cast<float>(100 + std::rand() % 100);
+        confettis.emplace_back(x, y, speed);
+    }
+    confettiActive = true;
+}
+

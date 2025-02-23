@@ -12,7 +12,8 @@ public:
     void draw(sf::RenderWindow &window);
     bool isGameStarting();
     int getSelectedLevel() const { return selectedIndex; }
-
+    bool isMultiplayerSelected();
+    bool isLuigiAIEnabled();
 private:
     sf::Font font;
     sf::Texture backgroundTexture;
@@ -34,6 +35,9 @@ private:
     void setupMenu(std::vector<MenuOption> &menu, std::vector<std::string> options, float width, float height);
     int getClickedIndex(std::vector<MenuOption> &menu, sf::Vector2f mousePos);
     void changeSelection(std::vector<MenuOption> &menu, int direction);
+
+    bool multiplayerSelected = false;
+    bool isLuigiAI = false;
 };
 
 
