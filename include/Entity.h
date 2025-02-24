@@ -51,6 +51,7 @@ public:
 class Piece : public ObjetInteractif {
 public:
     Piece(float x, float y);
+    static int getNbPiece();
     void update(float deltaTime);
     void draw(sf::RenderWindow& window) const;
     sf::Sprite& getSprite() {
@@ -60,10 +61,11 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Vector2f startPosition;
-    bool collected = false;
+    int collected = 0;
     bool animating = false;
     float animationTime = 0.0f;
     const float animationDuration = 0.5f;  // Durée totale montée/descente
     const float animationHeight = 10.0f;   // Hauteur du déplacement
+    static int nbPiece;
 
 };

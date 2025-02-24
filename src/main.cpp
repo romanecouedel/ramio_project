@@ -29,7 +29,7 @@ int main()
 
     bool niveauTermine = false; 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
-    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y); // Initialisation fin de jeu
+    FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     float deltaTime; // Temps écoulé entre chaque frame
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
 
@@ -126,6 +126,7 @@ int main()
                 mario.setPosition(startPositionMario.x, startPositionMario.y);
                 if (multijoueur)
                     luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
+                finDeJeu.victoire = true;
                 gameState = GameState::FDG;
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
@@ -162,9 +163,8 @@ int main()
 
         else if (gameState == GameState::FDG)
         {
-            int score = 0;
-            finDeJeu.afficher(window, deltaTime, score);
-            level.update(deltaTime, window, sf::FloatRect(), sf::FloatRect());
+            finDeJeu.afficher(window, deltaTime, Piece :: getNbPiece());
+            window.display();
         }
     }
 

@@ -31,7 +31,6 @@ Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
 }
 
 // ======================== Constructeur Piece ========================
-
 //ajouter code
 Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     if (!texture.loadFromFile("../img/piece.png")) {
@@ -42,8 +41,7 @@ Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     sprite.setPosition(x, y);
     startPosition = sprite.getPosition();
     std::cout << "Piece créée à : " << startPosition.x << ", " << startPosition.y << std::endl;
-
-    
+    nbPiece++;
 }
 
 
@@ -71,3 +69,11 @@ void Piece::draw(sf::RenderWindow& window) const {
     //std::cout << "Opacité de la pièce : " << (int)sprite.getColor().a << std::endl;
 
 }
+
+
+int Piece::nbPiece = 0; // Initialisation de la variable statique
+
+int Piece::getNbPiece() {
+    return nbPiece;
+}
+
