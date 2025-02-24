@@ -1,10 +1,10 @@
 #pragma once
 #include "Entity.h"
 #include "Animation.h"
+#include <cstdlib>
+#include <ctime>
 
-// Déclaration avancée de Level
 class Level;
-
 class Player : public Entity {
 protected:
     float jumpForce = -650.f;
@@ -30,7 +30,6 @@ public:
     sf::FloatRect getHitbox() const;
 };
 
-
 class Mario : public Player {
 public:
     Mario();
@@ -40,11 +39,13 @@ public:
 
 class Luigi : public Player {
 public:
-    bool isAI;
     Level* level;
+    bool isAIEnabled = true;
 
     Luigi();
-    Luigi(bool aiMode, Level* lvl); 
     void handleInput() override;
-    void update(float deltaTime, const Level& level); 
+    void update(float deltaTime, const Level& level);
+    void handleAI(float deltaTime, const Mario& mario, const Level& level);
+
+
 };

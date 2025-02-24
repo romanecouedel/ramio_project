@@ -12,25 +12,28 @@ enum class GameState
     GAME, // État du jeu en cours
     FDG   // État de fin de jeu
 };
+#include "Menu.h"
+
+bool luigiAI = false; // ✅ C'est ici qu'on définit réellement la variable globale
 
 int main()
 {
+    luigiAI = false;          // Définition de la variable
     bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
-    bool modeIA;
-    bool niveauTermine = false; 
+    bool niveauTermine = false;
     // Initialisation de l'état du jeu à MENU
     GameState gameState = GameState::MENU;
     // Création de la fenêtre de jeu avec une résolution de 900x600
-    sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu"); 
+    sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
     // Initialisation des différents composants du jeu
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi; 
-   
+    Luigi luigi;
+
     sf::Clock clock; // Horloge pour gérer le temps écoulé
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
-    float deltaTime; // Temps écoulé entre chaque frame
+    float deltaTime;                              // Temps écoulé entre chaque frame
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
 
     // Positions de départ pour Mario et Luigi
@@ -51,11 +54,10 @@ int main()
             {
                 menu.handleInput(event, window);
                 if (menu.isGameStarting())
-                { 
+                {
                     // Démarrer le jeu
                     gameState = GameState::GAME;
                     int selectedLevel = menu.getSelectedLevel();
-                    modeIA = menu.getModeIA();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
 
                     if (!level.loadFromFile(levelPath))
@@ -66,7 +68,7 @@ int main()
 
                     // Vérifier si le joueur a choisi 2 joueurs
                     multijoueur = menu.isMultiplayerSelected();
-                    luigi = Luigi(modeIA, &level);  // Réaffectation avec les bonnes valeurs
+                    // luigiIA = !multijoueur && menu.isLuigiAISelected();
 
                     // Positionner Mario et Luigi au début du niveau
                     mario.setPosition(startPositionMario.x, startPositionMario.y);
@@ -111,12 +113,17 @@ int main()
             mario.handleInput();
             mario.update(deltaTime, level);
 
-            if (multijoueur)
+            if (multijoueur && !luigiAI)
             {
                 luigi.handleInput();
-                luigi.update(deltaTime, level);
             }
-            
+            else if (multijoueur && luigiAI)
+            {
+                luigi.handleAI(deltaTime, mario, level);
+            }
+
+            luigi.update(deltaTime, level);
+
             // Vérifier si le joueur a atteint le drapeau
             if ((mario.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) ||
                  (multijoueur && luigi.getHitbox().intersects(level.getDrapeau().getGlobalBounds()))) &&
@@ -151,7 +158,7 @@ int main()
             if (multijoueur)
                 level.update(deltaTime, window, mario.getHitbox(), luigi.getHitbox());
             else
-                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect()); 
+                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect());
 
             level.draw(window);
             mario.draw(window);
@@ -165,7 +172,7 @@ int main()
 
         else if (gameState == GameState::FDG)
         {
-            finDeJeu.afficher(window, deltaTime, Piece :: getNbPiece());
+            finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece());
             window.display();
         }
     }
