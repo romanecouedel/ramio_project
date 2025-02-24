@@ -66,6 +66,10 @@ private:
     sf::Texture bgTextureLeft, bgTextureRight;
     sf::VertexArray backgroundVertices;
     float bgWidth;
+
+ // Nombre de vies initiales
+    int viesRestantes = 5; // Nombre de vies au début
+    sf::Text texteVies; 
 };
 
 #endif

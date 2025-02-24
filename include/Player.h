@@ -19,6 +19,7 @@ protected:
     bool faceRight = true;
     bool isJumping = false;
     bool canJump = true;
+    bool isDead = false;
 
 public:
     Player();
@@ -26,14 +27,17 @@ public:
     virtual void update(float deltaTime) override;  
     virtual void update(float deltaTime, const Level& level); 
     void draw(sf::RenderWindow& window) const override;
+    bool isAlive() const { return !isDead; } 
     void jump();
     sf::FloatRect getHitbox() const;
+    virtual void respawn(); 
 };
 
 class Mario : public Player {
 public:
     Mario();
     void handleInput() override;
+    void respawn(); 
     void update(float deltaTime, const Level& level); 
 };
 
@@ -41,7 +45,7 @@ class Luigi : public Player {
 public:
     Level* level;
     bool isAIEnabled = true;
-
+    void respawn(); 
     Luigi();
     void handleInput() override;
     void update(float deltaTime, const Level& level);

@@ -12,15 +12,17 @@ enum class GameState
     GAME, // État du jeu en cours
     FDG   // État de fin de jeu
 };
-#include "Menu.h"
-
-bool luigiAI = false; // ✅ C'est ici qu'on définit réellement la variable globale
+bool luigiAI = false;
 
 int main()
 {
     luigiAI = false;          // Définition de la variable
     bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
     bool niveauTermine = false;
+
+    int nbMortsMario = 0;
+    int nbMortsLuigi = 0;
+
     // Initialisation de l'état du jeu à MENU
     GameState gameState = GameState::MENU;
     // Création de la fenêtre de jeu avec une résolution de 900x600
@@ -55,7 +57,6 @@ int main()
                 menu.handleInput(event, window);
                 if (menu.isGameStarting())
                 {
-                    // Démarrer le jeu
                     gameState = GameState::GAME;
                     int selectedLevel = menu.getSelectedLevel();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
@@ -68,7 +69,6 @@ int main()
 
                     // Vérifier si le joueur a choisi 2 joueurs
                     multijoueur = menu.isMultiplayerSelected();
-                    // luigiIA = !multijoueur && menu.isLuigiAISelected();
 
                     // Positionner Mario et Luigi au début du niveau
                     mario.setPosition(startPositionMario.x, startPositionMario.y);
@@ -139,6 +139,25 @@ int main()
                 gameState = GameState::FDG;
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
+            if (!mario.isAlive())
+            {
+                std::cout << "Mario est mort ! Game Over !" << std::endl; 
+                mario.respawn();
+                nbMortsMario++;
+            }
+
+            if (!luigi.isAlive())
+            {
+                std::cout << "Luigi est mort ! Il réapparaît..." << std::endl;
+                luigi.respawn(); 
+                nbMortsLuigi++;
+            }
+            if ((nbMortsLuigi+nbMortsMario) >2) {
+                finDeJeu.victoire = false; 
+                gameState = GameState::FDG;
+                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
+            }
+
 
             // Suivi de mario et luigi par la caméra
             sf::Vector2f posMario = mario.getPosition();
@@ -172,7 +191,8 @@ int main()
 
         else if (gameState == GameState::FDG)
         {
-            finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece());
+            finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece(), nbMortsLuigi+ nbMortsMario);
+
             window.display();
         }
     }
