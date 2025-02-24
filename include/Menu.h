@@ -13,6 +13,9 @@ public:
     bool isGameStarting();
     int getSelectedLevel() const { return selectedIndex; }
     bool isMultiplayerSelected();
+    bool modeIA = false; 
+    bool getModeIA() const { return modeIA; } 
+
 private:
     sf::Font font;
     sf::Texture backgroundTexture;

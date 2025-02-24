@@ -139,7 +139,9 @@ void Mario::handleInput() {
 }
 
 Luigi::Luigi(bool aiMode, Level* lvl) : isAI(aiMode), level(lvl) {
-    if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
+    if (!texture.loadFromFile("../img/sprite_luigi.png")) 
+        std::cerr << "Erreur chargement Luigi" << std::endl;
+    
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(150, 100);
@@ -150,7 +152,14 @@ Luigi::Luigi(bool aiMode, Level* lvl) : isAI(aiMode), level(lvl) {
     animationIdleRight = Animation(&texture,{1,1},0.f);
     animationIdleLeft = Animation(&texture,{1,2},0.f);
     currentAnimation = &animationIdleRight;
+    
+    if (!isAI) {
+        std::cout << "Luigi est en mode manuel." << std::endl;
+    } else {
+        std::cout << "Luigi est contrôlé par l'IA." << std::endl;
+    }
 }
+
 
 void Luigi::handleInput() {
     if (isAI) {

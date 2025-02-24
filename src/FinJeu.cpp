@@ -1,7 +1,7 @@
 #include "FinJeu.h"
 #include <iostream>
 
-FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) {
+FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) : windowWidth(windowWidth), windowHeight(windowHeight) {
     if (!font.loadFromFile("../fonts/arial.ttf")) {  // Assure-toi que le chemin vers la police est correct
         std::cerr << "Erreur de chargement de la police" << std::endl;
     }
@@ -19,9 +19,13 @@ FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) {
     // Configuration du fond de l'écran de fin
     background.setSize(sf::Vector2f(windowWidth, windowHeight));
 
-    // Titre du jeu
-    setupText(titre, "Fin du Jeu", windowWidth / 2, windowHeight / 4, 50);
+    // Configuration du titre
+    std::string titreText = victoire ? "Victoire !" : "Perdu...";
+    setupText(titre, titreText, windowWidth / 2, windowHeight / 4, 50);
     titre.setStyle(sf::Text::Bold);
+    titre.setFillColor(victoire ? sf::Color::Green : sf::Color::Red); // Vert pour victoire, rouge pour défaite
+
+
     // Configuration du bouton
     bouton.setSize(sf::Vector2f(200, 50));
     bouton.setFillColor(sf::Color::Blue);
@@ -43,8 +47,35 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score) 
     // Afficher le fond d'écran
     window.draw(backgroundSprite);
 
+    // Configuration du titre
+    std::string titreText = victoire ? "Victoire !" : "Perdu...";
+    setupText(titre, titreText, windowWidth / 2, windowHeight / 3, 75);
+    titre.setStyle(sf::Text::Bold);
+    titre.setFillColor(victoire ? sf::Color::Green : sf::Color::Red); // Vert pour victoire, rouge pour défaite
+
     // Afficher le titre
     window.draw(titre);
+
+    //Configuration score
+    std::string scoreText = "Pieces: " + std::to_string(score);
+    setupText(texteScore, scoreText, windowWidth / 9, windowHeight / 12, 50);
+    titre.setStyle(sf::Text::Bold);
+    titre.setFillColor(sf::Color::White);
+    
+    //afficher le score
+    window.draw(texteScore);
+
+    //Configuration time
+    int seconds = static_cast<int>(tempsEcoule* 60 *60) ;
+    int min = static_cast<int>(seconds/60) ;
+    std::string timeText = "Temps: " + std::string(min < 10 ? "0" : "") + std::to_string(min) + ":" + std::string(seconds < 10 ? "0" : "") + std::to_string(seconds);
+    setupText(texteTemps, timeText, windowWidth / 1.25, windowHeight / 12, 50);
+    texteTemps.setStyle(sf::Text::Bold);
+    texteTemps.setFillColor(sf::Color::White);
+
+    //afficher le temps
+    window.draw(texteTemps);
+
 
     // Afficher le bouton
     window.draw(bouton);

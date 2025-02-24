@@ -10,6 +10,7 @@ public:
     FinDeJeu(float windowWidth, float windowHeight);
     void afficher(sf::RenderWindow& window, float tempsEcoule, int score);
     bool handleInput(sf::Event event);
+    bool victoire=false;
 
 private:
     sf::Font font;
@@ -24,6 +25,8 @@ private:
 
     sf::RectangleShape bouton; // Ajout du bouton
     sf::Text boutonTexte;      // Texte du bouton
+    float windowWidth;
+    float windowHeight;
 
     void setupText(sf::Text& text, const std::string& content, float x, float y, unsigned int size);
 };

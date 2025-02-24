@@ -115,6 +115,8 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
                     std::cout << "Mode contre l'IA sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
                     multiplayerSelected = true;
+                    modeIA = true; // Si le joueur sélectionne l'option "Mode Ordinateur"
+
                 }
                 else if (choice == 2)
                 {

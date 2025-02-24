@@ -30,6 +30,7 @@ public:
     sf::FloatRect getHitbox() const;
 };
 
+
 class Mario : public Player {
 public:
     Mario();
