@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Bloc.h"
 #include "Entity.h"
 #include "Confetti.h"
@@ -67,9 +68,10 @@ private:
     sf::VertexArray backgroundVertices;
     float bgWidth;
 
- // Nombre de vies initiales
     int viesRestantes = 5; // Nombre de vies au début
     sf::Text texteVies; 
+
+    sf::Music backgroundMusic;
 };
 
 #endif
