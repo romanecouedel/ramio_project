@@ -2,9 +2,12 @@
 #include "Confetti.h"
 #include "Bloc.h"
 #include "Player.h"
+#include "Audio.h"
 #include <fstream>
 #include <iostream>
 #include <cmath>
+
+extern AudioManager audioManager; 
 
 Level::Level()
 {
@@ -101,6 +104,7 @@ void Level::draw(sf::RenderWindow &window)
             if (blocMystere->isAnimating() && blocMystere->getPiece())
             {
                 blocMystere->getPiece()->draw(window);
+                audioManager.playCoinSound();
             }
         }
     }

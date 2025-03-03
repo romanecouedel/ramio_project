@@ -23,7 +23,7 @@ int main()
     AudioManager audioManager;
     int nbMortsMario = 0;
     int nbMortsLuigi = 0;
-
+    int musicmenu = 0;
     // Initialisation de l'état du jeu à MENU
     GameState gameState = GameState::MENU;
     // Création de la fenêtre de jeu avec une résolution de 900x600
@@ -56,7 +56,10 @@ int main()
             if (gameState == GameState::MENU)
             {
                 menu.handleInput(event, window);
-                audioManager.playMenuMusic();
+                if (audioManager.getCurrentMusic() != "menu")
+                {
+                    audioManager.playMenuMusic();
+                }
                 if (menu.isGameStarting())
                 {
                     gameState = GameState::GAME;
@@ -69,6 +72,7 @@ int main()
                         return -1;
                     }
                     multijoueur = menu.isMultiplayerSelected();
+                    audioManager.playGameMusic();
 
                     // Positionner Mario et Luigi au début du niveau
                     mario.setPosition(startPositionMario.x, startPositionMario.y);
@@ -108,7 +112,7 @@ int main()
         }
         else if (gameState == GameState::GAME)
         {
-            
+
             deltaTime = clock.restart().asSeconds();
 
             mario.handleInput();

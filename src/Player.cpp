@@ -2,7 +2,11 @@
 #include "Player.h"
 #include "Level.h"
 #include "Animation.h"
+#include "Audio.h"
 #include <iostream>
+
+
+extern AudioManager audioManager; 
 
 Player::Player() {
     currentAnimation = &animationIdleRight;
@@ -85,6 +89,7 @@ void Player::jump() {
     velocity.y = jumpForce;
     canJump = false;
     currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
+    audioManager.playYahooSound();
 }
 
 void Player::draw(sf::RenderWindow &window) const
