@@ -14,7 +14,7 @@ Player::Player() {
 
 void Player::update(float deltaTime, const Level &level)
 {
-    if (sprite.getPosition().y > 700) { // 600 = hauteur du vide
+    if (sprite.getPosition().y > level.getHeight() * 64 + 100) {//pour un peu de marge (64 pour la conversione n pixel)
         isDead = true;
     }
     velocity.y += gravity * deltaTime;
