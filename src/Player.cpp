@@ -92,10 +92,12 @@ void Player::jump() {
     audioManager.playYahooSound();
 }
 
-void Player::draw(sf::RenderWindow &window) const
-{
-    window.draw(sprite);
+void Player::draw(sf::RenderWindow& window) const {
+    if (visible) {
+        window.draw(sprite);
+    }
 }
+
 
 void Player::respawn() {
     sprite.setPosition(100, 100); // Position de base, à ajuster
@@ -112,6 +114,12 @@ sf::FloatRect Player::getHitbox() const
     sf::FloatRect bounds = sprite.getGlobalBounds();
     return bounds; // coucou c moi
 }
+void Player::setOpacity(sf::Uint8 alpha) {
+    sf::Color color = sprite.getColor();
+    color.a = alpha;
+    sprite.setColor(color);
+}
+
 
 //==========================Classe dérivée==========================//
 //========Mario======/

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cmath>
 
-extern AudioManager audioManager; 
+extern AudioManager audioManager;
 
 Level::Level()
 {
@@ -66,12 +66,19 @@ bool Level::loadFromFile(const std::string &filename)
             {
                 drapeau.setPosition(position.x, position.y);
             }
-            else if (c == 'X' || c == 'K') {
+            else if (c == 'X' || c == 'K')
+            {
                 Ennemi ennemi;
                 ennemi.setPosition(position.x, position.y);
                 ennemis.push_back(ennemi);
             }
-            
+            else if (c == 'U' || c == 'V')
+            {
+                Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
+                auto tuyau = std::make_unique<Tuyau>(type);
+                tuyau->setPosition(position.x, position.y);
+                blocs.push_back(std::move(tuyau));
+            }
         }
         grid.push_back(row);
         ++y;
@@ -96,7 +103,7 @@ void Level::draw(sf::RenderWindow &window)
         else
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
-    
+
     generateBackground(grid[0].size() * 64, grid.size() * 64);
 
     // Dessiner les blocs
@@ -114,7 +121,7 @@ void Level::draw(sf::RenderWindow &window)
             }
         }
     }
-    
+
     drawEnnemis(window);
     drapeau.draw(window);
 }
@@ -123,6 +130,7 @@ void Level::draw(sf::RenderWindow &window)
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
     updateEnnemis(deltaTime);
+
     for (auto &bloc : blocs)
     {
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
@@ -130,25 +138,36 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
         {
             blocMystere->update(deltaTime, window);
 
-            sf::FloatRect hitboxAvecTolerance = blocMystere->getGlobalBounds();
+            sf::FloatRect blocBounds = blocMystere->getGlobalBounds();
+            sf::FloatRect hitboxAvecTolerance = blocBounds;
             hitboxAvecTolerance.top -= 3.0f;
             hitboxAvecTolerance.height += 6.0f;
 
-            // Vérifie si Mario ou Luigi frappe le bloc mystère
-            if (hitboxMario.intersects(hitboxAvecTolerance) || hitboxLuigi.intersects(hitboxAvecTolerance))
+            // Vérification pour Mario et Luigi
+            for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
             {
-                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
-                if (!blocMystere->isAnimating())
+                if (hitboxJoueur.intersects(hitboxAvecTolerance))
                 {
-                    if (hitboxMario.top > milieuBloc || hitboxLuigi.top > milieuBloc)
+                    float blocCenterX = blocBounds.left + blocBounds.width / 2.0f;
+                    float joueurCenterX = hitboxJoueur.left + hitboxJoueur.width / 2.0f;
+
+                    float maxOffset = blocBounds.width * 0.4f; // +/-30% du bloc
+
+                    if (std::abs(joueurCenterX - blocCenterX) < maxOffset)
                     {
-                        blocMystere->onHit();
+                        float milieuBloc = blocBounds.top + blocBounds.height * 0.4f;
+
+                        if (!blocMystere->isAnimating() && hitboxJoueur.top > milieuBloc)
+                        {
+                            blocMystere->onHit();
+                        }
                     }
                 }
             }
         }
     }
 }
+
 
 // ======================== Détection de Collisions ========================
 bool Level::isColliding(const sf::FloatRect &hitbox) const
@@ -222,17 +241,115 @@ void Level::startConfetti()
     confettiActive = true;
 }
 
-
 //===========================ENNEMI===================================
 
-void Level::updateEnnemis(float deltaTime) {
-    for (auto &ennemi : ennemis) {
+void Level::updateEnnemis(float deltaTime)
+{
+    for (auto &ennemi : ennemis)
+    {
         ennemi.update(deltaTime); // Met à jour leur mouvement
     }
 }
 
-void Level::drawEnnemis(sf::RenderWindow &window) {
-    for (auto &ennemi : ennemis) {
+void Level::drawEnnemis(sf::RenderWindow &window)
+{
+    for (auto &ennemi : ennemis)
+    {
         ennemi.draw(window);
+    }
+}
+
+//======================+Tuyau================================
+void Level::handleTuyauInteraction(Player &player, float deltaTime)
+{
+    // Si le joueur n'est pas en train d'entrer ou de sortir d'un tuyau
+    if (!enTrainDeDescendre && !enTrainDeMonter)
+    {
+        for (auto &bloc : blocs)
+        {
+            Tuyau *tuyau = dynamic_cast<Tuyau *>(bloc.get());
+            if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE)
+            {
+                if (tuyau->isPlayerOnTop(player) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                {
+
+                    // Initialisation de l'animation de descente
+                    enTrainDeDescendre = true;
+                    tuyauTimer = 0.0f;
+
+                    // Centrer le joueur horizontalement sur le tuyau
+                    sf::Vector2f tuyauPos = tuyau->getPosition();
+                    sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
+                    sf::FloatRect playerBounds = player.getHitbox();
+                    float newX = tuyauPos.x + (tuyauBounds.width / 2.0f) - (playerBounds.width / 2.0f);
+                    player.setPosition(newX, player.getPosition().y);
+                    player.setCollisionsActive(false);
+                    // Chercher la sortie
+                    for (auto &bloc2 : blocs)
+                    {
+                        Tuyau *sortie = dynamic_cast<Tuyau *>(bloc2.get());
+                        if (sortie && sortie->getType() == Tuyau::Type::SORTIE)
+                        {
+                            sortiePosition = sortie->getPosition();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /// Animation de descente
+    if (enTrainDeDescendre)
+    {
+        tuyauTimer += deltaTime;
+        float descenteSpeed = 80.0f; // 🔽 Plus lent pour mieux voir
+        player.move(0, descenteSpeed * deltaTime);
+
+        // Réduire progressivement l'opacité (disparition plus naturelle)
+        float fadeStart = 0.2f; // Temps avant que l'opacité commence à diminuer
+        if (tuyauTimer >= fadeStart)
+        {
+            float alpha = 255 * (1.0f - (tuyauTimer - fadeStart) / 0.5f); // Transition plus douce
+            player.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+        }
+
+        if (tuyauTimer >= 0.6f)
+        { // ⏳ Temps total augmenté un peu
+            sf::Vector2f sortiePos = sortiePosition;
+            sf::FloatRect sortieBounds = player.getHitbox();
+            float newXSortie = sortiePos.x + (64.0f / 2.0f) - (sortieBounds.width / 2.0f);
+
+            player.setPosition(newXSortie, sortiePos.y + 64.0f);
+            player.setOpacity(0);
+
+            enTrainDeDescendre = false;
+            enTrainDeMonter = true;
+            tuyauTimer = 0.0f;
+        }
+    }
+
+    // Animation de montée
+    if (enTrainDeMonter)
+    {
+        tuyauTimer += deltaTime;
+        float monteeSpeed = 80.0f; // 🔼 Plus lent aussi
+        player.move(0, -monteeSpeed * deltaTime);
+
+        // Opacité augmente progressivement mais commence après 0.2s
+        float fadeStart = 0.2f;
+        if (tuyauTimer >= fadeStart)
+        {
+            float alpha = 255 * ((tuyauTimer - fadeStart) / 0.5f);
+            player.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+        }
+
+        if (tuyauTimer >= 0.6f)
+        {
+            enTrainDeMonter = false;
+            tuyauTimer = 0.0f;
+            player.setOpacity(255);
+            player.setCollisionsActive(true);
+        }
     }
 }

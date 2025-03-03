@@ -117,6 +117,11 @@ int main()
 
             mario.handleInput();
             mario.update(deltaTime, level);
+            level.handleTuyauInteraction(mario, deltaTime);
+            if (multijoueur)
+            {
+                level.handleTuyauInteraction(luigi, deltaTime);
+            }
 
             if (multijoueur && !luigiAI)
             {
@@ -197,7 +202,7 @@ int main()
         {
             finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece(), nbMortsLuigi + nbMortsMario);
             window.display();
-            //audioManager.playEndMusic(finDeJeu.victoire);
+            // audioManager.playEndMusic(finDeJeu.victoire);
         }
     }
 

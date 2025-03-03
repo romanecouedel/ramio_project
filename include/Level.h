@@ -38,6 +38,8 @@ public:
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
     void generateBackground(float levelWidth, float levelHeight);
+    void handleTuyauInteraction(Player& player, float deltaTime);
+
 
     int pieceCount = 0;        // Compteur de pièces
     sf::Font pieceFont;        // Police pour le compteur
@@ -79,6 +81,16 @@ private:
     sf::Text texteVies; 
 
     sf::Music backgroundMusic;
+
+    sf::RectangleShape tuyauEntree;
+    sf::RectangleShape tuyauSortie;
+
+
+    float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
+    bool enTrainDeDescendre = false; // Animation de descente active
+    bool enTrainDeMonter = false; // Animation de montée active
+    sf::Vector2f sortiePosition; // Position du tuyau de sortie
+
 };
 
 #endif

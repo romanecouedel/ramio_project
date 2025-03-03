@@ -31,6 +31,17 @@ public:
     void jump();
     sf::FloatRect getHitbox() const;
     virtual void respawn(); 
+
+    bool visible = true; // Permet de cacher le joueur progressivement
+    bool collisionsActive = true; // Désactive la collision temporairement
+    void setVisible(bool v) { visible = v; }
+bool isVisible() const { return visible; }
+
+void setCollisionsActive(bool active) { collisionsActive = active; }
+bool areCollisionsActive() const { return collisionsActive; }
+void setOpacity(sf::Uint8 alpha);
+
+    
 };
 
 class Mario : public Player {
@@ -53,3 +64,4 @@ public:
 
 
 };
+

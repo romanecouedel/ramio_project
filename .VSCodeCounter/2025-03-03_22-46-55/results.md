@@ -1,21 +1,21 @@
 # Summary
 
-Date : 2025-02-22 21:48:49
+Date : 2025-03-03 22:46:55
 
-Directory /home/alberic/Documents/Cours/MARIO/ramio_project/src
+Directory /home/alberic/Documents/Projet/ramio_project/include
 
-Total : 9 files,  754 codes, 58 comments, 152 blanks, all 964 lines
+Total : 10 files,  381 codes, 19 comments, 119 blanks, all 519 lines
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| C++ | 9 | 754 | 58 | 152 | 964 |
+| C++ | 10 | 381 | 19 | 119 | 519 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 9 | 754 | 58 | 152 | 964 |
+| . | 10 | 381 | 19 | 119 | 519 |
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
