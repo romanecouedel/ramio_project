@@ -11,7 +11,7 @@ AudioManager::AudioManager()
     if (!musiqueJeu.openFromFile("../music/Main-Title.ogg"))
         std::cerr << "Erreur chargement musique jeu !" << std::endl;
 
-    if (!musiqueFin.openFromFile("../music/gameover.ogg"))
+    if (!musiqueFin.openFromFile("../music/win.ogg"))
         std::cerr << "Erreur chargement musique fin de jeu !" << std::endl;
 
     // Réglage des boucles pour les musiques
@@ -35,7 +35,7 @@ AudioManager::AudioManager()
     else
         yahooSound.setBuffer(yahooBuffer);
 
-    if (!oneUpBuffer.loadFromFile("../music/1UP.ogg"))  // Assure-toi que le fichier est bien nommé
+    if (!oneUpBuffer.loadFromFile("../music/1UP.ogg"))  
         std::cerr << "Erreur chargement son 1UP !" << std::endl;
     else
         oneUpSound.setBuffer(oneUpBuffer);
@@ -69,6 +69,7 @@ void AudioManager::playGameMusic()
 
 void AudioManager::playEndMusic(bool victoire)
 {
+    audioManager.setVolume("end", 200.0f);
     musiqueMenu.stop();
     musiqueJeu.stop();
     

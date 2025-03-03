@@ -66,6 +66,12 @@ bool Level::loadFromFile(const std::string &filename)
             {
                 drapeau.setPosition(position.x, position.y);
             }
+            else if (c == 'X' || c == 'K') {
+                Ennemi ennemi;
+                ennemi.setPosition(position.x, position.y);
+                ennemis.push_back(ennemi);
+            }
+            
         }
         grid.push_back(row);
         ++y;
@@ -90,7 +96,7 @@ void Level::draw(sf::RenderWindow &window)
         else
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
-
+    
     generateBackground(grid[0].size() * 64, grid.size() * 64);
 
     // Dessiner les blocs
@@ -108,23 +114,15 @@ void Level::draw(sf::RenderWindow &window)
             }
         }
     }
-
-    // Dessiner le drapeau
+    
+    drawEnnemis(window);
     drapeau.draw(window);
 }
 
 // ======================== Mise à Jour ========================
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
-    // Animation de confettis
-    if (confettiActive)
-    {
-        for (auto &confetti : confettis)
-        {
-            confetti.update(deltaTime);
-        }
-    }
-
+    updateEnnemis(deltaTime);
     for (auto &bloc : blocs)
     {
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
@@ -222,4 +220,19 @@ void Level::startConfetti()
         confettis.emplace_back(x, y, speed);
     }
     confettiActive = true;
+}
+
+
+//===========================ENNEMI===================================
+
+void Level::updateEnnemis(float deltaTime) {
+    for (auto &ennemi : ennemis) {
+        ennemi.update(deltaTime); // Met à jour leur mouvement
+    }
+}
+
+void Level::drawEnnemis(sf::RenderWindow &window) {
+    for (auto &ennemi : ennemis) {
+        ennemi.draw(window);
+    }
 }

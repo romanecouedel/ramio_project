@@ -9,9 +9,13 @@
 #include "Entity.h"
 #include "Confetti.h"
 #include "Player.h"
+#include "Ennemi.h"
+
+
 
 class Level
 {
+    std::vector<Ennemi> ennemis;
 public:
     Level();
     ~Level() = default;
@@ -39,6 +43,9 @@ public:
     sf::Font pieceFont;        // Police pour le compteur
     sf::Text pieceText;        // Texte du compteur
     std::unique_ptr<Piece> piece;
+
+    void updateEnnemis(float deltaTime);
+    void drawEnnemis(sf::RenderWindow &window);
 
 private:
     std::vector<std::vector<int>> grid;

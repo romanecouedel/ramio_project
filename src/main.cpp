@@ -197,6 +197,7 @@ int main()
         {
             finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece(), nbMortsLuigi + nbMortsMario);
             window.display();
+            //audioManager.playEndMusic(finDeJeu.victoire);
         }
     }
 
