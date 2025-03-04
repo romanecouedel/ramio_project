@@ -2,6 +2,7 @@
 #include "Bloc.h"
 #include "Entity.h"
 #include "Level.h"
+#include "Player.h"
 #include <iostream>
 #include <math.h>
 
@@ -76,3 +77,27 @@ bool BlocMystere::isAnimating() const
     return animating;
 }
 
+// ======================== Tuyau ========================
+Tuyau::Tuyau(Type type) : Bloc("../img/pipe.png"), type(type) {}
+
+Tuyau::Type Tuyau::getType() const {
+    return type;
+}
+
+
+
+bool Tuyau::isPlayerOnTop(const Player& player) const {
+    sf::FloatRect playerBounds = player.getHitbox();
+    sf::FloatRect tuyauBounds = getGlobalBounds();
+
+    float playerCenterX = playerBounds.left + playerBounds.width / 2.0f;
+    float tuyauCenterX = tuyauBounds.left + tuyauBounds.width / 2.0f;
+
+    float maxOffset = tuyauBounds.width * 0.5f; // 30% du tuyau max sur les côtés
+
+    bool horizontalOk = std::abs(playerCenterX - tuyauCenterX) < maxOffset;
+    bool verticalOk = (playerBounds.top + playerBounds.height) <= tuyauBounds.top + 5.0f &&
+                      (playerBounds.top + playerBounds.height) >= tuyauBounds.top - 5.0f;
+
+    return horizontalOk && verticalOk;
+}

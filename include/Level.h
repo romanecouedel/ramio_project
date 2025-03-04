@@ -4,13 +4,18 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Bloc.h"
 #include "Entity.h"
 #include "Confetti.h"
 #include "Player.h"
+#include "Ennemi.h"
+
+
 
 class Level
 {
+    std::vector<Ennemi> ennemis;
 public:
     Level();
     ~Level() = default;
@@ -38,7 +43,12 @@ public:
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
     void generateBackground(float levelWidth, float levelHeight);
+    void handleTuyauInteraction(Player& player, float deltaTime);
 
+
+
+    void updateEnnemis(float deltaTime);
+    void drawEnnemis(sf::RenderWindow &window);
 
 private:
     std::vector<std::vector<int>> grid;
@@ -67,6 +77,21 @@ private:
     sf::Texture bgTextureLeft, bgTextureRight;
     sf::VertexArray backgroundVertices;
     float bgWidth;
+
+    int viesRestantes = 5; // Nombre de vies au début
+    sf::Text texteVies; 
+
+    sf::Music backgroundMusic;
+
+    sf::RectangleShape tuyauEntree;
+    sf::RectangleShape tuyauSortie;
+
+
+    float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
+    bool enTrainDeDescendre = false; // Animation de descente active
+    bool enTrainDeMonter = false; // Animation de montée active
+    sf::Vector2f sortiePosition; // Position du tuyau de sortie
+
 };
 
 #endif

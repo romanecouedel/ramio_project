@@ -8,7 +8,9 @@
 class FinDeJeu {
 public:
     FinDeJeu(float windowWidth, float windowHeight);
-    void afficher(sf::RenderWindow& window, float tempsEcoule, int score);
+    //void afficher(sf::RenderWindow& window, float tempsEcoule, int score);
+    void afficher(sf::RenderWindow& window, float tempsEcoule, int score, int nbMorts);
+
     bool handleInput(sf::Event event);
     bool victoire=false;
 
@@ -18,6 +20,7 @@ private:
     sf::Text texteTemps;
     sf::Text texteScore;
     sf::Text texteInstructions;
+    sf::Text texteMorts; 
     sf::RectangleShape background;
     sf::Texture backgroundTexture; // Ajout de la texture pour le fond d'écran
     sf::Sprite backgroundSprite;   // Ajout du sprite pour le fond d'écran

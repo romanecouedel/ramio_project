@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "Level.h"
 #include "Player.h"
 #include "Menu.h"
 #include "FinJeu.h"
-
+#include "Audio.h"
 // Définition des différents états possibles du jeu
 enum class GameState
 {
@@ -12,27 +13,32 @@ enum class GameState
     GAME, // État du jeu en cours
     FDG   // État de fin de jeu
 };
+bool luigiAI = false;
 
 int main()
 {
+    luigiAI = false;          // Définition de la variable
+    bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
+    bool niveauTermine = false;
+    AudioManager audioManager;
+    int nbMortsMario = 0;
+    int nbMortsLuigi = 0;
+    int musicmenu = 0;
     // Initialisation de l'état du jeu à MENU
     GameState gameState = GameState::MENU;
     // Création de la fenêtre de jeu avec une résolution de 900x600
     sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
-
     // Initialisation des différents composants du jeu
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi(true, &level, &mario); // true = IA activée pour Luigi
-    bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
+    Luigi luigi; 
 
-    bool niveauTermine = false; 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
     sf::Clock displayClock;
 
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
-    float deltaTime; // Temps écoulé entre chaque frame
+    float deltaTime;                              // Temps écoulé entre chaque frame
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
 
     // Positions de départ pour Mario et Luigi
@@ -52,9 +58,12 @@ int main()
             if (gameState == GameState::MENU)
             {
                 menu.handleInput(event, window);
+                if (audioManager.getCurrentMusic() != "menu")
+                {
+                    audioManager.playMenuMusic();
+                }
                 if (menu.isGameStarting())
-                { 
-                    // Démarrer le jeu
+                {
                     gameState = GameState::GAME;
                     int selectedLevel = menu.getSelectedLevel();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
@@ -64,9 +73,8 @@ int main()
                         std::cerr << "Erreur chargement niveau !" << std::endl;
                         return -1;
                     }
-
-                    // Vérifier si le joueur a choisi 2 joueurs
                     multijoueur = menu.isMultiplayerSelected();
+                    audioManager.playGameMusic();
 
                     // Positionner Mario et Luigi au début du niveau
                     mario.setPosition(startPositionMario.x, startPositionMario.y);
@@ -105,17 +113,28 @@ int main()
         }
         else if (gameState == GameState::GAME)
         {
+
             deltaTime = clock.restart().asSeconds();
 
             mario.handleInput();
             mario.update(deltaTime, level);
-
+            level.handleTuyauInteraction(mario, deltaTime);
             if (multijoueur)
             {
-                luigi.handleInput();
-                luigi.update(deltaTime, level);
+                level.handleTuyauInteraction(luigi, deltaTime);
             }
-            
+
+            if (multijoueur && !luigiAI)
+            {
+                luigi.handleInput();
+            }
+            else if (multijoueur && luigiAI)
+            {
+                luigi.handleInputAI(&level,&mario);
+            }
+
+            luigi.update(deltaTime, level);
+
             // Vérifier si le joueur a atteint le drapeau
             if ((mario.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) ||
                  (multijoueur && luigi.getHitbox().intersects(level.getDrapeau().getGlobalBounds()))) &&
@@ -128,6 +147,24 @@ int main()
                 if (multijoueur)
                     luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
                 finDeJeu.victoire = true;
+                gameState = GameState::FDG;
+                audioManager.playEndMusic(finDeJeu.victoire);
+                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
+            }
+            if (!mario.isAlive())
+            {
+                mario.respawn();
+                nbMortsMario++;
+            }
+
+            if (!luigi.isAlive())
+            {
+                luigi.respawn();
+                nbMortsLuigi++;
+            }
+            if ((nbMortsLuigi + nbMortsMario) > 2)
+            {
+                finDeJeu.victoire = false;
                 gameState = GameState::FDG;
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
@@ -150,7 +187,7 @@ int main()
             if (multijoueur)
                 level.update(deltaTime, window, mario.getHitbox(), luigi.getHitbox());
             else
-                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect()); 
+                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect());
 
             level.draw(window);
             mario.draw(window);
@@ -168,8 +205,9 @@ int main()
 
         else if (gameState == GameState::FDG)
         {
-            finDeJeu.afficher(window, deltaTime, Piece :: getNbPiece());
+            finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece(), nbMortsLuigi + nbMortsMario);
             window.display();
+            // audioManager.playEndMusic(finDeJeu.victoire);
         }
     }
 

@@ -1,0 +1,48 @@
+Date : 2025-03-03 22:46:55
+Directory : /home/alberic/Documents/Projet/ramio_project/include
+Total : 21 files,  -740 codes, -69 comments, -104 blanks, all -913 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         21 |       -740 |        -69 |       -104 |       -913 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                             | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                |         21 |       -740 |        -69 |       -104 |       -913 |
+| . (Files)                                                        |         10 |        381 |         19 |        119 |        519 |
+| ..                                                               |         11 |     -1,121 |        -88 |       -223 |     -1,432 |
+| ../src                                                           |         11 |     -1,121 |        -88 |       -223 |     -1,432 |
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                         | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/alberic/Documents/Projet/ramio_project/include/Animation.h | C++      |         21 |          4 |          8 |         33 |
+| /home/alberic/Documents/Projet/ramio_project/include/Audio.h     | C++      |         31 |          2 |         12 |         45 |
+| /home/alberic/Documents/Projet/ramio_project/include/Bloc.h      | C++      |         61 |          5 |         17 |         83 |
+| /home/alberic/Documents/Projet/ramio_project/include/Confetti.h  | C++      |         17 |          0 |          5 |         22 |
+| /home/alberic/Documents/Projet/ramio_project/include/Ennemi.h    | C++      |         19 |          0 |          5 |         24 |
+| /home/alberic/Documents/Projet/ramio_project/include/Entity.h    | C++      |         53 |          5 |         11 |         69 |
+| /home/alberic/Documents/Projet/ramio_project/include/FinJeu.h    | C++      |         27 |          1 |          9 |         37 |
+| /home/alberic/Documents/Projet/ramio_project/include/Level.h     | C++      |         67 |          2 |         28 |         97 |
+| /home/alberic/Documents/Projet/ramio_project/include/Menu.h      | C++      |         34 |          0 |         15 |         49 |
+| /home/alberic/Documents/Projet/ramio_project/include/Player.h    | C++      |         51 |          0 |          9 |         60 |
+| /home/alberic/Documents/Projet/ramio_project/src/Animation.cpp   | C++      |        -23 |         -4 |         -7 |        -34 |
+| /home/alberic/Documents/Projet/ramio_project/src/Audio.cpp       | C++      |        -93 |         -5 |        -23 |       -121 |
+| /home/alberic/Documents/Projet/ramio_project/src/Bloc.cpp        | C++      |        -69 |         -7 |        -21 |        -97 |
+| /home/alberic/Documents/Projet/ramio_project/src/Confetti.cpp    | C++      |        -23 |          0 |         -7 |        -30 |
+| /home/alberic/Documents/Projet/ramio_project/src/Ennemi.cpp      | C++      |        -37 |         -1 |         -8 |        -46 |
+| /home/alberic/Documents/Projet/ramio_project/src/Entity.cpp      | C++      |        -53 |         -8 |        -17 |        -78 |
+| /home/alberic/Documents/Projet/ramio_project/src/FinJeu.cpp      | C++      |        -70 |        -15 |        -18 |       -103 |
+| /home/alberic/Documents/Projet/ramio_project/src/Level.cpp       | C++      |       -240 |        -22 |        -44 |       -306 |
+| /home/alberic/Documents/Projet/ramio_project/src/Menu.cpp        | C++      |       -163 |          0 |        -19 |       -182 |
+| /home/alberic/Documents/Projet/ramio_project/src/Player.cpp      | C++      |       -180 |        -12 |        -33 |       -225 |
+| /home/alberic/Documents/Projet/ramio_project/src/main.cpp        | C++      |       -170 |        -14 |        -26 |       -210 |
+| Total                                                            |          |       -740 |        -69 |       -104 |       -913 |
++------------------------------------------------------------------+----------+------------+------------+------------+------------+
