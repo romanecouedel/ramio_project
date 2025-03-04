@@ -32,8 +32,7 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi(true, &level, &mario); // true = IA activée pour Luigi
-    bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
+    Luigi luigi(true, &level, &mario);
 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
     sf::Clock displayClock;
@@ -123,15 +122,7 @@ int main()
             if (multijoueur)
             {
                 level.handleTuyauInteraction(luigi, deltaTime);
-            }
-
-            if (multijoueur && !luigiAI)
-            {
                 luigi.handleInput();
-            }
-            else if (multijoueur && luigiAI)
-            {
-                luigi.handleAI(deltaTime, mario, level);
             }
 
             luigi.update(deltaTime, level);

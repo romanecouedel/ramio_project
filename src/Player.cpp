@@ -13,6 +13,16 @@ Player::Player() {
 }
 
 
+void Player::respawn() {
+    sprite.setPosition(100, 100); // Position de base, à ajuster
+    velocity = {0, 0}; // Réinitialiser la vitesse
+}
+void Player::draw(sf::RenderWindow& window) const {
+    if (visible) {
+        window.draw(sprite);
+    }
+}
+
 void Player::update(float deltaTime, const Level &level)
 {
     if (sprite.getPosition().y > level.getHeight() * 64 + 100) {//pour un peu de marge (64 pour la conversione n pixel)
@@ -107,7 +117,12 @@ void Player::setOpacity(sf::Uint8 alpha) {
     sprite.setColor(color);
 }
 
-
+void Player::jump() {
+    velocity.y = jumpForce;
+    canJump = false;
+    currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
+    audioManager.playYahooSound();
+}
 //==========================Classe dérivée==========================//
 //========Mario======/
 
@@ -116,6 +131,42 @@ Mario::Mario() {
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(100, 100);
+    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
+    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
+    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
+    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
+    animationIdleRight = Animation(&texture,{1,1},0.f);
+    animationIdleLeft = Animation(&texture,{1,2},0.f);
+    currentAnimation = &animationIdleRight;
+}
+
+
+void Mario::handleInput() {
+    velocity.x = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
+}
+
+void Mario::respawn() {
+    sprite.setPosition(100, 100);
+    velocity = {0, 0};
+    isDead = false;
+}
+
+void Mario::update(float deltaTime, const Level& level) {
+    Player::update(deltaTime, level);
+}
+
+
+
+//==========================LUIGI==========================//
+
+Luigi::Luigi(bool aiMode, Level* lvl , const Mario* mario) : isAI(aiMode), level(lvl), mario(mario) {
+    if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
+    sprite.setTexture(texture);
+    sprite.setScale(0.40f, 0.40f);
+    sprite.setPosition(150, 100);
     animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
     animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
     animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
@@ -163,38 +214,13 @@ void Luigi::marcher_normal() {
 
 }
 
-void Mario::handleInput() {
-    velocity.x = 0;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
-}
-
-Luigi::Luigi(bool aiMode, Level* lvl , const Mario* mario) : isAI(aiMode), level(lvl), mario(mario) {
-    if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
-    sprite.setTexture(texture);
-    sprite.setScale(0.40f, 0.40f);
-    sprite.setPosition(150, 100);
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
-    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
-    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
-    animationIdleRight = Animation(&texture,{1,1},0.f);
-    animationIdleLeft = Animation(&texture,{1,2},0.f);
-    currentAnimation = &animationIdleRight;
-}
-
-
 
 void Luigi::handleInput() {
 if (isAI) {
     BlocMystere* blocProche = level->getBlocMystereProche(sprite.getPosition());
     if (blocProche != nullptr) {
         sf::Vector2f position = blocProche->getPosition();
-        std::cout << "pos luigi" << sprite.getPosition().y-190.0f << std::endl;
-        std::cout << "pos bloc" << position.y << std::endl;
         if (position.x < sprite.getPosition().x && position.y>sprite.getPosition().y-200.0f && !blocProche->estTouche) {
-            //attendre 3 sec avant que luigi aille chercher la boite ??
             // Chemin pour aller jusqu'à la boîte
             velocity.x = -speed;
             faceRight = false;
@@ -221,4 +247,14 @@ else {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump) { jump(); }
     }
+}
+
+void Luigi::update(float deltaTime, const Level& level) {
+    Player::update(deltaTime, level);
+}
+
+void Luigi::respawn() {
+    sprite.setPosition(150, 100); 
+    velocity = {0, 0};
+    isDead = false;
 }
