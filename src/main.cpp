@@ -32,7 +32,7 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi(true, &level, &mario);
+    Luigi luigi; 
 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
     sf::Clock displayClock;
@@ -122,7 +122,15 @@ int main()
             if (multijoueur)
             {
                 level.handleTuyauInteraction(luigi, deltaTime);
+            }
+
+            if (multijoueur && !luigiAI)
+            {
                 luigi.handleInput();
+            }
+            else if (multijoueur && luigiAI)
+            {
+                luigi.handleInputAI(&level,&mario);
             }
 
             luigi.update(deltaTime, level);

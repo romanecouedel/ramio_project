@@ -65,15 +65,14 @@ public:
 
 
    
-
-    Luigi(bool aiMode, Level* lvl ,const Mario* mario); 
+    void handleInputAI(Level* lvl ,const Mario* mario);
+    Luigi(); 
     bool isAIEnabled = true;
     void respawn(); 
     void handleInput() override;
     void update(float deltaTime, const Level& level);
     void marcher_normal();
 
-    bool interruption_mystere = false;
 
 
 };

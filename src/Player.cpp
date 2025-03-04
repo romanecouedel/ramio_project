@@ -162,7 +162,7 @@ void Mario::update(float deltaTime, const Level& level) {
 
 //==========================LUIGI==========================//
 
-Luigi::Luigi(bool aiMode, Level* lvl , const Mario* mario) : isAI(aiMode), level(lvl), mario(mario) {
+Luigi::Luigi(){
     if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
@@ -214,9 +214,17 @@ void Luigi::marcher_normal() {
 
 }
 
-
 void Luigi::handleInput() {
-if (isAI) {
+    velocity.x = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump) { jump(); }
+    
+}
+
+void Luigi::handleInputAI(Level* lvl , const Mario* mario) {
+    this->level = lvl;
+    this->mario = mario;
     BlocMystere* blocProche = level->getBlocMystereProche(sprite.getPosition());
     if (blocProche != nullptr) {
         sf::Vector2f position = blocProche->getPosition();
@@ -239,15 +247,7 @@ if (isAI) {
             marcher_normal();
     } 
 }
-else {
-        // Contrôle manuel
-        
-        velocity.x = 0;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && canJump) { jump(); }
-    }
-}
+
 
 void Luigi::update(float deltaTime, const Level& level) {
     Player::update(deltaTime, level);
