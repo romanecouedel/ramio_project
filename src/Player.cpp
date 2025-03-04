@@ -176,6 +176,8 @@ Luigi::Luigi(){
     currentAnimation = &animationIdleRight;
 }
 
+
+
 void Luigi::marcher_normal() {
     sf::FloatRect hitbox = getHitbox();
              

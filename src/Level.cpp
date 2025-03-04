@@ -143,24 +143,15 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             hitboxAvecTolerance.top -= 3.0f;
             hitboxAvecTolerance.height += 6.0f;
 
-            // Vérification pour Mario et Luigi
-            for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
+            // Vérifie si Mario ou Luigi frappe le bloc mystère
+            if (hitboxMario.intersects(hitboxAvecTolerance) || hitboxLuigi.intersects(hitboxAvecTolerance))
             {
-                if (hitboxJoueur.intersects(hitboxAvecTolerance))
+                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
+                if (!blocMystere->isAnimating())
                 {
-                    float blocCenterX = blocBounds.left + blocBounds.width / 2.0f;
-                    float joueurCenterX = hitboxJoueur.left + hitboxJoueur.width / 2.0f;
-
-                    float maxOffset = blocBounds.width * 0.4f; // +/-30% du bloc
-
-                    if (std::abs(joueurCenterX - blocCenterX) < maxOffset)
+                    if (hitboxMario.top > milieuBloc || hitboxLuigi.top > milieuBloc)
                     {
-                        float milieuBloc = blocBounds.top + blocBounds.height * 0.4f;
-
-                        if (!blocMystere->isAnimating() && hitboxJoueur.top > milieuBloc)
-                        {
-                            blocMystere->onHit();
-                        }
+                        blocMystere->onHit();
                         
                         blocMystere->estTouche=true; //provoque segmentation fault
                     }
@@ -182,6 +173,53 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
         }
     }
     return false;
+}
+
+//==========================detection bloc mystere proche==========================
+BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
+    float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
+    float tolerance = 500.0f; // Tolérance pour la vérification des positions
+
+    // Définition des directions autour du joueur (haut, bas, gauche, droite)
+    std::vector<sf::Vector2f> directions = {
+        {0, -blockSize},  // Au-dessus
+        {0, blockSize},   // En dessous
+        {-blockSize, 0},  // À gauche
+        {blockSize, 0}    // À droite
+    };
+
+    for (const auto& dir : directions) {
+        sf::Vector2f checkPosition = position + dir;
+
+        for (const auto& bloc : blocs) {
+            if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+                sf::Vector2f blocPosition = blocMystere->getPosition();
+                if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance) {
+                    // Vérifie si le bloc mystère contient encore un objet (non vide)
+                    if (!blocMystere->estTouche) {
+                        return blocMystere;
+                    }
+                }
+            }
+        }
+    }
+
+    return nullptr; // Aucun bloc mystère valide trouvé
+}
+
+
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
+    }
 }
 
 //==========================detection bloc mystere proche==========================

@@ -18,11 +18,11 @@ protected:
     sf::Texture texture;
     bool isJumping = false;
     bool canJump = true;
-    bool isDead = false;
 
 
 public:
     Player();
+    bool faceRight = true;
     bool faceRight = true;
     virtual void handleInput() = 0; // Méthode pure virtuelle
     virtual void update(float deltaTime) override;  
@@ -31,18 +31,6 @@ public:
     bool isAlive() const { return !isDead; } 
     void jump();
     sf::FloatRect getHitbox() const;
-    virtual void respawn(); 
-
-    bool visible = true; // Permet de cacher le joueur progressivement
-    bool collisionsActive = true; // Désactive la collision temporairement
-    void setVisible(bool v) { visible = v; }
-    bool isVisible() const { return visible; }
-
-    void setCollisionsActive(bool active) { collisionsActive = active; }
-    bool areCollisionsActive() const { return collisionsActive; }
-    void setOpacity(sf::Uint8 alpha);
-
-    
     sf::Vector2f getPosition() const;
 };
 
@@ -65,14 +53,14 @@ public:
 
 
    
-    void handleInputAI(Level* lvl ,const Mario* mario);
-    Luigi(); 
-    bool isAIEnabled = true;
-    void respawn(); 
-    void handleInput() override;
-    void update(float deltaTime, const Level& level);
-    void marcher_normal();
 
+    Luigi(bool aiMode, Level* lvl ,const Mario* mario); 
+    void handleInput() override;
+    void update(float deltaTime, const Level& level); 
+    void marcher_normal();
+    void attendreAvantDeChercherBoite();
+
+    bool interruption_mystere = false;
 
 
 };
