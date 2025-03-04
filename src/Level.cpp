@@ -203,7 +203,7 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
         for (const auto& bloc : blocs) {
             if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
                 sf::Vector2f blocPosition = blocMystere->getPosition();
-                if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
+                if (std::abs(blocPosition.x + checkPosition.x) < tolerance &&
                     std::abs(blocPosition.y - checkPosition.y) < tolerance) {
                     // Vérifie si le bloc mystère contient encore un objet (non vide)
                     if (!blocMystere->estTouche) {
@@ -401,4 +401,14 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
             player.setCollisionsActive(true);
         }
     }
+}
+bool Level::isTuyauColliding(const sf::FloatRect& hitbox) const {
+    for (const auto& bloc : blocs) {
+        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
+            if (hitbox.intersects(tuyau->getGlobalBounds())) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

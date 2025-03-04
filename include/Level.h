@@ -45,6 +45,8 @@ public:
     void generateBackground(float levelWidth, float levelHeight);
     void handleTuyauInteraction(Player& player, float deltaTime);
 
+    bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+
 
 
     void updateEnnemis(float deltaTime);
