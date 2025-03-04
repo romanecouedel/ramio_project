@@ -2,6 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Entity.h"
+#include "Player.h"
+
+
+class Player;
 
 // ========================== Classe mère ==========================
 class Bloc {
@@ -24,6 +28,13 @@ public:
 
     void setPosition(float x, float y) {
         sprite.setPosition(x, y);
+    }
+    sf::Vector2f getPosition() const { // ✅ Ajouté
+        return sprite.getPosition();
+    }
+
+    const sf::Sprite& getSprite() const { // ✅ Ajouté
+        return sprite;
     }
 };
 
@@ -58,3 +69,15 @@ private:
 
     void changerTexture();
 };
+
+// ======================== Tuyau ========================
+class Tuyau : public Bloc {
+    public:
+        enum class Type { ENTREE, SORTIE };
+        Tuyau(Type type);
+        Type getType() const;
+        bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
+    private:
+        Type type;
+    };
+    

@@ -76,4 +76,3 @@ int Piece::nbPiece = 0; // Initialisation de la variable statique
 int Piece::getNbPiece() {
     return nbPiece;
 }
-

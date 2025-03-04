@@ -58,10 +58,8 @@ public:
     return sprite;  // Supposant que 'sprite' est un attribut de type sf::Sprite dans la classe Piece
 }
 private:
-    sf::Sprite sprite;
-    sf::Texture texture;
     sf::Vector2f startPosition;
-    int collected = 0;
+    bool collected = 0;
     bool animating = false;
     float animationTime = 0.0f;
     const float animationDuration = 0.5f;  // Durée totale montée/descente

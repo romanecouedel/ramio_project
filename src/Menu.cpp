@@ -109,12 +109,14 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
                     std::cout << "Mode 2 joueurs en local sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
                     multiplayerSelected = true;
+                    luigiAI = false; 
                 }
                 else if (choice == 1)
                 {
                     std::cout << "Mode contre l'IA sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
                     multiplayerSelected = true;
+                    luigiAI= true;
                 }
                 else if (choice == 2)
                 {
