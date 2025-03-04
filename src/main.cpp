@@ -32,9 +32,11 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi;
+    Luigi luigi; 
 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
+    sf::Clock displayClock;
+
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     float deltaTime;                              // Temps écoulé entre chaque frame
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
@@ -102,7 +104,6 @@ int main()
                 }
             }
         }
-
         //=============================== Mise à jour et affichage =====================================
         if (gameState == GameState::MENU)
         {
@@ -128,7 +129,7 @@ int main()
             }
             else if (multijoueur && luigiAI)
             {
-                luigi.handleAI(deltaTime, mario, level);
+                luigi.handleInputAI(&level,&mario);
             }
 
             luigi.update(deltaTime, level);
@@ -195,6 +196,10 @@ int main()
 
             window.display();
             window.clear();
+            if (displayClock.getElapsedTime().asSeconds() >= 10.0f) {
+                level.afficherEtatBlocsMysteres();
+                displayClock.restart(); // Réinitialiser l'horloge pour l'affichage des blocs mystères
+            }
         }
 
         else if (gameState == GameState::FDG)
