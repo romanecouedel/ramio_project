@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "FinJeu.h"
 #include "Audio.h"
+
 // Définition des différents états possibles du jeu
 enum class GameState
 {
@@ -13,29 +14,32 @@ enum class GameState
     GAME, // État du jeu en cours
     FDG   // État de fin de jeu
 };
+
 bool luigiAI = false;
 
 int main()
 {
+    // Initialisation des variables
     luigiAI = false;          // Définition de la variable
     bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
     bool niveauTermine = false;
     AudioManager audioManager;
     int nbMortsMario = 0;
     int nbMortsLuigi = 0;
-    int musicmenu = 0;
+
     // Initialisation de l'état du jeu à MENU
     GameState gameState = GameState::MENU;
+
     // Création de la fenêtre de jeu avec une résolution de 900x600
     sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
+
     // Initialisation des différents composants du jeu
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi; 
+    Luigi luigi;
 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
-    sf::Clock displayClock;
 
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     float deltaTime;                              // Temps écoulé entre chaque frame
@@ -49,6 +53,7 @@ int main()
     while (window.isOpen())
     {
         sf::Event event;
+
         //=============================== Gestion des événements =====================================
         while (window.pollEvent(event))
         {
@@ -104,6 +109,7 @@ int main()
                 }
             }
         }
+
         //=============================== Mise à jour et affichage =====================================
         if (gameState == GameState::MENU)
         {
@@ -113,7 +119,6 @@ int main()
         }
         else if (gameState == GameState::GAME)
         {
-
             deltaTime = clock.restart().asSeconds();
 
             mario.handleInput();
@@ -130,7 +135,7 @@ int main()
             }
             else if (multijoueur && luigiAI)
             {
-                luigi.handleInputAI(&level,&mario);
+                luigi.handleInputAI(&level, &mario);
             }
 
             luigi.update(deltaTime, level);
@@ -151,6 +156,8 @@ int main()
                 audioManager.playEndMusic(finDeJeu.victoire);
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
+
+            // Gestion des vies et des morts
             if (!mario.isAlive())
             {
                 mario.respawn();
@@ -169,7 +176,7 @@ int main()
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
 
-            // Suivi de mario et luigi par la caméra
+            // Suivi de Mario et Luigi par la caméra
             sf::Vector2f posMario = mario.getPosition();
             sf::Vector2f posLuigi = multijoueur ? luigi.getPosition() : sf::Vector2f(0, 0);
             float playerPosX = multijoueur ? std::max(posMario.x, posLuigi.x) : posMario.x;
@@ -184,30 +191,26 @@ int main()
             view.setCenter(centerX, window.getSize().y / 2);
             window.setView(view);
 
+            // Mise à jour du niveau
             if (multijoueur)
                 level.update(deltaTime, window, mario.getHitbox(), luigi.getHitbox());
             else
                 level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect());
 
+            // Dessin du niveau et des personnages
             level.draw(window);
             mario.draw(window);
-
             if (multijoueur)
                 luigi.draw(window);
 
             window.display();
             window.clear();
-            if (displayClock.getElapsedTime().asSeconds() >= 10.0f) {
-                level.afficherEtatBlocsMysteres();
-                displayClock.restart(); // Réinitialiser l'horloge pour l'affichage des blocs mystères
-            }
-        }
 
+        }
         else if (gameState == GameState::FDG)
         {
-            finDeJeu.afficher(window, deltaTime, Piece ::getNbPiece(), nbMortsLuigi + nbMortsMario);
+            finDeJeu.afficher(window, deltaTime, Piece::getNbPiece(), nbMortsLuigi + nbMortsMario);
             window.display();
-            // audioManager.playEndMusic(finDeJeu.victoire);
         }
     }
 

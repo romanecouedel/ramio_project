@@ -49,6 +49,8 @@ public:
 
     void generateBackground(float levelWidth, float levelHeight);
 
+    bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+
 
 private:
     std::vector<std::vector<int>> grid;

@@ -183,7 +183,7 @@ void Luigi::marcher_normal() {
              
             // Vérifie si Luigi est sur le point de dépasser Mario
             if (mario->faceRight) {
-                hitbox.left += 0.5*speed;// Simulation de la position future à droite
+                hitbox.left += 0.25*speed;// Simulation de la position future à droite
                 if (sprite.getPosition().x > mario->getPosition().x -100) {
                     velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
                 } else {
@@ -197,8 +197,13 @@ void Luigi::marcher_normal() {
                     faceRight = true;
                     currentAnimation = &animationJumpRight;
                 }
+                if (level->isTuyauColliding(hitbox)) {
+                    velocity.x = speed; // Continue à avancer vers la droite après le saut
+                    faceRight = true;
+                    currentAnimation = &animationJumpRight;
+                }
             } else {
-                hitbox.left -= 0.5*speed;// Simulation de la position future à droite
+                hitbox.left -= 0.25*speed;// Simulation de la position future à droite
                 if (sprite.getPosition().x < mario->getPosition().x +100) {
                     velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
                 } else {
@@ -212,6 +217,11 @@ void Luigi::marcher_normal() {
                     faceRight = false;
                     currentAnimation = &animationJumpLeft;
                 }
+                if (level->isTuyauColliding(hitbox) && canJump) {
+                    velocity.x = -speed; // Continue à avancer vers la droite après le saut
+                    faceRight = false;
+                    currentAnimation = &animationJumpRight;
+                }
             }
 
 }
@@ -224,30 +234,32 @@ void Luigi::handleInput() {
     
 }
 
-void Luigi::handleInputAI(Level* lvl , const Mario* mario) {
+void Luigi::handleInputAI(Level* lvl, const Mario* mario) {
     this->level = lvl;
     this->mario = mario;
     BlocMystere* blocProche = level->getBlocMystereProche(sprite.getPosition());
     if (blocProche != nullptr) {
         sf::Vector2f position = blocProche->getPosition();
-        if (position.x < sprite.getPosition().x && position.y>sprite.getPosition().y-200.0f && !blocProche->estTouche) {
+        std::cout << "Bloc mystère détecté à (" << position.x << ", " << position.y << ")" << std::endl;
+        std::cout << "touché :" <<blocProche->estTouche << std::endl;
+        if (position.x < sprite.getPosition().x && position.y > sprite.getPosition().y-300.0f && !blocProche->estTouche) {
             // Chemin pour aller jusqu'à la boîte
-            velocity.x = -speed;
+            velocity.x = -0.5*speed;
             faceRight = false;
             currentAnimation = &animationWalkLeft;
+            std::cout << "Luigi se déplace vers la gauche" << std::endl;
             // Vérifie si Luigi a atteint le bloc mystère
-            if (std::abs(sprite.getPosition().x - position.x) < 20.0f && sprite.getPosition().y>position.y && onGround){                // Je suis en dessous de la boîte
+            if (std::abs(sprite.getPosition().x - position.x) < 32.0f && sprite.getPosition().y > position.y) {
+                // Je suis en dessous de la boîte
+                std::cout << "Luigi saute pour atteindre le bloc mystère" << std::endl;
                 jump();
-
             }
-        }
-        else{
+        } else {
             marcher_normal();
         }
-            
-    } else{
-            marcher_normal();
-    } 
+    } else {
+        marcher_normal();
+    }
 }
 
 
