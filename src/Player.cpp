@@ -87,12 +87,6 @@ void Player::update(float deltaTime, const Level &level)
     }
 }
 
-void Player::jump() {
-    velocity.y = jumpForce;
-    canJump = false;
-    currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
-    audioManager.playYahooSound();
-}
 
 void Player::draw(sf::RenderWindow& window) const {
     if (visible) {
@@ -113,17 +107,6 @@ void Player::jump() {
     audioManager.playYahooSound();
 }
 
-void Player::draw(sf::RenderWindow& window) const {
-    if (visible) {
-        window.draw(sprite);
-    }
-}
-
-
-void Player::respawn() {
-    sprite.setPosition(100, 100); // Position de base, à ajuster
-    velocity = {0, 0}; // Réinitialiser la vitesse
-}
 
 void Player::update(float deltaTime)
 {
