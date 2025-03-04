@@ -28,6 +28,11 @@ public:
     void afficherEtatBlocsMysteres() const ;
 
 
+    BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
+    
+    void afficherEtatBlocsMysteres() const ;
+
+
 
     int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
     int getHeight() const { return grid.size(); }
@@ -43,14 +48,9 @@ public:
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
     void generateBackground(float levelWidth, float levelHeight);
-    void handleTuyauInteraction(Player& player, float deltaTime);
 
     bool isTuyauColliding(const sf::FloatRect& hitbox) const;
 
-
-
-    void updateEnnemis(float deltaTime);
-    void drawEnnemis(sf::RenderWindow &window);
 
 private:
     std::vector<std::vector<int>> grid;
