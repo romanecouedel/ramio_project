@@ -53,7 +53,10 @@ public:
     void update(float deltaTime, sf::RenderWindow& window);
     void onHit();
     bool isAnimating() const;
+    bool estTouche = false;
     std::unique_ptr<Piece>& getPiece() { return piece; }
+    sf::Vector2f getPosition() const { return sprite.getPosition(); }
+    
 
 private:
     sf::Vector2f startPosition;
@@ -65,7 +68,6 @@ private:
     std::unique_ptr<Piece> piece;
 
     sf::Texture textureFoncee;
-    bool estTouche = false;
 
     void changerTexture();
 };
