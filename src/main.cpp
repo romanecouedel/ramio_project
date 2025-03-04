@@ -117,11 +117,10 @@ int main()
 
             mario.handleInput();
             mario.update(deltaTime, level);
-            level.handleTuyauInteraction(mario, deltaTime);
             if (multijoueur)
-            {
-                level.handleTuyauInteraction(luigi, deltaTime);
-            }
+                level.handleTuyauInteraction(mario, &luigi, deltaTime);
+            else
+                level.handleTuyauInteraction(mario, nullptr, deltaTime);
 
             if (multijoueur && !luigiAI)
             {

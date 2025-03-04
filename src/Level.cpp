@@ -225,22 +225,6 @@ void Level::generateBackground(float levelWidth, float levelHeight)
     }
 }
 
-void Level::startConfetti()
-{
-    confettis.clear();
-    confettiStack.clear();
-
-    // Création massive de confettis sur toute la largeur
-    for (int i = 0; i < 500; ++i)
-    {
-        float x = static_cast<float>(std::rand() % 1280);
-        float y = static_cast<float>(std::rand() % 200 - 200); // Apparaît au-dessus
-        float speed = static_cast<float>(100 + std::rand() % 100);
-        confettis.emplace_back(x, y, speed);
-    }
-    confettiActive = true;
-}
-
 //===========================ENNEMI===================================
 
 void Level::updateEnnemis(float deltaTime)
@@ -259,69 +243,63 @@ void Level::drawEnnemis(sf::RenderWindow &window)
     }
 }
 
-//======================+Tuyau================================
-void Level::handleTuyauInteraction(Player &player, float deltaTime)
-{
-    // Si le joueur n'est pas en train d'entrer ou de sortir d'un tuyau
-    if (!enTrainDeDescendre && !enTrainDeMonter)
-    {
-        for (auto &bloc : blocs)
-        {
-            Tuyau *tuyau = dynamic_cast<Tuyau *>(bloc.get());
-            if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE)
-            {
-                if (tuyau->isPlayerOnTop(player) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                {
 
-                    // Initialisation de l'animation de descente
+//======================+Tuyau================================
+void Level::handleTuyauInteraction(Player& mario, Player* luigi, float deltaTime) {
+    if (!enTrainDeDescendre && !enTrainDeMonter) {
+        for (auto& bloc : blocs) {
+            Tuyau* tuyau = dynamic_cast<Tuyau*>(bloc.get());
+            if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE) {
+
+                bool marioSurTuyau = tuyau->isPlayerOnTop(mario) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+                bool luigiSurTuyau = luigi && tuyau->isPlayerOnTop(*luigi) && sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+
+                if (marioSurTuyau || luigiSurTuyau) {
                     enTrainDeDescendre = true;
                     tuyauTimer = 0.0f;
 
-                    // Centrer le joueur horizontalement sur le tuyau
+                    Tuyau* sortie = tuyau->getSortieAssociee(blocs);
+                    if (sortie) {
+                        sortiePosition = sortie->getPosition();
+                    }
+
                     sf::Vector2f tuyauPos = tuyau->getPosition();
                     sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
-                    sf::FloatRect playerBounds = player.getHitbox();
-                    float newX = tuyauPos.x + (tuyauBounds.width / 2.0f) - (playerBounds.width / 2.0f);
-                    player.setPosition(newX, player.getPosition().y);
-                    player.setCollisionsActive(false);
-                    // Chercher la sortie
-                    for (auto &bloc2 : blocs)
-                    {
-                        Tuyau *sortie = dynamic_cast<Tuyau *>(bloc2.get());
-                        if (sortie && sortie->getType() == Tuyau::Type::SORTIE)
-                        {
-                            sortiePosition = sortie->getPosition();
-                            return;
-                        }
+                    sf::FloatRect marioBounds = mario.getHitbox();
+
+                    float marioNewX = tuyauPos.x + (tuyauBounds.width - marioBounds.width) / 2.0f;
+                    mario.setPosition(marioNewX, mario.getPosition().y);
+
+                    // Centrer Luigi seulement en mode multijoueur
+                    if (luigi) {
+                        sf::FloatRect luigiBounds = luigi->getHitbox();
+                        float luigiNewX = tuyauPos.x + (tuyauBounds.width - luigiBounds.width) / 2.0f;
+                        luigi->setPosition(luigiNewX, luigi->getPosition().y);
                     }
+                    return;
                 }
             }
         }
     }
 
-    /// Animation de descente
-    if (enTrainDeDescendre)
-    {
+    // Animation de descente
+    if (enTrainDeDescendre) {
         tuyauTimer += deltaTime;
-        float descenteSpeed = 80.0f; // 🔽 Plus lent pour mieux voir
-        player.move(0, descenteSpeed * deltaTime);
+        float descenteSpeed = 100.0f;
 
-        // Réduire progressivement l'opacité (disparition plus naturelle)
-        float fadeStart = 0.2f; // Temps avant que l'opacité commence à diminuer
-        if (tuyauTimer >= fadeStart)
-        {
-            float alpha = 255 * (1.0f - (tuyauTimer - fadeStart) / 0.5f); // Transition plus douce
-            player.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
-        }
+        mario.move(0, descenteSpeed * deltaTime);
+        if (luigi) luigi->move(0, descenteSpeed * deltaTime);
 
-        if (tuyauTimer >= 0.6f)
-        { // ⏳ Temps total augmenté un peu
-            sf::Vector2f sortiePos = sortiePosition;
-            sf::FloatRect sortieBounds = player.getHitbox();
-            float newXSortie = sortiePos.x + (64.0f / 2.0f) - (sortieBounds.width / 2.0f);
+        float alpha = 255 * (1.0f - (tuyauTimer / 0.5f));
+        mario.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+        if (luigi) luigi->setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
 
-            player.setPosition(newXSortie, sortiePos.y + 64.0f);
-            player.setOpacity(0);
+        if (tuyauTimer >= 0.5f) { 
+            mario.setPosition(sortiePosition.x, sortiePosition.y + 64.0f);
+            if (luigi) luigi->setPosition(sortiePosition.x, sortiePosition.y + 74.0f);
+
+            mario.setOpacity(0);
+            if (luigi) luigi->setOpacity(0);
 
             enTrainDeDescendre = false;
             enTrainDeMonter = true;
@@ -330,26 +308,25 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
     }
 
     // Animation de montée
-    if (enTrainDeMonter)
-    {
+    if (enTrainDeMonter) {
         tuyauTimer += deltaTime;
-        float monteeSpeed = 80.0f; // 🔼 Plus lent aussi
-        player.move(0, -monteeSpeed * deltaTime);
+        float monteeSpeed = 100.0f;
 
-        // Opacité augmente progressivement mais commence après 0.2s
-        float fadeStart = 0.2f;
-        if (tuyauTimer >= fadeStart)
-        {
-            float alpha = 255 * ((tuyauTimer - fadeStart) / 0.5f);
-            player.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
-        }
+        mario.move(0, -monteeSpeed * deltaTime);
+        if (luigi) luigi->move(0, -monteeSpeed * deltaTime);
 
-        if (tuyauTimer >= 0.6f)
-        {
+        float alpha = 255 * (tuyauTimer / 0.5f);
+        mario.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+        if (luigi) luigi->setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+
+        if (tuyauTimer >= 0.5f) {
             enTrainDeMonter = false;
             tuyauTimer = 0.0f;
-            player.setOpacity(255);
-            player.setCollisionsActive(true);
+
+            mario.setOpacity(255);
+            if (luigi) {
+                luigi->setOpacity(255);
+            }
         }
     }
 }

@@ -84,6 +84,23 @@ Tuyau::Type Tuyau::getType() const {
     return type;
 }
 
+Tuyau* Tuyau::getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const {
+    Tuyau* meilleureSortie = nullptr;
+    float meilleureDistance = std::numeric_limits<float>::max();
+
+    for (const auto& bloc : blocs) {
+        Tuyau* sortie = dynamic_cast<Tuyau*>(bloc.get());
+        if (sortie && sortie->getType() == Tuyau::Type::SORTIE) {
+            float distance = std::abs(sortie->getPosition().x - this->getPosition().x);
+            if (distance < meilleureDistance) {
+                meilleureDistance = distance;
+                meilleureSortie = sortie;
+            }
+        }
+    }
+    return meilleureSortie;
+}
+
 
 
 bool Tuyau::isPlayerOnTop(const Player& player) const {
@@ -93,7 +110,7 @@ bool Tuyau::isPlayerOnTop(const Player& player) const {
     float playerCenterX = playerBounds.left + playerBounds.width / 2.0f;
     float tuyauCenterX = tuyauBounds.left + tuyauBounds.width / 2.0f;
 
-    float maxOffset = tuyauBounds.width * 0.5f; // 30% du tuyau max sur les côtés
+    float maxOffset = tuyauBounds.width * 0.5f; // 50% du tuyau max sur les côtés
 
     bool horizontalOk = std::abs(playerCenterX - tuyauCenterX) < maxOffset;
     bool verticalOk = (playerBounds.top + playerBounds.height) <= tuyauBounds.top + 5.0f &&

@@ -29,11 +29,11 @@ public:
     void setPosition(float x, float y) {
         sprite.setPosition(x, y);
     }
-    sf::Vector2f getPosition() const { // ✅ Ajouté
+    sf::Vector2f getPosition() const { 
         return sprite.getPosition();
     }
 
-    const sf::Sprite& getSprite() const { // ✅ Ajouté
+    const sf::Sprite& getSprite() const { 
         return sprite;
     }
 };
@@ -77,6 +77,7 @@ class Tuyau : public Bloc {
         Tuyau(Type type);
         Type getType() const;
         bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
+        Tuyau* getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const;
     private:
         Type type;
     };
