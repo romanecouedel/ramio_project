@@ -16,18 +16,20 @@ protected:
     Animation animationIdleLeft;
     Animation* currentAnimation;
     sf::Texture texture;
-    bool faceRight = true;
     bool isJumping = false;
     bool canJump = true;
 
+
 public:
     Player();
+    bool faceRight = true;
     virtual void handleInput() = 0; // Méthode pure virtuelle
     virtual void update(float deltaTime) override;  
     virtual void update(float deltaTime, const Level& level); 
     void draw(sf::RenderWindow& window) const override;
     void jump();
     sf::FloatRect getHitbox() const;
+    sf::Vector2f getPosition() const;
 };
 
 class Mario : public Player {
@@ -41,9 +43,21 @@ class Luigi : public Player {
 public:
     bool isAI;
     Level* level;
+    const Mario* mario; // Référence à Mario
+    sf::Clock waitClock; // Horloge pour mesurer le temps d'attente
+    bool waiting = false; // Indique si Luigi est en attente
 
-    Luigi();
-    Luigi(bool aiMode, Level* lvl); 
+
+
+   
+
+    Luigi(bool aiMode, Level* lvl ,const Mario* mario); 
     void handleInput() override;
     void update(float deltaTime, const Level& level); 
+    void marcher_normal();
+    void attendreAvantDeChercherBoite();
+
+    bool interruption_mystere = false;
+
+
 };

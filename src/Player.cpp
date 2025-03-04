@@ -83,7 +83,6 @@ void Player::update(float deltaTime, const Level &level)
             onGround = true;
             canJump = true;
             isJumping = false; 
-            isJumping = false; 
         }
     }
 }
@@ -111,7 +110,12 @@ void Player::draw(sf::RenderWindow &window) const
 sf::FloatRect Player::getHitbox() const
 {
     sf::FloatRect bounds = sprite.getGlobalBounds();
-    return bounds; // coucou c moi
+    return bounds; 
+}
+
+sf::Vector2f Player::getPosition() const
+{
+    return sprite.getPosition();
 }
 
 
@@ -133,6 +137,44 @@ Mario::Mario() {
     currentAnimation = &animationIdleRight;
 }
 
+void Luigi::marcher_normal() {
+    sf::FloatRect hitbox = getHitbox();
+             
+            // Vérifie si Luigi est sur le point de dépasser Mario
+            if (mario->faceRight) {
+                hitbox.left += 0.5*speed;// Simulation de la position future à droite
+                if (sprite.getPosition().x > mario->getPosition().x -100) {
+                    velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
+                } else {
+                    velocity.x = speed;
+                    faceRight = true;
+                    currentAnimation = &animationWalkRight;
+                }
+                if (level->isColliding(hitbox) && canJump) {
+                    jump();
+                    velocity.x = speed; // Continue à avancer vers la droite après le saut
+                    faceRight = true;
+                    currentAnimation = &animationJumpRight;
+                }
+            } else {
+                hitbox.left -= 0.5*speed;// Simulation de la position future à droite
+                if (sprite.getPosition().x < mario->getPosition().x +100) {
+                    velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
+                } else {
+                    velocity.x = -speed;
+                    faceRight = false;
+                    currentAnimation = &animationWalkLeft;
+                }
+                if (level->isColliding(hitbox) && canJump) {
+                    jump();
+                    velocity.x = -speed; // Continue à avancer vers la gauche après le saut
+                    faceRight = false;
+                    currentAnimation = &animationJumpLeft;
+                }
+            }
+
+}
+
 void Mario::handleInput() {
     velocity.x = 0;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
@@ -140,7 +182,7 @@ void Mario::handleInput() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
 }
 
-Luigi::Luigi(bool aiMode, Level* lvl) : isAI(aiMode), level(lvl) {
+Luigi::Luigi(bool aiMode, Level* lvl , const Mario* mario) : isAI(aiMode), level(lvl), mario(mario) {
     if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
     sprite.setTexture(texture);
     sprite.setScale(0.40f, 0.40f);
@@ -154,22 +196,38 @@ Luigi::Luigi(bool aiMode, Level* lvl) : isAI(aiMode), level(lvl) {
     currentAnimation = &animationIdleRight;
 }
 
+
+
 void Luigi::handleInput() {
-    if (isAI) {
-        // Luigi avance tout seul
-        velocity.x = speed;
-        faceRight = true;
-        currentAnimation = &animationWalkRight;
+if (isAI) {
+    BlocMystere* blocProche = level->getBlocMystereProche(sprite.getPosition());
+    if (blocProche != nullptr) {
+        sf::Vector2f position = blocProche->getPosition();
+        std::cout << "pos luigi" << sprite.getPosition().y-190.0f << std::endl;
+        std::cout << "pos bloc" << position.y << std::endl;
+        if (position.x < sprite.getPosition().x && position.y>sprite.getPosition().y-200.0f && !blocProche->estTouche) {
+            //attendre 3 sec avant que luigi aille chercher la boite ??
+            // Chemin pour aller jusqu'à la boîte
+            velocity.x = -speed;
+            faceRight = false;
+            currentAnimation = &animationWalkLeft;
+            // Vérifie si Luigi a atteint le bloc mystère
+            if (std::abs(sprite.getPosition().x - position.x) < 20.0f && sprite.getPosition().y>position.y && onGround){                // Je suis en dessous de la boîte
+                jump();
 
-        // Vérifie s'il y a un obstacle devant lui
-        sf::FloatRect hitbox = getHitbox();
-        hitbox.left += speed; // Simulation de la position future
-
-        if (level->isColliding(hitbox) && canJump) {
-            jump();
+            }
         }
-    } else {
+        else{
+            marcher_normal();
+        }
+            
+    } else{
+            marcher_normal();
+    } 
+}
+else {
         // Contrôle manuel
+        
         velocity.x = 0;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }

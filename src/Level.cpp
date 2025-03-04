@@ -141,6 +141,8 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
                     if (hitboxMario.top > milieuBloc || hitboxLuigi.top > milieuBloc)
                     {
                         blocMystere->onHit();
+                        
+                        blocMystere->estTouche=true; //provoque segmentation fault
                     }
                 }
             }
@@ -159,6 +161,53 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
         }
     }
     return false;
+}
+
+//==========================detection bloc mystere proche==========================
+BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
+    float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
+    float tolerance = 500.0f; // Tolérance pour la vérification des positions
+
+    // Définition des directions autour du joueur (haut, bas, gauche, droite)
+    std::vector<sf::Vector2f> directions = {
+        {0, -blockSize},  // Au-dessus
+        {0, blockSize},   // En dessous
+        {-blockSize, 0},  // À gauche
+        {blockSize, 0}    // À droite
+    };
+
+    for (const auto& dir : directions) {
+        sf::Vector2f checkPosition = position + dir;
+
+        for (const auto& bloc : blocs) {
+            if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+                sf::Vector2f blocPosition = blocMystere->getPosition();
+                if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance) {
+                    // Vérifie si le bloc mystère contient encore un objet (non vide)
+                    if (!blocMystere->estTouche) {
+                        return blocMystere;
+                    }
+                }
+            }
+        }
+    }
+
+    return nullptr; // Aucun bloc mystère valide trouvé
+}
+
+
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
+    }
 }
 
 // ======================== Initialisation du Texte ========================

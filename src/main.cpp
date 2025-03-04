@@ -24,11 +24,13 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi(true, &level); // true = IA activée pour Luigi
+    Luigi luigi(true, &level, &mario); // true = IA activée pour Luigi
     bool multijoueur = false; // Définit si on joue à 1 ou 2 joueurs
 
     bool niveauTermine = false; 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
+    sf::Clock displayClock;
+
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     float deltaTime; // Temps écoulé entre chaque frame
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
@@ -94,7 +96,6 @@ int main()
                 }
             }
         }
-
         //=============================== Mise à jour et affichage =====================================
         if (gameState == GameState::MENU)
         {
@@ -159,6 +160,10 @@ int main()
 
             window.display();
             window.clear();
+            if (displayClock.getElapsedTime().asSeconds() >= 10.0f) {
+                level.afficherEtatBlocsMysteres();
+                displayClock.restart(); // Réinitialiser l'horloge pour l'affichage des blocs mystères
+            }
         }
 
         else if (gameState == GameState::FDG)

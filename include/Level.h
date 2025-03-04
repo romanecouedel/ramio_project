@@ -18,6 +18,11 @@ public:
     bool loadFromFile(const std::string &filename);
     void draw(sf::RenderWindow &window);
     bool isColliding(const sf::FloatRect &hitbox) const;
+    BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
+    
+    void afficherEtatBlocsMysteres() const ;
+
+
 
     int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
     int getHeight() const { return grid.size(); }
@@ -34,10 +39,6 @@ public:
 
     void generateBackground(float levelWidth, float levelHeight);
 
-    int pieceCount = 0;        // Compteur de pièces
-    sf::Font pieceFont;        // Police pour le compteur
-    sf::Text pieceText;        // Texte du compteur
-    std::unique_ptr<Piece> piece;
 
 private:
     std::vector<std::vector<int>> grid;
