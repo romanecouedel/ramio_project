@@ -23,7 +23,9 @@ protected:
 public:
     Player();
     bool faceRight = true;
-    bool faceRight = true;
+    bool isDead = false;
+    bool visible = true;
+    bool collisionsActive = true; // Désactive la collision temporairement
     virtual void handleInput() = 0; // Méthode pure virtuelle
     virtual void update(float deltaTime) override;  
     virtual void update(float deltaTime, const Level& level); 
@@ -32,6 +34,12 @@ public:
     void jump();
     sf::FloatRect getHitbox() const;
     sf::Vector2f getPosition() const;
+    void setCollisionsActive(bool active) { collisionsActive = active; }
+    bool areCollisionsActive() const { return collisionsActive; }
+    void setOpacity(sf::Uint8 alpha);
+    void respawn();
+    
+
 };
 
 class Mario : public Player {
@@ -54,11 +62,12 @@ public:
 
    
 
-    Luigi(bool aiMode, Level* lvl ,const Mario* mario); 
+    Luigi(); 
     void handleInput() override;
     void update(float deltaTime, const Level& level); 
     void marcher_normal();
-    void attendreAvantDeChercherBoite();
+    void handleInputAI(Level* lvl, const Mario* mario);
+    void respawn();
 
     bool interruption_mystere = false;
 

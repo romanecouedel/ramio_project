@@ -28,10 +28,6 @@ public:
     void afficherEtatBlocsMysteres() const ;
 
 
-    BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
-    
-    void afficherEtatBlocsMysteres() const ;
-
 
 
     int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
@@ -50,6 +46,15 @@ public:
     void generateBackground(float levelWidth, float levelHeight);
 
     bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+
+    void updateEnnemis(float deltaTime);
+    void drawEnnemis(sf::RenderWindow &window);
+
+    void handleTuyauInteraction(Player &player, float deltaTime);
+
+
+
+
 
 
 private:
@@ -93,6 +98,7 @@ private:
     bool enTrainDeDescendre = false; // Animation de descente active
     bool enTrainDeMonter = false; // Animation de montée active
     sf::Vector2f sortiePosition; // Position du tuyau de sortie
+
 
 };
 
