@@ -16,7 +16,7 @@ Ramio est un jeu de plateforme en C++ avec SFML, jouable en solo ou en coopérat
 - Éviter les obstacles (trous, ennemis)
 - Atteidre la ligne d’arrivée en un seul morceau
 
-Le jeu est conçu pour créer aisément de nouveaux niveaux et y intégrer facilement une IA plus poussée.
+Le jeu est conçu pour permettre l’ajout facile de nouveaux niveaux et une amélioration future de l’IA.
 
 ## Installation
 ### Prérequis
@@ -71,23 +71,23 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 ## Structure du projet
 ```
 📁 ramio_project
-├── 📁 src (Code source)
-│ ├── Animation.cpp
-│ ├── Audio.cpp
-│ ├── Bloc.cpp
-│ ├── Ennemi.cpp
-│ ├── Entity.cpp
-│ ├── FinJeu.cpp
-│ ├── Level.cpp
-│ ├── main.cpp
-│ ├── Menu.cpp
-│ ├── Player.cpp
-├── 📁 include (Headers)
-├── 📁 fonts (police)
-├── 📁 img (fond, personnages...)
-├── 📁 music
-├── CmakeLists.txt
-├── README.md
+├── 📁 src/ (Code source du jeu)
+│ ├── Animation.cpp (Gestion des animations)
+│ ├── Audio.cpp (Gestion des sons et musiques)
+│ ├── Bloc.cpp (Gestion des blocs et plateformes)
+│ ├── Ennemi.cpp (Comportement des ennemis)
+│ ├── Entity.cpp (Classe mère des entités du jeu)
+│ ├── FinJeu.cpp (Gestion de l’écran de fin de partie)
+│ ├── Level.cpp (Structure et chargement des niveaux)
+│ ├── main.cpp 
+│ ├── Menu.cpp (Gestion des menus)
+│ ├── Player.cpp (Gestion des joueurs)
+├── 📁 include/ (Fichiers d’en-tête (.h) pour les classes)
+├── 📁 fonts/ (Polices utilisées dans le jeu)
+├── 📁 img/ (Images et sprites des personnages, décors…)
+├── 📁 music/ (Musiques et sons du jeu)
+├── CMakeLists.txt 
+├── README.md 
 ```
 
 ## Diagramme d’architecture 
