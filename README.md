@@ -70,7 +70,6 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 
 ## Structure du projet
 ```
-
 📁 ramio_project
 ├── 📁 src (Code source)
 │ ├── Animation.cpp
@@ -97,6 +96,9 @@ fichier uml quand il sera prêt
 
 ## Contributeurs
 
+Abdelkamel Mehdy https://github.com/Mehdy03
+Couëdel Romane https://github.com/romanecouedel
+Fasquelle Albéric https://github.com/Gyver2206
 
 
 ## Licence 
