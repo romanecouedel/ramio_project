@@ -51,7 +51,7 @@ void Menu::setupMenu(std::vector<MenuOption> &menu, std::vector<std::string> opt
     }
 }
 
-void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
+void Menu::handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI, bool &multijoueur)
 {
     std::vector<MenuOption> *currentMenu;
     if (currentState == MenuState::MAIN)
@@ -88,12 +88,12 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
                 if (choice == 0)
                 {
                     currentState = MenuState::LEVEL_SELECT; // 1 joueur → niveau
-                    multiplayerSelected = false;
+                    multijoueur = false;
                 }
                 else if (choice == 1)
                 {
                     currentState = MenuState::MODE_SELECT; // 2 joueurs → choix IA/local
-                    multiplayerSelected = true;
+                    multijoueur = true;
                 }
                 else if (choice == 2)
                 {
@@ -108,14 +108,14 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
                 {
                     std::cout << "Mode 2 joueurs en local sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
-                    multiplayerSelected = true;
+                    multijoueur = true;
                     luigiAI = false; 
                 }
                 else if (choice == 1)
                 {
                     std::cout << "Mode contre l'IA sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
-                    multiplayerSelected = true;
+                    multijoueur = true;
                     luigiAI= true;
                 }
                 else if (choice == 2)
@@ -173,9 +173,3 @@ bool Menu::isGameStarting()
     }
     return false;
 }
-
-bool Menu::isMultiplayerSelected()
-{
-    return multiplayerSelected;
-}
-

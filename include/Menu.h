@@ -4,18 +4,15 @@
 #include <SFML/Graphics.hpp>
 
 enum class MenuState { MAIN, PLAYER_SELECT,MODE_SELECT, LEVEL_SELECT, GAMEOK };
-extern bool luigiAI;  // Déclaration de la variable globale
 
 
 class Menu {
 public:
     Menu(float width, float height);
-    void handleInput(sf::Event event, sf::RenderWindow &window);
+    void handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI, bool &multijoueur);
     void draw(sf::RenderWindow &window);
     bool isGameStarting();
     int getSelectedLevel() const { return selectedIndex; }
-    bool isMultiplayerSelected();
-    bool isLuigiAIEnabled(); 
 
 private:
     sf::Font font;
