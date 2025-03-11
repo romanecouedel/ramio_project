@@ -96,9 +96,9 @@ fichier uml quand il sera prêt
 
 ## Contributeurs
 
-Abdelkamel Mehdy https://github.com/Mehdy03
-Couëdel Romane https://github.com/romanecouedel
-Fasquelle Albéric https://github.com/Gyver2206
+- Abdelkamel Mehdy https://github.com/Mehdy03
+- Couëdel Romane https://github.com/romanecouedel
+- Fasquelle Albéric https://github.com/Gyver2206
 
 
 ## Licence 
