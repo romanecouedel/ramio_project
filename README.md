@@ -69,6 +69,7 @@ La partie se termine lorsque mario (ou luigi) touche le drapeau ou que mario (ou
 Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps qui a été nécessaire pour faire le parcours. On peut voir également combien de pièces ont été récoltées et combien de fois luigi ou mario est mort. En appuyant sur la touche 'entrer' du clavier, on retourne à la première couche du menu.
 
 ## Structure du projet
+```
 
 📁 ramio_project
 ├── 📁 src (Code source)
@@ -88,6 +89,7 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 ├── 📁 music
 ├── CmakeLists.txt
 ├── README.md
+```
 
 ## Diagramme d’architecture 
 
