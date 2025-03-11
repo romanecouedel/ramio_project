@@ -1,5 +1,4 @@
 #include "Level.h"
-#include "Confetti.h"
 #include "Bloc.h"
 #include "Player.h"
 #include "Audio.h"
@@ -267,22 +266,6 @@ void Level::generateBackground(float levelWidth, float levelHeight)
         for (int i = 0; i < 4; i++)
             backgroundVertices.append(quad[i]);
     }
-}
-
-void Level::startConfetti()
-{
-    confettis.clear();
-    confettiStack.clear();
-
-    // Création massive de confettis sur toute la largeur
-    for (int i = 0; i < 500; ++i)
-    {
-        float x = static_cast<float>(std::rand() % 1280);
-        float y = static_cast<float>(std::rand() % 200 - 200); // Apparaît au-dessus
-        float speed = static_cast<float>(100 + std::rand() % 100);
-        confettis.emplace_back(x, y, speed);
-    }
-    confettiActive = true;
 }
 
 //===========================ENNEMI===================================

@@ -7,7 +7,6 @@
 #include <SFML/Audio.hpp>
 #include "Bloc.h"
 #include "Entity.h"
-#include "Confetti.h"
 #include "Player.h"
 #include "Ennemi.h"
 
@@ -36,10 +35,6 @@ public:
     const Drapeau &getDrapeau() const { return drapeau; }
     void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
-    // Confetti
-    void startConfetti();
-    bool confettiActive = false;
-
     void initTexte();
     bool afficherTexte = false; // Variable pour contrôler l'affichage
 
@@ -62,13 +57,7 @@ private:
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
 
     Drapeau drapeau;
-
-    // Animation fin
-    float confettiTimer = 0.0f;
-    const float confettiDuration = 5.0f;
-    std::vector<Confetti> confettis;
-    std::vector<sf::FloatRect> confettiStack;
-
+    
     sf::Font font;
     sf::Text niveauTermineText;
     bool texteAnime = false;             // Indique si l’animation est en cours
