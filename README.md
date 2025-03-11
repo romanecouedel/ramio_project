@@ -2,20 +2,21 @@
 Un jeu de plateforme inspiré de Mario, développé en C++ avec SFML. Il est possible d'effectuer seul ou à deux un parcours semé d’obstacles et tenter d’atteindre la fin du niveau sans tomber dans les pièges.
 
 ## Table des matières
-1. [Introduction](#-introduction)  
-2. [Installation](#-installation)  
-3. [Utilisation](#-utilisation)  
-4. [Structure du projet](#-structure-du-projet)  
-5. [Contributeurs](#-contributeurs)  
-6. [Licence](#-licence)  
+1. [Introduction](#introduction)  
+2. [Installation](#installation)  
+3. [Utilisation](#utilisation)  
+4. [Structure du projet](#structure-du-projet)  
+5. [Diagramme d'architecture](#diagramme-darchitecture)
+5. [Contributeurs](#contributeurs)  
+6. [Licence](#licence)  
 
 ## Introduction 
 Ramio est un jeu de plateforme en C++ avec SFML, jouable en solo ou en coopération (2 joueurs sur le même écranmario et luigi). On peut également jouer avec un IA symbolique simplifiée. Les objectifs sont simples :
 
-- Évitez les obstacles (trous, ennemis)
-- Atteignez la ligne d’arrivée en un seul morceau
+- Éviter les obstacles (trous, ennemis)
+- Atteidre la ligne d’arrivée en un seul morceau
 
-Le jeu est conçu pour créer facilement des niveaux et y intégrer facilement une IA plus poussée.
+Le jeu est conçu pour créer aisément de nouveaux niveaux et y intégrer facilement une IA plus poussée.
 
 ## Installation
 ### Prérequis
@@ -69,9 +70,32 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 
 ## Structure du projet
 
+📁 ramio_project
+├── 📁 src (Code source)
+│ ├── Animation.cpp
+│ ├── Audio.cpp
+│ ├── Bloc.cpp
+│ ├── Ennemi.cpp
+│ ├── Entity.cpp
+│ ├── FinJeu.cpp
+│ ├── Level.cpp
+│ ├── main.cpp
+│ ├── Menu.cpp
+│ ├── Player.cpp
+├── 📁 include (Headers)
+├── 📁 fonts (police)
+├── 📁 img (fond, personnages...)
+├── 📁 music
+├── CmakeLists.txt
+├── README.md
 
+## Diagramme d’architecture 
+
+fichier uml quand il sera prêt
 
 ## Contributeurs
+
+
 
 ## Licence 
 (si besoin)
