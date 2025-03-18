@@ -19,7 +19,6 @@ sf::FloatRect Entity::getGlobalBounds() const {
 
 // ====================================== ObjetInteractif ======================================
 // constructeur
-// vraiment utile ?
 ObjetInteractif::ObjetInteractif(const std::string& texturePath) : Entity(texturePath) {
     sprite.setScale(0.5f, 0.5f);
 }
