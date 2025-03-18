@@ -15,9 +15,12 @@ protected:
     Animation animationIdleRight;
     Animation animationIdleLeft;
     Animation* currentAnimation;
-    sf::Texture texture;
+    sf::Vector2f velocity;
     bool isJumping = false;
     bool canJump = true;
+    bool onGround = false;
+    float speed = 350.f;
+    float gravity = 980.f;
 
 
 public:
@@ -38,6 +41,9 @@ public:
     bool areCollisionsActive() const { return collisionsActive; }
     void setOpacity(sf::Uint8 alpha);
     void respawn();
+    void move(float dx, float dy) {
+        sprite.move(dx, dy);
+    }
     
 
 };

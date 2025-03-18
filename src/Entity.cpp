@@ -1,8 +1,8 @@
-// Entity.cpp
 #include "Entity.h"
-#include <iostream>
-#include <math.h>
 
+// ====================================== Classe Entity =======================================
+// constructeur explicit
+// param : le chemin de la texture de l'entité
 Entity::Entity(const std::string& texturePath) {
     if (!texture.loadFromFile(texturePath)) {
         std::cerr << "Erreur chargement texture : " << texturePath << std::endl;
@@ -10,28 +10,31 @@ Entity::Entity(const std::string& texturePath) {
     sprite.setTexture(texture);
 }
 
-void Entity::move(float dx, float dy) {
-    sprite.move(dx, dy);
-}
 
+// retourne le rectangle englobant de l'entité
 sf::FloatRect Entity::getGlobalBounds() const {
-    return sprite.getGlobalBounds();  // Exemple d'implémentation
+    return sprite.getGlobalBounds(); // utilisé pour faire les collisions entre entité
 }
 
 
-// ===================== ObjetInteractif =====================
+// ====================================== ObjetInteractif ======================================
+// constructeur
+// vraiment utile ?
 ObjetInteractif::ObjetInteractif(const std::string& texturePath) : Entity(texturePath) {
     sprite.setScale(0.5f, 0.5f);
 }
 
-// ======================== Constructeur Drapeau ========================
+// ========================================= Drapeau ===========================================
+// constructeur
 Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
     sprite.setScale(0.25f, 0.25f); 
     
 }
 
-// ======================== Constructeur Piece ========================
-//ajouter code
+// =========================================== Piece ===========================================
+// constructeur
+// param : la position de la pièce + chemin texture
+// permet de compter le nombre de pièces ont été créées, donc récoltées
 Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     if (!texture.loadFromFile("../img/piece.png")) {
         std::cerr << "Erreur chargement texture pièce" << std::endl;
@@ -44,7 +47,8 @@ Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     nbPiece++;
 }
 
-
+// animation de la pièce
+// param : le temps écoulé depuis la dernière frame
 void Piece::update(float deltaTime) {
     if (animating) {
         animationTime += deltaTime;
@@ -62,17 +66,23 @@ void Piece::update(float deltaTime) {
     }
 }
 
+// affichage de la pièce
+// param : la fenêtre de rendu
 void Piece::draw(sf::RenderWindow& window) const {
     if (!collected) {
         window.draw(sprite);
     }
-    //std::cout << "Opacité de la pièce : " << (int)sprite.getColor().a << std::endl;
 
 }
 
-
 int Piece::nbPiece = 0; // Initialisation de la variable statique
 
+// retourne le nombre de pièces collectées
 int Piece::getNbPiece() {
     return nbPiece;
+}
+
+// remet le nb de pièces à zéro
+void Piece::resetNbPiece(){
+    nbPiece = 0;
 }

@@ -148,7 +148,7 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI,
                 else
                 {
                     std::cout << "Lancement du niveau " << choice + 1 << " !" << std::endl;
-                    setState(MenuState::GAMEOK);
+                    currentState = MenuState::GAMEOK;
                 }
                 break;
 

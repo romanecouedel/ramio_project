@@ -94,6 +94,10 @@ int main()
                     view.setCenter(450, 300);
                     window.setView(view);
                     menu.reset();
+                    Piece::resetNbPiece();
+                    nbMortsMario = 0;
+                    nbMortsLuigi = 0;
+                    finDeJeu.victoire = false;
                 }
             }
         }
@@ -155,7 +159,6 @@ int main()
             // Fin de jeu si trop de morts
             if (nbMortsMario + nbMortsLuigi > 2)
             {
-                finDeJeu.victoire = false;
                 gameState = GameState::FDG;
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
