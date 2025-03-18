@@ -93,6 +93,7 @@ int main()
                     window.create(sf::VideoMode(900, 600), "Mario - Menu");
                     view.setCenter(450, 300);
                     window.setView(view);
+                    menu.reset();
                 }
             }
         }
