@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "FinJeu.h"
 #include "Audio.h"
+#include <bits/algorithmfwd.h>
 // Définition des différents états possibles du jeu
 enum class GameState
 {
@@ -177,8 +178,7 @@ int main()
             float halfScreenWidth = window.getSize().x / 2.0f;
             float minX = halfScreenWidth;
             float maxX = levelWidth - halfScreenWidth;
-            float centerX = std::clamp(playerPosX, minX, maxX);
-
+            float centerX = std::max(minX, std::min(playerPosX, maxX));
             view.setSize(window.getSize().x, window.getSize().y);
             view.setCenter(centerX, window.getSize().y / 2);
             window.setView(view);

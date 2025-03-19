@@ -11,7 +11,6 @@ public:
     std::string getCurrentMusic();
     void setVolume(const std::string& soundName, float volume);
     
-
     void playMenuMusic();
     void playGameMusic();
     void playEndMusic(bool victoire);
