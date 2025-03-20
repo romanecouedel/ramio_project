@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Menu.h"
 
+extern bool luigiAI; // Déclaration de la variable globale
+
 Menu::Menu(float width, float height) : currentState(MenuState::MAIN), selectedIndex(0)
 {
     if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
@@ -109,14 +111,14 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
                     std::cout << "Mode 2 joueurs en local sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
                     multiplayerSelected = true;
-                    luigiAI = false; 
+                    luigiAI = false;
                 }
                 else if (choice == 1)
                 {
                     std::cout << "Mode contre l'IA sélectionné !" << std::endl;
                     currentState = MenuState::LEVEL_SELECT;
                     multiplayerSelected = true;
-                    luigiAI= true;
+                    luigiAI = true;
                 }
                 else if (choice == 2)
                 {
@@ -144,7 +146,9 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
 
 void Menu::draw(sf::RenderWindow &window)
 {
+    window.clear(); // Ajout pour éviter des artefacts graphiques
     window.draw(backgroundSprite);
+
     std::vector<MenuOption> *currentMenu =
         (currentState == MenuState::MAIN) ? &mainMenu : (currentState == MenuState::PLAYER_SELECT) ? &playerMenu
                                                     : (currentState == MenuState::MODE_SELECT)     ? &local_ia_menu
@@ -155,6 +159,8 @@ void Menu::draw(sf::RenderWindow &window)
         window.draw(option.box);
         window.draw(option.text);
     }
+    
+    window.display();
 }
 
 void Menu::changeSelection(std::vector<MenuOption> &menu, int direction)
@@ -166,7 +172,7 @@ void Menu::changeSelection(std::vector<MenuOption> &menu, int direction)
 
 bool Menu::isGameStarting()
 {
-    if (currentState == MenuState::GAMEOK && selectedIndex != 3)
+    if (currentState == MenuState::GAMEOK)
     {
         currentState = MenuState::MAIN; // Réinitialisation pour éviter de relancer en boucle
         return true;
@@ -178,4 +184,3 @@ bool Menu::isMultiplayerSelected()
 {
     return multiplayerSelected;
 }
-

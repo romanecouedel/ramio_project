@@ -15,7 +15,6 @@ public:
     bool isGameStarting();
     int getSelectedLevel() const { return selectedIndex; }
     bool isMultiplayerSelected();
-    bool isLuigiAIEnabled(); 
 
 private:
     sf::Font font;
