@@ -5,112 +5,97 @@
 #include "Audio.h"
 #include <iostream>
 
-
 extern AudioManager audioManager; 
 
 Player::Player() {
+    texture = std::make_unique<sf::Texture>();
+    if (!texture->loadFromFile("../img/sprite_mario.png")) {
+        std::cerr << "Erreur chargement Mario" << std::endl;
+    }
+    sprite.setTexture(*texture);
     currentAnimation = &animationIdleRight;
 }
 
+Player::~Player() {
+    std::cout << "Destruction du joueur" << std::endl;
+}
 
 void Player::respawn() {
-    sprite.setPosition(100, 100); // Position de base, à ajuster
-    velocity = {0, 0}; // Réinitialiser la vitesse
+    sprite.setPosition(100, 100);
+    velocity = {0, 0};
 }
+
 void Player::draw(sf::RenderWindow& window) const {
     if (visible) {
         window.draw(sprite);
     }
 }
 
-void Player::update(float deltaTime, const Level &level)
-{
-    if (sprite.getPosition().y > level.getHeight() * 64 + 100) {//pour un peu de marge (64 pour la conversione n pixel)
+void Player::update(float deltaTime, const Level &level) {
+    if (sprite.getPosition().y > level.getHeight() * 64 + 100) {
         isDead = true;
     }
     velocity.y += gravity * deltaTime;
-    if (velocity.y > 0 && onGround)
-    { 
+    if (velocity.y > 0 && onGround) { 
         isJumping = false;
     }
-    if (velocity.x==0 && onGround)
-    { 
+    if (velocity.x == 0 && onGround) { 
         currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
     }
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
 
-    if (velocity.y < 0)
-    { 
+    if (velocity.y < 0) { 
         isJumping = true;
-    }
-    else if (velocity.y == 0)
-    { 
+    } else if (velocity.y == 0) { 
         isJumping = false;
     }
     
     // Collisions horizontales
     sf::FloatRect hitbox = getHitbox();
     hitbox.left += velocity.x * deltaTime;
-    if (!level.isColliding(hitbox))
-    {
+    if (!level.isColliding(hitbox)) {
         sprite.move(velocity.x * deltaTime, 0);
-    }
-    else
-    {
+    } else {
         velocity.x = 0;
     }
 
     // Collisions verticales
     hitbox = getHitbox();
     hitbox.top += velocity.y * deltaTime;
-
-    if (!level.isColliding(hitbox))
-    {
+    if (!level.isColliding(hitbox)) {
         sprite.move(0, velocity.y * deltaTime);
         onGround = false;
-    }
-    else
-    {
-        // Collision par le haut (plafond)
-        if (velocity.y < 0)
-        {
-            while (level.isColliding(getHitbox()))
-            {
-                sprite.move(0, 0.5f); // Décale légèrement vers le bas
+    } else {
+        if (velocity.y < 0) {
+            while (level.isColliding(getHitbox())) {
+                sprite.move(0, 0.5f);
             }
             velocity.y = 0;
-        }
-        // Collision par le bas (sol)
-        else if (velocity.y > 0)
-        {
-            while (level.isColliding(getHitbox()))
-            {
-                sprite.move(0, -0.5f); // Décale légèrement vers le haut
+        } else if (velocity.y > 0) {
+            while (level.isColliding(getHitbox())) {
+                sprite.move(0, -0.5f);
             }
             velocity.y = 0;
             onGround = true;
             canJump = true;
-            isJumping = false; 
+            isJumping = false;
         }
     }
 }
 
-void Player::update(float deltaTime)
-{
+void Player::update(float deltaTime) {
     handleInput();
 }
 
-sf::FloatRect Player::getHitbox() const
-{
-    sf::FloatRect bounds = sprite.getGlobalBounds();
-    return bounds; 
+sf::FloatRect Player::getHitbox() const {
+    return sprite.getGlobalBounds();
 }
 
-sf::Vector2f Player::getPosition() const
-{
+sf::Vector2f Player::getPosition() const {
     return sprite.getPosition();
 }
+
 void Player::setOpacity(sf::Uint8 alpha) {
     sf::Color color = sprite.getColor();
     color.a = alpha;
@@ -123,29 +108,42 @@ void Player::jump() {
     currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
     audioManager.playYahooSound();
 }
+
 //==========================Classe dérivée==========================//
 //========Mario======/
 
 Mario::Mario() {
-    if (!texture.loadFromFile("../img/sprite_mario.png")) std::cerr << "Erreur chargement Mario" << std::endl;
-    sprite.setTexture(texture);
+    texture = std::make_unique<sf::Texture>();
+    if (!texture->loadFromFile("../img/sprite_mario.png")) {
+        std::cerr << "Erreur chargement Mario" << std::endl;
+    }
+    sprite.setTexture(*texture);
     sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(100, 100);
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
-    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
-    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
-    animationIdleRight = Animation(&texture,{1,1},0.f);
-    animationIdleLeft = Animation(&texture,{1,2},0.f);
+    animationWalkRight = Animation(texture.get(), {1, 1}, 0.1f);
+    animationWalkLeft = Animation(texture.get(), {1, 2}, 0.1f);
+    animationJumpLeft = Animation(texture.get(), {4, 1}, 0.1f);
+    animationJumpRight = Animation(texture.get(), {2, 1}, 0.1f);
+    animationIdleRight = Animation(texture.get(), {1,1}, 0.f);
+    animationIdleLeft = Animation(texture.get(), {1,2}, 0.f);
     currentAnimation = &animationIdleRight;
 }
 
-
 void Mario::handleInput() {
     velocity.x = 0;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { velocity.x = -speed; faceRight = false; currentAnimation = &animationWalkLeft; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { velocity.x = speed; faceRight = true; currentAnimation = &animationWalkRight; }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) jump();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        velocity.x = -speed;
+        faceRight = false;
+        currentAnimation = &animationWalkLeft;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        velocity.x = speed;
+        faceRight = true;
+        currentAnimation = &animationWalkRight;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && canJump) {
+        jump();
+    }
 }
 
 void Mario::respawn() {
@@ -159,20 +157,22 @@ void Mario::update(float deltaTime, const Level& level) {
 }
 
 
-
 //==========================LUIGI==========================//
 
-Luigi::Luigi(){
-    if (!texture.loadFromFile("../img/sprite_luigi.png")) std::cerr << "Erreur chargement Luigi" << std::endl;
-    sprite.setTexture(texture);
+Luigi::Luigi() {
+    texture = std::make_unique<sf::Texture>();
+    if (!texture->loadFromFile("../img/sprite_luigi.png")) {
+        std::cerr << "Erreur chargement Luigi" << std::endl;
+    }
+    sprite.setTexture(*texture);
     sprite.setScale(0.40f, 0.40f);
     sprite.setPosition(150, 100);
-    animationWalkRight = Animation(&texture, {1, 1}, 0.1f);
-    animationWalkLeft = Animation(&texture, {1, 2}, 0.1f);
-    animationJumpLeft = Animation(&texture, {4, 1}, 0.1f);
-    animationJumpRight = Animation(&texture, {2, 1}, 0.1f);
-    animationIdleRight = Animation(&texture,{1,1},0.f);
-    animationIdleLeft = Animation(&texture,{1,2},0.f);
+    animationWalkRight = Animation(texture.get(), {1, 1}, 0.1f);
+    animationWalkLeft = Animation(texture.get(), {1, 2}, 0.1f);
+    animationJumpLeft = Animation(texture.get(), {4, 1}, 0.1f);
+    animationJumpRight = Animation(texture.get(), {2, 1}, 0.1f);
+    animationIdleRight = Animation(texture.get(), {1,1}, 0.f);
+    animationIdleLeft = Animation(texture.get(), {1,2}, 0.f);
     currentAnimation = &animationIdleRight;
 }
 

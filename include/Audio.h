@@ -8,6 +8,7 @@ class AudioManager
 {
 public:
     AudioManager(); // Constructeur
+    ~AudioManager(); 
     std::string getCurrentMusic();
     void setVolume(const std::string& soundName, float volume);
     
@@ -21,10 +22,12 @@ public:
     void playOneUpSound();
 
 private:
+    std::string currentMusic;
     // Musiques de fond
     sf::Music musiqueMenu;
     sf::Music musiqueJeu;
     sf::Music musiqueFin;
+    sf::Music musiqueGameOver;
 
     // Effets sonores (buffers et sons)
     sf::SoundBuffer coinBuffer;
@@ -38,6 +41,6 @@ private:
 
     sf::SoundBuffer oneUpBuffer;
     sf::Sound oneUpSound;
-};
+};  
 
 #endif

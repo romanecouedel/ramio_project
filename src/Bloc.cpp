@@ -4,81 +4,87 @@
 #include "Level.h"
 #include "Player.h"
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
-// ======================== Classe Bloc ========================
-Bloc::Bloc(const std::string &texturePath)
-{
-    if (!texture.loadFromFile(texturePath))
-    {
-        std::cerr << "Erreur chargement texture : " << texturePath << std::endl;
-    }
-    sprite.setTexture(texture);
-    sprite.setScale(64.0f / texture.getSize().x, 64.0f / texture.getSize().y);
-}
+// ======================== Initialisation des Textures Globales ========================
+sf::Texture Bloc::textureBlocSol;
+sf::Texture Bloc::textureBlocMystere;
+sf::Texture Bloc::textureTuyau;
 
 // ======================== BlocSol ========================
-BlocSol::BlocSol() : Bloc("../img/block.png") {}
+BlocSol::BlocSol() {
+    if (textureBlocSol.getSize().x == 0) { // Charge la texture une seule fois
+        if (!textureBlocSol.loadFromFile("../img/block.png")) {
+            std::cerr << "Erreur chargement texture BlocSol" << std::endl;
+        }
+    }
+    sprite.setTexture(textureBlocSol);
+    sprite.setScale(64.0f / textureBlocSol.getSize().x, 64.0f / textureBlocSol.getSize().y);
+}
 
 // ======================== BlocMystere ========================
-BlocMystere::BlocMystere() : Bloc("../img/mystery_box.png")
-{
+BlocMystere::BlocMystere() {
+    if (textureBlocMystere.getSize().x == 0) { // Charge la texture une seule fois
+        if (!textureBlocMystere.loadFromFile("../img/mystery_box.png")) {
+            std::cerr << "Erreur chargement texture BlocMystere" << std::endl;
+        }
+    }
+    sprite.setTexture(textureBlocMystere);
+    sprite.setScale(64.0f / textureBlocMystere.getSize().x, 64.0f / textureBlocMystere.getSize().y);
+    
     startPosition = sprite.getPosition();
 
-    if (!textureFoncee.loadFromFile("../img/mystery_box_dark.png"))
-    {
-        std::cerr << "Erreur chargement texture foncée!" << std::endl;
+    if (!textureFoncee.loadFromFile("../img/mystery_box_dark.png")) {
+        std::cerr << "Erreur chargement texture foncée BlocMystere" << std::endl;
     }
 }
 
-void BlocMystere::changerTexture()
-{
+void BlocMystere::changerTexture() {
     sprite.setTexture(textureFoncee);
 }
 
-void BlocMystere::onHit()
-{
-    if (!animating && sprite.getTexture() != &textureFoncee)
-    {
+void BlocMystere::onHit() {
+    if (!animating && sprite.getTexture() != &textureFoncee) {
         animating = true;
         animationTime = 0.0f;
         startPosition = sprite.getPosition();
 
-        // Crée la pièce seulement si texture originale
+        // Crée la pièce seulement si la texture est encore la boîte mystère
         piece = std::make_unique<Piece>(startPosition.x, startPosition.y - 64.0f);
 
         // Change la texture du bloc
         changerTexture();
-
     }
 }
 
-void BlocMystere::update(float deltaTime, sf::RenderWindow &window)
-{
-    if (animating)
-    {
+void BlocMystere::update(float deltaTime, sf::RenderWindow &window) {
+    if (animating) {
         animationTime += deltaTime;
-
         float offset = -animationHeight * std::sin((animationTime / animationDuration) * 3.14159f);
         sprite.setPosition(startPosition.x, startPosition.y + offset);
 
-        if (animationTime >= animationDuration)
-        {
+        if (animationTime >= animationDuration) {
             sprite.setPosition(startPosition);
             animating = false;
             animationTime = 0.f;
         }
     }
-
 }
 
-bool BlocMystere::isAnimating() const
-{
+bool BlocMystere::isAnimating() const {
     return animating;
 }
 
 // ======================== Tuyau ========================
-Tuyau::Tuyau(Type type) : Bloc("../img/pipe.png"), type(type) {}
+Tuyau::Tuyau(Type type) : type(type) {
+    if (textureTuyau.getSize().x == 0) { // Charge la texture une seule fois
+        if (!textureTuyau.loadFromFile("../img/pipe.png")) {
+            std::cerr << "Erreur chargement texture Tuyau" << std::endl;
+        }
+    }
+    sprite.setTexture(textureTuyau);
+    sprite.setScale(64.0f / textureTuyau.getSize().x, 64.0f / textureTuyau.getSize().y);
+}
 
 Tuyau::Type Tuyau::getType() const {
     return type;
@@ -100,8 +106,6 @@ Tuyau* Tuyau::getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs)
     }
     return meilleureSortie;
 }
-
-
 
 bool Tuyau::isPlayerOnTop(const Player& player) const {
     sf::FloatRect playerBounds = player.getHitbox();

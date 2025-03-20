@@ -33,7 +33,7 @@ int main()
     Menu menu(900, 600);
     Level level;
     Mario mario;
-    Luigi luigi;
+    Luigi luigi; 
 
     sf::Clock clock; // Horloge pour gérer le temps écoulé
     sf::Clock displayClock;
@@ -102,11 +102,6 @@ int main()
                     window.create(sf::VideoMode(900, 600), "Mario - Menu");
                     view.setCenter(450, 300);
                     window.setView(view);
-
-                    // Réinitialisation pour éviter de relancer l'écran "perdu" en boucle
-                    finDeJeu.victoire = true;
-                    nbMortsMario = 0;
-                    nbMortsLuigi = 0;
                 }
             }
         }
@@ -119,8 +114,8 @@ int main()
         }
         else if (gameState == GameState::GAME)
         {
-
-            deltaTime = clock.restart().asSeconds();
+            
+            deltaTime = clock.restart().asSeconds()/20;//juste poue valgrind
 
             mario.handleInput();
             mario.update(deltaTime, level);
@@ -135,7 +130,7 @@ int main()
             }
             else if (multijoueur && luigiAI)
             {
-                luigi.handleInputAI(&level, &mario);
+                luigi.handleInputAI(&level,&mario);
             }
 
             luigi.update(deltaTime, level);
@@ -201,8 +196,7 @@ int main()
 
             window.display();
             window.clear();
-            if (displayClock.getElapsedTime().asSeconds() >= 10.0f)
-            {
+            if (displayClock.getElapsedTime().asSeconds() >= 10.0f) {
                 level.afficherEtatBlocsMysteres();
                 displayClock.restart(); // Réinitialiser l'horloge pour l'affichage des blocs mystères
             }

@@ -11,7 +11,9 @@ class Player;
 class Bloc {
 protected:
     sf::Sprite sprite;
-    sf::Texture texture;
+    static sf::Texture textureBlocSol;  // Texture partagée pour BlocSol
+    static sf::Texture textureBlocMystere; // Texture partagée pour BlocMystere
+    static sf::Texture textureTuyau;
  
 public: 
     Bloc() = default;

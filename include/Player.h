@@ -3,6 +3,7 @@
 #include "Animation.h"
 #include <cstdlib>
 #include <ctime>
+#include <memory> 
 
 class Level;
 class Player : public Entity {
@@ -15,7 +16,7 @@ protected:
     Animation animationIdleRight;
     Animation animationIdleLeft;
     Animation* currentAnimation;
-    sf::Texture texture;
+    std::unique_ptr<sf::Texture> texture; 
     bool isJumping = false;
     bool canJump = true;
     bool isDead = false;
@@ -23,6 +24,7 @@ protected:
 
 public:
     Player();
+    virtual ~Player(); 
     bool faceRight = true;
     virtual void handleInput() = 0; // Méthode pure virtuelle
     virtual void update(float deltaTime) override;  
@@ -62,9 +64,6 @@ public:
     sf::Clock waitClock; // Horloge pour mesurer le temps d'attente
     bool waiting = false; // Indique si Luigi est en attente
 
-
-
-   
     void handleInputAI(Level* lvl ,const Mario* mario);
     Luigi(); 
     bool isAIEnabled = true;
@@ -72,8 +71,6 @@ public:
     void handleInput() override;
     void update(float deltaTime, const Level& level);
     void marcher_normal();
-
-
 
 };
 
