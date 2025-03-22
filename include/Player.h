@@ -1,11 +1,13 @@
 #pragma once
 #include "Entity.h"
 #include "Animation.h"
+#include "Ennemi.h"
+#include "Level.h"
 #include <cstdlib>
 #include <ctime>
 
 class Level;
-
+class Ennemi;
 
 // ============================================= Classe Player ===========================================$
 // classe fille de Entity
@@ -42,14 +44,14 @@ public:
     void draw(sf::RenderWindow& window) const override;// surchargée car méthode héritée de Entity
     void jump();
     void move(float dx, float dy) {sprite.move(dx, dy);}
-    void initializePlayer(const std::string& texturePath, sf::Vector2f position);    
+    void initializePlayer(const std::string& texturePath, sf::Vector2f position);
+    void checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>>& ennemis);    
     void respawn();
 
     void setCollisionsActive(bool active) { collisionsActive = active; }
     bool areCollisionsActive() const { return collisionsActive; }
     void setOpacity(sf::Uint8 alpha); // sert pour l'animation tuyau
     void update(float deltaTime, const Level& level); // mise à jour du joueur en fonction des collisions du level
-
 
     // Méthodes virtuelles pures, implémentées par les classes filles
     virtual void handleInput() = 0; 

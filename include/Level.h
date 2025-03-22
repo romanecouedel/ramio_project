@@ -24,9 +24,6 @@ public:
     
     void afficherEtatBlocsMysteres() const ;
 
-
-
-
     int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
     int getHeight() const { return grid.size(); }
 
@@ -40,8 +37,7 @@ public:
 
     bool isTuyauColliding(const sf::FloatRect& playerBound) const;    
 
-    void updateEnnemis(float deltaTime);
-    void drawEnnemis(sf::RenderWindow &window);
+    const std::vector<std::unique_ptr<Ennemi>>& getEnnemis() const { return ennemis; }
 
     void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 

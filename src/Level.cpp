@@ -187,10 +187,6 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
                 {
                     ennemi->onPlayerCollision(true);
                 }
-                else
-                {
-                    // Mario ou Luigi perd une vie
-                }
             }
         }
     }
