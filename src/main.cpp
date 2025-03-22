@@ -115,11 +115,11 @@ int main()
             // Mise à jour des personnages
             mario.handleInput();
             mario.update(deltaTime, level);
-            level.handleTuyauInteraction(mario, deltaTime);
+            level.handleTuyauInteraction(mario, &luigi, deltaTime);
 
             if (multijoueur)
             {
-                level.handleTuyauInteraction(luigi, deltaTime);
+                level.handleTuyauInteraction(mario, nullptr, deltaTime);
                 if (luigiAI)
                     luigi.handleInputAI(&level, &mario);
                 else
@@ -127,6 +127,7 @@ int main()
 
                 luigi.update(deltaTime, level);
             }
+
 
             // Vérification du drapeau pour terminer le niveau
             if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) || 
@@ -171,8 +172,7 @@ int main()
             float halfScreenWidth = window.getSize().x / 2.0f;
             float minX = halfScreenWidth;
             float maxX = levelWidth - halfScreenWidth;
-            float centerX = std::clamp(playerPosX, minX, maxX);
-
+            float centerX = std::max(minX, std::min(playerPosX, maxX));
             view.setSize(window.getSize().x, window.getSize().y);
             view.setCenter(centerX, window.getSize().y / 2);
             window.setView(view);

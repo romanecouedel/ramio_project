@@ -34,6 +34,7 @@ bool Level::loadFromFile(const std::string &filename)
 
     grid.clear();
     blocs.clear();
+    ennemis.clear();
 
     const float blockSize = 64.0f;
     std::string line;
@@ -80,6 +81,11 @@ bool Level::loadFromFile(const std::string &filename)
         grid.push_back(row);
         ++y;
     }
+    if (!grid.empty())
+    {
+        generateBackground(grid[0].size() * 64, grid.size() * 64);
+    }
+    std::cout << "Nombre d'ennemis chargés : " << ennemis.size() << std::endl;
     return true;
 }
 
@@ -102,7 +108,7 @@ void Level::draw(sf::RenderWindow &window)
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
 
-    generateBackground(grid[0].size() * 64, grid.size() * 64);
+    // generateBackground(grid[0].size() * 64, grid.size() * 64);
 
     // Dessiner les blocs
     for (const auto &bloc : blocs)
@@ -119,15 +125,16 @@ void Level::draw(sf::RenderWindow &window)
             }
         }
     }
-
-    drawEnnemis(window);
+    for (const auto &ennemi : ennemis)
+    {
+        ennemi->draw(window);
+    }
     drapeau.draw(window);
 }
 
 // ======================== Mise à Jour ========================
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
-    updateEnnemis(deltaTime);
 
     for (auto &bloc : blocs)
     {
@@ -142,32 +149,76 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             hitboxAvecTolerance.height += 6.0f;
 
             // Vérifie si Mario ou Luigi frappe le bloc mystère
-            if (hitboxMario.intersects(hitboxAvecTolerance) || hitboxLuigi.intersects(hitboxAvecTolerance))
+            for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
             {
-                float milieuBloc = blocMystere->getGlobalBounds().top + blocMystere->getGlobalBounds().height * 0.4f;
-                if (!blocMystere->isAnimating())
+                if (hitboxJoueur.intersects(hitboxAvecTolerance))
                 {
-                    if (hitboxMario.top > milieuBloc || hitboxLuigi.top > milieuBloc)
+                    float blocCenterX = blocBounds.left + blocBounds.width / 2.0f;
+                    float joueurCenterX = hitboxJoueur.left + hitboxJoueur.width / 2.0f;
+                    float maxOffset = blocBounds.width * 0.4f;
+
+                    if (std::abs(joueurCenterX - blocCenterX) < maxOffset)
                     {
-                        blocMystere->onHit();
-                        
-                        blocMystere->estTouche=true;
+                        float milieuBloc = blocBounds.top + blocBounds.height * 0.4f;
+
+                        if (!blocMystere->isAnimating() && hitboxJoueur.top > milieuBloc)
+                        {
+                            blocMystere->onHit();
+                        }
+                        blocMystere->estTouche = true;
                     }
                 }
             }
         }
     }
-}
+    for (auto &ennemi : ennemis)
+    {
+        ennemi->update(deltaTime, *this);
 
+        sf::FloatRect ennemiBounds = ennemi->getBounds();
+
+        for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
+        {
+            if (hitboxJoueur.intersects(ennemiBounds))
+            {
+                if (hitboxJoueur.top + hitboxJoueur.height - 5.0f < ennemiBounds.top)
+                {
+                    ennemi->onPlayerCollision(true);
+                }
+                else
+                {
+                    // Mario ou Luigi perd une vie
+                }
+            }
+        }
+    }
+    for (auto it = ennemis.begin(); it != ennemis.end();)
+    {
+        if (!it->get()->isAlive) // Accès explicite avec `get()`
+            it = ennemis.erase(it); // Supprime et récupère le nouvel itérateur valide
+        else
+            ++it; // Passe à l'ennemi suivant
+    }
+}
 
 // ======================== Détection de Collisions ========================
 bool Level::isColliding(const sf::FloatRect &hitbox) const
 {
-    for (const auto &bloc : blocs)
+    // on regarde les collisions seulement autour du joueur
+    float blockSize = 64.0f; // Taille d'un bloc
+    int startX = std::max(0, static_cast<int>(hitbox.left / blockSize));
+    int startY = std::max(0, static_cast<int>(hitbox.top / blockSize));
+    int endX = std::min(getWidth() - 1, static_cast<int>((hitbox.left + hitbox.width) / blockSize));
+    int endY = std::min(getHeight() - 1, static_cast<int>((hitbox.top + hitbox.height) / blockSize));
+
+    for (int y = startY; y <= endY; ++y)
     {
-        if (hitbox.intersects(bloc->getGlobalBounds()))
+        for (int x = startX; x <= endX; ++x)
         {
-            return true;
+            if (grid[y][x] == '#' || grid[y][x] == '?' || grid[y][x] == 'U' || grid[y][x] == 'V') // Blocs solides
+            {
+                return true;
+            }
         }
     }
     return false;
@@ -194,22 +245,27 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
 
     // Définition des directions autour du joueur (haut, bas, gauche, droite)
     std::vector<sf::Vector2f> directions = {
-        {0, -blockSize},  // Au-dessus
-        {0, blockSize},   // En dessous
-        {-blockSize, 0},  // À gauche
-        {blockSize, 0}    // À droite
+        {0, -blockSize}, // Au-dessus
+        {0, blockSize},  // En dessous
+        {-blockSize, 0}, // À gauche
+        {blockSize, 0}   // À droite
     };
 
-    for (const auto& dir : directions) {
+    for (const auto &dir : directions)
+    {
         sf::Vector2f checkPosition = position + dir;
 
-        for (const auto& bloc : blocs) {
-            if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+        for (const auto &bloc : blocs)
+        {
+            if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
+            {
                 sf::Vector2f blocPosition = blocMystere->getPosition();
                 if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
-                    std::abs(blocPosition.y - checkPosition.y) < tolerance) {
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance)
+                {
                     // Vérifie si le bloc mystère contient encore un objet (non vide)
-                    if (!blocMystere->estTouche) {
+                    if (!blocMystere->estTouche)
+                    {
                         return blocMystere;
                     }
                 }
@@ -249,87 +305,75 @@ void Level::generateBackground(float levelWidth, float levelHeight)
     }
 }
 
-//===========================ENNEMI===================================
-
-void Level::updateEnnemis(float deltaTime)
-{
-    for (auto &ennemi : ennemis)
-    {
-        ennemi.update(deltaTime); // Met à jour leur mouvement
-    }
-}
-
-void Level::drawEnnemis(sf::RenderWindow &window)
-{
-    for (auto &ennemi : ennemis)
-    {
-        ennemi.draw(window);
-    }
-}
-
 //======================+Tuyau================================
-void Level::handleTuyauInteraction(Player &player, float deltaTime)
+void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime)
 {
-    // Si le joueur n'est pas en train d'entrer ou de sortir d'un tuyau
     if (!enTrainDeDescendre && !enTrainDeMonter)
     {
         for (auto &bloc : blocs)
         {
             Tuyau *tuyau = dynamic_cast<Tuyau *>(bloc.get());
-            if (tuyau && tuyau->getType() == Tuyau::TypeES::ENTREE)
+            if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE)
             {
-                if (tuyau->isPlayerOnTop(player) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                {
 
-                    // Initialisation de l'animation de descente
+                bool marioSurTuyau = tuyau->isPlayerOnTop(mario) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+                bool luigiSurTuyau = luigi && tuyau->isPlayerOnTop(*luigi) && sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+
+                if (marioSurTuyau || luigiSurTuyau)
+                {
                     enTrainDeDescendre = true;
                     tuyauTimer = 0.0f;
 
-                    // Centrer le joueur horizontalement sur le tuyau
+                    Tuyau *sortie = tuyau->getSortieAssociee(blocs);
+                    if (sortie)
+                    {
+                        sortiePosition = sortie->getPosition();
+                    }
+
                     sf::Vector2f tuyauPos = tuyau->getPosition();
                     sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
-                    sf::FloatRect playerBounds = player.getGlobalBounds();
-                    float newX = tuyauPos.x + (tuyauBounds.width / 2.0f) - (playerBounds.width / 2.0f);
-                    player.setPosition(newX, player.getPosition().y);
-                    player.setCollisionsActive(false);
-                    // Chercher la sortie
-                    for (auto &bloc2 : blocs)
+                    sf::FloatRect marioBounds = mario.getGlobalBounds();
+
+                    float marioNewX = tuyauPos.x + (tuyauBounds.width - marioBounds.width) / 2.0f;
+                    mario.setPosition(marioNewX, mario.getPosition().y);
+
+                    // Centrer Luigi seulement en mode multijoueur
+                    if (luigi)
                     {
-                        Tuyau *sortie = dynamic_cast<Tuyau *>(bloc2.get());
-                        if (sortie && sortie->getType() == Tuyau::TypeES::SORTIE)
-                        {
-                            sortiePosition = sortie->getPosition();
-                            return;
-                        }
+                        sf::FloatRect luigiBounds = luigi->getGlobalBounds();
+                        float luigiNewX = tuyauPos.x + (tuyauBounds.width - luigiBounds.width) / 2.0f;
+                        luigi->setPosition(luigiNewX, luigi->getPosition().y);
                     }
+                    return;
                 }
             }
         }
     }
 
-    /// Animation de descente
+    // Animation de descente
     if (enTrainDeDescendre)
     {
         tuyauTimer += deltaTime;
-        float descenteSpeed = 80.0f; // 🔽 Plus lent pour mieux voir
-        player.move(0, descenteSpeed * deltaTime);
+        float descenteSpeed = 100.0f;
 
-        // Réduire progressivement l'opacité (disparition plus naturelle)
-        float fadeStart = 0.2f; // Temps avant que l'opacité commence à diminuer
-        if (tuyauTimer >= fadeStart)
+        mario.move(0, descenteSpeed * deltaTime);
+        if (luigi)
+            luigi->move(0, descenteSpeed * deltaTime);
+
+        float alpha = 255 * (1.0f - (tuyauTimer / 0.5f));
+        mario.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+        if (luigi)
+            luigi->setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+
+        if (tuyauTimer >= 0.5f)
         {
-            float alpha = 255 * (1.0f - (tuyauTimer - fadeStart) / 0.5f); // Transition plus douce
-            player.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
-        }
+            mario.setPosition(sortiePosition.x, sortiePosition.y + 64.0f);
+            if (luigi)
+                luigi->setPosition(sortiePosition.x, sortiePosition.y + 74.0f);
 
-        if (tuyauTimer >= 0.6f)
-        { // ⏳ Temps total augmenté un peu
-            sf::Vector2f sortiePos = sortiePosition;
-            sf::FloatRect sortieBounds = player.getGlobalBounds();
-            float newXSortie = sortiePos.x + (64.0f / 2.0f) - (sortieBounds.width / 2.0f);
-
-            player.setPosition(newXSortie, sortiePos.y + 64.0f);
-            player.setOpacity(0);
+            mario.setOpacity(0);
+            if (luigi)
+                luigi->setOpacity(0);
 
             enTrainDeDescendre = false;
             enTrainDeMonter = true;
@@ -341,33 +385,39 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
     if (enTrainDeMonter)
     {
         tuyauTimer += deltaTime;
-        float monteeSpeed = 80.0f; // 🔼 Plus lent aussi
-        player.move(0, -monteeSpeed * deltaTime);
+        float monteeSpeed = 100.0f;
 
-        // Opacité augmente progressivement mais commence après 0.2s
-        float fadeStart = 0.2f;
-        if (tuyauTimer >= fadeStart)
-        {
-            float alpha = 255 * ((tuyauTimer - fadeStart) / 0.5f);
-            player.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
-        }
+        mario.move(0, -monteeSpeed * deltaTime);
+        if (luigi)
+            luigi->move(0, -monteeSpeed * deltaTime);
 
-        if (tuyauTimer >= 0.6f)
+        float alpha = 255 * (tuyauTimer / 0.5f);
+        mario.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+        if (luigi)
+            luigi->setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+
+        if (tuyauTimer >= 0.5f)
         {
             enTrainDeMonter = false;
             tuyauTimer = 0.0f;
-            player.setOpacity(255);
-            player.setCollisionsActive(true);
-        }
-    }
-}
-bool Level::isTuyauColliding(const sf::FloatRect& hitbox) const {
-    for (const auto& bloc : blocs) {
-        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
-            if (hitbox.intersects(tuyau->getGlobalBounds())) {
-                return true;
+
+            mario.setOpacity(255);
+            if (luigi)
+            {
+                luigi->setOpacity(255);
             }
         }
     }
-    return false;
+}
+
+bool Level::isTuyauColliding(const sf::FloatRect &playerBound) const {
+    sf::FloatRect tuyauBounds; // Initialize tuyauBounds
+    for (const auto& bloc : blocs) {
+        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
+            tuyauBounds = tuyau->getGlobalBounds(); // Use Tuyau's getGlobalBounds method
+            break; // Assuming you only need the first Tuyau's bounds
+        }
+    }
+
+    return playerBound.intersects(tuyauBounds);
 }

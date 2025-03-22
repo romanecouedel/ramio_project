@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "Ennemi.h"
 
-
+class Ennemi;
 // Classe gère les levels du jeu
 class Level
     {
@@ -53,6 +53,7 @@ class Level
         void updateEnnemis(float deltaTime);
         void drawEnnemis(sf::RenderWindow &window);
 
+    void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
     private:
         // vecteur de vecteur d'entiers pour la grille
@@ -70,13 +71,17 @@ class Level
 
         sf::Music backgroundMusic;
 
-        // Tuyau
-        sf::RectangleShape tuyauEntree;
-        sf::RectangleShape tuyauSortie;
-        float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
-        bool enTrainDeDescendre = false; // Animation de descente active
-        bool enTrainDeMonter = false; // Animation de montée active
-        sf::Vector2f sortiePosition; // Position du tuyau de sortie
+    sf::RectangleShape tuyauEntree;
+    sf::RectangleShape tuyauSortie;
+
+    sf::Texture goombaTexture;
+    std::vector<std::unique_ptr<Ennemi>> ennemis;
+
+
+    float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
+    bool enTrainDeDescendre = false; // Animation de descente active
+    bool enTrainDeMonter = false; // Animation de montée active
+    sf::Vector2f sortiePosition; // Position du tuyau de sortie
 
 
 };
