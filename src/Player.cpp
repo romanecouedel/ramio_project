@@ -30,46 +30,43 @@ void Player::draw(sf::RenderWindow &window) const
 
 // mise à jour du joueur en fonction des collisions du level
 // param : le temps écoulé depuis la dernière frame, le niveau
-void Player::update(float deltaTime, const Level &level)
-{
+// Met à jour l'état du joueur en fonction du temps écoulé et du niveau
+void Player::update(float deltaTime, const Level &level) {
     // Vérifie si le joueur est tombé hors du niveau (mort)
-    if (sprite.getPosition().y > level.getHeight() * 64 + 100)
-    {
+    if (sprite.getPosition().y > level.getHeight() * 64 + 100) { 
         isDead = true;
-        return;
     }
 
     // Applique la gravité
     velocity.y += gravity * deltaTime;
 
-    // Détermine l'animation à afficher
-    if (velocity.x == 0 && onGround)
-    {
-        currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
+    // Détecte si le joueur a atterri après un saut
+    if (velocity.y > 0 && onGround) { 
         isJumping = false;
     }
-    else if (velocity.y < 0)
-    {
+
+    // Gère l'animation d'attente si le joueur est immobile au sol
+    if (velocity.x == 0 && onGround) { 
+        currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
+    }
+
+    // Met à jour l'animation du joueur
+    currentAnimation->update(deltaTime, faceRight, isJumping);
+    sprite.setTextureRect(currentAnimation->getCurrentFrame());
+
+    // Gère l'état du saut
+    if (velocity.y < 0) { 
         isJumping = true;
+    } else if (velocity.y == 0) { 
+        isJumping = false;
     }
-
-    // Met à jour l'animation du joueur uniquement si nécessaire
-    if (currentAnimation)
-    {
-        currentAnimation->update(deltaTime, faceRight, isJumping);
-        sprite.setTextureRect(currentAnimation->getCurrentFrame());
-    }
-
+    
     // Gestion des collisions horizontales
     sf::FloatRect hitbox = getGlobalBounds();
     hitbox.left += velocity.x * deltaTime;
-
-    if (!level.isColliding(hitbox))
-    {
+    if (!level.isColliding(hitbox)) {
         sprite.move(velocity.x * deltaTime, 0);
-    }
-    else
-    {
+    } else {
         velocity.x = 0; // Stoppe le mouvement horizontal en cas de collision
     }
 
@@ -77,32 +74,29 @@ void Player::update(float deltaTime, const Level &level)
     hitbox = getGlobalBounds();
     hitbox.top += velocity.y * deltaTime;
 
-    if (!level.isColliding(hitbox))
-    {
+    if (!level.isColliding(hitbox)) {
         sprite.move(0, velocity.y * deltaTime);
         onGround = false;
-    }
-    else
-    {
-        bool collisionHaut = velocity.y < 0;
-        float correction = collisionHaut ? 0.5f : -0.5f;
-
-        // Correction de position en cas de collision
-        while (level.isColliding(getGlobalBounds()))
-        {
-            sprite.move(0, correction);
+    } else {
+        // Collision avec le plafond
+        if (velocity.y < 0) {
+            while (level.isColliding(getGlobalBounds())) {
+                sprite.move(0, 0.5f); // Décale légèrement vers le bas pour éviter le blocage
+            }
+            velocity.y = 0;
         }
-
-        velocity.y = 0;
-        if (!collisionHaut)
-        {
+        // Collision avec le sol
+        else if (velocity.y > 0) {
+            while (level.isColliding(getGlobalBounds())) {
+                sprite.move(0, -0.5f); // Décale légèrement vers le haut
+            }
+            velocity.y = 0;
             onGround = true;
             canJump = true;
-            isJumping = false;
+            isJumping = false; 
         }
     }
 }
-
 // change l'opacité du sprite, utile pour l'animation du tuyau
 // param : la valeur de l'opacité
 void Player::setOpacity(sf::Uint8 alpha)
@@ -263,7 +257,6 @@ void Luigi::marcher_normal()
 }
 
 // IA de Luigi
-// param : le niveau, Mario
 void Luigi::handleInputAI(Level *lvl, const Mario *mario)
 {
     this->level = lvl;
