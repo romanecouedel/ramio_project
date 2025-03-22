@@ -15,33 +15,38 @@ enum class BlocType { SOL, MYSTERE, TUYAU};
 class Bloc {
 protected:
     sf::Sprite sprite;
-    sf::Texture texture;
-    BlocType type;
+    static sf::Texture textureBlocSol;  // Texture partagée pour BlocSol
+    static sf::Texture textureBlocMystere; // Texture partagée pour BlocMystere
+    static sf::Texture textureTuyau;
+ 
+public: 
+    Bloc() = default;
+    Bloc(const std::string& texturePath); 
+    virtual ~Bloc() = default;
 
-public:
-    Bloc() = default; // Constructeur par défaut car on a des classes filles différentes
-    explicit Bloc(const std::string& texturePath, BlocType type); // Constructeur avec texture
-    virtual ~Bloc() = default; // Destructeur virtuel
+    virtual void draw(sf::RenderWindow& window) const { 
+        window.draw(sprite); 
+    }
 
-    virtual void draw(sf::RenderWindow& window) const { window.draw(sprite); } // Dessine le bloc, virtuel pour les classes filles
+    sf::FloatRect getGlobalBounds() const {
+        return sprite.getGlobalBounds();
+    }
 
-    // Retourne les dimensions globales du bloc
-    sf::FloatRect getGlobalBounds() const { return sprite.getGlobalBounds(); } // Récupère la boite englobante du sprite, utilisée pour les collisions dans player
+    void setPosition(float x, float y) {
+        sprite.setPosition(x, y);
+    }
+    sf::Vector2f getPosition() const { 
+        return sprite.getPosition();
+    }
 
-    // Position
-    void setPosition(float x, float y) { sprite.setPosition(x, y); } // Définit la position du bloc
-    sf::Vector2f getPosition() const { return sprite.getPosition(); } // Récupère la position du bloc
-
-    // Accès au sprite
-    const sf::Sprite& getSprite() const { return sprite; } // Récupère le sprite du bloc
-
-    // Récupère le type du bloc
-    BlocType getType() const { return type; }   // Récupère le type du bloc
+    const sf::Sprite& getSprite() const { 
+        return sprite;
+    }
 };
 
+// ======================== Blocs Spécifiques ========================
 
-// ======================== Classe BLOC SOL ========================
-// Classe fille de Bloc
+// Bloc de Sol
 class BlocSol : public Bloc {
 public:
     // Constructeur
@@ -80,15 +85,13 @@ public:
 // ======================== Classe TUYAU========================
 // Classe fille de Bloc
 class Tuyau : public Bloc {
-public:
-    enum class TypeES { ENTREE, SORTIE };
-
-private:
-    TypeES type;
-
-public:
-    explicit Tuyau(TypeES type);
-
-    TypeES getType() const { return type; }
-    bool isPlayerOnTop(const Player& player) const;
-};
+    public:
+        enum class Type { ENTREE, SORTIE };
+        Tuyau(Type type);
+        Type getType() const;
+        bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
+        Tuyau* getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const;
+    private:
+        Type type;
+    };
+    

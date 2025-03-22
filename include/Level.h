@@ -10,11 +10,9 @@
 #include "Player.h"
 #include "Ennemi.h"
 
-
-
+class Ennemi;
 class Level
 {
-    std::vector<Ennemi> ennemis;
 public:
     Level();
     ~Level() = default;
@@ -40,23 +38,19 @@ public:
 
     void generateBackground(float levelWidth, float levelHeight);
 
-    bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+    bool isTuyauColliding(const sf::FloatRect& hitbox) const;    
 
     void updateEnnemis(float deltaTime);
     void drawEnnemis(sf::RenderWindow &window);
 
-    void handleTuyauInteraction(Player &player, float deltaTime);
-
-
-
-
-
+    void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
 
     Drapeau drapeau;
+    
     
     sf::Font font;
     sf::Text niveauTermineText;
@@ -81,6 +75,9 @@ private:
 
     sf::RectangleShape tuyauEntree;
     sf::RectangleShape tuyauSortie;
+
+    sf::Texture goombaTexture;
+    std::vector<std::unique_ptr<Ennemi>> ennemis;
 
 
     float tuyauTimer = 0.0f; // Temps écoulé pour l'animation

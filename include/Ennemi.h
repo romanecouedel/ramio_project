@@ -1,23 +1,34 @@
 #ifndef ENNEMI_H
 #define ENNEMI_H
 
+#include "Entity.h"
+#include "Level.h"
 #include <SFML/Graphics.hpp>
 
-class Ennemi {
+class Level; 
+class Ennemi : public Entity
+{
+public:
+    Ennemi();
+
+    void setPosition(float x, float y);
+    void update(float deltaTime, class Level &level);
+    void onPlayerCollision(bool fromAbove);
+    void draw(sf::RenderWindow &window) const override;
+    sf::FloatRect getBounds() const;
+    bool isAlive = true;
+
 private:
     sf::Sprite sprite;
-    sf::Texture texture;
     sf::Vector2f velocity;
-    float speed;
-    bool movingRight;
+    bool isSquashed;
+    float squashTimer = 0.f; 
+    float animationTimer = 0.f;
+    int currentFrame = 0;
+    
 
-public:
-    Ennemi(); 
-    bool loadTexture(const std::string &filename); 
-    void setPosition(float x, float y);
-    void update(float deltaTime);
-    void draw(sf::RenderWindow &window);
-    sf::FloatRect getHitbox() const;
+    static sf::Texture textureEnnemi;
+    int frameWidth, frameHeight;
 };
 
-#endif // ENNEMI_H
+#endif
