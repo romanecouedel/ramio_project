@@ -73,7 +73,7 @@ bool Level::loadFromFile(const std::string &filename)
             }
             else if (c == 'U' || c == 'V')
             {
-                Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
+                Tuyau::TypeES type = (c == 'U') ? Tuyau::TypeES::ENTREE : Tuyau::TypeES::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
                 tuyau->setPosition(position.x, position.y);
                 blocs.push_back(std::move(tuyau));
@@ -295,7 +295,7 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
         for (auto &bloc : blocs)
         {
             Tuyau *tuyau = dynamic_cast<Tuyau *>(bloc.get());
-            if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE)
+            if (tuyau && tuyau->getType() == Tuyau::TypeES::ENTREE)
             {
                 if (tuyau->isPlayerOnTop(player) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                 {
@@ -315,7 +315,7 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
                     for (auto &bloc2 : blocs)
                     {
                         Tuyau *sortie = dynamic_cast<Tuyau *>(bloc2.get());
-                        if (sortie && sortie->getType() == Tuyau::Type::SORTIE)
+                        if (sortie && sortie->getType() == Tuyau::TypeES::SORTIE)
                         {
                             sortiePosition = sortie->getPosition();
                             return;

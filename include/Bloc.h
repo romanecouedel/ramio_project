@@ -1,85 +1,94 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <memory>
 #include "Entity.h"
-#include "Player.h"
-
 
 class Player;
 
-// ========================== Classe mère ==========================
+enum class BlocType { SOL, MYSTERE, TUYAU};
+
+// ======================================= Classe Bloc ===========================================
+// Classe abstraite représentant un bloc du jeu
+// classe mère de BlocSol, BlocMystere et Tuyau
 class Bloc {
 protected:
     sf::Sprite sprite;
     sf::Texture texture;
- 
-public: 
-    Bloc() = default;
-    Bloc(const std::string& texturePath); 
-    virtual ~Bloc() = default;
+    BlocType type;
 
-    virtual void draw(sf::RenderWindow& window) const { 
-        window.draw(sprite); 
-    }
+public:
+    Bloc() = default; // Constructeur par défaut car on a des classes filles différentes
+    explicit Bloc(const std::string& texturePath, BlocType type); // Constructeur avec texture
+    virtual ~Bloc() = default; // Destructeur virtuel
 
-    sf::FloatRect getGlobalBounds() const {
-        return sprite.getGlobalBounds();
-    }
+    virtual void draw(sf::RenderWindow& window) const { window.draw(sprite); } // Dessine le bloc, virtuel pour les classes filles
 
-    void setPosition(float x, float y) {
-        sprite.setPosition(x, y);
-    }
-    sf::Vector2f getPosition() const { // ✅ Ajouté
-        return sprite.getPosition();
-    }
+    // Retourne les dimensions globales du bloc
+    sf::FloatRect getGlobalBounds() const { return sprite.getGlobalBounds(); } // Récupère la boite englobante du sprite, utilisée pour les collisions dans player
 
-    const sf::Sprite& getSprite() const { // ✅ Ajouté
-        return sprite;
-    }
+    // Position
+    void setPosition(float x, float y) { sprite.setPosition(x, y); } // Définit la position du bloc
+    sf::Vector2f getPosition() const { return sprite.getPosition(); } // Récupère la position du bloc
+
+    // Accès au sprite
+    const sf::Sprite& getSprite() const { return sprite; } // Récupère le sprite du bloc
+
+    // Récupère le type du bloc
+    BlocType getType() const { return type; }   // Récupère le type du bloc
 };
 
-// ======================== Blocs Spécifiques ========================
 
-// Bloc de Sol
+// ======================== Classe BLOC SOL ========================
+// Classe fille de Bloc
 class BlocSol : public Bloc {
 public:
+    // Constructeur
     BlocSol();
 };
 
-// ======================== Bloc Mystère ========================
-class BlocMystere : public Bloc {
-public:
-    BlocMystere();
-    void update(float deltaTime, sf::RenderWindow& window);
-    void onHit();
-    bool isAnimating() const;
-    bool estTouche = false;
-    std::unique_ptr<Piece>& getPiece() { return piece; }
-    sf::Vector2f getPosition() const { return sprite.getPosition(); }
-    
 
+// ======================== Classe BLOC MYSTERE ========================
+// Classe fille de Bloc
+class BlocMystere : public Bloc {
 private:
+    // utile pour animation
     sf::Vector2f startPosition;
     bool animating = false;
     float animationTime = 0.0f;
     const float animationDuration = 0.2f;
     const float animationHeight = 5.0f;
-
+    sf::Texture textureFoncee;
     std::unique_ptr<Piece> piece;
 
-    sf::Texture textureFoncee;
-
     void changerTexture();
+
+public:
+    // Constructeur
+    BlocMystere();
+    // Animation
+    void update(float deltaTime, sf::RenderWindow& window);
+    void onHit();
+    bool isAnimating() const { return animating; }
+    bool estTouche = false; // utile pour ia
+
+    std::unique_ptr<Piece>& getPiece() { return piece; }
 };
 
-// ======================== Tuyau ========================
+
+// ======================== Classe TUYAU========================
+// Classe fille de Bloc
 class Tuyau : public Bloc {
-    public:
-        enum class Type { ENTREE, SORTIE };
-        Tuyau(Type type);
-        Type getType() const;
-        bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
-    private:
-        Type type;
-    };
-    
+public:
+    enum class TypeES { ENTREE, SORTIE };
+
+private:
+    TypeES type;
+
+public:
+    explicit Tuyau(TypeES type);
+
+    TypeES getType() const { return type; }
+    bool isPlayerOnTop(const Player& player) const;
+};

@@ -1,16 +1,14 @@
-// Bloc.cpp
 #include "Bloc.h"
 #include "Entity.h"
 #include "Level.h"
 #include "Player.h"
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 // ======================== Classe Bloc ========================
-Bloc::Bloc(const std::string &texturePath)
-{
-    if (!texture.loadFromFile(texturePath))
-    {
+// Constructeur
+Bloc::Bloc(const std::string& texturePath, BlocType type) : type(type) {
+    if (!texture.loadFromFile(texturePath)) {
         std::cerr << "Erreur chargement texture : " << texturePath << std::endl;
     }
     sprite.setTexture(texture);
@@ -18,28 +16,22 @@ Bloc::Bloc(const std::string &texturePath)
 }
 
 // ======================== BlocSol ========================
-BlocSol::BlocSol() : Bloc("../img/block.png") {}
+// Constructeur
+BlocSol::BlocSol() : Bloc("../img/block.png", BlocType::SOL) {}
 
 // ======================== BlocMystere ========================
-BlocMystere::BlocMystere() : Bloc("../img/mystery_box.png")
-{
+// Constructeur
+BlocMystere::BlocMystere() : Bloc("../img/mystery_box.png", BlocType::MYSTERE) {
     startPosition = sprite.getPosition();
 
-    if (!textureFoncee.loadFromFile("../img/mystery_box_dark.png"))
-    {
+    if (!textureFoncee.loadFromFile("../img/mystery_box_dark.png")) {
         std::cerr << "Erreur chargement texture foncée!" << std::endl;
     }
 }
 
-void BlocMystere::changerTexture()
-{
-    sprite.setTexture(textureFoncee);
-}
-
-void BlocMystere::onHit()
-{
-    if (!animating && sprite.getTexture() != &textureFoncee)
-    {
+// Si le bloc mystère est touché
+void BlocMystere::onHit() {
+    if (!animating && sprite.getTexture() != &textureFoncee) {
         animating = true;
         animationTime = 0.0f;
         startPosition = sprite.getPosition();
@@ -49,43 +41,35 @@ void BlocMystere::onHit()
 
         // Change la texture du bloc
         changerTexture();
-
     }
 }
 
-void BlocMystere::update(float deltaTime, sf::RenderWindow &window)
-{
-    if (animating)
-    {
+// changement texture lorsque la pièce est déjà récupérée
+void BlocMystere::changerTexture() {
+    sprite.setTexture(textureFoncee);
+}
+
+// Met à jour l'animation du bloc mystère
+void BlocMystere::update(float deltaTime, sf::RenderWindow& window) {
+    if (animating) {
         animationTime += deltaTime;
 
         float offset = -animationHeight * std::sin((animationTime / animationDuration) * 3.14159f);
         sprite.setPosition(startPosition.x, startPosition.y + offset);
 
-        if (animationTime >= animationDuration)
-        {
+        if (animationTime >= animationDuration) {
             sprite.setPosition(startPosition);
             animating = false;
             animationTime = 0.f;
         }
     }
-
-}
-
-bool BlocMystere::isAnimating() const
-{
-    return animating;
 }
 
 // ======================== Tuyau ========================
-Tuyau::Tuyau(Type type) : Bloc("../img/pipe.png"), type(type) {}
+// Constructeur
+Tuyau::Tuyau(TypeES type) : Bloc("../img/pipe.png", BlocType::TUYAU), type(type) {}
 
-Tuyau::Type Tuyau::getType() const {
-    return type;
-}
-
-
-
+// Vérifie si le joueur est au-dessus du tuyau
 bool Tuyau::isPlayerOnTop(const Player& player) const {
     sf::FloatRect playerBounds = player.getGlobalBounds();
     sf::FloatRect tuyauBounds = getGlobalBounds();
