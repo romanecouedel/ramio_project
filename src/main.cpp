@@ -18,8 +18,8 @@ enum class GameState
 int main()
 {
     // Initialisation des variables
-    bool luigiAI = false;         // Si Luigi est contrôlé par l'IA
-    bool multijoueur = false;     // Mode multijoueur activé ?
+    bool luigiAI = false;     // Si Luigi est contrôlé par l'IA
+    bool multijoueur = false; // Mode multijoueur activé ?
     int nbMortsMario = 0;
     int nbMortsLuigi = 0;
 
@@ -33,7 +33,7 @@ int main()
     Mario mario;
     Luigi luigi;
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
-    sf::Clock clock; // Horloge pour gérer le temps écoulé
+    sf::Clock clock;                              // Horloge pour gérer le temps écoulé
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
 
     // Positions initiales
@@ -129,9 +129,8 @@ int main()
                 luigi.update(deltaTime, level);
             }
 
-
             // Vérification du drapeau pour terminer le niveau
-            if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) || 
+            if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) ||
                  (multijoueur && luigi.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()))))
             {
                 std::cout << "Niveau terminé !" << std::endl;
@@ -145,20 +144,25 @@ int main()
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
 
+            
+            
+            int livesRemaining = 5 - (nbMortsMario + nbMortsLuigi);
             // Gestion des vies et des morts
-            if (mario.isDead) 
+            if (mario.isDead)
             {
                 mario.respawn();
                 nbMortsMario++;
+                std::cout << "Vies restantes: " << livesRemaining << std::endl;
             }
             if (luigi.isDead)
             {
                 luigi.respawn();
                 nbMortsLuigi++;
+                std::cout << "Vies restantes: " << livesRemaining << std::endl;
             }
-
+        
             // Fin de jeu si trop de morts
-            if (nbMortsMario + nbMortsLuigi > 2)
+            if (livesRemaining==-1)
             {
                 gameState = GameState::FDG;
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");

@@ -55,6 +55,8 @@ public:
 
     // Méthodes virtuelles pures, implémentées par les classes filles
     virtual void handleInput() = 0; 
+
+    
 };
 
 // ============================================= Classe Mario ===========================================

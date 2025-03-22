@@ -277,8 +277,6 @@ BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
 }
 
 
-
-
 // ======================== Initialisation du Texte ========================
 void Level::initTexte()
 {

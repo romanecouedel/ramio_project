@@ -16,8 +16,8 @@ public:
     void onPlayerCollision(bool fromAbove);
     void draw(sf::RenderWindow &window) const override;
     sf::FloatRect getBounds() const;
-    bool isAlive = true;
-
+    bool isAlive = true; 
+    
 private:
     sf::Sprite sprite;
     sf::Vector2f velocity;
