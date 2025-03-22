@@ -35,6 +35,7 @@ void Player::update(float deltaTime, const Level &level) {
     // Vérifie si le joueur est tombé hors du niveau (mort)
     if (sprite.getPosition().y > level.getHeight() * 64 + 100) { 
         isDead = true;
+        return;
     }
 
     // Applique la gravité
@@ -48,19 +49,18 @@ void Player::update(float deltaTime, const Level &level) {
     // Gère l'animation d'attente si le joueur est immobile au sol
     if (velocity.x == 0 && onGround) { 
         currentAnimation = faceRight ? &animationIdleRight : &animationIdleLeft;
+        isJumping = false;
+    }
+
+    else if (velocity.y < 0)
+    {
+        isJumping = true;
     }
 
     // Met à jour l'animation du joueur
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
 
-    // Gère l'état du saut
-    if (velocity.y < 0) { 
-        isJumping = true;
-    } else if (velocity.y == 0) { 
-        isJumping = false;
-    }
-    
     // Gestion des collisions horizontales
     sf::FloatRect hitbox = getGlobalBounds();
     hitbox.left += velocity.x * deltaTime;
@@ -199,7 +199,7 @@ void Luigi::marcher_normal()
     // Vérifie si Luigi est sur le point de dépasser Mario
     if (mario->faceRight)
     {
-        hitbox.left += 0.5 * speed; // Simulation de la position future à droite
+        hitbox.left += 0.25 * speed; // Simulation de la position future à droite
         if (sprite.getPosition().x > mario->getPosition().x - 100)
         {
             velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
@@ -217,10 +217,16 @@ void Luigi::marcher_normal()
             faceRight = true;
             currentAnimation = &animationJumpRight;
         }
+        if (level->isTuyauColliding(hitbox))
+        {
+            velocity.x = speed; // Continue à avancer vers la droite après le saut
+            faceRight = true;
+            currentAnimation = &animationJumpRight;
+        }
     }
     else
     {
-        hitbox.left -= 0.5 * speed; // Simulation de la position future à droite
+        hitbox.left -= 0.25 * speed; // Simulation de la position future à droite
         if (sprite.getPosition().x < mario->getPosition().x + 100)
         {
             velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
@@ -237,6 +243,12 @@ void Luigi::marcher_normal()
             velocity.x = -speed; // Continue à avancer vers la gauche après le saut
             faceRight = false;
             currentAnimation = &animationJumpLeft;
+        }
+        if (level->isTuyauColliding(hitbox) && canJump)
+        {
+            velocity.x = -speed; // Continue à avancer vers la droite après le saut
+            faceRight = false;
+            currentAnimation = &animationJumpRight;
         }
     }
 }
@@ -255,7 +267,7 @@ void Luigi::handleInputAI(Level *lvl, const Mario *mario)
         if (position.x < sprite.getPosition().x && position.y > sprite.getPosition().y - 300.0f && !blocProche->estTouche)
         {
             // Chemin pour aller jusqu'à la boîte
-            velocity.x = -0.5 * speed;
+            velocity.x = -0.25 * speed;
             faceRight = false;
             currentAnimation = &animationWalkLeft;
             std::cout << "Luigi se déplace vers la gauche" << std::endl;

@@ -38,7 +38,7 @@ public:
 
     void generateBackground(float levelWidth, float levelHeight);
 
-    bool isTuyauColliding(const sf::FloatRect& hitbox) const;    
+    bool isTuyauColliding(const sf::FloatRect& playerBound) const;    
 
     void updateEnnemis(float deltaTime);
     void drawEnnemis(sf::RenderWindow &window);
