@@ -25,7 +25,9 @@ private:
     float squashTimer = 0.f; 
     float animationTimer = 0.f;
     int currentFrame = 0;
-    
+
+    float gravity = 1000.f; 
+    bool onGround = false;     
 
     static sf::Texture textureEnnemi;
     int frameWidth, frameHeight;

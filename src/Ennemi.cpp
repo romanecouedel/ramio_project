@@ -13,17 +13,17 @@ Ennemi::Ennemi()
         }
     }
     sprite.setTexture(textureEnnemi);
-    
+
     // Calcul automatique de la taille d'une frame
     frameWidth = textureEnnemi.getSize().x / 3; // 3 images sur la ligne
     frameHeight = textureEnnemi.getSize().y;
-    
+
     // Appliquer la première image
     sprite.setTextureRect(sf::IntRect(0, 0, frameWidth, frameHeight));
 
     sprite.setScale(64.0f / frameWidth, 64.0f / frameHeight);
 
-    velocity.x = -50.f; 
+    velocity.x = -50.f;
     velocity.y = 0.f;
     isSquashed = false;
     isAlive = true;
@@ -46,34 +46,51 @@ void Ennemi::update(float deltaTime, Level &level)
         return;
     }
 
-    // Animation de marche (2 premières images)
+    // 🎞️ Animation de marche (2 premières images)
     animationTimer += deltaTime;
     if (animationTimer > 0.2f)
     {
         animationTimer = 0.f;
-        currentFrame = (currentFrame + 1) % 2; // Alterne entre 0 et 1
-        sprite.setTextureRect(sf::IntRect(currentFrame * frameWidth, 0, frameWidth, frameHeight)); 
+        currentFrame = (currentFrame + 1) % 2;
+        sprite.setTextureRect(sf::IntRect(currentFrame * frameWidth, 0, frameWidth, frameHeight));
     }
 
-    // Déplacement et gestion des collisions
-    sf::Vector2f position = sprite.getPosition();
+    // 🏃 Gestion des collisions latérales
     sf::FloatRect hitbox = sprite.getGlobalBounds();
-    sf::Vector2f leftPoint(position.x - 2.0f, position.y + hitbox.height / 2);
-    sf::Vector2f rightPoint(position.x + hitbox.width + 2.0f, position.y + hitbox.height / 2);
+    sf::Vector2f leftPoint(hitbox.left - 2.0f, hitbox.top + hitbox.height / 2);
+    sf::Vector2f rightPoint(hitbox.left + hitbox.width + 2.0f, hitbox.top + hitbox.height / 2);
 
-    bool collisionLeft = level.isColliding(sf::FloatRect(leftPoint.x, leftPoint.y, 1.0f, 1.0f));
-    bool collisionRight = level.isColliding(sf::FloatRect(rightPoint.x, rightPoint.y, 1.0f, 1.0f));
-
-    if (collisionLeft && velocity.x < 0)
+    if (velocity.x < 0 && level.isColliding(sf::FloatRect(leftPoint, {1.0f, 1.0f})))
     {
         velocity.x = 50.f;
     }
-    else if (collisionRight && velocity.x > 0)
+    else if (velocity.x > 0 && level.isColliding(sf::FloatRect(rightPoint, {1.0f, 1.0f})))
     {
         velocity.x = -50.f;
     }
 
-    sprite.move(velocity.x * deltaTime, 0);
+    // 🌍 Gestion de la gravité
+    velocity.y += gravity * deltaTime;
+    sf::FloatRect hitboxBelow(hitbox.left, hitbox.top + hitbox.height, hitbox.width, 5.0f);
+
+    if (level.isColliding(hitboxBelow))
+    {
+        velocity.y = 0;
+        onGround = true;
+    }
+    else
+    {
+        onGround = false;
+    }
+
+    // 💀 Supprimer le Goomba s'il tombe hors de l'écran
+    if (sprite.getPosition().y > 2000) // Ajuste cette valeur selon la taille de ton niveau
+    {
+        isAlive = false;
+    }
+
+    // ✨ Appliquer le mouvement (évite le double `sprite.move()`)
+    sprite.move(velocity * deltaTime);
 }
 
 void Ennemi::onPlayerCollision(bool fromAbove)
