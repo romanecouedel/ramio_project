@@ -28,64 +28,51 @@ class Level
         bool loadFromFile(const std::string &filename);
         // Dessin du niveau
         void draw(sf::RenderWindow &window);
+        // Génération du fond avec défilement
+        void generateBackground(float levelWidth, float levelHeight);
         // gestion des collisions
         bool isColliding(const sf::FloatRect &hitbox) const;
 
         // utile pour ia, savoir si il y a un bloc mystere près de luigi
         BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
-        
         // utile pour ia, afficher les blocs mysteres et leur état, DEBUG
         void afficherEtatBlocsMysteres() const ;
 
-
+        // taille de la grille, combien de caractere dans une ligne dans le fichier txt, utile pour main
         int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
         int getHeight() const { return grid.size(); }
 
         // Mise à jour du niveau
         void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
-
-        void generateBackground(float levelWidth, float levelHeight);
-
+        // Gestion des tuyaux
         bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+        void handleTuyauInteraction(Player &player, float deltaTime);
 
+        // Gestion des ennemis
         void updateEnnemis(float deltaTime);
         void drawEnnemis(sf::RenderWindow &window);
 
-        void handleTuyauInteraction(Player &player, float deltaTime);
-
 
     private:
+        // vecteur de vecteur d'entiers pour la grille
         std::vector<std::vector<int>> grid;
         std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
 
         Drapeau drapeau;
         
-        sf::Font font;
-        sf::Text niveauTermineText;
-        bool texteAnime = false;             // Indique si l’animation est en cours
-        float zoomScale = 1.0f; // Facteur de zoom actuel
-        bool zoomIn = true;     // Direction du zoom (avant ou arrière)
-
-        sf::Clock texteClock;
-        bool texteAnimationActive = false;
-        
+        // Fond
         sf::Texture backgroundTexture;
         sf::Sprite backgroundSprite;
-
         sf::Texture bgTextureLeft, bgTextureRight;
         sf::VertexArray backgroundVertices;
         float bgWidth;
 
-        int viesRestantes = 5; // Nombre de vies au début
-        sf::Text texteVies; 
-
         sf::Music backgroundMusic;
 
+        // Tuyau
         sf::RectangleShape tuyauEntree;
         sf::RectangleShape tuyauSortie;
-
-
         float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
         bool enTrainDeDescendre = false; // Animation de descente active
         bool enTrainDeMonter = false; // Animation de montée active
