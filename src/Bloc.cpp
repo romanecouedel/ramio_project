@@ -108,7 +108,7 @@ Tuyau* Tuyau::getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs)
 }
 
 bool Tuyau::isPlayerOnTop(const Player& player) const {
-    sf::FloatRect playerBounds = player.getHitbox();
+    sf::FloatRect playerBounds = player.getGlobalBounds();
     sf::FloatRect tuyauBounds = getGlobalBounds();
 
     float playerCenterX = playerBounds.left + playerBounds.width / 2.0f;

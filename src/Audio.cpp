@@ -1,6 +1,5 @@
 #include "Audio.h"
 
-// Définition de l'instance globale d'AudioManager
 AudioManager audioManager; 
 
 AudioManager::AudioManager()
@@ -15,14 +14,10 @@ AudioManager::AudioManager()
     if (!musiqueFin.openFromFile("../music/win.ogg"))
         std::cerr << "Erreur chargement musique fin de jeu !" << std::endl;
 
-    if (!musiqueGameOver.openFromFile("../music/gameover.ogg"))
-        std::cerr << "Erreur chargement musique Game Over !" << std::endl;
-
     // Réglage des boucles pour les musiques
     musiqueMenu.setLoop(true);
     musiqueJeu.setLoop(true);
     musiqueFin.setLoop(false);
-    musiqueGameOver.setLoop(false);
 
     // Chargement des effets sonores
     if (!coinBuffer.loadFromFile("../music/Coin.ogg"))
@@ -46,75 +41,49 @@ AudioManager::AudioManager()
         oneUpSound.setBuffer(oneUpBuffer);
 }
 
-AudioManager::~AudioManager()
-{
-    // Stopper les musiques avant destruction
-    musiqueMenu.stop();
-    musiqueJeu.stop();
-    musiqueFin.stop();
-    musiqueGameOver.stop();
+// Fonctions de lecture des musiques
+std::string currentMusic = "";
 
-    // Réinitialiser les buffers et sons
-    coinSound.resetBuffer();
-    tuyauSound.resetBuffer();
-    yahooSound.resetBuffer();
-    oneUpSound.resetBuffer();
-    
-    std::cout << "AudioManager détruit" << std::endl;
-}
-
-
-// Retourne la musique en cours
 std::string AudioManager::getCurrentMusic()
 {
     return currentMusic;
 }
 
-// Musique du menu
 void AudioManager::playMenuMusic()
 {
-    if (currentMusic == "menu" || musiqueMenu.getStatus() == sf::Music::Playing) return;
-    
+    if (currentMusic == "menu") return;  // Empêche la relance si déjà en cours
     musiqueJeu.stop();
     musiqueFin.stop();
-    musiqueGameOver.stop();
-
     musiqueMenu.play();
     currentMusic = "menu";
 }
 
-// Musique du jeu
 void AudioManager::playGameMusic()
 {
-    if (currentMusic == "game" || musiqueJeu.getStatus() == sf::Music::Playing) return;
-
+    if (currentMusic == "game") return;
     musiqueMenu.stop();
     musiqueFin.stop();
-    musiqueGameOver.stop();
-
     musiqueJeu.play();
     currentMusic = "game";
 }
 
-// Musique de fin (victoire ou game over)
 void AudioManager::playEndMusic(bool victoire)
 {
-    if (currentMusic == "end") return;
-
     audioManager.setVolume("end", 200.0f);
-    
     musiqueMenu.stop();
     musiqueJeu.stop();
     
     if (victoire)
-        musiqueFin.play();
+        musiqueFin.openFromFile("../music/win.ogg");
     else
-        musiqueGameOver.play();
+        musiqueFin.openFromFile("../music/gameover.ogg");
 
+    musiqueFin.play();
     currentMusic = "end";
 }
 
-// Effets sonores
+
+// Fonctions de lecture des effets sonores
 void AudioManager::playCoinSound()
 {
     audioManager.setVolume("coin", 50.0f);
@@ -138,15 +107,11 @@ void AudioManager::playOneUpSound()
     oneUpSound.play();
 }
 
-// Gestion du volume
 void AudioManager::setVolume(const std::string& soundName, float volume)
 {
     if (soundName == "menu") musiqueMenu.setVolume(volume);
     else if (soundName == "game") musiqueJeu.setVolume(volume);
-    else if (soundName == "end") {
-        musiqueFin.setVolume(volume);
-        musiqueGameOver.setVolume(volume);
-    }
+    else if (soundName == "end") musiqueFin.setVolume(volume);
     else if (soundName == "coin") coinSound.setVolume(volume);
     else if (soundName == "yahoo") yahooSound.setVolume(volume);
     else if (soundName == "tuyau") tuyauSound.setVolume(volume);

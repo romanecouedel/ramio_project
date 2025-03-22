@@ -1,10 +1,12 @@
 #include "FinJeu.h"
 #include <iostream>
 
+// Constructeur
 FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) : windowWidth(windowWidth), windowHeight(windowHeight)
-{
+{   
+    // Charger la police
     if (!font.loadFromFile("../fonts/arial.ttf"))
-    { // Assure-toi que le chemin vers la police est correct
+    { 
         std::cerr << "Erreur de chargement de la police" << std::endl;
     }
 
@@ -36,6 +38,7 @@ FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) : windowWidth(windowWi
     setupText(boutonTexte, "Retour au Menu", windowWidth / 2, windowHeight / 2, 20);
 }
 
+// Configuration du texte (vect texte, contenu, position, taille)
 void FinDeJeu::setupText(sf::Text &text, const std::string &content, float x, float y, unsigned int size)
 {
     text.setFont(font);
@@ -45,6 +48,8 @@ void FinDeJeu::setupText(sf::Text &text, const std::string &content, float x, fl
     text.setFillColor(sf::Color::White);
 }
 
+
+// Afficher l'écran de fin de jeu
 void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, int nbMorts)
 {
     // Afficher le fond d'écran
@@ -93,6 +98,7 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, 
     window.draw(boutonTexte);
 }
 
+// retourne vrai si la touche entrer est appuyée
 bool FinDeJeu::handleInput(sf::Event event)
 {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)

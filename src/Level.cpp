@@ -7,49 +7,24 @@
 #include <cmath>
 
 extern AudioManager audioManager;
-sf::Texture Level::bgTextureLeft;
-sf::Texture Level::bgTextureRight;
 
 Level::Level()
 {
 
-    if (Level::bgTextureLeft.getSize().x == 0)
+    if (!bgTextureLeft.loadFromFile("../img/background1.png") ||
+        !bgTextureRight.loadFromFile("../img/background2.png"))
     {
-        Level::bgTextureLeft.loadFromFile("../img/background1.png");
+        std::cerr << "Erreur chargement textures de fond" << std::endl;
     }
-    if (Level::bgTextureRight.getSize().x == 0)
-    {
-        Level::bgTextureRight.loadFromFile("../img/background2.png");
-    }
-
     bgWidth = bgTextureLeft.getSize().x; // Largeur d'une image
 
     // Créer un vertex array pour dessiner le fond
     backgroundVertices.setPrimitiveType(sf::Quads);
 }
 
-Level::~Level()
-{
-    blocs.clear();              // Supprime tous les blocs
-    grid.clear();               // Vide la grille
-    backgroundVertices.clear(); // Nettoie les vertices
-}
-
 // ======================== Chargement du Niveau ========================
 bool Level::loadFromFile(const std::string &filename)
 {
-
-    blocs.clear();
-    blocs.shrink_to_fit(); // Force la libération de mémoire
-    grid.clear();
-    grid.shrink_to_fit();
-    backgroundVertices.clear();
-    backgroundVertices.resize(0); // ✅ Vide proprement le VertexArray
-
-    blocs.clear();
-    grid.clear();
-    backgroundVertices.clear();
-
     std::ifstream file(filename);
     if (!file)
     {
@@ -90,6 +65,12 @@ bool Level::loadFromFile(const std::string &filename)
             {
                 drapeau.setPosition(position.x, position.y);
             }
+            else if (c == 'X' || c == 'K')
+            {
+                Ennemi ennemi;
+                ennemi.setPosition(position.x, position.y);
+                ennemis.push_back(ennemi);
+            }
             else if (c == 'U' || c == 'V')
             {
                 Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
@@ -101,23 +82,23 @@ bool Level::loadFromFile(const std::string &filename)
         grid.push_back(row);
         ++y;
     }
-
     if (!grid.empty())
     {
         generateBackground(grid[0].size() * 64, grid.size() * 64);
     }
-
     return true;
 }
+
 // ======================== Affichage du Niveau ========================
 void Level::draw(sf::RenderWindow &window)
 {
-    // Dessiner l'arrière-plan
+    // Dessiner l'arrière-plan en utilisant un sf::RenderStates pour appliquer la texture
     sf::RenderStates statesLeft;
     statesLeft.texture = &bgTextureLeft;
     sf::RenderStates statesRight;
     statesRight.texture = &bgTextureRight;
 
+    // Dessiner séparément chaque moitié
     for (size_t i = 0; i < backgroundVertices.getVertexCount(); i += 4)
     {
         if ((i / 4) % 2 == 0)
@@ -126,31 +107,33 @@ void Level::draw(sf::RenderWindow &window)
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
 
+    //generateBackground(grid[0].size() * 64, grid.size() * 64);
+
     // Dessiner les blocs
-    bool coinSoundPlayed = false;
     for (const auto &bloc : blocs)
     {
         bloc->draw(window);
 
+        // Vérifier si c'est un BlocMystere et dessiner la pièce s'il en a une
         if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
         {
             if (blocMystere->isAnimating() && blocMystere->getPiece())
             {
                 blocMystere->getPiece()->draw(window);
-                if (!coinSoundPlayed)
-                {
-                    audioManager.playCoinSound();
-                    coinSoundPlayed = true;
-                }
+                audioManager.playCoinSound();
             }
         }
     }
+
+    drawEnnemis(window);
     drapeau.draw(window);
 }
 
 // ======================== Mise à Jour ========================
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
+    updateEnnemis(deltaTime);
+
     for (auto &bloc : blocs)
     {
         auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
@@ -163,6 +146,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             hitboxAvecTolerance.top -= 3.0f;
             hitboxAvecTolerance.height += 6.0f;
 
+            // Vérifie si Mario ou Luigi frappe le bloc mystère
             for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
             {
                 if (hitboxJoueur.intersects(hitboxAvecTolerance))
@@ -186,9 +170,12 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
         }
     }
 }
-// ======================== Détection de Collisions Optimisée ========================
+
+
+// ======================== Détection de Collisions ========================
 bool Level::isColliding(const sf::FloatRect &hitbox) const
 {
+    //on regarde les collisions seulement autour du joueur
     float blockSize = 64.0f; // Taille d'un bloc
     int startX = std::max(0, static_cast<int>(hitbox.left / blockSize));
     int startY = std::max(0, static_cast<int>(hitbox.top / blockSize));
@@ -209,34 +196,43 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
 }
 
 //==========================detection bloc mystere proche==========================
-BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
-{
-    float blockSize = 64.0f;  // Taille d'un bloc dans ton niveau
+
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
+    }
+}
+
+//==========================detection bloc mystere proche==========================
+BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
+    float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
     float tolerance = 500.0f; // Tolérance pour la vérification des positions
 
     // Définition des directions autour du joueur (haut, bas, gauche, droite)
     std::vector<sf::Vector2f> directions = {
-        {0, -blockSize}, // Au-dessus
-        {0, blockSize},  // En dessous
-        {-blockSize, 0}, // À gauche
-        {blockSize, 0}   // À droite
+        {0, -blockSize},  // Au-dessus
+        {0, blockSize},   // En dessous
+        {-blockSize, 0},  // À gauche
+        {blockSize, 0}    // À droite
     };
 
-    for (const auto &dir : directions)
-    {
+    for (const auto& dir : directions) {
         sf::Vector2f checkPosition = position + dir;
 
-        for (const auto &bloc : blocs)
-        {
-            if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
-            {
+        for (const auto& bloc : blocs) {
+            if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
                 sf::Vector2f blocPosition = blocMystere->getPosition();
                 if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
-                    std::abs(blocPosition.y - checkPosition.y) < tolerance)
-                {
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance) {
                     // Vérifie si le bloc mystère contient encore un objet (non vide)
-                    if (!blocMystere->estTouche)
-                    {
+                    if (!blocMystere->estTouche) {
                         return blocMystere;
                     }
                 }
@@ -247,24 +243,8 @@ BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
     return nullptr; // Aucun bloc mystère valide trouvé
 }
 
-void Level::afficherEtatBlocsMysteres() const
-{
-    for (const auto &bloc : blocs)
-    {
-        if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
-        {
-            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche)
-            {
-                std::cout << "Touché" << std::endl;
-            }
-            else
-            {
-                std::cout << "Non touché" << std::endl;
-            }
-        }
-    }
-}
+
+
 
 // ======================== Initialisation du Texte ========================
 void Level::initTexte()
@@ -309,6 +289,24 @@ void Level::generateBackground(float levelWidth, float levelHeight)
     }
 }
 
+//===========================ENNEMI===================================
+
+void Level::updateEnnemis(float deltaTime)
+{
+    for (auto &ennemi : ennemis)
+    {
+        ennemi.update(deltaTime); // Met à jour leur mouvement
+    }
+}
+
+void Level::drawEnnemis(sf::RenderWindow &window)
+{
+    for (auto &ennemi : ennemis)
+    {
+        ennemi.draw(window);
+    }
+}
+
 //======================+Tuyau================================
 void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime)
 {
@@ -336,7 +334,7 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
 
                     sf::Vector2f tuyauPos = tuyau->getPosition();
                     sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
-                    sf::FloatRect marioBounds = mario.getHitbox();
+                    sf::FloatRect marioBounds = mario.getGlobalBounds();
 
                     float marioNewX = tuyauPos.x + (tuyauBounds.width - marioBounds.width) / 2.0f;
                     mario.setPosition(marioNewX, mario.getPosition().y);
@@ -344,7 +342,7 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
                     // Centrer Luigi seulement en mode multijoueur
                     if (luigi)
                     {
-                        sf::FloatRect luigiBounds = luigi->getHitbox();
+                        sf::FloatRect luigiBounds = luigi->getGlobalBounds();
                         float luigiNewX = tuyauPos.x + (tuyauBounds.width - luigiBounds.width) / 2.0f;
                         luigi->setPosition(luigiNewX, luigi->getPosition().y);
                     }
@@ -412,4 +410,15 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
             }
         }
     }
+}
+
+bool Level::isTuyauColliding(const sf::FloatRect& hitbox) const {
+    for (const auto& bloc : blocs) {
+        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
+            if (hitbox.intersects(tuyau->getGlobalBounds())) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

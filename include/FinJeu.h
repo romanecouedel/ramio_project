@@ -7,14 +7,21 @@
 
 class FinDeJeu {
 public:
+    // constructeur
     FinDeJeu(float windowWidth, float windowHeight);
-    //void afficher(sf::RenderWindow& window, float tempsEcoule, int score);
+
+    // Méthode pour afficher l'écran de fin de jeu
     void afficher(sf::RenderWindow& window, float tempsEcoule, int score, int nbMorts);
 
-    bool handleInput(sf::Event event);
+    // Méthode pour gérer les entrées de l'utilisateur
+    bool handleInput(sf::Event event); // retourne true si le bouton pour retourner au menu est cliqué
+    
+
     bool victoire=false;
 
 private:
+
+//================================================= Variables =================================================
     sf::Font font;
     sf::Text titre;
     sf::Text texteTemps;
@@ -22,15 +29,16 @@ private:
     sf::Text texteInstructions;
     sf::Text texteMorts; 
     sf::RectangleShape background;
-    sf::Texture backgroundTexture; // Ajout de la texture pour le fond d'écran
-    sf::Sprite backgroundSprite;   // Ajout du sprite pour le fond d'écran
+    sf::Texture backgroundTexture; 
+    sf::Sprite backgroundSprite;   
 
 
-    sf::RectangleShape bouton; // Ajout du bouton
-    sf::Text boutonTexte;      // Texte du bouton
+    sf::RectangleShape bouton;
+    sf::Text boutonTexte;      
     float windowWidth;
     float windowHeight;
 
+    //====================================Méthodes====================================
     void setupText(sf::Text& text, const std::string& content, float x, float y, unsigned int size);
 };
 

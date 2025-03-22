@@ -3,14 +3,15 @@
 #include <iostream>
 #include "Menu.h"
 
-extern bool luigiAI; // Déclaration de la variable globale
-
+// Constructeur
 Menu::Menu(float width, float height) : currentState(MenuState::MAIN), selectedIndex(0)
 {
+    // Chargement de la police
     if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
     {
         std::cerr << "Erreur chargement police" << std::endl;
     }
+    // Chargement de l'arrière-plan + dimensionnement
     if (!backgroundTexture.loadFromFile("../img/menu_background.png"))
     {
         std::cerr << "Erreur chargement du fond" << std::endl;
@@ -18,13 +19,15 @@ Menu::Menu(float width, float height) : currentState(MenuState::MAIN), selectedI
     backgroundSprite.setTexture(backgroundTexture);
     backgroundSprite.setScale(width / backgroundSprite.getLocalBounds().width, height / backgroundSprite.getLocalBounds().height);
 
+    // Initialisation des options des différents menus
     setupMenu(mainMenu, {"Jouer", "Quitter"}, width, height);
     setupMenu(playerMenu, {"1 Joueur", "2 Joueurs", "Retour"}, width, height);
-    setupMenu(local_ia_menu, {"En local", "Avec l'ordinateur", "Retour"}, width, height);
+    setupMenu(aiMenu, {"En local", "Avec l'ordinateur", "Retour"}, width, height);
     setupMenu(levelMenu, {"Niveau 1", "Niveau 2", "Niveau 3", "Retour"}, width, height);
 }
 
-void Menu::setupMenu(std::vector<MenuOption> &menu, std::vector<std::string> options, float width, float height)
+// Configurations des différents menus
+void Menu::setupMenu(std::vector<MenuOption> &menu, const std::vector<std::string> &options, float width, float height)
 {
     menu.clear();
     for (size_t i = 0; i < options.size(); i++)
@@ -53,17 +56,28 @@ void Menu::setupMenu(std::vector<MenuOption> &menu, std::vector<std::string> opt
     }
 }
 
-void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
+// Gestion des entrées clavier
+void Menu::handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI, bool &multijoueur)
 {
-    std::vector<MenuOption> *currentMenu;
-    if (currentState == MenuState::MAIN)
+    std::vector<MenuOption> *currentMenu = nullptr;
+
+    switch (currentState)
+    {
+    case MenuState::MAIN:
         currentMenu = &mainMenu;
-    else if (currentState == MenuState::PLAYER_SELECT)
+        break;
+    case MenuState::PLAYER_SELECT:
         currentMenu = &playerMenu;
-    else if (currentState == MenuState::MODE_SELECT)
-        currentMenu = &local_ia_menu;
-    else
+        break;
+    case MenuState::MODE_SELECT:
+        currentMenu = &aiMenu;
+        break;
+    case MenuState::LEVEL_SELECT:
         currentMenu = &levelMenu;
+        break;
+    default:
+        return;
+    }
 
     if (event.type == sf::Event::KeyPressed)
     {
@@ -73,114 +87,149 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window)
             changeSelection(*currentMenu, 1);
         else if (event.key.code == sf::Keyboard::Enter)
         {
-            int choice = selectedIndex;
+            int choice = selectedIndex; // Récupération du choix d'option fait par le joueur
 
-            if (currentState == MenuState::MAIN)
+            switch (currentState) // changement de l'état du menu en fonction du choix et du l'état actuel
             {
+            case MenuState::MAIN:
                 if (choice == 0)
                 {
-                    currentState = MenuState::PLAYER_SELECT;
-                    selectedIndex = 0; // Reset selection
+                    setState(MenuState::PLAYER_SELECT);
                 }
                 else if (choice == 1)
+                {
                     window.close();
-            }
-            else if (currentState == MenuState::PLAYER_SELECT)
-            {
+                }
+                break;
+
+            case MenuState::PLAYER_SELECT:
                 if (choice == 0)
                 {
-                    currentState = MenuState::LEVEL_SELECT; // 1 joueur → niveau
-                    multiplayerSelected = false;
+                    setState(MenuState::LEVEL_SELECT);
+                    multijoueur = false;
                 }
                 else if (choice == 1)
                 {
-                    currentState = MenuState::MODE_SELECT; // 2 joueurs → choix IA/local
-                    multiplayerSelected = true;
+                    setState(MenuState::MODE_SELECT);
+                    multijoueur = true;
                 }
-                else if (choice == 2)
+                else
                 {
-                    currentState = MenuState::MAIN; // Retour
+                    setState(MenuState::MAIN);
                 }
-                selectedIndex = 0; // Reset selection
-            }
+                break;
 
-            else if (currentState == MenuState::MODE_SELECT)
-            {
+            case MenuState::MODE_SELECT:
                 if (choice == 0)
                 {
                     std::cout << "Mode 2 joueurs en local sélectionné !" << std::endl;
-                    currentState = MenuState::LEVEL_SELECT;
-                    multiplayerSelected = true;
+                    setState(MenuState::LEVEL_SELECT);
+                    multijoueur = true;
                     luigiAI = false;
                 }
                 else if (choice == 1)
                 {
                     std::cout << "Mode contre l'IA sélectionné !" << std::endl;
-                    currentState = MenuState::LEVEL_SELECT;
-                    multiplayerSelected = true;
+                    setState(MenuState::LEVEL_SELECT);
+                    multijoueur = true;
                     luigiAI = true;
                 }
-                else if (choice == 2)
+                else
                 {
-                    currentState = MenuState::PLAYER_SELECT;
+                    setState(MenuState::PLAYER_SELECT);
                 }
-                selectedIndex = 0;
-            }
+                break;
 
-            else if (currentState == MenuState::LEVEL_SELECT)
-            {
+            case MenuState::LEVEL_SELECT:
                 if (choice == 3)
                 {
-                    currentState = MenuState::PLAYER_SELECT;
-                    selectedIndex = 0; // Reset selection
+                    setState(MenuState::PLAYER_SELECT);
                 }
                 else
                 {
                     std::cout << "Lancement du niveau " << choice + 1 << " !" << std::endl;
                     currentState = MenuState::GAMEOK;
                 }
+                break;
+
+            default:
+                break;
             }
         }
     }
 }
 
+// affichage du menu
 void Menu::draw(sf::RenderWindow &window)
 {
-    window.clear(); // Ajout pour éviter des artefacts graphiques
+    // affichage de l'arrière-plan
     window.draw(backgroundSprite);
 
-    std::vector<MenuOption> *currentMenu =
-        (currentState == MenuState::MAIN) ? &mainMenu : (currentState == MenuState::PLAYER_SELECT) ? &playerMenu
-                                                    : (currentState == MenuState::MODE_SELECT)     ? &local_ia_menu
-                                                                                                   : &levelMenu;
+    std::vector<MenuOption> *currentMenu = nullptr;
 
+    // affichage des options du menu en fonction de l'état actuel
+    switch (currentState)
+    {
+    case MenuState::MAIN:
+        currentMenu = &mainMenu;
+        break;
+    case MenuState::PLAYER_SELECT:
+        currentMenu = &playerMenu;
+        break;
+    case MenuState::MODE_SELECT:
+        currentMenu = &aiMenu;
+        break;
+    case MenuState::LEVEL_SELECT:
+        currentMenu = &levelMenu;
+        break;
+    default:
+        return;
+    }
+
+    // affichage des options du menu
     for (auto &option : *currentMenu)
     {
         window.draw(option.box);
         window.draw(option.text);
     }
-    
-    window.display();
 }
 
+// Changement de l'option sélectionnée, utilisé dans handleInput
 void Menu::changeSelection(std::vector<MenuOption> &menu, int direction)
 {
-    menu[selectedIndex].text.setFillColor(sf::Color::White);
     selectedIndex = (selectedIndex + direction + menu.size()) % menu.size();
-    menu[selectedIndex].text.setFillColor(sf::Color::Red);
+    updateMenuColors(menu);
 }
 
-bool Menu::isGameStarting()
+void Menu::updateMenuColors(std::vector<MenuOption> &menu)
 {
-    if (currentState == MenuState::GAMEOK)
+    for (size_t i = 0; i < menu.size(); i++)
     {
-        currentState = MenuState::MAIN; // Réinitialisation pour éviter de relancer en boucle
-        return true;
+        menu[i].text.setFillColor(i == selectedIndex ? sf::Color::Red : sf::Color::White);
     }
-    return false;
 }
 
-bool Menu::isMultiplayerSelected()
+// Vérification si le jeu est prêt à être lancé, utilisé dans main
+bool Menu::isGameStarting() const
 {
-    return multiplayerSelected;
+    return currentState == MenuState::GAMEOK && selectedIndex != 3;
+}
+
+// Changement de l'état du menu, utilisé dans handleInput
+void Menu::setState(MenuState newState)
+{
+    currentState = newState;
+    selectedIndex = 0;
+}
+
+// Réinitialisation du menu, utilisé dans main
+void Menu::reset()
+{
+    currentState = MenuState::MAIN;
+    selectedIndex = 0;
+    // réinitialisation des sélections visuelles des options
+    updateMenuColors(mainMenu);
+    updateMenuColors(playerMenu);
+    updateMenuColors(aiMenu);
+    updateMenuColors(levelMenu);
 }
