@@ -307,7 +307,7 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
                     // Centrer le joueur horizontalement sur le tuyau
                     sf::Vector2f tuyauPos = tuyau->getPosition();
                     sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
-                    sf::FloatRect playerBounds = player.getHitbox();
+                    sf::FloatRect playerBounds = player.getGlobalBounds();
                     float newX = tuyauPos.x + (tuyauBounds.width / 2.0f) - (playerBounds.width / 2.0f);
                     player.setPosition(newX, player.getPosition().y);
                     player.setCollisionsActive(false);
@@ -344,7 +344,7 @@ void Level::handleTuyauInteraction(Player &player, float deltaTime)
         if (tuyauTimer >= 0.6f)
         { // ⏳ Temps total augmenté un peu
             sf::Vector2f sortiePos = sortiePosition;
-            sf::FloatRect sortieBounds = player.getHitbox();
+            sf::FloatRect sortieBounds = player.getGlobalBounds();
             float newXSortie = sortiePos.x + (64.0f / 2.0f) - (sortieBounds.width / 2.0f);
 
             player.setPosition(newXSortie, sortiePos.y + 64.0f);

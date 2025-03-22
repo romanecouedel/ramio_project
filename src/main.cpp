@@ -130,8 +130,8 @@ int main()
             }
 
             // Vérification du drapeau pour terminer le niveau
-            if ((mario.getHitbox().intersects(level.getDrapeau().getGlobalBounds()) || 
-                 (multijoueur && luigi.getHitbox().intersects(level.getDrapeau().getGlobalBounds()))))
+            if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) || 
+                 (multijoueur && luigi.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()))))
             {
                 std::cout << "Niveau terminé !" << std::endl;
                 mario.setPosition(startPositionMario.x, startPositionMario.y);
@@ -145,12 +145,12 @@ int main()
             }
 
             // Gestion des vies et des morts
-            if (!mario.isAlive()) 
+            if (mario.isDead) 
             {
                 mario.respawn();
                 nbMortsMario++;
             }
-            if (!luigi.isAlive())
+            if (luigi.isDead)
             {
                 luigi.respawn();
                 nbMortsLuigi++;
@@ -180,9 +180,9 @@ int main()
 
             // Mise à jour et dessin du niveau et des personnages
             if (multijoueur)
-                level.update(deltaTime, window, mario.getHitbox(), luigi.getHitbox());
+                level.update(deltaTime, window, mario.getGlobalBounds(), luigi.getGlobalBounds());
             else
-                level.update(deltaTime, window, mario.getHitbox(), sf::FloatRect());
+                level.update(deltaTime, window, mario.getGlobalBounds(), sf::FloatRect());
 
             level.draw(window);
             mario.draw(window);

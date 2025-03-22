@@ -21,7 +21,6 @@ public:
     explicit Entity(const std::string& texturePath); // permet à une classe fille de créer une entité avec une texture
     
     virtual ~Entity() = default; // destructeur virtuel garantit que lorsque l'objet est supprimé via un pointeur de la classe mere, le bon destructeur de la classe fille est appelé
-    virtual void update(float deltaTime) = 0; // méthode virtuelle pure, doit être implémentée par les classes filles
     virtual void draw(sf::RenderWindow& window) const = 0; // méthode virtuelle pure, doit être implémentée par les classes filles
     
     // Méthodes communes à toutes les entités
@@ -40,7 +39,6 @@ class ObjetInteractif : public Entity {
 public:
     // constructeur 
     ObjetInteractif(const std::string& texturePath);
-    void update(float deltaTime) override {} // méthode update vide, car les objets interactifs n'ont pas besoin de mise à jour, seulement les classes filles en ont besoin
     // méthode draw qui dessine l'objet interactif
     void draw(sf::RenderWindow& window) const override {
         window.draw(sprite);

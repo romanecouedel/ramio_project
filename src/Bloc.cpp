@@ -87,7 +87,7 @@ Tuyau::Type Tuyau::getType() const {
 
 
 bool Tuyau::isPlayerOnTop(const Player& player) const {
-    sf::FloatRect playerBounds = player.getHitbox();
+    sf::FloatRect playerBounds = player.getGlobalBounds();
     sf::FloatRect tuyauBounds = getGlobalBounds();
 
     float playerCenterX = playerBounds.left + playerBounds.width / 2.0f;
