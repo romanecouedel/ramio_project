@@ -34,6 +34,7 @@ bool Level::loadFromFile(const std::string &filename)
 
     grid.clear();
     blocs.clear();
+    ennemis.clear();
 
     float blockSize = 64.0f;
     std::string line;
@@ -65,12 +66,13 @@ bool Level::loadFromFile(const std::string &filename)
             {
                 drapeau.setPosition(position.x, position.y);
             }
-            else if (c == 'X' || c == 'K')
+            else if (c == 'X') // Détection d'un ennemi dans le niveau
             {
-                Ennemi ennemi;
-                ennemi.setPosition(position.x, position.y);
-                ennemis.push_back(ennemi);
+                auto ennemi = std::make_unique<Ennemi>();
+                ennemi->setPosition(position.x, position.y);
+                ennemis.push_back(std::move(ennemi));
             }
+
             else if (c == 'U' || c == 'V')
             {
                 Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
@@ -86,6 +88,7 @@ bool Level::loadFromFile(const std::string &filename)
     {
         generateBackground(grid[0].size() * 64, grid.size() * 64);
     }
+    std::cout << "Nombre d'ennemis chargés : " << ennemis.size() << std::endl;
     return true;
 }
 
@@ -107,7 +110,7 @@ void Level::draw(sf::RenderWindow &window)
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
 
-    //generateBackground(grid[0].size() * 64, grid.size() * 64);
+    // generateBackground(grid[0].size() * 64, grid.size() * 64);
 
     // Dessiner les blocs
     for (const auto &bloc : blocs)
@@ -124,15 +127,16 @@ void Level::draw(sf::RenderWindow &window)
             }
         }
     }
-
-    drawEnnemis(window);
+    for (const auto &ennemi : ennemis)
+    {
+        ennemi->draw(window);
+    }
     drapeau.draw(window);
 }
 
 // ======================== Mise à Jour ========================
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
-    updateEnnemis(deltaTime);
 
     for (auto &bloc : blocs)
     {
@@ -169,13 +173,40 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             }
         }
     }
-}
+    for (auto &ennemi : ennemis)
+    {
+        ennemi->update(deltaTime, *this);
 
+        sf::FloatRect ennemiBounds = ennemi->getBounds();
+
+        for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
+        {
+            if (hitboxJoueur.intersects(ennemiBounds))
+            {
+                if (hitboxJoueur.top + hitboxJoueur.height - 5.0f < ennemiBounds.top)
+                {
+                    ennemi->onPlayerCollision(true);
+                }
+                else
+                {
+                    // Mario ou Luigi perd une vie
+                }
+            }
+        }
+    }
+    for (auto it = ennemis.begin(); it != ennemis.end();)
+    {
+        if (!it->get()->isAlive) // Accès explicite avec `get()`
+            it = ennemis.erase(it); // Supprime et récupère le nouvel itérateur valide
+        else
+            ++it; // Passe à l'ennemi suivant
+    }
+}
 
 // ======================== Détection de Collisions ========================
 bool Level::isColliding(const sf::FloatRect &hitbox) const
 {
-    //on regarde les collisions seulement autour du joueur
+    // on regarde les collisions seulement autour du joueur
     float blockSize = 64.0f; // Taille d'un bloc
     int startX = std::max(0, static_cast<int>(hitbox.left / blockSize));
     int startY = std::max(0, static_cast<int>(hitbox.top / blockSize));
@@ -197,13 +228,19 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
 
 //==========================detection bloc mystere proche==========================
 
-void Level::afficherEtatBlocsMysteres() const {
-    for (const auto& bloc : blocs) {
-        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+void Level::afficherEtatBlocsMysteres() const
+{
+    for (const auto &bloc : blocs)
+    {
+        if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
+        {
             std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche) {
+            if (blocMystere->estTouche)
+            {
                 std::cout << "Touché" << std::endl;
-            } else {
+            }
+            else
+            {
                 std::cout << "Non touché" << std::endl;
             }
         }
@@ -211,28 +248,34 @@ void Level::afficherEtatBlocsMysteres() const {
 }
 
 //==========================detection bloc mystere proche==========================
-BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
-    float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
+BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
+{
+    float blockSize = 64.0f;  // Taille d'un bloc dans ton niveau
     float tolerance = 500.0f; // Tolérance pour la vérification des positions
 
     // Définition des directions autour du joueur (haut, bas, gauche, droite)
     std::vector<sf::Vector2f> directions = {
-        {0, -blockSize},  // Au-dessus
-        {0, blockSize},   // En dessous
-        {-blockSize, 0},  // À gauche
-        {blockSize, 0}    // À droite
+        {0, -blockSize}, // Au-dessus
+        {0, blockSize},  // En dessous
+        {-blockSize, 0}, // À gauche
+        {blockSize, 0}   // À droite
     };
 
-    for (const auto& dir : directions) {
+    for (const auto &dir : directions)
+    {
         sf::Vector2f checkPosition = position + dir;
 
-        for (const auto& bloc : blocs) {
-            if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+        for (const auto &bloc : blocs)
+        {
+            if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
+            {
                 sf::Vector2f blocPosition = blocMystere->getPosition();
                 if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
-                    std::abs(blocPosition.y - checkPosition.y) < tolerance) {
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance)
+                {
                     // Vérifie si le bloc mystère contient encore un objet (non vide)
-                    if (!blocMystere->estTouche) {
+                    if (!blocMystere->estTouche)
+                    {
                         return blocMystere;
                     }
                 }
@@ -242,9 +285,6 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
 
     return nullptr; // Aucun bloc mystère valide trouvé
 }
-
-
-
 
 // ======================== Initialisation du Texte ========================
 void Level::initTexte()
@@ -286,24 +326,6 @@ void Level::generateBackground(float levelWidth, float levelHeight)
 
         for (int i = 0; i < 4; i++)
             backgroundVertices.append(quad[i]);
-    }
-}
-
-//===========================ENNEMI===================================
-
-void Level::updateEnnemis(float deltaTime)
-{
-    for (auto &ennemi : ennemis)
-    {
-        ennemi.update(deltaTime); // Met à jour leur mouvement
-    }
-}
-
-void Level::drawEnnemis(sf::RenderWindow &window)
-{
-    for (auto &ennemi : ennemis)
-    {
-        ennemi.draw(window);
     }
 }
 
@@ -412,10 +434,14 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
     }
 }
 
-bool Level::isTuyauColliding(const sf::FloatRect& hitbox) const {
-    for (const auto& bloc : blocs) {
-        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
-            if (hitbox.intersects(tuyau->getGlobalBounds())) {
+bool Level::isTuyauColliding(const sf::FloatRect &hitbox) const
+{
+    for (const auto &bloc : blocs)
+    {
+        if (auto *tuyau = dynamic_cast<Tuyau *>(bloc.get()))
+        {
+            if (hitbox.intersects(tuyau->getGlobalBounds()))
+            {
                 return true;
             }
         }

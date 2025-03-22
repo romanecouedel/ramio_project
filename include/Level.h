@@ -10,11 +10,9 @@
 #include "Player.h"
 #include "Ennemi.h"
 
-
-
+class Ennemi;
 class Level
 {
-    std::vector<Ennemi> ennemis;
 public:
     Level();
     ~Level() = default;
@@ -47,11 +45,6 @@ public:
 
     void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
-
-
-
-
-
 private:
     std::vector<std::vector<int>> grid;
     std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
@@ -81,6 +74,9 @@ private:
 
     sf::RectangleShape tuyauEntree;
     sf::RectangleShape tuyauSortie;
+
+    sf::Texture goombaTexture;
+    std::vector<std::unique_ptr<Ennemi>> ennemis;
 
 
     float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
