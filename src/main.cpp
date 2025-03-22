@@ -129,7 +129,6 @@ int main()
                 luigi.update(deltaTime, level);
             }
 
-            luigi.update(deltaTime, level);
 
             // Vérification du drapeau pour terminer le niveau
             if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) || 
