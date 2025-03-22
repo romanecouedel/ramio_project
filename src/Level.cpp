@@ -7,7 +7,7 @@
 #include <cmath>
 
 extern AudioManager audioManager;
-
+// constructeur
 Level::Level()
 {
 
@@ -35,7 +35,7 @@ bool Level::loadFromFile(const std::string &filename)
     grid.clear();
     blocs.clear();
 
-    float blockSize = 64.0f;
+    const float blockSize = 64.0f;
     std::string line;
     int y = 0;
 
@@ -46,44 +46,43 @@ bool Level::loadFromFile(const std::string &filename)
         {
             char c = line[x];
             row.push_back(c);
-
             sf::Vector2f position(x * blockSize, y * blockSize);
 
-            if (c == '#')
+            std::unique_ptr<Bloc> bloc;
+            Ennemi ennemi;
+            switch (c)
             {
-                auto bloc = std::make_unique<BlocSol>();
+            case '#':
+                bloc = std::make_unique<BlocSol>();
                 bloc->setPosition(position.x, position.y);
                 blocs.push_back(std::move(bloc));
-            }
-            else if (c == '?')
-            {
-                auto bloc = std::make_unique<BlocMystere>();
+                break;
+            case '?':
+                bloc = std::make_unique<BlocMystere>();
                 bloc->setPosition(position.x, position.y);
                 blocs.push_back(std::move(bloc));
-            }
-            else if (c == '!')
-            {
+                break;
+            case '!':
                 drapeau.setPosition(position.x, position.y);
-            }
-            else if (c == 'X' || c == 'K')
-            {
-                Ennemi ennemi;
+                break;
+            case 'X': case 'K':
                 ennemi.setPosition(position.x, position.y);
                 ennemis.push_back(ennemi);
-            }
-            else if (c == 'U' || c == 'V')
-            {
+                break;
+            case 'U': case 'V':
                 Tuyau::TypeES type = (c == 'U') ? Tuyau::TypeES::ENTREE : Tuyau::TypeES::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
                 tuyau->setPosition(position.x, position.y);
                 blocs.push_back(std::move(tuyau));
+                break;
             }
-        }
+            }
         grid.push_back(row);
         ++y;
     }
     return true;
 }
+
 
 // ======================== Affichage du Niveau ========================
 void Level::draw(sf::RenderWindow &window)
@@ -152,7 +151,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
                     {
                         blocMystere->onHit();
                         
-                        blocMystere->estTouche=true; //provoque segmentation fault
+                        blocMystere->estTouche=true;
                     }
                 }
             }
@@ -173,9 +172,7 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
     }
     return false;
 }
-
-//==========================detection bloc mystere proche==========================
-
+//debug
 void Level::afficherEtatBlocsMysteres() const {
     for (const auto& bloc : blocs) {
         if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
@@ -190,6 +187,7 @@ void Level::afficherEtatBlocsMysteres() const {
 }
 
 //==========================detection bloc mystere proche==========================
+// utile pour ia
 BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
     float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
     float tolerance = 500.0f; // Tolérance pour la vérification des positions
@@ -222,23 +220,6 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
     return nullptr; // Aucun bloc mystère valide trouvé
 }
 
-
-
-
-// ======================== Initialisation du Texte ========================
-void Level::initTexte()
-{
-    if (!font.loadFromFile("../fonts/arial.ttf"))
-    {
-        std::cerr << "Erreur chargement police!" << std::endl;
-    }
-    niveauTermineText.setFont(font);
-    niveauTermineText.setString("Niveau Terminé");
-    niveauTermineText.setCharacterSize(70);
-    niveauTermineText.setFillColor(sf::Color::Yellow);
-    niveauTermineText.setOutlineColor(sf::Color::Red);
-    niveauTermineText.setOutlineThickness(4);
-}
 
 // ======================== Génération du Fond ========================
 void Level::generateBackground(float levelWidth, float levelHeight)

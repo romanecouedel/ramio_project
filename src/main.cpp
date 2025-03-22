@@ -81,7 +81,6 @@ int main()
                     unsigned int windowWidth = level.getWidth() * blockSize;
                     unsigned int windowHeight = level.getHeight() * blockSize;
                     window.create(sf::VideoMode(windowWidth, windowHeight), "Mario");
-                    level.initTexte();
                     clock.restart();
                 }
             }
