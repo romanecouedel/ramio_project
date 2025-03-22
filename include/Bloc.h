@@ -93,5 +93,6 @@ class Tuyau : public Bloc {
         Tuyau* getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const;
     private:
         Type type;
+
     };
     

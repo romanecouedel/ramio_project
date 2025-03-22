@@ -430,3 +430,15 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
         }
     }
 }
+
+bool Level::isTuyauColliding(const sf::FloatRect &playerBound) const {
+    sf::FloatRect tuyauBounds; // Initialize tuyauBounds
+    for (const auto& bloc : blocs) {
+        if (auto* tuyau = dynamic_cast<Tuyau*>(bloc.get())) {
+            tuyauBounds = tuyau->getGlobalBounds(); // Use Tuyau's getGlobalBounds method
+            break; // Assuming you only need the first Tuyau's bounds
+        }
+    }
+
+    return playerBound.intersects(tuyauBounds);
+}
