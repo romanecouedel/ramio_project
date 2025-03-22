@@ -75,7 +75,7 @@ public:
     // Animation
     void update(float deltaTime, sf::RenderWindow& window);
     void onHit();
-    bool isAnimating() const { return animating; }
+    bool isAnimating() const;
     bool estTouche = false; // utile pour ia
 
     std::unique_ptr<Piece>& getPiece() { return piece; }

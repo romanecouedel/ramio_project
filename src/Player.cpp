@@ -197,10 +197,9 @@ void Luigi::marcher_normal()
     sf::FloatRect hitbox = getGlobalBounds();
 
     // Vérifie si Luigi est sur le point de dépasser Mario
-    // en avancant vers la droite
     if (mario->faceRight)
     {
-        hitbox.left += 0.25 * speed; // Simulation de la position future à droite
+        hitbox.left += 0.5 * speed; // Simulation de la position future à droite
         if (sprite.getPosition().x > mario->getPosition().x - 100)
         {
             velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
@@ -218,18 +217,10 @@ void Luigi::marcher_normal()
             faceRight = true;
             currentAnimation = &animationJumpRight;
         }
-        if (level->isTuyauColliding(hitbox))
-        {
-            velocity.x = speed; // Continue à avancer vers la droite après le saut
-            faceRight = true;
-            currentAnimation = &animationJumpRight;
-        }
     }
-
-    // en allant vers la gauche
     else
     {
-        hitbox.left -= 0.25 * speed; // Simulation de la position future à droite
+        hitbox.left -= 0.5 * speed; // Simulation de la position future à droite
         if (sprite.getPosition().x < mario->getPosition().x + 100)
         {
             velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
@@ -246,12 +237,6 @@ void Luigi::marcher_normal()
             velocity.x = -speed; // Continue à avancer vers la gauche après le saut
             faceRight = false;
             currentAnimation = &animationJumpLeft;
-        }
-        if (level->isTuyauColliding(hitbox) && canJump)
-        {
-            velocity.x = -speed; // Continue à avancer vers la droite après le saut
-            faceRight = false;
-            currentAnimation = &animationJumpRight;
         }
     }
 }

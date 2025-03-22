@@ -75,7 +75,7 @@ bool Level::loadFromFile(const std::string &filename)
 
             else if (c == 'U' || c == 'V')
             {
-                Tuyau::TypeES type = (c == 'U') ? Tuyau::TypeES::ENTREE : Tuyau::TypeES::SORTIE;
+                Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
                 tuyau->setPosition(position.x, position.y);
                 blocs.push_back(std::move(tuyau));
@@ -242,31 +242,6 @@ void Level::afficherEtatBlocsMysteres() const {
 }
 
 //==========================detection bloc mystere proche==========================
-
-
-
-//==========================detection bloc mystere proche==========================
-
-void Level::afficherEtatBlocsMysteres() const
-{
-    for (const auto &bloc : blocs)
-    {
-        if (auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()))
-        {
-            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche)
-            {
-                std::cout << "Touché" << std::endl;
-            }
-            else
-            {
-                std::cout << "Non touché" << std::endl;
-            }
-        }
-    }
-}
-
-//==========================detection bloc mystere proche==========================
 BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
 {
     float blockSize = 64.0f;  // Taille d'un bloc dans ton niveau
@@ -385,25 +360,12 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
 
                     // Centrer Luigi seulement en mode multijoueur
                     if (luigi)
-                    sf::FloatRect playerBounds = player.getGlobalBounds();
-                    float newX = tuyauPos.x + (tuyauBounds.width / 2.0f) - (playerBounds.width / 2.0f);
-                    player.setPosition(newX, player.getPosition().y);
-                    player.setCollisionsActive(false);
-                    // Chercher la sortie
-                    for (auto &bloc2 : blocs)
                     {
                         sf::FloatRect luigiBounds = luigi->getGlobalBounds();
                         float luigiNewX = tuyauPos.x + (tuyauBounds.width - luigiBounds.width) / 2.0f;
                         luigi->setPosition(luigiNewX, luigi->getPosition().y);
                     }
                     return;
-                        Tuyau *sortie = dynamic_cast<Tuyau *>(bloc2.get());
-                        if (sortie && sortie->getType() == Tuyau::TypeES::SORTIE)
-                        {
-                            sortiePosition = sortie->getPosition();
-                            return;
-                        }
-                    }
                 }
             }
         }
@@ -424,11 +386,11 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
         if (luigi)
             luigi->setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
 
-        if (tuyauTimer >= 0.6f)
-        { // ⏳ Temps total augmenté un peu
-            sf::Vector2f sortiePos = sortiePosition;
-            sf::FloatRect sortieBounds = player.getHitbox();
-            float newXSortie = sortiePos.x + (64.0f / 2.0f) - (sortieBounds.width / 2.0f);
+        if (tuyauTimer >= 0.5f)
+        {
+            mario.setPosition(sortiePosition.x, sortiePosition.y + 64.0f);
+            if (luigi)
+                luigi->setPosition(sortiePosition.x, sortiePosition.y + 74.0f);
 
             mario.setOpacity(0);
             if (luigi)
@@ -459,8 +421,12 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
         {
             enTrainDeMonter = false;
             tuyauTimer = 0.0f;
-            player.setOpacity(255);
-            player.setCollisionsActive(true);
+
+            mario.setOpacity(255);
+            if (luigi)
+            {
+                luigi->setOpacity(255);
+            }
         }
     }
 }

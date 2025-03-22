@@ -39,10 +39,6 @@ BlocMystere::BlocMystere() {
     }
 }
 
-void BlocMystere::changerTexture() {
-    sprite.setTexture(textureFoncee);
-}
-
 void BlocMystere::onHit() {
     if (!animating && sprite.getTexture() != &textureFoncee) {
         animating = true;
