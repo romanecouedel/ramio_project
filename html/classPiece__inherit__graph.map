@@ -1,5 +1,0 @@
-<map id="Piece" name="Piece">
-<area shape="rect" id="node1" title="Classe représentant une pièce collectable par le joueur." alt="" coords="8,373,161,597"/>
-<area shape="rect" id="node2" href="$classObjetInteractif.html" title="Classe représentant un objet interactif dans le jeu." alt="" coords="14,233,155,325"/>
-<area shape="rect" id="node3" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="5,5,164,185"/>
-</map>
