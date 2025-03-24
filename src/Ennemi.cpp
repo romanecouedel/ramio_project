@@ -1,8 +1,15 @@
 #include "Ennemi.h"
 #include <iostream>
 
-sf::Texture Ennemi::textureEnnemi; // Texture statique
+/**
+ * @brief Texture statique partagée entre tous les ennemis.
+ */
+sf::Texture Ennemi::textureEnnemi;
 
+/**
+ * @brief Constructeur de l'ennemi Goomba.
+ * Initialise la texture, la taille de l'animation et la vitesse de déplacement.
+ */
 Ennemi::Ennemi()
 {
     if (textureEnnemi.getSize().x == 0) // Charge la texture une seule fois
@@ -29,11 +36,21 @@ Ennemi::Ennemi()
     isAlive = true;
 }
 
+/**
+ * @brief Définit la position de l'ennemi.
+ * @param x Coordonnée X.
+ * @param y Coordonnée Y.
+ */
 void Ennemi::setPosition(float x, float y)
 {
     sprite.setPosition(x, y);
 }
 
+/**
+ * @brief Met à jour l'état et le mouvement de l'ennemi.
+ * @param deltaTime Temps écoulé depuis la dernière mise à jour.
+ * @param level Référence au niveau pour gérer les collisions.
+ */
 void Ennemi::update(float deltaTime, Level &level)
 {
     if (isSquashed)
@@ -46,7 +63,7 @@ void Ennemi::update(float deltaTime, Level &level)
         return;
     }
 
-    // 🎞️ Animation de marche (2 premières images)
+    // Animation de marche (2 premières images)
     animationTimer += deltaTime;
     if (animationTimer > 0.2f)
     {
@@ -55,7 +72,7 @@ void Ennemi::update(float deltaTime, Level &level)
         sprite.setTextureRect(sf::IntRect(currentFrame * frameWidth, 0, frameWidth, frameHeight));
     }
 
-    // 🏃 Gestion des collisions latérales
+    // Gestion des collisions latérales
     sf::FloatRect hitbox = sprite.getGlobalBounds();
     sf::Vector2f leftPoint(hitbox.left - 2.0f, hitbox.top + hitbox.height / 2);
     sf::Vector2f rightPoint(hitbox.left + hitbox.width + 2.0f, hitbox.top + hitbox.height / 2);
@@ -69,7 +86,7 @@ void Ennemi::update(float deltaTime, Level &level)
         velocity.x = -50.f;
     }
 
-    // 🌍 Gestion de la gravité
+    // Gestion de la gravité
     velocity.y += gravity * deltaTime;
     sf::FloatRect hitboxBelow(hitbox.left, hitbox.top + hitbox.height, hitbox.width, 5.0f);
 
@@ -83,16 +100,20 @@ void Ennemi::update(float deltaTime, Level &level)
         onGround = false;
     }
 
-    // 💀 Supprimer le Goomba s'il tombe hors de l'écran
+    //Supprimer le Goomba s'il tombe hors de l'écran
     if (sprite.getPosition().y > 2000) // Ajuste cette valeur selon la taille de ton niveau
     {
         isAlive = false;
     }
 
-    // ✨ Appliquer le mouvement (évite le double `sprite.move()`)
+    // appliquer le mouvement (évite le double `sprite.move()`)
     sprite.move(velocity * deltaTime);
 }
 
+/**
+ * @brief Gère la collision avec le joueur.
+ * @param fromAbove Indique si la collision vient du dessus (pour écraser l'ennemi).
+ */
 void Ennemi::onPlayerCollision(bool fromAbove)
 {
     if (fromAbove)
@@ -103,11 +124,19 @@ void Ennemi::onPlayerCollision(bool fromAbove)
     }
 }
 
+/**
+ * @brief Dessine l'ennemi à l'écran.
+ * @param window Fenêtre d'affichage.
+ */
 void Ennemi::draw(sf::RenderWindow &window) const
 {
     window.draw(sprite);
 }
 
+/**
+ * @brief Obtient la boîte englobante de l'ennemi.
+ * @return Rectangle de collision de l'ennemi.
+ */
 sf::FloatRect Ennemi::getBounds() const
 {
     return sprite.getGlobalBounds();

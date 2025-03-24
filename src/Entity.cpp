@@ -1,8 +1,9 @@
 #include "Entity.h"
 
-// ====================================== Classe Entity =======================================
-// constructeur explicit
-// param : le chemin de la texture de l'entité
+/**
+ * @class Entity
+ * @brief Classe de base pour toutes les entités du jeu.
+ */
 Entity::Entity(const std::string& texturePath) {
     if (!texture.loadFromFile(texturePath)) {
         std::cerr << "Erreur chargement texture : " << texturePath << std::endl;
@@ -10,30 +11,34 @@ Entity::Entity(const std::string& texturePath) {
     sprite.setTexture(texture);
 }
 
-
-// retourne le rectangle englobant de l'entité
+/**
+ * @brief Retourne le rectangle englobant de l'entité.
+ * @return Rectangle englobant de l'entité.
+ */
 sf::FloatRect Entity::getGlobalBounds() const {
-    return sprite.getGlobalBounds(); // utilisé pour faire les collisions entre entité
+    return sprite.getGlobalBounds(); // utilisé pour faire les collisions entre entités
 }
 
-
-// ====================================== ObjetInteractif ======================================
-// constructeur
+/**
+ * @class ObjetInteractif
+ * @brief Classe représentant un objet interactif dans le jeu.
+ */
 ObjetInteractif::ObjetInteractif(const std::string& texturePath) : Entity(texturePath) {
     sprite.setScale(0.5f, 0.5f);
 }
 
-// ========================================= Drapeau ===========================================
-// constructeur
+/**
+ * @class Drapeau
+ * @brief Classe représentant le drapeau de fin de niveau.
+ */
 Drapeau::Drapeau() : ObjetInteractif("../img/flag.png") {
-    sprite.setScale(0.25f, 0.25f); 
-    
+    sprite.setScale(0.25f, 0.25f);
 }
 
-// =========================================== Piece ===========================================
-// constructeur
-// param : la position de la pièce + chemin texture
-// permet de compter le nombre de pièces ont été créées, donc récoltées
+/**
+ * @class Piece
+ * @brief Classe représentant une pièce collectable par le joueur.
+ */
 Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     if (!texture.loadFromFile("../img/piece.png")) {
         std::cerr << "Erreur chargement texture pièce" << std::endl;
@@ -46,8 +51,10 @@ Piece::Piece(float x, float y) : ObjetInteractif("../img/piece.png") {
     nbPiece++;
 }
 
-// animation de la pièce
-// param : le temps écoulé depuis la dernière frame
+/**
+ * @brief Met à jour l'animation de la pièce.
+ * @param deltaTime Temps écoulé depuis la dernière frame.
+ */
 void Piece::update(float deltaTime) {
     if (animating) {
         animationTime += deltaTime;
@@ -65,23 +72,29 @@ void Piece::update(float deltaTime) {
     }
 }
 
-// affichage de la pièce
-// param : la fenêtre de rendu
+/**
+ * @brief Affiche la pièce si elle n'est pas collectée.
+ * @param window Fenêtre de rendu.
+ */
 void Piece::draw(sf::RenderWindow& window) const {
     if (!collected) {
         window.draw(sprite);
     }
-
 }
 
 int Piece::nbPiece = 0; // Initialisation de la variable statique
 
-// retourne le nombre de pièces collectées
+/**
+ * @brief Retourne le nombre de pièces collectées.
+ * @return Nombre de pièces collectées.
+ */
 int Piece::getNbPiece() {
     return nbPiece;
 }
 
-// remet le nb de pièces à zéro
+/**
+ * @brief Réinitialise le compteur de pièces collectées à zéro.
+ */
 void Piece::resetNbPiece(){
     nbPiece = 0;
 }

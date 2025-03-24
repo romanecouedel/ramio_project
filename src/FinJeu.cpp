@@ -1,7 +1,11 @@
 #include "FinJeu.h"
 #include <iostream>
 
-// Constructeur
+/**
+ * @brief Constructeur de la classe FinDeJeu
+ * @param windowWidth Largeur de la fenêtre
+ * @param windowHeight Hauteur de la fenêtre
+ */
 FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) : windowWidth(windowWidth), windowHeight(windowHeight)
 {   
     // Charger la police
@@ -38,7 +42,14 @@ FinDeJeu::FinDeJeu(float windowWidth, float windowHeight) : windowWidth(windowWi
     setupText(boutonTexte, "Retour au Menu", windowWidth / 2, windowHeight / 2, 20);
 }
 
-// Configuration du texte (vect texte, contenu, position, taille)
+/**
+ * @brief Configure un texte SFML avec une police, une position et une taille
+ * @param text Référence vers l'objet texte à configurer
+ * @param content Contenu du texte
+ * @param x Position en X
+ * @param y Position en Y
+ * @param size Taille de la police
+ */
 void FinDeJeu::setupText(sf::Text &text, const std::string &content, float x, float y, unsigned int size)
 {
     text.setFont(font);
@@ -48,8 +59,13 @@ void FinDeJeu::setupText(sf::Text &text, const std::string &content, float x, fl
     text.setFillColor(sf::Color::White);
 }
 
-
-// Afficher l'écran de fin de jeu
+/**
+ * @brief Affiche l'écran de fin de jeu avec le score et le temps écoulé
+ * @param window Fenêtre SFML où afficher l'écran de fin
+ * @param tempsEcoule Temps total de la partie en secondes
+ * @param score Nombre de pièces collectées
+ * @param nbMorts Nombre de morts du joueur
+ */
 void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, int nbMorts)
 {
     // Afficher le fond d'écran
@@ -73,7 +89,7 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, 
     // afficher le score
     window.draw(texteScore);
 
-    // Configuration time
+    // Configuration du temps
     int seconds = static_cast<int>(tempsEcoule * 60 * 60);
     int min = static_cast<int>(seconds / 60);
     std::string timeText = "Temps: " + std::string(min < 10 ? "0" : "") + std::to_string(min) + ":" + std::string(seconds < 10 ? "0" : "") + std::to_string(seconds);
@@ -98,7 +114,11 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, 
     window.draw(boutonTexte);
 }
 
-// retourne vrai si la touche entrer est appuyée
+/**
+ * @brief Gère l'entrée utilisateur pour détecter l'appui sur la touche Entrée
+ * @param event Événement SFML capturé
+ * @return true si la touche Entrée est pressée, false sinon
+ */
 bool FinDeJeu::handleInput(sf::Event event)
 {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)

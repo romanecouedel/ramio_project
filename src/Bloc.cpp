@@ -4,7 +4,6 @@
 #include "Player.h"
 #include <iostream>
 #include <cmath>
-#include <cmath>
 
 // ======================== Initialisation des Textures Globales ========================
 sf::Texture Bloc::textureBlocSol;
@@ -12,8 +11,11 @@ sf::Texture Bloc::textureBlocMystere;
 sf::Texture Bloc::textureTuyau;
 
 // ======================== BlocSol ========================
+/**
+ * @brief Constructeur de BlocSol, charge la texture si ce n'est pas encore fait.
+ */
 BlocSol::BlocSol() {
-    if (textureBlocSol.getSize().x == 0) { // Charge la texture une seule fois
+    if (textureBlocSol.getSize().x == 0) {
         if (!textureBlocSol.loadFromFile("../img/block.png")) {
             std::cerr << "Erreur chargement texture BlocSol" << std::endl;
         }
@@ -23,8 +25,11 @@ BlocSol::BlocSol() {
 }
 
 // ======================== BlocMystere ========================
+/**
+ * @brief Constructeur de BlocMystere, charge la texture si ce n'est pas encore fait.
+ */
 BlocMystere::BlocMystere() {
-    if (textureBlocMystere.getSize().x == 0) { // Charge la texture une seule fois
+    if (textureBlocMystere.getSize().x == 0) {
         if (!textureBlocMystere.loadFromFile("../img/mystery_box.png")) {
             std::cerr << "Erreur chargement texture BlocMystere" << std::endl;
         }
@@ -39,13 +44,16 @@ BlocMystere::BlocMystere() {
     }
 }
 
+/**
+ * @brief Action lorsque le bloc mystère est frappé.
+ */
 void BlocMystere::onHit() {
     if (!animating && sprite.getTexture() != &textureFoncee) {
         animating = true;
         animationTime = 0.0f;
         startPosition = sprite.getPosition();
 
-        // Crée la pièce seulement si la texture est encore la boîte mystère
+        // Crée la pièce
         piece = std::make_unique<Piece>(startPosition.x, startPosition.y - 64.0f);
 
         // Change la texture du bloc
@@ -53,12 +61,18 @@ void BlocMystere::onHit() {
     }
 }
 
-// changement texture lorsque la pièce est déjà récupérée
+/**
+ * @brief Change la texture du bloc mystère après activation.
+ */
 void BlocMystere::changerTexture() {
     sprite.setTexture(textureFoncee);
 }
 
-// Met à jour l'animation du bloc mystère
+/**
+ * @brief Met à jour l'animation du bloc mystère.
+ * @param deltaTime Temps écoulé depuis la dernière mise à jour.
+ * @param window Fenêtre SFML.
+ */
 void BlocMystere::update(float deltaTime, sf::RenderWindow& window) {
     if (animating) {
         animationTime += deltaTime;
@@ -73,13 +87,21 @@ void BlocMystere::update(float deltaTime, sf::RenderWindow& window) {
     }
 }
 
+/**
+ * @brief Vérifie si l'animation du bloc mystère est en cours.
+ * @return True si en animation, False sinon.
+ */
 bool BlocMystere::isAnimating() const {
     return animating;
 }
 
 // ======================== Tuyau ========================
+/**
+ * @brief Constructeur de Tuyau, charge la texture si ce n'est pas encore fait.
+ * @param type Type du tuyau (entrée ou sortie).
+ */
 Tuyau::Tuyau(Type type) : type(type) {
-    if (textureTuyau.getSize().x == 0) { // Charge la texture une seule fois
+    if (textureTuyau.getSize().x == 0) {
         if (!textureTuyau.loadFromFile("../img/pipe.png")) {
             std::cerr << "Erreur chargement texture Tuyau" << std::endl;
         }
@@ -88,10 +110,19 @@ Tuyau::Tuyau(Type type) : type(type) {
     sprite.setScale(64.0f / textureTuyau.getSize().x, 64.0f / textureTuyau.getSize().y);
 }
 
+/**
+ * @brief Retourne le type du tuyau (entrée ou sortie).
+ * @return Type du tuyau.
+ */
 Tuyau::Type Tuyau::getType() const {
     return type;
 }
 
+/**
+ * @brief Trouve la sortie associée au tuyau.
+ * @param blocs Liste des blocs du niveau.
+ * @return Pointeur vers le tuyau de sortie correspondant.
+ */
 Tuyau* Tuyau::getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const {
     Tuyau* meilleureSortie = nullptr;
     float meilleureDistance = std::numeric_limits<float>::max();
@@ -109,6 +140,11 @@ Tuyau* Tuyau::getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs)
     return meilleureSortie;
 }
 
+/**
+ * @brief Vérifie si le joueur est sur le tuyau.
+ * @param player Référence vers le joueur.
+ * @return True si le joueur est au-dessus du tuyau, False sinon.
+ */
 bool Tuyau::isPlayerOnTop(const Player& player) const {
     sf::FloatRect playerBounds = player.getGlobalBounds();
     sf::FloatRect tuyauBounds = getGlobalBounds();
