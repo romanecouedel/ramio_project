@@ -45,7 +45,7 @@ bool Level::loadFromFile(const std::string &filename)
     blocs.clear();
     ennemis.clear();
 
-    float blockSize = 64.0f;
+    const float blockSize = 64.0f;
     std::string line;
     int y = 0;
 
@@ -56,40 +56,37 @@ bool Level::loadFromFile(const std::string &filename)
         {
             char c = line[x];
             row.push_back(c);
-
             sf::Vector2f position(x * blockSize, y * blockSize);
 
-            if (c == '#')
+            std::unique_ptr<Bloc> bloc;
+            auto ennemi = std::make_unique<Ennemi>();
+            switch (c)
             {
-                auto bloc = std::make_unique<BlocSol>();
+            case '#':
+                bloc = std::make_unique<BlocSol>();
                 bloc->setPosition(position.x, position.y);
                 blocs.push_back(std::move(bloc));
-            }
-            else if (c == '?')
-            {
-                auto bloc = std::make_unique<BlocMystere>();
+                break;
+            case '?':
+                bloc = std::make_unique<BlocMystere>();
                 bloc->setPosition(position.x, position.y);
                 blocs.push_back(std::move(bloc));
-            }
-            else if (c == '!')
-            {
+                break;
+            case '!':
                 drapeau.setPosition(position.x, position.y);
-            }
-            else if (c == 'X') // Détection d'un ennemi dans le niveau
-            {
-                auto ennemi = std::make_unique<Ennemi>();
+                break;
+            case 'X': case 'K':
                 ennemi->setPosition(position.x, position.y);
                 ennemis.push_back(std::move(ennemi));
-            }
-
-            else if (c == 'U' || c == 'V')
-            {
+                break;
+            case 'U': case 'V':
                 Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
                 tuyau->setPosition(position.x, position.y);
                 blocs.push_back(std::move(tuyau));
+                break;
             }
-        }
+            }
         grid.push_back(row);
         ++y;
     }
@@ -100,6 +97,7 @@ bool Level::loadFromFile(const std::string &filename)
     std::cout << "Nombre d'ennemis chargés : " << ennemis.size() << std::endl;
     return true;
 }
+
 
 // ======================== Affichage du Niveau ========================
 /**
@@ -312,24 +310,20 @@ BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
     return nullptr; // Aucun bloc mystère valide trouvé
 }
 
-
-// ======================== Initialisation du Texte ========================
-/**
- * @brief Initialise les propriétés du texte de fin de niveau.
- */
-void Level::initTexte()
-{
-    if (!font.loadFromFile("../fonts/arial.ttf"))
-    {
-        std::cerr << "Erreur chargement police!" << std::endl;
+//debug
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
     }
-    niveauTermineText.setFont(font);
-    niveauTermineText.setString("Niveau Terminé");
-    niveauTermineText.setCharacterSize(70);
-    niveauTermineText.setFillColor(sf::Color::Yellow);
-    niveauTermineText.setOutlineColor(sf::Color::Red);
-    niveauTermineText.setOutlineThickness(4);
 }
+
 
 // ======================== Génération du Fond ========================
 /**
