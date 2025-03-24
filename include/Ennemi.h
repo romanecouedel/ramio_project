@@ -16,8 +16,8 @@ public:
     void onPlayerCollision(bool fromAbove);
     void draw(sf::RenderWindow &window) const override;
     sf::FloatRect getBounds() const;
-    bool isAlive = true;
-
+    bool isAlive = true; 
+    
 private:
     sf::Sprite sprite;
     sf::Vector2f velocity;
@@ -25,7 +25,9 @@ private:
     float squashTimer = 0.f; 
     float animationTimer = 0.f;
     int currentFrame = 0;
-    
+
+    float gravity = 1000.f; 
+    bool onGround = false;     
 
     static sf::Texture textureEnnemi;
     int frameWidth, frameHeight;

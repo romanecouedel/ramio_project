@@ -44,10 +44,13 @@ class Level
         // Mise à jour du niveau
         void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
-        // Gestion des tuyaux
-        bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+        // utilisé par l'ia pour éviter les tuyaux
+        bool isTuyauColliding(const sf::FloatRect& playerBound) const;    
 
-    void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
+        // utilisé dans player pour update les morts en fonctione des collisions ennemis
+        const std::vector<std::unique_ptr<Ennemi>>& getEnnemis() const { return ennemis; }
+
+        void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
     private:
         // vecteur de vecteur d'entiers pour la grille
@@ -63,18 +66,19 @@ class Level
         sf::VertexArray backgroundVertices;
         float bgWidth;
 
+        // Musique de fond
         sf::Music backgroundMusic;
 
+        // Tuyau
         sf::RectangleShape tuyauEntree;
         sf::RectangleShape tuyauSortie;
-
-        sf::Texture goombaTexture;
-
-
         float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
         bool enTrainDeDescendre = false; // Animation de descente active
         bool enTrainDeMonter = false; // Animation de montée active
         sf::Vector2f sortiePosition; // Position du tuyau de sortie
+
+        // Ennemis
+        sf::Texture goombaTexture;
 
 
 };

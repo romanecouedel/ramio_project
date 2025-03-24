@@ -56,7 +56,7 @@ void Player::update(float deltaTime, const Level &level) {
     {
         isJumping = true;
     }
-
+    checkCollisionWithEnnemis(level.getEnnemis());
     // Met à jour l'animation du joueur
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
@@ -133,6 +133,32 @@ void Player::initializePlayer(const std::string &texturePath, sf::Vector2f posit
     animationIdleRight = Animation(&texture, {1, 1}, 0.f);
     animationIdleLeft = Animation(&texture, {1, 2}, 0.f);
     currentAnimation = &animationIdleRight;
+}
+
+void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>>& ennemis)
+{
+    for (const auto& ennemi : ennemis)
+    {
+        sf::FloatRect ennemiBounds = ennemi->getBounds();
+        sf::FloatRect playerBounds = getGlobalBounds();
+
+        if (playerBounds.intersects(ennemiBounds))
+        {
+            float playerFeet = playerBounds.top + playerBounds.height; // Position des pieds du joueur
+            float ennemiTop = ennemiBounds.top + (ennemiBounds.height * 0.2f); // Marge pour éviter les faux positifs
+
+            if (playerFeet < ennemiTop) //  Mario saute bien sur l'ennemi
+            {
+                velocity.y = -300.f; // Fait rebondir Mario après un saut sur l'ennemi
+                ennemi->onPlayerCollision(true);
+            }
+            else //  Collision latérale = mort
+            {
+                std::cout << "Mario est mort en touchant l'ennemi !" << std::endl;
+                isDead = true;
+            }
+        }
+    }
 }
 
 //==========================Classes Filles==========================//
@@ -223,6 +249,16 @@ void Luigi::marcher_normal()
             faceRight = true;
             currentAnimation = &animationJumpRight;
         }
+
+        for (const auto& ennemi : level->getEnnemis())
+        {
+            sf::FloatRect ennemiBounds = ennemi->getBounds();
+            if (hitbox.intersects(ennemiBounds) && canJump)
+            {
+                std::cout << "Luigi détecte un ennemi et saute" << std::endl;
+                jump();
+            }
+        }
     }
     else
     {
@@ -250,6 +286,15 @@ void Luigi::marcher_normal()
             faceRight = false;
             currentAnimation = &animationJumpRight;
         }
+        for (const auto& ennemi : level->getEnnemis())
+        {
+            sf::FloatRect ennemiBounds = ennemi->getBounds();
+            if (hitbox.intersects(ennemiBounds) && canJump)
+            {
+                std::cout << "Luigi détecte un ennemi et saute" << std::endl;
+                jump();
+            }
+        }
     }
 }
 
@@ -258,6 +303,7 @@ void Luigi::handleInputAI(Level *lvl, const Mario *mario)
 {
     this->level = lvl;
     this->mario = mario;
+
     BlocMystere *blocProche = level->getBlocMystereProche(sprite.getPosition());
     if (blocProche != nullptr)
     {
@@ -267,7 +313,7 @@ void Luigi::handleInputAI(Level *lvl, const Mario *mario)
         if (position.x < sprite.getPosition().x && position.y > sprite.getPosition().y - 300.0f && !blocProche->estTouche)
         {
             // Chemin pour aller jusqu'à la boîte
-            velocity.x = -0.25 * speed;
+            velocity.x = -0.5 * speed;
             faceRight = false;
             currentAnimation = &animationWalkLeft;
             std::cout << "Luigi se déplace vers la gauche" << std::endl;
