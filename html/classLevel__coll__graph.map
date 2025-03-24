@@ -1,6 +1,0 @@
-<map id="Level" name="Level">
-<area shape="rect" id="node1" title=" " alt="" coords="5,516,223,960"/>
-<area shape="rect" id="node2" href="$classDrapeau.html" title="Classe représentant le drapeau de fin de niveau." alt="" coords="63,376,165,453"/>
-<area shape="rect" id="node3" href="$classObjetInteractif.html" title="Classe représentant un objet interactif dans le jeu." alt="" coords="43,235,185,327"/>
-<area shape="rect" id="node4" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="35,5,193,185"/>
-</map>

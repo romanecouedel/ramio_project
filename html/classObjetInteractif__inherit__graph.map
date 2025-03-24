@@ -1,6 +1,0 @@
-<map id="ObjetInteractif" name="ObjetInteractif">
-<area shape="rect" id="node1" title="Classe représentant un objet interactif dans le jeu." alt="" coords="62,233,203,325"/>
-<area shape="rect" id="node3" href="$classDrapeau.html" title="Classe représentant le drapeau de fin de niveau." alt="" coords="5,447,108,524"/>
-<area shape="rect" id="node4" href="$classPiece.html" title="Classe représentant une pièce collectable par le joueur." alt="" coords="132,373,285,597"/>
-<area shape="rect" id="node2" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="53,5,212,185"/>
-</map>

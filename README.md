@@ -84,23 +84,19 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 │ ├── Player.cpp (Gestion des joueurs)
 ├── 📁 include/ (Fichiers d’en-tête (.h) pour les classes)
 ├── 📁 fonts/ (Polices utilisées dans le jeu)
-├── 📁 img/ (Images et sprites des personnages, décors…)e
+├── 📁 img/ (Images et sprites des personnages, décors…)
 ├── 📁 music/ (Musiques et sons du jeu)
 ├── CMakeLists.txt 
 ├── README.md 
 ```
 
-## Diagramme d’architecture 
+## Documentation
 
-fichier uml quand il sera prêt
+[Accéder à la documentation du projet lien github pages](https://romanecouedel.github.io/ramio_project)
 
 ## Contributeurs
 
 - Abdelkamel Mehdy https://github.com/Mehdy03
 - Couëdel Romane https://github.com/romanecouedel
 - Fasquelle Albéric https://github.com/Gyver2206
-
-
-## Licence 
-(si besoin)
 
