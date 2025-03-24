@@ -88,24 +88,15 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 ├── 📁 music/ (Musiques et sons du jeu)
 ├── CMakeLists.txt 
 ├── README.md 
-├── 📁 html (fichier doxygen)
-├── 📁 latex  (fichier doxygen)
-├── Doxyfile
 ```
 
-## Documentations
+## Documentation
 
-[Accéder à la documentation du projet lien github](https://github.com/romanecouedel/ramio_project/tree/main/html/index.html)
-
-[Accéder à la documentation du projet](./html/index.html)
+[Accéder à la documentation du projet lien github pages](https://romanecouedel.github.io/ramio_project)
 
 ## Contributeurs
 
 - Abdelkamel Mehdy https://github.com/Mehdy03
 - Couëdel Romane https://github.com/romanecouedel
 - Fasquelle Albéric https://github.com/Gyver2206
-
-
-## Licence 
-(si besoin)
 
