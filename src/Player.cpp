@@ -1,4 +1,3 @@
-// Player.cpp
 #include "Player.h"
 #include "Level.h"
 #include "Animation.h"
@@ -8,13 +7,19 @@
 extern AudioManager audioManager;
 
 //=========================================Classe Player=====================================//
-// constructeur
+/**
+ * @brief Constructeur par défaut du joueur.
+ * 
+ * Initialise l'animation par défaut du joueur à l'état d'attente vers la droite.
+ */
 Player::Player()
 {
     currentAnimation = &animationIdleRight; // animation par défaut
 }
 
-// faire revenir le sprite au point de départ après une mort
+/**
+ * @brief Réinitialise la position et l'état du joueur après une mort.
+ */
 void Player::respawn()
 {
     sprite.setPosition(100, 100); // position de base
@@ -22,15 +27,29 @@ void Player::respawn()
     isDead = false;
 }
 
-// dessine le joueur sur la fenêtre
+
+/**
+ * @brief Dessine le joueur sur la fenêtre SFML.
+ * 
+ * @param window Fenêtre SFML où dessiner le joueur.
+ */
 void Player::draw(sf::RenderWindow &window) const
 {
     window.draw(sprite);
 }
 
-// mise à jour du joueur en fonction des collisions du level
-// param : le temps écoulé depuis la dernière frame, le niveau
-// Met à jour l'état du joueur en fonction du temps écoulé et du niveau
+/**
+ * @brief Met à jour l'état du joueur en fonction du temps écoulé et du niveau.
+ * 
+ * Cette fonction gère :
+ * - La gravité et le mouvement du joueur.
+ * - La détection des collisions avec le niveau.
+ * - Le changement d'animation en fonction de l'état du joueur.
+ * - La gestion des ennemis.
+ * 
+ * @param deltaTime Temps écoulé depuis la dernière frame.
+ * @param level Référence vers le niveau pour la gestion des collisions.
+ */
 void Player::update(float deltaTime, const Level &level) {
     // Vérifie si le joueur est tombé hors du niveau (mort)
     if (sprite.getPosition().y > level.getHeight() * 64 + 100) { 
@@ -97,8 +116,15 @@ void Player::update(float deltaTime, const Level &level) {
         }
     }
 }
-// change l'opacité du sprite, utile pour l'animation du tuyau
-// param : la valeur de l'opacité
+
+
+/**
+ * @brief Modifie l'opacité du sprite du joueur.
+ * 
+ * Cette fonction est utilisée notamment lors du passage dans un tuyau.
+ * 
+ * @param alpha Valeur de l'opacité (0 = transparent, 255 = opaque).
+ */
 void Player::setOpacity(sf::Uint8 alpha)
 {
     sf::Color color = sprite.getColor();
@@ -106,7 +132,12 @@ void Player::setOpacity(sf::Uint8 alpha)
     sprite.setColor(color);
 }
 
-// fait sauter le joueur
+
+/**
+ * @brief Fait sauter le joueur.
+ * 
+ * Applique une force vers le haut et change l'animation pour celle du saut.
+ */
 void Player::jump()
 {
     velocity.y = jumpForce;
@@ -115,8 +146,14 @@ void Player::jump()
     audioManager.playYahooSound();
 }
 
-// initialise le joueur avec une texture et une position
-// param : le chemin de la texture, la position
+/**
+ * @brief Initialise le joueur avec une texture et une position de départ.
+ * 
+ * Charge la texture, définit la position et initialise les animations.
+ * 
+ * @param texturePath Chemin vers le fichier de texture.
+ * @param position Position initiale du joueur.
+ */
 void Player::initializePlayer(const std::string &texturePath, sf::Vector2f position)
 {
     if (!texture.loadFromFile(texturePath))
@@ -135,6 +172,15 @@ void Player::initializePlayer(const std::string &texturePath, sf::Vector2f posit
     currentAnimation = &animationIdleRight;
 }
 
+/**
+ * @brief Vérifie les collisions entre le joueur et les ennemis.
+ * 
+ * Cette fonction détecte si le joueur entre en contact avec un ennemi et gère les conséquences :
+ * - Si le joueur atterrit sur l'ennemi par le haut, il rebondit et l'ennemi est éliminé.
+ * - Si la collision est latérale, le joueur meurt.
+ * 
+ * @param ennemis Vecteur contenant les ennemis présents dans le niveau.
+ */
 void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>>& ennemis)
 {
     for (const auto& ennemi : ennemis)
@@ -164,11 +210,23 @@ void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>
 //==========================Classes Filles==========================//
 //===============================================Mario=============================================/
 
+/**
+ * @brief Constructeur de la classe Mario.
+ * 
+ * Initialise Mario avec sa texture et sa position de départ.
+ */
 Mario::Mario()
 {
     initializePlayer("../img/sprite_mario.png", {100, 100});
 }
 
+/**
+ * @brief Gère les entrées clavier pour déplacer Mario.
+ * 
+ * - Gauche : Flèche gauche.
+ * - Droite : Flèche droite.
+ * - Saut : Flèche haut (uniquement si Mario peut sauter).
+ */
 void Mario::handleInput()
 {
     velocity.x = 0;
@@ -189,12 +247,24 @@ void Mario::handleInput()
 }
 
 //==================================================LUIGI==========================================//
-
+/**
+ * @brief Constructeur de la classe Luigi.
+ * 
+ * Initialise Luigi avec sa texture et sa position de départ.
+ */
 Luigi::Luigi()
 {
     initializePlayer("../img/sprite_luigi.png", {150, 100});
 }
 
+
+/**
+ * @brief Gère les entrées clavier pour déplacer Luigi.
+ * 
+ * - Gauche : Touche 'Q'.
+ * - Droite : Touche 'D'.
+ * - Saut : Touche 'Z' (uniquement si Luigi peut sauter).
+ */
 void Luigi::handleInput()
 {
     velocity.x = 0;
@@ -218,6 +288,13 @@ void Luigi::handleInput()
 
 
 //=========================================IA de Luigi=========================================//
+/**
+ * @brief Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles.
+ * 
+ * - Luigi suit Mario sans le dépasser.
+ * - Il saute s'il rencontre un obstacle ou un ennemi.
+ * - Il adapte son mouvement en fonction de la direction de Mario.
+ */
 void Luigi::marcher_normal()
 {
     sf::FloatRect hitbox = getGlobalBounds();
@@ -298,7 +375,17 @@ void Luigi::marcher_normal()
     }
 }
 
-// IA de Luigi
+/**
+ * @brief Gère l'IA de Luigi en fonction des objets du niveau.
+ * 
+ * Luigi prend des décisions en fonction de :
+ * - La position de Mario.
+ * - La présence de blocs mystères.
+ * - Les obstacles ou ennemis sur son chemin.
+ * 
+ * @param lvl Pointeur vers le niveau actuel.
+ * @param mario Pointeur vers l'objet Mario.
+ */
 void Luigi::handleInputAI(Level *lvl, const Mario *mario)
 {
     this->level = lvl;

@@ -1,0 +1,4 @@
+<map id="Ennemi" name="Ennemi">
+<area shape="rect" id="node1" title=" " alt="" coords="5,233,165,545"/>
+<area shape="rect" id="node2" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="6,5,165,185"/>
+</map>

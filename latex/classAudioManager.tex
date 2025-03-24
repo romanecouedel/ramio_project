@@ -1,0 +1,351 @@
+\hypertarget{classAudioManager}{}\doxysection{Audio\+Manager Class Reference}
+\label{classAudioManager}\index{AudioManager@{AudioManager}}
+
+
+{\ttfamily \#include $<$Audio.\+h$>$}
+
+
+
+Collaboration diagram for Audio\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classAudioManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}{Audio\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classAudioManager}{Audio\+Manager}}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAudioManager_a8eae72f851d67e33a1f17f64ceac437f}{get\+Current\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Récupère la musique actuellement jouée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}{set\+Volume}} (const std\+::string \&sound\+Name, float volume)
+\begin{DoxyCompactList}\small\item\em Modifie le volume d\textquotesingle{}un son ou d\textquotesingle{}une musique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}{play\+Menu\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Joue la musique du menu principal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}{play\+Game\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Joue la musique du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}{play\+End\+Music}} (bool victoire)
+\begin{DoxyCompactList}\small\item\em Joue la musique de fin de partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a407dad03d829e807f7592640dcba130d}{play\+Coin\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}obtention d\textquotesingle{}une pièce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}{play\+Tuyau\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}entrée dans un tuyau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a992608915d048ad14be2400f5b7e5c36}{play\+Yahoo\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Joue le son \char`\"{}\+Yahoo!\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}{play\+One\+Up\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}obtention d\textquotesingle{}une vie supplémentaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_aaf681f373b532917309c9bc65241793d}{musique\+Menu}}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_a4c0fa3db7565a7cec4a8ea6eafb2ec1c}{musique\+Jeu}}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_aa3c06f26a0e9ea8411d23687ddbe7a3b}{musique\+Fin}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_a807eaaa54581de5aa95067edb7bb756f}{coin\+Buffer}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a1affe5c8a6bdbc7ac5a7cbfc52d493fb}{coin\+Sound}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_ae99f6f83256549bd8a1e7bfc4ab32383}{tuyau\+Buffer}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a8c78c17e38f4d3154dc5d20a539d2381}{tuyau\+Sound}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_a2742266983de5409c0f7be6e6c5365ae}{yahoo\+Buffer}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a28317ad0c6c30fb0de7a7bcecb8cbb96}{yahoo\+Sound}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_af0bb7cee93dd0b9461cf05e4fd5259c4}{one\+Up\+Buffer}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classAudioManager_ae896782db2ef73170eb8b7b40c35e818}{one\+Up\+Sound}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 7 of file Audio.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}\label{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}} 
+\index{AudioManager@{AudioManager}!AudioManager@{AudioManager}}
+\index{AudioManager@{AudioManager}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{AudioManager()}{AudioManager()}}
+{\footnotesize\ttfamily Audio\+Manager\+::\+Audio\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{classAudioManager}{Audio\+Manager}}. 
+
+Initialise et charge les fichiers audio (musiques et effets sonores). 
+
+Definition at line 13 of file Audio.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAudioManager_a8eae72f851d67e33a1f17f64ceac437f}\label{classAudioManager_a8eae72f851d67e33a1f17f64ceac437f}} 
+\index{AudioManager@{AudioManager}!getCurrentMusic@{getCurrentMusic}}
+\index{getCurrentMusic@{getCurrentMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentMusic()}{getCurrentMusic()}}
+{\footnotesize\ttfamily std\+::string Audio\+Manager\+::get\+Current\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupère la musique actuellement jouée. 
+
+\begin{DoxyReturn}{Returns}
+Nom de la musique en cours. 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a407dad03d829e807f7592640dcba130d}\label{classAudioManager_a407dad03d829e807f7592640dcba130d}} 
+\index{AudioManager@{AudioManager}!playCoinSound@{playCoinSound}}
+\index{playCoinSound@{playCoinSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playCoinSound()}{playCoinSound()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Coin\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue le son d\textquotesingle{}obtention d\textquotesingle{}une pièce. 
+
+
+
+Definition at line 113 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}\label{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}} 
+\index{AudioManager@{AudioManager}!playEndMusic@{playEndMusic}}
+\index{playEndMusic@{playEndMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playEndMusic()}{playEndMusic()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+End\+Music (\begin{DoxyParamCaption}\item[{bool}]{victoire }\end{DoxyParamCaption})}
+
+
+
+Joue la musique de fin de partie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em victoire} & Indique si le joueur a gagné ou perdu. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 95 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}\label{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}} 
+\index{AudioManager@{AudioManager}!playGameMusic@{playGameMusic}}
+\index{playGameMusic@{playGameMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playGameMusic()}{playGameMusic()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Game\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue la musique du jeu. 
+
+
+
+Definition at line 81 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}\label{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}} 
+\index{AudioManager@{AudioManager}!playMenuMusic@{playMenuMusic}}
+\index{playMenuMusic@{playMenuMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playMenuMusic()}{playMenuMusic()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Menu\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue la musique du menu principal. 
+
+
+
+Definition at line 69 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}\label{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}} 
+\index{AudioManager@{AudioManager}!playOneUpSound@{playOneUpSound}}
+\index{playOneUpSound@{playOneUpSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playOneUpSound()}{playOneUpSound()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+One\+Up\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue le son d\textquotesingle{}obtention d\textquotesingle{}une vie supplémentaire. 
+
+
+
+Definition at line 139 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}\label{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}} 
+\index{AudioManager@{AudioManager}!playTuyauSound@{playTuyauSound}}
+\index{playTuyauSound@{playTuyauSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playTuyauSound()}{playTuyauSound()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Tuyau\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue le son d\textquotesingle{}entrée dans un tuyau. 
+
+
+
+Definition at line 122 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a992608915d048ad14be2400f5b7e5c36}\label{classAudioManager_a992608915d048ad14be2400f5b7e5c36}} 
+\index{AudioManager@{AudioManager}!playYahooSound@{playYahooSound}}
+\index{playYahooSound@{playYahooSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playYahooSound()}{playYahooSound()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Yahoo\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Joue le son \char`\"{}\+Yahoo!\char`\"{}. 
+
+
+
+Definition at line 131 of file Audio.\+cpp.
+
+\mbox{\Hypertarget{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}\label{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}} 
+\index{AudioManager@{AudioManager}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::set\+Volume (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sound\+Name,  }\item[{float}]{volume }\end{DoxyParamCaption})}
+
+
+
+Modifie le volume d\textquotesingle{}un son ou d\textquotesingle{}une musique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sound\+Name} & Nom du son ou de la musique. \\
+\hline
+{\em volume} & Niveau de volume désiré. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file Audio.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAudioManager_a807eaaa54581de5aa95067edb7bb756f}\label{classAudioManager_a807eaaa54581de5aa95067edb7bb756f}} 
+\index{AudioManager@{AudioManager}!coinBuffer@{coinBuffer}}
+\index{coinBuffer@{coinBuffer}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{coinBuffer}{coinBuffer}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer Audio\+Manager\+::coin\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 31 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_a1affe5c8a6bdbc7ac5a7cbfc52d493fb}\label{classAudioManager_a1affe5c8a6bdbc7ac5a7cbfc52d493fb}} 
+\index{AudioManager@{AudioManager}!coinSound@{coinSound}}
+\index{coinSound@{coinSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{coinSound}{coinSound}}
+{\footnotesize\ttfamily sf\+::\+Sound Audio\+Manager\+::coin\+Sound\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 32 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_aa3c06f26a0e9ea8411d23687ddbe7a3b}\label{classAudioManager_aa3c06f26a0e9ea8411d23687ddbe7a3b}} 
+\index{AudioManager@{AudioManager}!musiqueFin@{musiqueFin}}
+\index{musiqueFin@{musiqueFin}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{musiqueFin}{musiqueFin}}
+{\footnotesize\ttfamily sf\+::\+Music Audio\+Manager\+::musique\+Fin\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 28 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_a4c0fa3db7565a7cec4a8ea6eafb2ec1c}\label{classAudioManager_a4c0fa3db7565a7cec4a8ea6eafb2ec1c}} 
+\index{AudioManager@{AudioManager}!musiqueJeu@{musiqueJeu}}
+\index{musiqueJeu@{musiqueJeu}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{musiqueJeu}{musiqueJeu}}
+{\footnotesize\ttfamily sf\+::\+Music Audio\+Manager\+::musique\+Jeu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_aaf681f373b532917309c9bc65241793d}\label{classAudioManager_aaf681f373b532917309c9bc65241793d}} 
+\index{AudioManager@{AudioManager}!musiqueMenu@{musiqueMenu}}
+\index{musiqueMenu@{musiqueMenu}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{musiqueMenu}{musiqueMenu}}
+{\footnotesize\ttfamily sf\+::\+Music Audio\+Manager\+::musique\+Menu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 26 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_af0bb7cee93dd0b9461cf05e4fd5259c4}\label{classAudioManager_af0bb7cee93dd0b9461cf05e4fd5259c4}} 
+\index{AudioManager@{AudioManager}!oneUpBuffer@{oneUpBuffer}}
+\index{oneUpBuffer@{oneUpBuffer}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{oneUpBuffer}{oneUpBuffer}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer Audio\+Manager\+::one\+Up\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_ae896782db2ef73170eb8b7b40c35e818}\label{classAudioManager_ae896782db2ef73170eb8b7b40c35e818}} 
+\index{AudioManager@{AudioManager}!oneUpSound@{oneUpSound}}
+\index{oneUpSound@{oneUpSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{oneUpSound}{oneUpSound}}
+{\footnotesize\ttfamily sf\+::\+Sound Audio\+Manager\+::one\+Up\+Sound\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 41 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_ae99f6f83256549bd8a1e7bfc4ab32383}\label{classAudioManager_ae99f6f83256549bd8a1e7bfc4ab32383}} 
+\index{AudioManager@{AudioManager}!tuyauBuffer@{tuyauBuffer}}
+\index{tuyauBuffer@{tuyauBuffer}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{tuyauBuffer}{tuyauBuffer}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer Audio\+Manager\+::tuyau\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 34 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_a8c78c17e38f4d3154dc5d20a539d2381}\label{classAudioManager_a8c78c17e38f4d3154dc5d20a539d2381}} 
+\index{AudioManager@{AudioManager}!tuyauSound@{tuyauSound}}
+\index{tuyauSound@{tuyauSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{tuyauSound}{tuyauSound}}
+{\footnotesize\ttfamily sf\+::\+Sound Audio\+Manager\+::tuyau\+Sound\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 35 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_a2742266983de5409c0f7be6e6c5365ae}\label{classAudioManager_a2742266983de5409c0f7be6e6c5365ae}} 
+\index{AudioManager@{AudioManager}!yahooBuffer@{yahooBuffer}}
+\index{yahooBuffer@{yahooBuffer}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{yahooBuffer}{yahooBuffer}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer Audio\+Manager\+::yahoo\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file Audio.\+h.
+
+\mbox{\Hypertarget{classAudioManager_a28317ad0c6c30fb0de7a7bcecb8cbb96}\label{classAudioManager_a28317ad0c6c30fb0de7a7bcecb8cbb96}} 
+\index{AudioManager@{AudioManager}!yahooSound@{yahooSound}}
+\index{yahooSound@{yahooSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{yahooSound}{yahooSound}}
+{\footnotesize\ttfamily sf\+::\+Sound Audio\+Manager\+::yahoo\+Sound\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 38 of file Audio.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Audio_8h}{Audio.\+h}}\item 
+src/\mbox{\hyperlink{Audio_8cpp}{Audio.\+cpp}}\end{DoxyCompactItemize}

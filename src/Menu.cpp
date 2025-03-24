@@ -3,7 +3,14 @@
 #include <iostream>
 #include "Menu.h"
 
-// Constructeur
+/**
+ * @brief Constructeur de la classe Menu.
+ * 
+ * Initialise le menu avec différentes options et charge les ressources graphiques.
+ * 
+ * @param width Largeur de la fenêtre.
+ * @param height Hauteur de la fenêtre.
+ */
 Menu::Menu(float width, float height) : currentState(MenuState::MAIN), selectedIndex(0)
 {
     // Chargement de la police
@@ -26,7 +33,14 @@ Menu::Menu(float width, float height) : currentState(MenuState::MAIN), selectedI
     setupMenu(levelMenu, {"Niveau 1", "Niveau 2", "Niveau 3", "Retour"}, width, height);
 }
 
-// Configurations des différents menus
+/**
+ * @brief Initialise un menu avec les options données.
+ * 
+ * @param menu Référence vers le vecteur contenant les options du menu.
+ * @param options Liste des intitulés des options.
+ * @param width Largeur de la fenêtre.
+ * @param height Hauteur de la fenêtre.
+ */
 void Menu::setupMenu(std::vector<MenuOption> &menu, const std::vector<std::string> &options, float width, float height)
 {
     menu.clear();
@@ -56,7 +70,15 @@ void Menu::setupMenu(std::vector<MenuOption> &menu, const std::vector<std::strin
     }
 }
 
-// Gestion des entrées clavier
+
+/**
+ * @brief Gère les entrées clavier pour la navigation dans le menu.
+ * 
+ * @param event Événement SFML capturé.
+ * @param window Référence vers la fenêtre de rendu.
+ * @param luigiAI Référence vers le booléen indiquant si Luigi est contrôlé par l'IA.
+ * @param multijoueur Référence vers le booléen indiquant si le mode multijoueur est activé.
+ */
 void Menu::handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI, bool &multijoueur)
 {
     std::vector<MenuOption> *currentMenu = nullptr;
@@ -159,7 +181,13 @@ void Menu::handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI,
     }
 }
 
-// affichage du menu
+/**
+ * @brief Affiche le menu à l'écran.
+ * 
+ * Dessine l'arrière-plan ainsi que les options du menu correspondant à l'état actuel.
+ * 
+ * @param window Fenêtre de rendu SFML.
+ */
 void Menu::draw(sf::RenderWindow &window)
 {
     // affichage de l'arrière-plan
@@ -194,13 +222,23 @@ void Menu::draw(sf::RenderWindow &window)
     }
 }
 
-// Changement de l'option sélectionnée, utilisé dans handleInput
+/**
+ * @brief Change l'option sélectionnée dans un menu donné.
+ * 
+ * @param menu Référence vers le menu concerné.
+ * @param direction Direction du changement (-1 pour haut, +1 pour bas).
+ */
 void Menu::changeSelection(std::vector<MenuOption> &menu, int direction)
 {
     selectedIndex = (selectedIndex + direction + menu.size()) % menu.size();
     updateMenuColors(menu);
 }
 
+/**
+ * @brief Met à jour les couleurs des options du menu pour indiquer l'option sélectionnée.
+ * 
+ * @param menu Référence vers le menu concerné.
+ */
 void Menu::updateMenuColors(std::vector<MenuOption> &menu)
 {
     for (size_t i = 0; i < menu.size(); i++)
@@ -209,20 +247,33 @@ void Menu::updateMenuColors(std::vector<MenuOption> &menu)
     }
 }
 
-// Vérification si le jeu est prêt à être lancé, utilisé dans main
+/**
+ * @brief Vérifie si le jeu est prêt à être lancé.
+ * 
+ * @return true si le jeu doit démarrer, false sinon.
+ */
 bool Menu::isGameStarting() const
 {
     return currentState == MenuState::GAMEOK && selectedIndex != 3;
 }
 
-// Changement de l'état du menu, utilisé dans handleInput
+/**
+ * @brief Change l'état actuel du menu.
+ * 
+ * @param newState Nouvel état du menu.
+ */
 void Menu::setState(MenuState newState)
 {
     currentState = newState;
     selectedIndex = 0;
 }
 
-// Réinitialisation du menu, utilisé dans main
+
+/**
+ * @brief Réinitialise le menu à son état initial.
+ * 
+ * Revient au menu principal et remet toutes les sélections à zéro.
+ */
 void Menu::reset()
 {
     currentState = MenuState::MAIN;

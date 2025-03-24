@@ -1,0 +1,6 @@
+<map id="Player" name="Player">
+<area shape="rect" id="node1" title=" " alt="" coords="51,233,277,707"/>
+<area shape="rect" id="node3" href="$classLuigi.html" title=" " alt="" coords="5,755,160,891"/>
+<area shape="rect" id="node4" href="$classMario.html" title=" " alt="" coords="185,777,309,869"/>
+<area shape="rect" id="node2" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="85,5,243,185"/>
+</map>
