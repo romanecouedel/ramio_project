@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Main Page</title>
+<title>Page principale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Projet Ramio
    </div>
   </td>
  </tr>
@@ -62,9 +62,104 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">My Project Documentation</div>  </div>
+<div class="title">Documentation du projet</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p>Bienvenue sur la documentation du projet Ramio. Vous trouverez ici toutes les informations nécessaires pour comprendre le fonctionnement du jeu</p>
+</div>
+  <nav>
+      <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#utilisation">Utilisation</a></li>
+          <li><a href="#structure">Structure du projet</a></li>
+          <li><a href="#contributeurs">Contributeurs</a></li>
+          <li><a href="#documentation">Documentation</a></li>
+      </ul>
+  </nav>
+  
+  <section id="introduction">
+      <h2>Introduction</h2>
+      <p>Ramio est un jeu de plateforme inspiré de Mario, développé en C++ avec SFML. Il est possible de jouer seul ou à deux afin d’atteindre la fin du niveau sans tomber dans les pièges.</p>
+  </section>
+  
+  <section id="installation">
+      <h2>Installation</h2>
+      <p><strong>Prérequis :</strong> GNU/Linux, G++, CMake, SFML 2.5+</p>
+      <pre><code>
+      git clone https://github.com/romanecouedel/ramio_project
+      cd ramio_project
+      mkdir build && cd build
+      cmake ..
+      make
+      ./mario
+      </code></pre>
+  </section>
+  
+  <section id="utilisation">
+      <h2>Utilisation</h2>
+      <h3>Naviguer dans le menu :</h3>
+        <p>Il y a plusieurs couches de menu. Le choix sélectionné apparait en rouge, il faut appuyer sur la 'touche entrer' pour le confirmer.</p>
+
+        <h4>Première couche :</h4>
+        <p>On peut choisir entre jouer et quitter le jeu. Si Quitter est confirmé alors la fenêtre se ferme. Lorsque Jouer est confirmé, on arrive à la deuxième couche du menu.</p>
+
+        <h4>Deuxième couche :</h4>
+        <p>Il est possible de choisir "1 joueur" ou "2 joueurs" ou retourner à la première couche du menu. Si on décide de jouer seul, alors on accède à la couche de level/map du menu. Si on veut jouer en coopération alors on accède à la couche multijoueur du menu.</p>
+
+        <h4>Couche multijoueur :</h4>
+        <p>2 options de jeu en coopération sont possibles, si l'option "Avec l'ordinateur" est confirmée, on accède ensuite à la couche level. Si cette option est choisie alors, pendant la partie, l'IA simplifiée jouera Luigi pendant que le joueur principal jouera Mario. Si l'option "En local" est confirmée, on accède également à la couche level et une personne jouera Luigi, une autre Mario pendant la partie. On peut également revenir à la deuxième couche du menu en confirmant Retour.</p>
+
+        <h4>Couche Level :</h4>
+        <p>Il est possible de choisir parmi 3 levels classés du plus simple au plus difficile. En confirmant un des levels, la partie démarre. En confirmant Retour, on retourne à la couche du menu sur laquelle on était juste avant celle-ci.</p>
+
+      <h3>Jouer en solo ou avec l'IA</h3>
+        <p>Une fois qu'une partie en solo ou avec l'IA est lancée, il y a 4 touches qui permettent à Mario de faire des actions :</p>
+        <ul>
+        <li><strong>Flèche Gauche :</strong> Déplacement vers la gauche</li>
+        <li><strong>Flèche Droite :</strong> Déplacement vers la droite</li>
+        <li><strong>Flèche Bas :</strong> Permet de se téléporter à travers un tuyau lorsque Mario est au-dessus de l'entrée de celui-ci</li>
+        <li><strong>Flèche Haut :</strong> Saut</li>
+        </ul>
+        <p>La partie se termine lorsque Mario touche le drapeau ou que Mario meurt 6 fois. On accède ainsi à l'écran de fin de jeu.</p>
+
+      <h3>Jouer à 2</h3>
+        <p>Les touches qui actionnent Mario sont inchangées, celles qui actionnent Luigi sont respectivement :</p>
+        <ul>
+        <li><strong>Q :</strong> Déplacement vers la gauche</li>
+        <li><strong>D :</strong> Déplacement vers la droite</li>
+        <li><strong>S :</strong> Téléportation via tuyau</li>
+        <li><strong>Z :</strong> Saut</li>
+        </ul>
+        <p>La partie se termine lorsque Mario (ou Luigi) touche le drapeau ou que Mario (ou Luigi) meurt 3 fois. On accède ainsi à l'écran de fin de jeu.</p>
+
+        <h3>Écran de fin de jeu</h3>
+        <p>Une fois la fin de jeu activée, on peut voir si on a gagné ou perdu, le temps qui a été nécessaire pour faire le parcours. On peut voir également combien de pièces ont été récoltées et combien de fois Luigi ou Mario est mort. En appuyant sur la touche 'entrer' du clavier, on retourne à la première couche du menu.</p>
+
+
+  </section>
+  
+  <section id="structure">
+      <h2>Structure du projet</h2>
+      <pre><code>
+      📁 ramio_project
+      ├── 📁 src/
+      ├── 📁 include/
+      ├── 📁 fonts/
+      ├── 📁 img/
+      ├── 📁 music/
+      ├── CMakeLists.txt
+      ├── README.md
+      </code></pre>
+  </section>
+  
+  <section id="contributeurs">
+      <h2>Contributeurs</h2>
+      <ul>
+          <li>Abdelkamel Mehdy - <a href="https://github.com/Mehdy03">GitHub de Mehdy</a></li>
+          <li>Couëdel Romane - <a href="https://github.com/romanecouedel">GitHub de Romane</a></li>
+          <li>Fasquelle Albéric - <a href="https://github.com/Gyver2206">GitHub de Albéric</a></li>
+      </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
