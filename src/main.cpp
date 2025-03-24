@@ -33,7 +33,9 @@ int main()
     Mario mario;
     Luigi luigi;
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
-    sf::Clock clock;                              // Horloge pour gérer le temps écoulé
+    sf::Clock clock;                              // Horloge
+
+    float totalTime = 0.f; // Variable pour accumuler le temps total
     sf::View view(sf::FloatRect(0, 0, 900, 600)); // Vue de la caméra
 
     // Positions initiales
@@ -61,6 +63,8 @@ int main()
 
                 if (menu.isGameStarting())
                 {
+
+                    totalTime = 0.f; // remise à zero du temps à chaque fois qu'une partie commence 
                     gameState = GameState::GAME;
                     int selectedLevel = menu.getSelectedLevel();
                     std::string levelPath = "../levels/level" + std::to_string(selectedLevel + 1) + ".txt";
@@ -111,6 +115,7 @@ int main()
         else if (gameState == GameState::GAME)
         {
             deltaTime = clock.restart().asSeconds();
+            totalTime += deltaTime; // Ajouter le deltaTime au temps total
 
             // Mise à jour des personnages
             mario.handleInput();
@@ -197,7 +202,7 @@ int main()
         }
         else if (gameState == GameState::FDG)
         {
-            finDeJeu.afficher(window, deltaTime, Piece::getNbPiece(), nbMortsMario + nbMortsLuigi);
+            finDeJeu.afficher(window, totalTime, Piece::getNbPiece(), nbMortsMario + nbMortsLuigi);
             window.display();
         }
     }

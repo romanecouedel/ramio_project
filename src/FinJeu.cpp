@@ -90,9 +90,15 @@ void FinDeJeu::afficher(sf::RenderWindow& window, float tempsEcoule, int score, 
     window.draw(texteScore);
 
     // Configuration du temps
-    int seconds = static_cast<int>(tempsEcoule * 60 * 60);
-    int min = static_cast<int>(seconds / 60);
-    std::string timeText = "Temps: " + std::string(min < 10 ? "0" : "") + std::to_string(min) + ":" + std::string(seconds < 10 ? "0" : "") + std::to_string(seconds);
+    // Le temps écoulé est en secondes 
+    int minutes = static_cast<int>(tempsEcoule) / 60;  // Diviser pour obtenir les minutes
+    int secondes = static_cast<int>(tempsEcoule) % 60;  // Récupérer le reste des secondes
+
+    // Formater le texte à afficher
+    std::string timeText = "Temps: " + std::string(minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + 
+                        std::string(secondes < 10 ? "0" : "") + std::to_string(secondes);
+
+    // Appliquer ce texte à votre objet texte
     setupText(texteTemps, timeText, windowWidth / 1.25, windowHeight / 12, 50);
     texteTemps.setStyle(sf::Text::Bold);
     texteTemps.setFillColor(sf::Color::White);
