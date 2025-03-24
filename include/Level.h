@@ -11,79 +11,70 @@
 #include "Ennemi.h"
 
 class Ennemi;
+// Classe gère les levels du jeu
 class Level
-{
-public:
-    Level();
-    ~Level() = default;
+    {
+    public:
+    // Constructeur
+        Level();
+        // Destructeur
+        ~Level() = default;
 
-    bool loadFromFile(const std::string &filename);
-    void draw(sf::RenderWindow &window);
-    bool isColliding(const sf::FloatRect &hitbox) const;
-    BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
-    
-    void afficherEtatBlocsMysteres() const ;
+        std::vector<std::unique_ptr<Ennemi>> ennemis;
+        const Drapeau &getDrapeau() const { return drapeau; }
 
+        // Chargement du niveau depuis un fichier txt
+        bool loadFromFile(const std::string &filename);
+        // Dessin du niveau
+        void draw(sf::RenderWindow &window);
+        // Génération du fond avec défilement
+        void generateBackground(float levelWidth, float levelHeight);
+        // gestion des collisions
+        bool isColliding(const sf::FloatRect &hitbox) const;
 
+        // utile pour ia, savoir si il y a un bloc mystere près de luigi
+        BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
+        // utile pour ia, afficher les blocs mysteres et leur état, DEBUG
+        void afficherEtatBlocsMysteres() const ;
 
+        // taille de la grille, combien de caractere dans une ligne dans le fichier txt, utile pour main
+        int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
+        int getHeight() const { return grid.size(); }
 
-    int getWidth() const { return grid.empty() ? 0 : grid[0].size(); }
-    int getHeight() const { return grid.size(); }
+        // Mise à jour du niveau
+        void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
-    const Drapeau &getDrapeau() const { return drapeau; }
-    void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
-
-    void initTexte();
-    bool afficherTexte = false; // Variable pour contrôler l'affichage
-
-    void generateBackground(float levelWidth, float levelHeight);
-
-    bool isTuyauColliding(const sf::FloatRect& playerBound) const;    
-
-    void updateEnnemis(float deltaTime);
-    void drawEnnemis(sf::RenderWindow &window);
+        // Gestion des tuyaux
+        bool isTuyauColliding(const sf::FloatRect& hitbox) const;
 
     void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
-private:
-    std::vector<std::vector<int>> grid;
-    std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
+    private:
+        // vecteur de vecteur d'entiers pour la grille
+        std::vector<std::vector<int>> grid;
+        std::vector<std::unique_ptr<Bloc>> blocs; // Vecteur de blocs
 
-    Drapeau drapeau;
-    
-    
-    sf::Font font;
-    sf::Text niveauTermineText;
-    bool texteAnime = false;             // Indique si l’animation est en cours
-    float zoomScale = 1.0f; // Facteur de zoom actuel
-    bool zoomIn = true;     // Direction du zoom (avant ou arrière)
+        Drapeau drapeau;
+        
+        // Fond
+        sf::Texture backgroundTexture;
+        sf::Sprite backgroundSprite;
+        sf::Texture bgTextureLeft, bgTextureRight;
+        sf::VertexArray backgroundVertices;
+        float bgWidth;
 
-    sf::Clock texteClock;
-    bool texteAnimationActive = false;
-    
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
+        sf::Music backgroundMusic;
 
-    sf::Texture bgTextureLeft, bgTextureRight;
-    sf::VertexArray backgroundVertices;
-    float bgWidth;
+        sf::RectangleShape tuyauEntree;
+        sf::RectangleShape tuyauSortie;
 
-    int viesRestantes = 5; // Nombre de vies au début
-    sf::Text texteVies; 
-
-    sf::Music backgroundMusic;
-
-    sf::RectangleShape tuyauEntree;
-    sf::RectangleShape tuyauSortie;
-
-    sf::Texture goombaTexture;
-    std::vector<std::unique_ptr<Ennemi>> ennemis;
+        sf::Texture goombaTexture;
 
 
-    float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
-    bool enTrainDeDescendre = false; // Animation de descente active
-    bool enTrainDeMonter = false; // Animation de montée active
-    sf::Vector2f sortiePosition; // Position du tuyau de sortie
+        float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
+        bool enTrainDeDescendre = false; // Animation de descente active
+        bool enTrainDeMonter = false; // Animation de montée active
+        sf::Vector2f sortiePosition; // Position du tuyau de sortie
 
 
 };
