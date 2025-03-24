@@ -1,0 +1,199 @@
+\hypertarget{classAnimation}{}\doxysection{Animation Class Reference}
+\label{classAnimation}\index{Animation@{Animation}}
+
+
+{\ttfamily \#include $<$Animation.\+h$>$}
+
+
+
+Collaboration diagram for Animation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classAnimation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAnimation_a4c294d8ee848291f5da25a7d6360601f}{Animation}} ()=default
+\item 
+\mbox{\hyperlink{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}{Animation}} (sf\+::\+Texture $\ast$texture, sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}{image\+Count}}, float \mbox{\hyperlink{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}{switch\+Time}})
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}{update}} (float delta\+Time, bool face\+Right, bool is\+Jumping)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. \end{DoxyCompactList}\item 
+sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82772c37376eb13c40295f3e65e52ebc}{get\+Uv\+Rect}} () const
+\item 
+sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a4cc2a8a703cea8df904fdca5b2b43c60}{get\+Current\+Frame}} () const
+\item 
+void \mbox{\hyperlink{classAnimation_af928b8b48c570c067e5d3550930a2358}{set\+Frame}} (int row, int column)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_aeb23dec031861eff3dda1b759f4472fc}{current\+Image}}
+\item 
+sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}{uv\+Rect}}
+\item 
+sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}{image\+Count}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}{total\+Time}} = 0.\+0f
+\item 
+float \mbox{\hyperlink{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}{switch\+Time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 7 of file Animation.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAnimation_a4c294d8ee848291f5da25a7d6360601f}\label{classAnimation_a4c294d8ee848291f5da25a7d6360601f}} 
+\index{Animation@{Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Animation\+::\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}\label{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}} 
+\index{Animation@{Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Animation\+::\+Animation (\begin{DoxyParamCaption}\item[{sf\+::\+Texture $\ast$}]{texture,  }\item[{sf\+::\+Vector2u}]{image\+Count,  }\item[{float}]{switch\+Time }\end{DoxyParamCaption})}
+
+
+
+Constructeur de l\textquotesingle{}animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & Pointeur vers la texture utilisée pour l\textquotesingle{}animation. \\
+\hline
+{\em image\+Count} & Nombre d\textquotesingle{}images par ligne et colonne dans la spritesheet. \\
+\hline
+{\em switch\+Time} & Temps entre chaque changement de frame. \\
+\hline
+\end{DoxyParams}
+$<$ Largeur d\textquotesingle{}une frame dans la spritesheet.
+
+$<$ Hauteur d\textquotesingle{}une frame dans la spritesheet.
+
+Definition at line 9 of file Animation.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAnimation_a4cc2a8a703cea8df904fdca5b2b43c60}\label{classAnimation_a4cc2a8a703cea8df904fdca5b2b43c60}} 
+\index{Animation@{Animation}!getCurrentFrame@{getCurrentFrame}}
+\index{getCurrentFrame@{getCurrentFrame}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{getCurrentFrame()}{getCurrentFrame()}}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Animation\+::get\+Current\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 19 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_a82772c37376eb13c40295f3e65e52ebc}\label{classAnimation_a82772c37376eb13c40295f3e65e52ebc}} 
+\index{Animation@{Animation}!getUvRect@{getUvRect}}
+\index{getUvRect@{getUvRect}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{getUvRect()}{getUvRect()}}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Animation\+::get\+Uv\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 16 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_af928b8b48c570c067e5d3550930a2358}\label{classAnimation_af928b8b48c570c067e5d3550930a2358}} 
+\index{Animation@{Animation}!setFrame@{setFrame}}
+\index{setFrame@{setFrame}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{setFrame()}{setFrame()}}
+{\footnotesize\ttfamily void Animation\+::set\+Frame (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}\label{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}} 
+\index{Animation@{Animation}!update@{update}}
+\index{update@{update}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Animation\+::update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time,  }\item[{bool}]{face\+Right,  }\item[{bool}]{is\+Jumping }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Temps écoulé depuis la dernière mise à jour. \\
+\hline
+{\em face\+Right} & Indique si le personnage fait face à droite. \\
+\hline
+{\em is\+Jumping} & Indique si le personnage est en train de sauter. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file Animation.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAnimation_aeb23dec031861eff3dda1b759f4472fc}\label{classAnimation_aeb23dec031861eff3dda1b759f4472fc}} 
+\index{Animation@{Animation}!currentImage@{currentImage}}
+\index{currentImage@{currentImage}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{currentImage}{currentImage}}
+{\footnotesize\ttfamily sf\+::\+Vector2u Animation\+::current\+Image}
+
+
+
+Definition at line 21 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}\label{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}} 
+\index{Animation@{Animation}!imageCount@{imageCount}}
+\index{imageCount@{imageCount}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{imageCount}{imageCount}}
+{\footnotesize\ttfamily sf\+::\+Vector2u Animation\+::image\+Count}
+
+
+
+Definition at line 23 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}\label{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}} 
+\index{Animation@{Animation}!switchTime@{switchTime}}
+\index{switchTime@{switchTime}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{switchTime}{switchTime}}
+{\footnotesize\ttfamily float Animation\+::switch\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 29 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}\label{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}} 
+\index{Animation@{Animation}!totalTime@{totalTime}}
+\index{totalTime@{totalTime}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{totalTime}{totalTime}}
+{\footnotesize\ttfamily float Animation\+::total\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 28 of file Animation.\+h.
+
+\mbox{\Hypertarget{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}\label{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}} 
+\index{Animation@{Animation}!uvRect@{uvRect}}
+\index{uvRect@{uvRect}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{uvRect}{uvRect}}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Animation\+::uv\+Rect}
+
+
+
+Definition at line 22 of file Animation.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Animation_8h}{Animation.\+h}}\item 
+src/\mbox{\hyperlink{Animation_8cpp}{Animation.\+cpp}}\end{DoxyCompactItemize}

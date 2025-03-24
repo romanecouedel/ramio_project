@@ -1,0 +1,259 @@
+\hypertarget{classBlocMystere}{}\doxysection{Bloc\+Mystere Class Reference}
+\label{classBlocMystere}\index{BlocMystere@{BlocMystere}}
+
+
+{\ttfamily \#include $<$Bloc.\+h$>$}
+
+
+
+Inheritance diagram for Bloc\+Mystere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classBlocMystere__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bloc\+Mystere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classBlocMystere__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlocMystere_a25bd9d650bec8d37de1fa4284d8452b5}{Bloc\+Mystere}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de \mbox{\hyperlink{classBlocMystere}{Bloc\+Mystere}}, charge la texture si ce n\textquotesingle{}est pas encore fait. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlocMystere_adfdd9cb1184ea58167345ff2ff8cbacb}{update}} (float delta\+Time, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation du bloc mystère. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}{on\+Hit}} ()
+\begin{DoxyCompactList}\small\item\em Action lorsque le bloc mystère est frappé. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}{is\+Animating}} () const
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}animation du bloc mystère est en cours. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$ \& \mbox{\hyperlink{classBlocMystere_a69c864393bb9738d80b0b2c79e087b2b}{get\+Piece}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBlocMystere_a23911824bfb394d6e5d58661b8048050}{est\+Touche}} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBlocMystere_a4292482a0d4df210c8f196a14a13a3a0}{changer\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Change la texture du bloc mystère après activation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classBlocMystere_ae7f88a142fb56ceb39faea56d9372c06}{start\+Position}}
+\item 
+bool \mbox{\hyperlink{classBlocMystere_ac34c683994133c7d0acbf31426f72103}{animating}} = false
+\item 
+float \mbox{\hyperlink{classBlocMystere_a1143883928a4e999248f5f67a95a90b1}{animation\+Time}} = 0.\+0f
+\item 
+const float \mbox{\hyperlink{classBlocMystere_ade93b86f40121af263df97a28a8ece59}{animation\+Duration}} = 0.\+2f
+\item 
+const float \mbox{\hyperlink{classBlocMystere_af881e6235f320cece97a06fe6289ab3a}{animation\+Height}} = 5.\+0f
+\item 
+sf\+::\+Texture \mbox{\hyperlink{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b098}{texture\+Foncee}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$ \mbox{\hyperlink{classBlocMystere_a0199fcf4b7417edd80dc8d435ef0f0b0}{piece}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 59 of file Bloc.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlocMystere_a25bd9d650bec8d37de1fa4284d8452b5}\label{classBlocMystere_a25bd9d650bec8d37de1fa4284d8452b5}} 
+\index{BlocMystere@{BlocMystere}!BlocMystere@{BlocMystere}}
+\index{BlocMystere@{BlocMystere}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{BlocMystere()}{BlocMystere()}}
+{\footnotesize\ttfamily Bloc\+Mystere\+::\+Bloc\+Mystere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de \mbox{\hyperlink{classBlocMystere}{Bloc\+Mystere}}, charge la texture si ce n\textquotesingle{}est pas encore fait. 
+
+
+
+Definition at line 31 of file Bloc.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlocMystere_a4292482a0d4df210c8f196a14a13a3a0}\label{classBlocMystere_a4292482a0d4df210c8f196a14a13a3a0}} 
+\index{BlocMystere@{BlocMystere}!changerTexture@{changerTexture}}
+\index{changerTexture@{changerTexture}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{changerTexture()}{changerTexture()}}
+{\footnotesize\ttfamily void Bloc\+Mystere\+::changer\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Change la texture du bloc mystère après activation. 
+
+
+
+Definition at line 67 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classBlocMystere_a69c864393bb9738d80b0b2c79e087b2b}\label{classBlocMystere_a69c864393bb9738d80b0b2c79e087b2b}} 
+\index{BlocMystere@{BlocMystere}!getPiece@{getPiece}}
+\index{getPiece@{getPiece}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{getPiece()}{getPiece()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classPiece}{Piece}}$>$\& Bloc\+Mystere\+::get\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 81 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}\label{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}} 
+\index{BlocMystere@{BlocMystere}!isAnimating@{isAnimating}}
+\index{isAnimating@{isAnimating}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{isAnimating()}{isAnimating()}}
+{\footnotesize\ttfamily bool Bloc\+Mystere\+::is\+Animating (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si l\textquotesingle{}animation du bloc mystère est en cours. 
+
+\begin{DoxyReturn}{Returns}
+True si en animation, False sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}\label{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}} 
+\index{BlocMystere@{BlocMystere}!onHit@{onHit}}
+\index{onHit@{onHit}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{onHit()}{onHit()}}
+{\footnotesize\ttfamily void Bloc\+Mystere\+::on\+Hit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Action lorsque le bloc mystère est frappé. 
+
+
+
+Definition at line 50 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classBlocMystere_adfdd9cb1184ea58167345ff2ff8cbacb}\label{classBlocMystere_adfdd9cb1184ea58167345ff2ff8cbacb}} 
+\index{BlocMystere@{BlocMystere}!update@{update}}
+\index{update@{update}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Bloc\+Mystere\+::update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}animation du bloc mystère. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Temps écoulé depuis la dernière mise à jour. \\
+\hline
+{\em window} & Fenêtre S\+F\+ML. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file Bloc.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBlocMystere_ac34c683994133c7d0acbf31426f72103}\label{classBlocMystere_ac34c683994133c7d0acbf31426f72103}} 
+\index{BlocMystere@{BlocMystere}!animating@{animating}}
+\index{animating@{animating}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{animating}{animating}}
+{\footnotesize\ttfamily bool Bloc\+Mystere\+::animating = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_ade93b86f40121af263df97a28a8ece59}\label{classBlocMystere_ade93b86f40121af263df97a28a8ece59}} 
+\index{BlocMystere@{BlocMystere}!animationDuration@{animationDuration}}
+\index{animationDuration@{animationDuration}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{animationDuration}{animationDuration}}
+{\footnotesize\ttfamily const float Bloc\+Mystere\+::animation\+Duration = 0.\+2f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_af881e6235f320cece97a06fe6289ab3a}\label{classBlocMystere_af881e6235f320cece97a06fe6289ab3a}} 
+\index{BlocMystere@{BlocMystere}!animationHeight@{animationHeight}}
+\index{animationHeight@{animationHeight}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{animationHeight}{animationHeight}}
+{\footnotesize\ttfamily const float Bloc\+Mystere\+::animation\+Height = 5.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_a1143883928a4e999248f5f67a95a90b1}\label{classBlocMystere_a1143883928a4e999248f5f67a95a90b1}} 
+\index{BlocMystere@{BlocMystere}!animationTime@{animationTime}}
+\index{animationTime@{animationTime}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{animationTime}{animationTime}}
+{\footnotesize\ttfamily float Bloc\+Mystere\+::animation\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_a23911824bfb394d6e5d58661b8048050}\label{classBlocMystere_a23911824bfb394d6e5d58661b8048050}} 
+\index{BlocMystere@{BlocMystere}!estTouche@{estTouche}}
+\index{estTouche@{estTouche}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{estTouche}{estTouche}}
+{\footnotesize\ttfamily bool Bloc\+Mystere\+::est\+Touche = false}
+
+
+
+Definition at line 79 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_a0199fcf4b7417edd80dc8d435ef0f0b0}\label{classBlocMystere_a0199fcf4b7417edd80dc8d435ef0f0b0}} 
+\index{BlocMystere@{BlocMystere}!piece@{piece}}
+\index{piece@{piece}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{piece}{piece}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classPiece}{Piece}}$>$ Bloc\+Mystere\+::piece\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 68 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_ae7f88a142fb56ceb39faea56d9372c06}\label{classBlocMystere_ae7f88a142fb56ceb39faea56d9372c06}} 
+\index{BlocMystere@{BlocMystere}!startPosition@{startPosition}}
+\index{startPosition@{startPosition}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{startPosition}{startPosition}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Bloc\+Mystere\+::start\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 62 of file Bloc.\+h.
+
+\mbox{\Hypertarget{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b098}\label{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b098}} 
+\index{BlocMystere@{BlocMystere}!textureFoncee@{textureFoncee}}
+\index{textureFoncee@{textureFoncee}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{textureFoncee}{textureFoncee}}
+{\footnotesize\ttfamily sf\+::\+Texture Bloc\+Mystere\+::texture\+Foncee\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 67 of file Bloc.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Bloc_8h}{Bloc.\+h}}\item 
+src/\mbox{\hyperlink{Bloc_8cpp}{Bloc.\+cpp}}\end{DoxyCompactItemize}

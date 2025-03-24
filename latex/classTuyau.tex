@@ -1,0 +1,185 @@
+\hypertarget{classTuyau}{}\doxysection{Tuyau Class Reference}
+\label{classTuyau}\index{Tuyau@{Tuyau}}
+
+
+{\ttfamily \#include $<$Bloc.\+h$>$}
+
+
+
+Inheritance diagram for Tuyau\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTuyau__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tuyau\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classTuyau__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}} \{ \mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2af1573609f2de0fe3b4fbc4a042db9a}{Type\+::\+E\+N\+T\+R\+EE}}, 
+\mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2b49e98dc01e1af35f0d8ecedd8bd524}{Type\+::\+S\+O\+R\+T\+IE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTuyau_a5409407ea822c05028315927276a7297}{Tuyau}} (\mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}} \mbox{\hyperlink{classTuyau_af4d7a93093d0b51f9b90881ec31ae1e2}{type}})
+\begin{DoxyCompactList}\small\item\em Constructeur de \mbox{\hyperlink{classTuyau}{Tuyau}}, charge la texture si ce n\textquotesingle{}est pas encore fait. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}} \mbox{\hyperlink{classTuyau_a88c629eba65c52a8e24d9cb3e86f30f2}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le type du tuyau (entrée ou sortie). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTuyau_a5bf75bfc09cd6d65d41a337c17277af5}{is\+Player\+On\+Top}} (const \mbox{\hyperlink{classPlayer}{Player}} \&player) const
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est sur le tuyau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuyau}{Tuyau}} $\ast$ \mbox{\hyperlink{classTuyau_a0a893ba0fa1744af3dbd79da5e181688}{get\+Sortie\+Associee}} (const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBloc}{Bloc}} $>$$>$ \&blocs) const
+\begin{DoxyCompactList}\small\item\em Trouve la sortie associée au tuyau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}} \mbox{\hyperlink{classTuyau_af4d7a93093d0b51f9b90881ec31ae1e2}{type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 87 of file Bloc.\+h.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}\label{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}} 
+\index{Tuyau@{Tuyau}!Type@{Type}}
+\index{Type@{Type}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Tuyau\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENTREE@{ENTREE}!Tuyau@{Tuyau}}\index{Tuyau@{Tuyau}!ENTREE@{ENTREE}}}\mbox{\Hypertarget{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2af1573609f2de0fe3b4fbc4a042db9a}\label{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2af1573609f2de0fe3b4fbc4a042db9a}} 
+E\+N\+T\+R\+EE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SORTIE@{SORTIE}!Tuyau@{Tuyau}}\index{Tuyau@{Tuyau}!SORTIE@{SORTIE}}}\mbox{\Hypertarget{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2b49e98dc01e1af35f0d8ecedd8bd524}\label{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fea2b49e98dc01e1af35f0d8ecedd8bd524}} 
+S\+O\+R\+T\+IE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 89 of file Bloc.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTuyau_a5409407ea822c05028315927276a7297}\label{classTuyau_a5409407ea822c05028315927276a7297}} 
+\index{Tuyau@{Tuyau}!Tuyau@{Tuyau}}
+\index{Tuyau@{Tuyau}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{Tuyau()}{Tuyau()}}
+{\footnotesize\ttfamily Tuyau\+::\+Tuyau (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructeur de \mbox{\hyperlink{classTuyau}{Tuyau}}, charge la texture si ce n\textquotesingle{}est pas encore fait. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type du tuyau (entrée ou sortie). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 103 of file Bloc.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTuyau_a0a893ba0fa1744af3dbd79da5e181688}\label{classTuyau_a0a893ba0fa1744af3dbd79da5e181688}} 
+\index{Tuyau@{Tuyau}!getSortieAssociee@{getSortieAssociee}}
+\index{getSortieAssociee@{getSortieAssociee}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{getSortieAssociee()}{getSortieAssociee()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuyau}{Tuyau}} $\ast$ Tuyau\+::get\+Sortie\+Associee (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBloc}{Bloc}} $>$$>$ \&}]{blocs }\end{DoxyParamCaption}) const}
+
+
+
+Trouve la sortie associée au tuyau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blocs} & Liste des blocs du niveau. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers le tuyau de sortie correspondant. 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classTuyau_a88c629eba65c52a8e24d9cb3e86f30f2}\label{classTuyau_a88c629eba65c52a8e24d9cb3e86f30f2}} 
+\index{Tuyau@{Tuyau}!getType@{getType}}
+\index{getType@{getType}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Tuyau\+::\+Type}} Tuyau\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le type du tuyau (entrée ou sortie). 
+
+\begin{DoxyReturn}{Returns}
+Type du tuyau. 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classTuyau_a5bf75bfc09cd6d65d41a337c17277af5}\label{classTuyau_a5bf75bfc09cd6d65d41a337c17277af5}} 
+\index{Tuyau@{Tuyau}!isPlayerOnTop@{isPlayerOnTop}}
+\index{isPlayerOnTop@{isPlayerOnTop}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{isPlayerOnTop()}{isPlayerOnTop()}}
+{\footnotesize\ttfamily bool Tuyau\+::is\+Player\+On\+Top (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlayer}{Player}} \&}]{player }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si le joueur est sur le tuyau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Référence vers le joueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True si le joueur est au-\/dessus du tuyau, False sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 148 of file Bloc.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTuyau_af4d7a93093d0b51f9b90881ec31ae1e2}\label{classTuyau_af4d7a93093d0b51f9b90881ec31ae1e2}} 
+\index{Tuyau@{Tuyau}!type@{type}}
+\index{type@{type}!Tuyau@{Tuyau}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuyau_aefcb4a7caaa7ee3b56932416cd1362fe}{Type}} Tuyau\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 95 of file Bloc.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Bloc_8h}{Bloc.\+h}}\item 
+src/\mbox{\hyperlink{Bloc_8cpp}{Bloc.\+cpp}}\end{DoxyCompactItemize}

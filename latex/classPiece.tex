@@ -1,0 +1,243 @@
+\hypertarget{classPiece}{}\doxysection{Piece Class Reference}
+\label{classPiece}\index{Piece@{Piece}}
+
+
+Classe représentant une pièce collectable par le joueur.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+
+
+Inheritance diagram for Piece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classPiece__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Piece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classPiece__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPiece_adb6f614b555dd241ffa4d741b0833d63}{Piece}} (float x, float y)
+\item 
+void \mbox{\hyperlink{classPiece_addff429671b3ea59d1054d2f0bd6cd27}{update}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation de la pièce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPiece_a7c1647dc3a04d50a36da669327afc651}{draw}} (sf\+::\+Render\+Window \&window) const
+\begin{DoxyCompactList}\small\item\em Affiche la pièce si elle n\textquotesingle{}est pas collectée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classPiece_a2d9471caf45b3cd10b80acca8b5ae057}{get\+Nb\+Piece}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de pièces collectées. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPiece_a6dfb38a45ad11dc145950177307c4acb}{reset\+Nb\+Piece}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le compteur de pièces collectées à zéro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classPiece_a0d259c6141221c0fa4801178d5cdb53c}{start\+Position}}
+\item 
+bool \mbox{\hyperlink{classPiece_a80b8f60b01d290b94d81441c576fb1f8}{collected}} = 0
+\item 
+bool \mbox{\hyperlink{classPiece_a1a72e8f19b072b0e625081acc138e92e}{animating}} = false
+\item 
+float \mbox{\hyperlink{classPiece_a50717a1df3dcb1833fcf1a52b47d0087}{animation\+Time}} = 0.\+0f
+\item 
+const float \mbox{\hyperlink{classPiece_a80060959f000d9bc0a41c8a158c74ae8}{animation\+Duration}} = 0.\+5f
+\item 
+const float \mbox{\hyperlink{classPiece_a2cfc422497a8ff02319e48f3d56edd70}{animation\+Height}} = 10.\+0f
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classPiece_ab4c5b716bd82a91dbb84d78c4d23c1c7}{nb\+Piece}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Classe représentant une pièce collectable par le joueur. 
+
+Definition at line 57 of file Entity.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPiece_adb6f614b555dd241ffa4d741b0833d63}\label{classPiece_adb6f614b555dd241ffa4d741b0833d63}} 
+\index{Piece@{Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}}
+{\footnotesize\ttfamily Piece\+::\+Piece (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file Entity.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPiece_a7c1647dc3a04d50a36da669327afc651}\label{classPiece_a7c1647dc3a04d50a36da669327afc651}} 
+\index{Piece@{Piece}!draw@{draw}}
+\index{draw@{draw}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Piece\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Affiche la pièce si elle n\textquotesingle{}est pas collectée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classObjetInteractif_ade01cbd8a8b9181cdb769cb236ab651d}{Objet\+Interactif}}.
+
+
+
+Definition at line 79 of file Entity.\+cpp.
+
+\mbox{\Hypertarget{classPiece_a2d9471caf45b3cd10b80acca8b5ae057}\label{classPiece_a2d9471caf45b3cd10b80acca8b5ae057}} 
+\index{Piece@{Piece}!getNbPiece@{getNbPiece}}
+\index{getNbPiece@{getNbPiece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{getNbPiece()}{getNbPiece()}}
+{\footnotesize\ttfamily int Piece\+::get\+Nb\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retourne le nombre de pièces collectées. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de pièces collectées. 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file Entity.\+cpp.
+
+\mbox{\Hypertarget{classPiece_a6dfb38a45ad11dc145950177307c4acb}\label{classPiece_a6dfb38a45ad11dc145950177307c4acb}} 
+\index{Piece@{Piece}!resetNbPiece@{resetNbPiece}}
+\index{resetNbPiece@{resetNbPiece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{resetNbPiece()}{resetNbPiece()}}
+{\footnotesize\ttfamily void Piece\+::reset\+Nb\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Réinitialise le compteur de pièces collectées à zéro. 
+
+
+
+Definition at line 98 of file Entity.\+cpp.
+
+\mbox{\Hypertarget{classPiece_addff429671b3ea59d1054d2f0bd6cd27}\label{classPiece_addff429671b3ea59d1054d2f0bd6cd27}} 
+\index{Piece@{Piece}!update@{update}}
+\index{update@{update}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Piece\+::update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}animation de la pièce. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file Entity.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPiece_a1a72e8f19b072b0e625081acc138e92e}\label{classPiece_a1a72e8f19b072b0e625081acc138e92e}} 
+\index{Piece@{Piece}!animating@{animating}}
+\index{animating@{animating}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{animating}{animating}}
+{\footnotesize\ttfamily bool Piece\+::animating = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 70 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_a80060959f000d9bc0a41c8a158c74ae8}\label{classPiece_a80060959f000d9bc0a41c8a158c74ae8}} 
+\index{Piece@{Piece}!animationDuration@{animationDuration}}
+\index{animationDuration@{animationDuration}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{animationDuration}{animationDuration}}
+{\footnotesize\ttfamily const float Piece\+::animation\+Duration = 0.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 72 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_a2cfc422497a8ff02319e48f3d56edd70}\label{classPiece_a2cfc422497a8ff02319e48f3d56edd70}} 
+\index{Piece@{Piece}!animationHeight@{animationHeight}}
+\index{animationHeight@{animationHeight}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{animationHeight}{animationHeight}}
+{\footnotesize\ttfamily const float Piece\+::animation\+Height = 10.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 73 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_a50717a1df3dcb1833fcf1a52b47d0087}\label{classPiece_a50717a1df3dcb1833fcf1a52b47d0087}} 
+\index{Piece@{Piece}!animationTime@{animationTime}}
+\index{animationTime@{animationTime}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{animationTime}{animationTime}}
+{\footnotesize\ttfamily float Piece\+::animation\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 71 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_a80b8f60b01d290b94d81441c576fb1f8}\label{classPiece_a80b8f60b01d290b94d81441c576fb1f8}} 
+\index{Piece@{Piece}!collected@{collected}}
+\index{collected@{collected}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{collected}{collected}}
+{\footnotesize\ttfamily bool Piece\+::collected = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 69 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_ab4c5b716bd82a91dbb84d78c4d23c1c7}\label{classPiece_ab4c5b716bd82a91dbb84d78c4d23c1c7}} 
+\index{Piece@{Piece}!nbPiece@{nbPiece}}
+\index{nbPiece@{nbPiece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{nbPiece}{nbPiece}}
+{\footnotesize\ttfamily int Piece\+::nb\+Piece = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 76 of file Entity.\+h.
+
+\mbox{\Hypertarget{classPiece_a0d259c6141221c0fa4801178d5cdb53c}\label{classPiece_a0d259c6141221c0fa4801178d5cdb53c}} 
+\index{Piece@{Piece}!startPosition@{startPosition}}
+\index{startPosition@{startPosition}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{startPosition}{startPosition}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Piece\+::start\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 68 of file Entity.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Entity_8h}{Entity.\+h}}\item 
+src/\mbox{\hyperlink{Entity_8cpp}{Entity.\+cpp}}\end{DoxyCompactItemize}

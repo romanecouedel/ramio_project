@@ -1,0 +1,90 @@
+\hypertarget{classMario}{}\doxysection{Mario Class Reference}
+\label{classMario}\index{Mario@{Mario}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Inheritance diagram for Mario\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMario__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mario\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMario__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMario_ac6c300fde42b0dad5778dfa54f8962bb}{Mario}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classMario}{Mario}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMario_a55a7949e89ad3623ef8e03bc537d0f9b}{handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour déplacer \mbox{\hyperlink{classMario}{Mario}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 65 of file Player.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMario_ac6c300fde42b0dad5778dfa54f8962bb}\label{classMario_ac6c300fde42b0dad5778dfa54f8962bb}} 
+\index{Mario@{Mario}!Mario@{Mario}}
+\index{Mario@{Mario}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{Mario()}{Mario()}}
+{\footnotesize\ttfamily Mario\+::\+Mario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{classMario}{Mario}}. 
+
+Initialise \mbox{\hyperlink{classMario}{Mario}} avec sa texture et sa position de départ. 
+
+Definition at line 218 of file Player.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMario_a55a7949e89ad3623ef8e03bc537d0f9b}\label{classMario_a55a7949e89ad3623ef8e03bc537d0f9b}} 
+\index{Mario@{Mario}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Mario\+::handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées clavier pour déplacer \mbox{\hyperlink{classMario}{Mario}}. 
+
+
+\begin{DoxyItemize}
+\item Gauche \+: Flèche gauche.
+\item Droite \+: Flèche droite.
+\item Saut \+: Flèche haut (uniquement si \mbox{\hyperlink{classMario}{Mario}} peut sauter). 
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{classPlayer_a89b45a9ed0cf0bbb1d3940bfbaccbdfd}{Player}}.
+
+
+
+Definition at line 230 of file Player.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Player_8h}{Player.\+h}}\item 
+src/\mbox{\hyperlink{Player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}
