@@ -44,8 +44,14 @@ class Level
         // Mise à jour du niveau
         void update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &marioBounds, const sf::FloatRect &luigiBounds);
 
-        // Gestion des tuyaux
-        bool isTuyauColliding(const sf::FloatRect& hitbox) const;
+    void initTexte();
+    bool afficherTexte = false; // Variable pour contrôler l'affichage
+
+    void generateBackground(float levelWidth, float levelHeight);
+
+    bool isTuyauColliding(const sf::FloatRect& playerBound) const;    
+
+    const std::vector<std::unique_ptr<Ennemi>>& getEnnemis() const { return ennemis; }
 
     void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 

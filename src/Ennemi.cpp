@@ -39,7 +39,7 @@ void Ennemi::update(float deltaTime, Level &level)
     if (isSquashed)
     {
         squashTimer += deltaTime;
-        if (squashTimer >= 1.0f) // Après 1 seconde, l'ennemi disparaît
+        if (squashTimer >= 0.05f) // Après 1 seconde, l'ennemi disparaît
         {
             isAlive = false;
         }
