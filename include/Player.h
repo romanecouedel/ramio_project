@@ -67,7 +67,7 @@ public:
     // constructeur
     Mario();
     // entrées clavier pour déplacer Mario
-    void handleInput() override;
+    void handleInput() override; //polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes
 };
 
 // ============================================= Classe Luigi ===========================================
@@ -82,7 +82,7 @@ public:
     Luigi(); 
 
     // entrées clavier pour déplacer Luigi en local
-    void handleInput() override;
+    void handleInput() override;//polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes
 
     // déplacement de Luigi en fonction de Mario pour l'IA
     void marcher_normal();

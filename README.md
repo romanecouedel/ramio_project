@@ -1,5 +1,5 @@
 # ramio_project
-Un jeu de plateforme inspiré de Mario, développé en C++ avec SFML. Il est possible d'effectuer seul ou à deux un parcours semé d’obstacles et tenter d’atteindre la fin du niveau sans tomber dans les pièges.
+Un jeu de plateforme inspiré de Mario, développé en C++ avec SFML. Il est possible d'effectuer seul ou à deux un parcours afin d'atteindre la fin du niveau sans tomber dans les pièges.
 
 ## Table des matières
 1. [Introduction](#introduction)  
@@ -14,7 +14,7 @@ Un jeu de plateforme inspiré de Mario, développé en C++ avec SFML. Il est pos
 Ramio est un jeu de plateforme en C++ avec SFML, jouable en solo ou en coopération (2 joueurs sur le même écranmario et luigi). On peut également jouer avec un IA symbolique simplifiée. Les objectifs sont simples :
 
 - Éviter les obstacles (trous, ennemis)
-- Atteidre la ligne d’arrivée en un seul morceau
+- Atteidre le drapeau en un seul morceau
 
 Le jeu est conçu pour permettre l’ajout facile de nouveaux niveaux et une amélioration future de l’IA.
 
@@ -57,7 +57,7 @@ Une fois qu'une partie en solo ou avec l'IA est lancée, il y a 4 touches qui pe
 - **Flèche Bas** : permet de se téléporter à travers un tuyau lorsque mario est au dessus de l'entré de celui-ci
 - **Flèche Haut** : saut
 
-La partie se termine lorsque mario touche le drapeau ou que mario meurt 3 fois. On accède ainsi à l'écran de fin de jeu.
+La partie se termine lorsque mario touche le drapeau ou que mario meurt 6 fois. On accède ainsi à l'écran de fin de jeu.
 
 ### Jouer à 2
 
@@ -84,7 +84,7 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 │ ├── Player.cpp (Gestion des joueurs)
 ├── 📁 include/ (Fichiers d’en-tête (.h) pour les classes)
 ├── 📁 fonts/ (Polices utilisées dans le jeu)
-├── 📁 img/ (Images et sprites des personnages, décors…)
+├── 📁 img/ (Images et sprites des personnages, décors…)e
 ├── 📁 music/ (Musiques et sons du jeu)
 ├── CMakeLists.txt 
 ├── README.md 

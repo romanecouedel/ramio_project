@@ -19,9 +19,9 @@ BOOST_AUTO_TEST_CASE(test_player_jump)
     float initialY = mario.getPosition().y;
     
     mario.jump();
-    mario.update(0.1f, Level()); // ✅ Simule une mise à jour après le saut
+    mario.update(0.1f, Level()); // Simule une mise à jour après le saut
 
-    BOOST_CHECK(mario.getPosition().y < initialY); // ✅ Maintenant Mario doit avoir bougé vers le haut
+    BOOST_CHECK(mario.getPosition().y < initialY); // Maintenant Mario doit avoir bougé vers le haut
 }
 
 // ==================== TESTS ENNEMI ====================
@@ -38,9 +38,9 @@ BOOST_AUTO_TEST_CASE(test_ennemi_movement)
     float initialX = goomba.getPosition().x;
 
     Level level;
-    level.loadFromFile("../levels/level1.txt"); // ✅ Charge un vrai niveau
+    level.loadFromFile("../levels/level1.txt"); // Charge un vrai niveau
 
-    for (int i = 0; i < 60; i++) // ✅ Simule 1 seconde en 60 frames
+    for (int i = 0; i < 60; i++) // Simule 1 seconde en 60 frames
     {
         goomba.update(0.016f, level);
     }
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(test_level_collision)
     Level level;
     level.loadFromFile("../levels/level1.txt");
 
-    sf::FloatRect testHitbox(50, 50, 64, 64); // ✅ Vérifier que cette position est bien libre !
+    sf::FloatRect testHitbox(50, 50, 64, 64); // Vérifier que cette position est bien libre !
     bool collision = level.isColliding(testHitbox);
 
     std::cout << "Test collision à (" << testHitbox.left << ", " << testHitbox.top << ") : " 
