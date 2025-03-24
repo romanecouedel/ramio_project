@@ -20,9 +20,8 @@ class Level
         // Destructeur
         ~Level() = default;
 
+        std::vector<std::unique_ptr<Ennemi>> ennemis;
         const Drapeau &getDrapeau() const { return drapeau; }
-
-        std::vector<Ennemi> ennemis;
 
         // Chargement du niveau depuis un fichier txt
         bool loadFromFile(const std::string &filename);
@@ -47,11 +46,6 @@ class Level
 
         // Gestion des tuyaux
         bool isTuyauColliding(const sf::FloatRect& hitbox) const;
-        void handleTuyauInteraction(Player &player, float deltaTime);
-
-        // Gestion des ennemis
-        void updateEnnemis(float deltaTime);
-        void drawEnnemis(sf::RenderWindow &window);
 
     void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
 
@@ -71,17 +65,16 @@ class Level
 
         sf::Music backgroundMusic;
 
-    sf::RectangleShape tuyauEntree;
-    sf::RectangleShape tuyauSortie;
+        sf::RectangleShape tuyauEntree;
+        sf::RectangleShape tuyauSortie;
 
-    sf::Texture goombaTexture;
-    std::vector<std::unique_ptr<Ennemi>> ennemis;
+        sf::Texture goombaTexture;
 
 
-    float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
-    bool enTrainDeDescendre = false; // Animation de descente active
-    bool enTrainDeMonter = false; // Animation de montée active
-    sf::Vector2f sortiePosition; // Position du tuyau de sortie
+        float tuyauTimer = 0.0f; // Temps écoulé pour l'animation
+        bool enTrainDeDescendre = false; // Animation de descente active
+        bool enTrainDeMonter = false; // Animation de montée active
+        sf::Vector2f sortiePosition; // Position du tuyau de sortie
 
 
 };

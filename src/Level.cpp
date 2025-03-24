@@ -50,7 +50,7 @@ bool Level::loadFromFile(const std::string &filename)
             sf::Vector2f position(x * blockSize, y * blockSize);
 
             std::unique_ptr<Bloc> bloc;
-            Ennemi ennemi;
+            auto ennemi = std::make_unique<Ennemi>();
             switch (c)
             {
             case '#':
@@ -67,11 +67,11 @@ bool Level::loadFromFile(const std::string &filename)
                 drapeau.setPosition(position.x, position.y);
                 break;
             case 'X': case 'K':
-                ennemi.setPosition(position.x, position.y);
-                ennemis.push_back(ennemi);
+                ennemi->setPosition(position.x, position.y);
+                ennemis.push_back(std::move(ennemi));
                 break;
             case 'U': case 'V':
-                Tuyau::TypeES type = (c == 'U') ? Tuyau::TypeES::ENTREE : Tuyau::TypeES::SORTIE;
+                Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
                 tuyau->setPosition(position.x, position.y);
                 blocs.push_back(std::move(tuyau));
@@ -223,19 +223,7 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
     }
     return false;
 }
-//debug
-void Level::afficherEtatBlocsMysteres() const {
-    for (const auto& bloc : blocs) {
-        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
-            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche) {
-                std::cout << "Touché" << std::endl;
-            } else {
-                std::cout << "Non touché" << std::endl;
-            }
-        }
-    }
-}
+
 
 //==========================detection bloc mystere proche==========================
 // utile pour ia
@@ -274,6 +262,20 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
     }
 
     return nullptr; // Aucun bloc mystère valide trouvé
+}
+
+//debug
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
+    }
 }
 
 
@@ -410,6 +412,7 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
     }
 }
 
+// utile pour ia 
 bool Level::isTuyauColliding(const sf::FloatRect &playerBound) const {
     sf::FloatRect tuyauBounds; // Initialize tuyauBounds
     for (const auto& bloc : blocs) {
