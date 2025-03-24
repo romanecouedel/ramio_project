@@ -84,15 +84,20 @@ Une fois la fin de jeu activé, on peut voir si on a gagné ou perdu, le temps q
 │ ├── Player.cpp (Gestion des joueurs)
 ├── 📁 include/ (Fichiers d’en-tête (.h) pour les classes)
 ├── 📁 fonts/ (Polices utilisées dans le jeu)
-├── 📁 img/ (Images et sprites des personnages, décors…)e
+├── 📁 img/ (Images et sprites des personnages, décors…)
 ├── 📁 music/ (Musiques et sons du jeu)
 ├── CMakeLists.txt 
 ├── README.md 
+├── 📁 html (fichier doxygen)
+├── 📁 latex  (fichier doxygen)
+├── Doxyfile
 ```
 
-## Diagramme d’architecture 
+## Documentations
 
-fichier uml quand il sera prêt
+[Accéder à la documentation du projet lien github](https://github.com/romanecouedel/ramio_project/tree/main/html/index.html)
+
+[Accéder à la documentation du projet](./html/index.html)
 
 ## Contributeurs
 
