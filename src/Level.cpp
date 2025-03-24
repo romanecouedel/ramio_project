@@ -310,21 +310,6 @@ BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
     return nullptr; // Aucun bloc mystère valide trouvé
 }
 
-//debug
-void Level::afficherEtatBlocsMysteres() const {
-    for (const auto& bloc : blocs) {
-        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
-            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche) {
-                std::cout << "Touché" << std::endl;
-            } else {
-                std::cout << "Non touché" << std::endl;
-            }
-        }
-    }
-}
-
-
 // ======================== Génération du Fond ========================
 /**
  * @brief Génère le fond du niveau en alternant des textures.
