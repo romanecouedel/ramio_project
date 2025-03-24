@@ -17,7 +17,6 @@ public:
 
     // Ajout de la méthode manquante
     sf::IntRect getCurrentFrame() const { return uvRect; }
-    void setFrame(int row, int column);
     sf::Vector2u currentImage;
     sf::IntRect uvRect;
     sf::Vector2u imageCount; 
