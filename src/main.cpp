@@ -96,6 +96,7 @@ int main()
                     window.create(sf::VideoMode(900, 600), "Mario - Menu");
                     view.setCenter(450, 300);
                     window.setView(view);
+                    // Réinitialisation des variables
                     menu.reset();
                     Piece::resetNbPiece();
                     nbMortsMario = 0;
@@ -149,9 +150,8 @@ int main()
             }
 
             
-            
-            int livesRemaining = 5 - (nbMortsMario + nbMortsLuigi);
             // Gestion des vies et des morts
+            int livesRemaining = 5 - (nbMortsMario + nbMortsLuigi);
             if (mario.isDead)
             {
                 mario.respawn();
@@ -165,7 +165,7 @@ int main()
                 std::cout << "Vies restantes: " << livesRemaining << std::endl;
             }
         
-            // Fin de jeu si trop de morts
+            // Fin de jeu par défaite
             if (livesRemaining==-1)
             {
                 gameState = GameState::FDG;
