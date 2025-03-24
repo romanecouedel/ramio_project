@@ -11,8 +11,7 @@ Classe représentant une pièce collectable par le joueur.
 
 
 
-Inheritance diagram for Piece\+:
-\nopagebreak
+Inheritance diagram for Piece\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Piece\+:
 \end{figure}
 
 
-Collaboration diagram for Piece\+:
-\nopagebreak
+Collaboration diagram for Piece\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,12 +30,12 @@ Collaboration diagram for Piece\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{classPiece_a7c1647dc3a04d50a36da669327afc651}{draw}} (sf\+::\+Render\+Window \&window) const
+\begin{DoxyCompactList}\small\item\em Affiche la pièce si elle n\textquotesingle{}est pas collectée. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPiece_adb6f614b555dd241ffa4d741b0833d63}{Piece}} (float x, float y)
 \item 
 void \mbox{\hyperlink{classPiece_addff429671b3ea59d1054d2f0bd6cd27}{update}} (float delta\+Time)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation de la pièce. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPiece_a7c1647dc3a04d50a36da669327afc651}{draw}} (sf\+::\+Render\+Window \&window) const
-\begin{DoxyCompactList}\small\item\em Affiche la pièce si elle n\textquotesingle{}est pas collectée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation de la pièce. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,17 +46,17 @@ static void \mbox{\hyperlink{classPiece_a6dfb38a45ad11dc145950177307c4acb}{reset
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-sf\+::\+Vector2f \mbox{\hyperlink{classPiece_a0d259c6141221c0fa4801178d5cdb53c}{start\+Position}}
-\item 
-bool \mbox{\hyperlink{classPiece_a80b8f60b01d290b94d81441c576fb1f8}{collected}} = 0
-\item 
 bool \mbox{\hyperlink{classPiece_a1a72e8f19b072b0e625081acc138e92e}{animating}} = false
-\item 
-float \mbox{\hyperlink{classPiece_a50717a1df3dcb1833fcf1a52b47d0087}{animation\+Time}} = 0.\+0f
 \item 
 const float \mbox{\hyperlink{classPiece_a80060959f000d9bc0a41c8a158c74ae8}{animation\+Duration}} = 0.\+5f
 \item 
 const float \mbox{\hyperlink{classPiece_a2cfc422497a8ff02319e48f3d56edd70}{animation\+Height}} = 10.\+0f
+\item 
+float \mbox{\hyperlink{classPiece_a50717a1df3dcb1833fcf1a52b47d0087}{animation\+Time}} = 0.\+0f
+\item 
+bool \mbox{\hyperlink{classPiece_a80b8f60b01d290b94d81441c576fb1f8}{collected}} = 0
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classPiece_a0d259c6141221c0fa4801178d5cdb53c}{start\+Position}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -129,6 +127,14 @@ Nombre de pièces collectées.
 
 Definition at line 91 of file Entity.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{classPiece_a2d9471caf45b3cd10b80acca8b5ae057_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classPiece_a6dfb38a45ad11dc145950177307c4acb}\label{classPiece_a6dfb38a45ad11dc145950177307c4acb}} 
 \index{Piece@{Piece}!resetNbPiece@{resetNbPiece}}
 \index{resetNbPiece@{resetNbPiece}!Piece@{Piece}}
@@ -143,6 +149,14 @@ Réinitialise le compteur de pièces collectées à zéro.
 
 Definition at line 98 of file Entity.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classPiece_a6dfb38a45ad11dc145950177307c4acb_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classPiece_addff429671b3ea59d1054d2f0bd6cd27}\label{classPiece_addff429671b3ea59d1054d2f0bd6cd27}} 
 \index{Piece@{Piece}!update@{update}}
 \index{update@{update}!Piece@{Piece}}

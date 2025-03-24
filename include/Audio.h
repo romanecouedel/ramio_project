@@ -8,6 +8,9 @@ class AudioManager
 {
 public:
     AudioManager(); // Constructeur
+    ~AudioManager(){
+        std::cout << "Destruction de AudioManager" << std::endl;
+    }
     std::string getCurrentMusic();
     void setVolume(const std::string& soundName, float volume);
     

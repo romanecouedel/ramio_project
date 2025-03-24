@@ -1,0 +1,5 @@
+<map id="AudioManager::playCoinSound" name="AudioManager::playCoinSound">
+<area shape="rect" id="node1" title="Joue le son d&#39;obtention d&#39;une pièce." alt="" coords="253,5,475,32"/>
+<area shape="rect" id="node2" href="$classLevel.html#a20d356fa84aac7c21b39c631882642a6" title="Affiche le niveau dans la fenêtre SFML." alt="" coords="108,5,205,32"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+</map>

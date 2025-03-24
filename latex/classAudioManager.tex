@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Audio\+Manager\+:
-\nopagebreak
+Collaboration diagram for Audio\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,34 +20,38 @@ Collaboration diagram for Audio\+Manager\+:
 \begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classAudioManager}{Audio\+Manager}}. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classAudioManager_a8eae72f851d67e33a1f17f64ceac437f}{get\+Current\+Music}} ()
 \begin{DoxyCompactList}\small\item\em Récupère la musique actuellement jouée. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}{set\+Volume}} (const std\+::string \&sound\+Name, float volume)
-\begin{DoxyCompactList}\small\item\em Modifie le volume d\textquotesingle{}un son ou d\textquotesingle{}une musique. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}{play\+Menu\+Music}} ()
-\begin{DoxyCompactList}\small\item\em Joue la musique du menu principal. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}{play\+Game\+Music}} ()
-\begin{DoxyCompactList}\small\item\em Joue la musique du jeu. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}{play\+End\+Music}} (bool victoire)
-\begin{DoxyCompactList}\small\item\em Joue la musique de fin de partie. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAudioManager_a407dad03d829e807f7592640dcba130d}{play\+Coin\+Sound}} ()
 \begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}obtention d\textquotesingle{}une pièce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}{play\+End\+Music}} (bool victoire)
+\begin{DoxyCompactList}\small\item\em Joue la musique de fin de partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}{play\+Game\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Joue la musique du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}{play\+Menu\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Joue la musique du menu principal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}{play\+One\+Up\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}obtention d\textquotesingle{}une vie supplémentaire. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}{play\+Tuyau\+Sound}} ()
 \begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}entrée dans un tuyau. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classAudioManager_a992608915d048ad14be2400f5b7e5c36}{play\+Yahoo\+Sound}} ()
 \begin{DoxyCompactList}\small\item\em Joue le son \char`\"{}\+Yahoo!\char`\"{}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}{play\+One\+Up\+Sound}} ()
-\begin{DoxyCompactList}\small\item\em Joue le son d\textquotesingle{}obtention d\textquotesingle{}une vie supplémentaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}{set\+Volume}} (const std\+::string \&sound\+Name, float volume)
+\begin{DoxyCompactList}\small\item\em Modifie le volume d\textquotesingle{}un son ou d\textquotesingle{}une musique. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
-\item 
-sf\+::\+Music \mbox{\hyperlink{classAudioManager_aaf681f373b532917309c9bc65241793d}{musique\+Menu}}
-\item 
-sf\+::\+Music \mbox{\hyperlink{classAudioManager_a4c0fa3db7565a7cec4a8ea6eafb2ec1c}{musique\+Jeu}}
-\item 
-sf\+::\+Music \mbox{\hyperlink{classAudioManager_aa3c06f26a0e9ea8411d23687ddbe7a3b}{musique\+Fin}}
 \item 
 sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_a807eaaa54581de5aa95067edb7bb756f}{coin\+Buffer}}
 \item 
 sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a1affe5c8a6bdbc7ac5a7cbfc52d493fb}{coin\+Sound}}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_aa3c06f26a0e9ea8411d23687ddbe7a3b}{musique\+Fin}}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_a4c0fa3db7565a7cec4a8ea6eafb2ec1c}{musique\+Jeu}}
+\item 
+sf\+::\+Music \mbox{\hyperlink{classAudioManager_aaf681f373b532917309c9bc65241793d}{musique\+Menu}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_af0bb7cee93dd0b9461cf05e4fd5259c4}{one\+Up\+Buffer}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classAudioManager_ae896782db2ef73170eb8b7b40c35e818}{one\+Up\+Sound}}
 \item 
 sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_ae99f6f83256549bd8a1e7bfc4ab32383}{tuyau\+Buffer}}
 \item 
@@ -57,10 +60,6 @@ sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a8c78c17e38f4d3154dc5d20a539d23
 sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_a2742266983de5409c0f7be6e6c5365ae}{yahoo\+Buffer}}
 \item 
 sf\+::\+Sound \mbox{\hyperlink{classAudioManager_a28317ad0c6c30fb0de7a7bcecb8cbb96}{yahoo\+Sound}}
-\item 
-sf\+::\+Sound\+Buffer \mbox{\hyperlink{classAudioManager_af0bb7cee93dd0b9461cf05e4fd5259c4}{one\+Up\+Buffer}}
-\item 
-sf\+::\+Sound \mbox{\hyperlink{classAudioManager_ae896782db2ef73170eb8b7b40c35e818}{one\+Up\+Sound}}
 \end{DoxyCompactItemize}
 
 
@@ -106,6 +105,14 @@ Nom de la musique en cours.
 
 Definition at line 61 of file Audio.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{classAudioManager_a8eae72f851d67e33a1f17f64ceac437f_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a407dad03d829e807f7592640dcba130d}\label{classAudioManager_a407dad03d829e807f7592640dcba130d}} 
 \index{AudioManager@{AudioManager}!playCoinSound@{playCoinSound}}
 \index{playCoinSound@{playCoinSound}!AudioManager@{AudioManager}}
@@ -120,6 +127,22 @@ Joue le son d\textquotesingle{}obtention d\textquotesingle{}une pièce.
 
 Definition at line 113 of file Audio.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a407dad03d829e807f7592640dcba130d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a407dad03d829e807f7592640dcba130d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}\label{classAudioManager_a7d38d61484edc36e14be78be7a8031b3}} 
 \index{AudioManager@{AudioManager}!playEndMusic@{playEndMusic}}
 \index{playEndMusic@{playEndMusic}!AudioManager@{AudioManager}}
@@ -139,6 +162,22 @@ Joue la musique de fin de partie.
 
 Definition at line 95 of file Audio.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a7d38d61484edc36e14be78be7a8031b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classAudioManager_a7d38d61484edc36e14be78be7a8031b3_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}\label{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1}} 
 \index{AudioManager@{AudioManager}!playGameMusic@{playGameMusic}}
 \index{playGameMusic@{playGameMusic}!AudioManager@{AudioManager}}
@@ -153,6 +192,14 @@ Joue la musique du jeu.
 
 Definition at line 81 of file Audio.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{classAudioManager_ac4de030deaccaaa05b07241d4ae7d0a1_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}\label{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a}} 
 \index{AudioManager@{AudioManager}!playMenuMusic@{playMenuMusic}}
 \index{playMenuMusic@{playMenuMusic}!AudioManager@{AudioManager}}
@@ -167,6 +214,14 @@ Joue la musique du menu principal.
 
 Definition at line 69 of file Audio.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classAudioManager_a239f60298bd4c6275e6fda31d8c30f5a_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}\label{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe}} 
 \index{AudioManager@{AudioManager}!playOneUpSound@{playOneUpSound}}
 \index{playOneUpSound@{playOneUpSound}!AudioManager@{AudioManager}}
@@ -181,6 +236,14 @@ Joue le son d\textquotesingle{}obtention d\textquotesingle{}une vie supplémenta
 
 Definition at line 139 of file Audio.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a03fea63c786ef4e21e16cbb63411eabe_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}\label{classAudioManager_a981f589479e31b2b7d5d5de2908807aa}} 
 \index{AudioManager@{AudioManager}!playTuyauSound@{playTuyauSound}}
 \index{playTuyauSound@{playTuyauSound}!AudioManager@{AudioManager}}
@@ -195,6 +258,14 @@ Joue le son d\textquotesingle{}entrée dans un tuyau.
 
 Definition at line 122 of file Audio.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a981f589479e31b2b7d5d5de2908807aa_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a992608915d048ad14be2400f5b7e5c36}\label{classAudioManager_a992608915d048ad14be2400f5b7e5c36}} 
 \index{AudioManager@{AudioManager}!playYahooSound@{playYahooSound}}
 \index{playYahooSound@{playYahooSound}!AudioManager@{AudioManager}}
@@ -209,6 +280,14 @@ Joue le son \char`\"{}\+Yahoo!\char`\"{}.
 
 Definition at line 131 of file Audio.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a992608915d048ad14be2400f5b7e5c36_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}\label{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1}} 
 \index{AudioManager@{AudioManager}!setVolume@{setVolume}}
 \index{setVolume@{setVolume}!AudioManager@{AudioManager}}
@@ -230,6 +309,14 @@ Modifie le volume d\textquotesingle{}un son ou d\textquotesingle{}une musique.
 
 Definition at line 151 of file Audio.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAudioManager_a291e2f019e0d7b1a0a5d7ecb1e27c3d1_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

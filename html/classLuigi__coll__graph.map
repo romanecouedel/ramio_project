@@ -1,10 +1,10 @@
 <map id="Luigi" name="Luigi">
-<area shape="rect" id="node1" title=" " alt="" coords="134,1535,289,1656"/>
-<area shape="rect" id="node2" href="$classPlayer.html" title=" " alt="" coords="41,595,267,965"/>
-<area shape="rect" id="node5" href="$classMario.html" title=" " alt="" coords="49,1204,173,1296"/>
+<area shape="rect" id="node1" title=" " alt="" coords="134,1520,289,1641"/>
+<area shape="rect" id="node2" href="$classPlayer.html" title=" " alt="" coords="41,580,267,951"/>
+<area shape="rect" id="node5" href="$classMario.html" title=" " alt="" coords="49,1189,173,1281"/>
 <area shape="rect" id="node3" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="5,5,164,185"/>
-<area shape="rect" id="node8" href="$classObjetInteractif.html" title="Classe représentant un objet interactif dans le jeu." alt="" coords="287,293,429,385"/>
-<area shape="rect" id="node4" href="$classAnimation.html" title=" " alt="" coords="106,235,263,444"/>
-<area shape="rect" id="node6" href="$classLevel.html" title=" " alt="" coords="249,1028,467,1472"/>
-<area shape="rect" id="node7" href="$classDrapeau.html" title="Classe représentant le drapeau de fin de niveau." alt="" coords="307,741,409,819"/>
+<area shape="rect" id="node8" href="$classObjetInteractif.html" title="Classe représentant un objet interactif dans le jeu." alt="" coords="287,286,429,378"/>
+<area shape="rect" id="node4" href="$classAnimation.html" title=" " alt="" coords="106,235,263,429"/>
+<area shape="rect" id="node6" href="$classLevel.html" title=" " alt="" coords="249,1013,467,1457"/>
+<area shape="rect" id="node7" href="$classDrapeau.html" title="Classe représentant le drapeau de fin de niveau." alt="" coords="307,727,409,804"/>
 </map>

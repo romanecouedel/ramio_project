@@ -1,0 +1,6 @@
+<map id="Ennemi::update" name="Ennemi::update">
+<area shape="rect" id="node1" title="Met à jour l&#39;état et le mouvement de l&#39;ennemi." alt="" coords="5,31,129,57"/>
+<area shape="rect" id="node2" href="$classLevel.html#af2926af1c879a7febcc1bdd02cf72826" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="177,31,311,57"/>
+<area shape="rect" id="node3" href="$classLevel.html#a2bc17614afdfca9a7c7ea5771a70426a" title=" " alt="" coords="359,5,488,32"/>
+<area shape="rect" id="node4" href="$classLevel.html#a7195ddd0c73216532169a1f013513cda" title=" " alt="" coords="361,56,485,83"/>
+</map>

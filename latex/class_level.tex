@@ -1,0 +1,374 @@
+\hypertarget{class_level}{}\doxysection{Level Class Reference}
+\label{class_level}\index{Level@{Level}}
+
+
+{\ttfamily \#include $<$Level.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_level_a7a696c928ca5d5354db6e50e46d0f67d}{Level}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_level}{Level}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_level_ac6cdb61bec67832b3db9e5874b479c0d}{$\sim$\+Level}} ()=default
+\item 
+const \mbox{\hyperlink{class_drapeau}{Drapeau}} \& \mbox{\hyperlink{class_level_af8790ea6e256351803e1f094c2bb90c5}{get\+Drapeau}} () const
+\item 
+bool \mbox{\hyperlink{class_level_ad859109cf361d0e9c0cb0ffbf8fcaa8c}{load\+From\+File}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Charge un niveau à partir d\textquotesingle{}un fichier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_a20d356fa84aac7c21b39c631882642a6}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Affiche le niveau dans la fenêtre S\+F\+ML. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_a26651a6714ea0743e0b5d0ba7b71d615}{generate\+Background}} (float level\+Width, float level\+Height)
+\begin{DoxyCompactList}\small\item\em Génère le fond du niveau en alternant des textures. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_level_af2926af1c879a7febcc1bdd02cf72826}{is\+Colliding}} (const sf\+::\+Float\+Rect \&hitbox) const
+\begin{DoxyCompactList}\small\item\em Vérifie si une hitbox est en collision avec un bloc solide du niveau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bloc_mystere}{Bloc\+Mystere}} $\ast$ \mbox{\hyperlink{class_level_a3584eb17b5729938b1ccc2bcd130d6a1}{get\+Bloc\+Mystere\+Proche}} (const sf\+::\+Vector2f \&position)
+\begin{DoxyCompactList}\small\item\em Récupère un bloc mystère proche d\textquotesingle{}une position donnée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_ae345eb5365718679f7940d9df741c935}{afficher\+Etat\+Blocs\+Mysteres}} () const
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état des blocs mystères dans le niveau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_a7195ddd0c73216532169a1f013513cda}{get\+Width}} () const
+\item 
+int \mbox{\hyperlink{class_level_a2bc17614afdfca9a7c7ea5771a70426a}{get\+Height}} () const
+\item 
+void \mbox{\hyperlink{class_level_a6566a46eb73657362a423f22cbdc59fb}{update}} (float delta\+Time, sf\+::\+Render\+Window \&window, const sf\+::\+Float\+Rect \&mario\+Bounds, const sf\+::\+Float\+Rect \&luigi\+Bounds)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état du niveau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_level_ae31dee7d1c05eb535f2561b0eb1e1e8d}{is\+Tuyau\+Colliding}} (const sf\+::\+Float\+Rect \&player\+Bound) const
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en collision avec un tuyau. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_ennemi}{Ennemi}} $>$ $>$ \& \mbox{\hyperlink{class_level_ac4462900464b74ddeb344e77dbe4212b}{get\+Ennemis}} () const
+\item 
+void \mbox{\hyperlink{class_level_a65f189a05ffa35afba1727c6184c16a2}{handle\+Tuyau\+Interaction}} (\mbox{\hyperlink{class_player}{Player}} \&mario, \mbox{\hyperlink{class_player}{Player}} $\ast$luigi, float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction des joueurs avec les tuyaux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_ennemi}{Ennemi}} $>$ $>$ \mbox{\hyperlink{class_level_a4d147d372c626b63faf374a7e0e4a98b}{ennemis}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 15 of file Level.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_level_a7a696c928ca5d5354db6e50e46d0f67d}\label{class_level_a7a696c928ca5d5354db6e50e46d0f67d}} 
+\index{Level@{Level}!Level@{Level}}
+\index{Level@{Level}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{Level()}{Level()}}
+{\footnotesize\ttfamily Level\+::\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_level}{Level}}. 
+
+
+
+Definition at line 15 of file Level.\+cpp.
+
+\mbox{\Hypertarget{class_level_ac6cdb61bec67832b3db9e5874b479c0d}\label{class_level_ac6cdb61bec67832b3db9e5874b479c0d}} 
+\index{Level@{Level}!````~Level@{$\sim$Level}}
+\index{````~Level@{$\sim$Level}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{$\sim$Level()}{~Level()}}
+{\footnotesize\ttfamily Level\+::$\sim$\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_level_ae345eb5365718679f7940d9df741c935}\label{class_level_ae345eb5365718679f7940d9df741c935}} 
+\index{Level@{Level}!afficherEtatBlocsMysteres@{afficherEtatBlocsMysteres}}
+\index{afficherEtatBlocsMysteres@{afficherEtatBlocsMysteres}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{afficherEtatBlocsMysteres()}{afficherEtatBlocsMysteres()}}
+{\footnotesize\ttfamily void Level\+::afficher\+Etat\+Blocs\+Mysteres (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Affiche l\textquotesingle{}état des blocs mystères dans le niveau. 
+
+Affiche la position et l\textquotesingle{}état (touché ou non) de chaque bloc mystère. 
+
+Definition at line 255 of file Level.\+cpp.
+
+\mbox{\Hypertarget{class_level_a20d356fa84aac7c21b39c631882642a6}\label{class_level_a20d356fa84aac7c21b39c631882642a6}} 
+\index{Level@{Level}!draw@{draw}}
+\index{draw@{draw}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Level\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Affiche le niveau dans la fenêtre S\+F\+ML. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_level_a20d356fa84aac7c21b39c631882642a6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_level_a26651a6714ea0743e0b5d0ba7b71d615}\label{class_level_a26651a6714ea0743e0b5d0ba7b71d615}} 
+\index{Level@{Level}!generateBackground@{generateBackground}}
+\index{generateBackground@{generateBackground}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{generateBackground()}{generateBackground()}}
+{\footnotesize\ttfamily void Level\+::generate\+Background (\begin{DoxyParamCaption}\item[{float}]{level\+Width,  }\item[{float}]{level\+Height }\end{DoxyParamCaption})}
+
+
+
+Génère le fond du niveau en alternant des textures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level\+Width} & Largeur du niveau. \\
+\hline
+{\em level\+Height} & Hauteur du niveau. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 319 of file Level.\+cpp.
+
+\mbox{\Hypertarget{class_level_a3584eb17b5729938b1ccc2bcd130d6a1}\label{class_level_a3584eb17b5729938b1ccc2bcd130d6a1}} 
+\index{Level@{Level}!getBlocMystereProche@{getBlocMystereProche}}
+\index{getBlocMystereProche@{getBlocMystereProche}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{getBlocMystereProche()}{getBlocMystereProche()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_bloc_mystere}{Bloc\+Mystere}} $\ast$ Level\+::get\+Bloc\+Mystere\+Proche (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
+
+
+
+Récupère un bloc mystère proche d\textquotesingle{}une position donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & La position à partir de laquelle chercher. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers le bloc mystère trouvé, ou nullptr si aucun n\textquotesingle{}est proche. 
+\end{DoxyReturn}
+
+
+Definition at line 275 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_level_a3584eb17b5729938b1ccc2bcd130d6a1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_level_af8790ea6e256351803e1f094c2bb90c5}\label{class_level_af8790ea6e256351803e1f094c2bb90c5}} 
+\index{Level@{Level}!getDrapeau@{getDrapeau}}
+\index{getDrapeau@{getDrapeau}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{getDrapeau()}{getDrapeau()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_drapeau}{Drapeau}}\& Level\+::get\+Drapeau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 24 of file Level.\+h.
+
+\mbox{\Hypertarget{class_level_ac4462900464b74ddeb344e77dbe4212b}\label{class_level_ac4462900464b74ddeb344e77dbe4212b}} 
+\index{Level@{Level}!getEnnemis@{getEnnemis}}
+\index{getEnnemis@{getEnnemis}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{getEnnemis()}{getEnnemis()}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_ennemi}{Ennemi}}$>$ $>$\& Level\+::get\+Ennemis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file Level.\+h.
+
+\mbox{\Hypertarget{class_level_a2bc17614afdfca9a7c7ea5771a70426a}\label{class_level_a2bc17614afdfca9a7c7ea5771a70426a}} 
+\index{Level@{Level}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Level\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 42 of file Level.\+h.
+
+\mbox{\Hypertarget{class_level_a7195ddd0c73216532169a1f013513cda}\label{class_level_a7195ddd0c73216532169a1f013513cda}} 
+\index{Level@{Level}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Level\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 41 of file Level.\+h.
+
+\mbox{\Hypertarget{class_level_a65f189a05ffa35afba1727c6184c16a2}\label{class_level_a65f189a05ffa35afba1727c6184c16a2}} 
+\index{Level@{Level}!handleTuyauInteraction@{handleTuyauInteraction}}
+\index{handleTuyauInteraction@{handleTuyauInteraction}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{handleTuyauInteraction()}{handleTuyauInteraction()}}
+{\footnotesize\ttfamily void Level\+::handle\+Tuyau\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{mario,  }\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{luigi,  }\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}interaction des joueurs avec les tuyaux. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mario} & Le joueur principal. \\
+\hline
+{\em luigi} & Le second joueur (optionnel). \\
+\hline
+{\em delta\+Time} & Temps écoulé depuis la dernière mise à jour. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 353 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_level_a65f189a05ffa35afba1727c6184c16a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_level_af2926af1c879a7febcc1bdd02cf72826}\label{class_level_af2926af1c879a7febcc1bdd02cf72826}} 
+\index{Level@{Level}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{isColliding()}{isColliding()}}
+{\footnotesize\ttfamily bool Level\+::is\+Colliding (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{hitbox }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si une hitbox est en collision avec un bloc solide du niveau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hitbox} & La hitbox du joueur ou de l\textquotesingle{}objet à tester. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si une collision est détectée, false sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 227 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{class_level_af2926af1c879a7febcc1bdd02cf72826_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_level_ae31dee7d1c05eb535f2561b0eb1e1e8d}\label{class_level_ae31dee7d1c05eb535f2561b0eb1e1e8d}} 
+\index{Level@{Level}!isTuyauColliding@{isTuyauColliding}}
+\index{isTuyauColliding@{isTuyauColliding}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{isTuyauColliding()}{isTuyauColliding()}}
+{\footnotesize\ttfamily bool Level\+::is\+Tuyau\+Colliding (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{player\+Bound }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si le joueur est en collision avec un tuyau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Bound} & Les limites du joueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si une collision est détectée, sinon false. 
+\end{DoxyReturn}
+
+
+Definition at line 462 of file Level.\+cpp.
+
+\mbox{\Hypertarget{class_level_ad859109cf361d0e9c0cb0ffbf8fcaa8c}\label{class_level_ad859109cf361d0e9c0cb0ffbf8fcaa8c}} 
+\index{Level@{Level}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily bool Level\+::load\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Charge un niveau à partir d\textquotesingle{}un fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nom du fichier de niveau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le chargement a réussi, false sinon 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_level_ad859109cf361d0e9c0cb0ffbf8fcaa8c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_level_a6566a46eb73657362a423f22cbdc59fb}\label{class_level_a6566a46eb73657362a423f22cbdc59fb}} 
+\index{Level@{Level}!update@{update}}
+\index{update@{update}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Level\+::update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{const sf\+::\+Float\+Rect \&}]{hitbox\+Mario,  }\item[{const sf\+::\+Float\+Rect \&}]{hitbox\+Luigi }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}état du niveau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Temps écoulé depuis la dernière mise à jour \\
+\hline
+{\em window} & Fenêtre S\+F\+ML \\
+\hline
+{\em hitbox\+Mario} & Hitbox de \mbox{\hyperlink{class_mario}{Mario}} \\
+\hline
+{\em hitbox\+Luigi} & Hitbox de \mbox{\hyperlink{class_luigi}{Luigi}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 156 of file Level.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{class_level_a6566a46eb73657362a423f22cbdc59fb_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_level_a4d147d372c626b63faf374a7e0e4a98b}\label{class_level_a4d147d372c626b63faf374a7e0e4a98b}} 
+\index{Level@{Level}!ennemis@{ennemis}}
+\index{ennemis@{ennemis}!Level@{Level}}
+\doxysubsubsection{\texorpdfstring{ennemis}{ennemis}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_ennemi}{Ennemi}}$>$ $>$ Level\+::ennemis}
+
+
+
+Definition at line 23 of file Level.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_level_8h}{Level.\+h}}\item 
+src/\mbox{\hyperlink{_level_8cpp}{Level.\+cpp}}\end{DoxyCompactItemize}

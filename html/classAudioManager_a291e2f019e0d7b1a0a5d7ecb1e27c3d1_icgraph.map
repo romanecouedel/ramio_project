@@ -1,0 +1,9 @@
+<map id="AudioManager::setVolume" name="AudioManager::setVolume">
+<area shape="rect" id="node1" title="Modifie le volume d&#39;un son ou d&#39;une musique." alt="" coords="655,81,848,108"/>
+<area shape="rect" id="node2" href="$classAudioManager.html#a407dad03d829e807f7592640dcba130d" title="Joue le son d&#39;obtention d&#39;une pièce." alt="" coords="378,5,599,32"/>
+<area shape="rect" id="node5" href="$classAudioManager.html#a7d38d61484edc36e14be78be7a8031b3" title="Joue la musique de fin de partie." alt="" coords="108,56,323,83"/>
+<area shape="rect" id="node6" href="$classAudioManager.html#a03fea63c786ef4e21e16cbb63411eabe" title="Joue le son d&#39;obtention d&#39;une vie supplémentaire." alt="" coords="371,107,607,133"/>
+<area shape="rect" id="node7" href="$classAudioManager.html#a981f589479e31b2b7d5d5de2908807aa" title="Joue le son d&#39;entrée dans un tuyau." alt="" coords="373,157,604,184"/>
+<area shape="rect" id="node3" href="$classLevel.html#a20d356fa84aac7c21b39c631882642a6" title="Affiche le niveau dans la fenêtre SFML." alt="" coords="167,5,264,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,60,57"/>
+</map>

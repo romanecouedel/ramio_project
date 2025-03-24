@@ -1,0 +1,4 @@
+<map id="BlocMystere::onHit" name="BlocMystere::onHit">
+<area shape="rect" id="node1" title="Action lorsque le bloc mystère est frappé." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$classBlocMystere.html#a4292482a0d4df210c8f196a14a13a3a0" title="Change la texture du bloc mystère après activation." alt="" coords="200,5,411,32"/>
+</map>

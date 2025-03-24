@@ -90,9 +90,9 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">float</span> initialY = mario.<a class="code" href="classEntity.html#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a>().y;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    mario.<a class="code" href="classPlayer.html#a70e21ca98281b7d72f105f2693113d7e">jump</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    mario.<a class="code" href="classPlayer.html#a003481f011031773f5042e353716aa3d">update</a>(0.1f, <a class="code" href="classLevel.html">Level</a>()); <span class="comment">// ✅ Simule une mise à jour après le saut</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    mario.<a class="code" href="classPlayer.html#a003481f011031773f5042e353716aa3d">update</a>(0.1f, <a class="code" href="classLevel.html">Level</a>()); <span class="comment">// Simule une mise à jour après le saut</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    BOOST_CHECK(mario.<a class="code" href="classEntity.html#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a>().y &lt; initialY); <span class="comment">// ✅ Maintenant Mario doit avoir bougé vers le haut</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    BOOST_CHECK(mario.<a class="code" href="classEntity.html#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a>().y &lt; initialY); <span class="comment">// Maintenant Mario doit avoir bougé vers le haut</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// ==================== TESTS ENNEMI ====================</span></div>
@@ -109,9 +109,9 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">float</span> initialX = goomba.<a class="code" href="classEntity.html#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a>().x;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classLevel.html">Level</a> level;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    level.<a class="code" href="classLevel.html#ad859109cf361d0e9c0cb0ffbf8fcaa8c">loadFromFile</a>(<span class="stringliteral">&quot;../levels/level1.txt&quot;</span>); <span class="comment">// ✅ Charge un vrai niveau</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    level.<a class="code" href="classLevel.html#ad859109cf361d0e9c0cb0ffbf8fcaa8c">loadFromFile</a>(<span class="stringliteral">&quot;../levels/level1.txt&quot;</span>); <span class="comment">// Charge un vrai niveau</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 60; i++) <span class="comment">// ✅ Simule 1 seconde en 60 frames</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 60; i++) <span class="comment">// Simule 1 seconde en 60 frames</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        goomba.<a class="code" href="classEnnemi.html#aab3cb3add8b7a21bbdcd61c6fa3d027c">update</a>(0.016f, level);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
@@ -136,7 +136,7 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classLevel.html">Level</a> level;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    level.<a class="code" href="classLevel.html#ad859109cf361d0e9c0cb0ffbf8fcaa8c">loadFromFile</a>(<span class="stringliteral">&quot;../levels/level1.txt&quot;</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    sf::FloatRect testHitbox(50, 50, 64, 64); <span class="comment">// ✅ Vérifier que cette position est bien libre !</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    sf::FloatRect testHitbox(50, 50, 64, 64); <span class="comment">// Vérifier que cette position est bien libre !</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> collision = level.<a class="code" href="classLevel.html#af2926af1c879a7febcc1bdd02cf72826">isColliding</a>(testHitbox);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Test collision à (&quot;</span> &lt;&lt; testHitbox.left &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; testHitbox.top &lt;&lt; <span class="stringliteral">&quot;) : &quot;</span> </div>

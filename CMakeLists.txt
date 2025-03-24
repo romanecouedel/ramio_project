@@ -29,6 +29,3 @@ target_link_libraries(mario sfml-graphics sfml-window sfml-system sfml-audio ope
 # )
 
 # target_link_libraries(run_tests PRIVATE Boost::unit_test_framework sfml-graphics sfml-window sfml-system sfml-audio openal)
-
-
-# target_link_libraries(run_tests PRIVATE Boost::unit_test_framework sfml-graphics sfml-window sfml-system sfml-audio openal)

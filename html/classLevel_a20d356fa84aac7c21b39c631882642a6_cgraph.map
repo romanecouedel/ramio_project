@@ -1,0 +1,6 @@
+<map id="Level::draw" name="Level::draw">
+<area shape="rect" id="node1" title="Affiche le niveau dans la fenêtre SFML." alt="" coords="5,31,103,57"/>
+<area shape="rect" id="node2" href="$classObjetInteractif.html#ade01cbd8a8b9181cdb769cb236ab651d" title=" " alt="" coords="184,5,339,32"/>
+<area shape="rect" id="node3" href="$classAudioManager.html#a407dad03d829e807f7592640dcba130d" title="Joue le son d&#39;obtention d&#39;une pièce." alt="" coords="151,56,372,83"/>
+<area shape="rect" id="node4" href="$classAudioManager.html#a291e2f019e0d7b1a0a5d7ecb1e27c3d1" title="Modifie le volume d&#39;un son ou d&#39;une musique." alt="" coords="420,56,613,83"/>
+</map>

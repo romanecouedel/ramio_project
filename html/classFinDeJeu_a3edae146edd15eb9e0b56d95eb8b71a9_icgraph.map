@@ -1,0 +1,6 @@
+<map id="FinDeJeu::setupText" name="FinDeJeu::setupText">
+<area shape="rect" id="node1" title="Configure un texte SFML avec une police, une position et une taille." alt="" coords="300,31,451,57"/>
+<area shape="rect" id="node2" href="$classFinDeJeu.html#a0d7c29469725d46db941b2458d7a39e8" title="Affiche l&#39;écran de fin de jeu avec le score et le temps écoulé" alt="" coords="112,5,248,32"/>
+<area shape="rect" id="node4" href="$classFinDeJeu.html#a05662fed886a695d97a12ffabcdda6c8" title="Constructeur de la classe FinDeJeu." alt="" coords="108,56,252,83"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+</map>

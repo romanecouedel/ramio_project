@@ -1,0 +1,6 @@
+<map id="Level::isTuyauColliding" name="Level::isTuyauColliding">
+<area shape="rect" id="node1" title="Vérifie si le joueur est en collision avec un tuyau." alt="" coords="523,5,693,32"/>
+<area shape="rect" id="node2" href="$classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="307,5,475,32"/>
+<area shape="rect" id="node3" href="$classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="108,5,259,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+</map>

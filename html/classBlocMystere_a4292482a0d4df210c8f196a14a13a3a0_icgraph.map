@@ -1,0 +1,4 @@
+<map id="BlocMystere::changerTexture" name="BlocMystere::changerTexture">
+<area shape="rect" id="node1" title="Change la texture du bloc mystère après activation." alt="" coords="200,5,411,32"/>
+<area shape="rect" id="node2" href="$classBlocMystere.html#aa5e7258cc5dcd88be013d01827ab3c9a" title="Action lorsque le bloc mystère est frappé." alt="" coords="5,5,152,32"/>
+</map>

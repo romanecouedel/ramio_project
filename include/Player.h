@@ -37,6 +37,10 @@ protected:
 public:
     // constructeur
     Player();
+    virtual ~Player() {
+        std::cout << "Destruction de Player" << std::endl;
+        
+    }
     bool faceRight = true; // Direction du personnage, sert pour l'animation
     bool isDead = false;// sert à compter les morts
     bool collisionsActive = true; // Désactive la collision temporairement
@@ -66,6 +70,9 @@ class Mario : public Player {
 public:
     // constructeur
     Mario();
+    ~Mario() override {
+        std::cout << "Destruction de Mario" << std::endl;
+    }
     // entrées clavier pour déplacer Mario
     void handleInput() override; //polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes
 };
@@ -79,7 +86,12 @@ public:
     const Mario* mario; // Référence à Mario pour l'IA
 
     // constructeur
-    Luigi(); 
+    Luigi();
+    ~Luigi() override {
+        std::cout << "Destruction de Luigi" << std::endl;
+        level = nullptr; 
+        mario = nullptr;
+    } 
 
     // entrées clavier pour déplacer Luigi en local
     void handleInput() override;//polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes

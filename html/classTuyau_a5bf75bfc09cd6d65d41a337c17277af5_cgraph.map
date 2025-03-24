@@ -1,0 +1,5 @@
+<map id="Tuyau::isPlayerOnTop" name="Tuyau::isPlayerOnTop">
+<area shape="rect" id="node1" title="Vérifie si le joueur est sur le tuyau." alt="" coords="5,31,165,57"/>
+<area shape="rect" id="node2" href="$classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="213,5,392,32"/>
+<area shape="rect" id="node3" href="$classBloc.html#a826d370d5d0f192b5f9d6187cf7795d3" title=" " alt="" coords="218,56,387,83"/>
+</map>

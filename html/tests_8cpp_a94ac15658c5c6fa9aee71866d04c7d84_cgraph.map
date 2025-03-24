@@ -1,0 +1,15 @@
+<map id="BOOST_AUTO_TEST_CASE" name="BOOST_AUTO_TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,77,196,104"/>
+<area shape="rect" id="node2" href="$classEntity.html#a11d7f8fde1e714c76a20b69793fa157c" title=" " alt="" coords="244,27,384,53"/>
+<area shape="rect" id="node3" href="$classPlayer.html#a70e21ca98281b7d72f105f2693113d7e" title="Fait sauter le joueur." alt="" coords="262,77,366,104"/>
+<area shape="rect" id="node5" href="$classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="256,199,372,225"/>
+<area shape="rect" id="node4" href="$classAudioManager.html#a992608915d048ad14be2400f5b7e5c36" title="Joue le son &quot;Yahoo!&quot;." alt="" coords="432,5,663,32"/>
+<area shape="rect" id="node6" href="$classPlayer.html#aaeae05509110be5f56e0a6cc946fc3c8" title="Vérifie les collisions entre le joueur et les ennemis." alt="" coords="450,57,645,98"/>
+<area shape="rect" id="node7" href="$classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="711,93,889,120"/>
+<area shape="rect" id="node8" href="$classAnimation.html#a4cc2a8a703cea8df904fdca5b2b43c60" title=" " alt="" coords="444,173,651,200"/>
+<area shape="rect" id="node9" href="$classLevel.html#ac4462900464b74ddeb344e77dbe4212b" title=" " alt="" coords="476,224,619,251"/>
+<area shape="rect" id="node10" href="$classLevel.html#a2bc17614afdfca9a7c7ea5771a70426a" title=" " alt="" coords="735,275,865,301"/>
+<area shape="rect" id="node11" href="$classLevel.html#af2926af1c879a7febcc1bdd02cf72826" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="481,325,614,352"/>
+<area shape="rect" id="node13" href="$classAnimation.html#a82602cdb5fdb839819c6ddbfd6e6a72e" title="Met à jour l&#39;animation en fonction du temps écoulé et de l&#39;état du personnage." alt="" coords="476,376,619,403"/>
+<area shape="rect" id="node12" href="$classLevel.html#a7195ddd0c73216532169a1f013513cda" title=" " alt="" coords="738,325,862,352"/>
+</map>

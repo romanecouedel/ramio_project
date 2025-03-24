@@ -1,0 +1,203 @@
+\hypertarget{class_luigi}{}\doxysection{Luigi Class Reference}
+\label{class_luigi}\index{Luigi@{Luigi}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Inheritance diagram for Luigi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=127pt]{class_luigi__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Luigi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{class_luigi__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_luigi_a5868582b5f8993b31d48bc3e87843c47}{Luigi}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_luigi}{Luigi}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_luigi_aef6262c87fa79af9600c598244c3d89a}{handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour déplacer \mbox{\hyperlink{class_luigi}{Luigi}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_luigi_aeaa8118c306458fcc487fde447282d4e}{marcher\+\_\+normal}} ()
+\begin{DoxyCompactList}\small\item\em Fait marcher \mbox{\hyperlink{class_luigi}{Luigi}} de manière normale en fonction de la position de \mbox{\hyperlink{class_mario}{Mario}} et des obstacles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_luigi_a747372705b9a150726ae4b746b78038b}{handle\+Input\+AI}} (\mbox{\hyperlink{class_level}{Level}} $\ast$lvl, const \mbox{\hyperlink{class_mario}{Mario}} $\ast$\mbox{\hyperlink{class_luigi_abe4b68f5c9084b7ae476e5ecca13a3ac}{mario}})
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}IA de \mbox{\hyperlink{class_luigi}{Luigi}} en fonction des objets du niveau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_level}{Level}} $\ast$ \mbox{\hyperlink{class_luigi_a7e8754c308f0474333833fee2fdcd0ff}{level}}
+\item 
+const \mbox{\hyperlink{class_mario}{Mario}} $\ast$ \mbox{\hyperlink{class_luigi_abe4b68f5c9084b7ae476e5ecca13a3ac}{mario}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 76 of file Player.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_luigi_a5868582b5f8993b31d48bc3e87843c47}\label{class_luigi_a5868582b5f8993b31d48bc3e87843c47}} 
+\index{Luigi@{Luigi}!Luigi@{Luigi}}
+\index{Luigi@{Luigi}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{Luigi()}{Luigi()}}
+{\footnotesize\ttfamily Luigi\+::\+Luigi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_luigi}{Luigi}}. 
+
+Initialise \mbox{\hyperlink{class_luigi}{Luigi}} avec sa texture et sa position de départ. 
+
+Definition at line 255 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{class_luigi_a5868582b5f8993b31d48bc3e87843c47_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_luigi_aef6262c87fa79af9600c598244c3d89a}\label{class_luigi_aef6262c87fa79af9600c598244c3d89a}} 
+\index{Luigi@{Luigi}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Luigi\+::handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées clavier pour déplacer \mbox{\hyperlink{class_luigi}{Luigi}}. 
+
+
+\begin{DoxyItemize}
+\item Gauche \+: Touche \textquotesingle{}Q\textquotesingle{}.
+\item Droite \+: Touche \textquotesingle{}D\textquotesingle{}.
+\item Saut \+: Touche \textquotesingle{}Z\textquotesingle{} (uniquement si \mbox{\hyperlink{class_luigi}{Luigi}} peut sauter). 
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{class_player_a89b45a9ed0cf0bbb1d3940bfbaccbdfd}{Player}}.
+
+
+
+Definition at line 268 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_luigi_aef6262c87fa79af9600c598244c3d89a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_luigi_a747372705b9a150726ae4b746b78038b}\label{class_luigi_a747372705b9a150726ae4b746b78038b}} 
+\index{Luigi@{Luigi}!handleInputAI@{handleInputAI}}
+\index{handleInputAI@{handleInputAI}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{handleInputAI()}{handleInputAI()}}
+{\footnotesize\ttfamily void Luigi\+::handle\+Input\+AI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_level}{Level}} $\ast$}]{lvl,  }\item[{const \mbox{\hyperlink{class_mario}{Mario}} $\ast$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}IA de \mbox{\hyperlink{class_luigi}{Luigi}} en fonction des objets du niveau. 
+
+\mbox{\hyperlink{class_luigi}{Luigi}} prend des décisions en fonction de \+:
+\begin{DoxyItemize}
+\item La position de \mbox{\hyperlink{class_mario}{Mario}}.
+\item La présence de blocs mystères.
+\item Les obstacles ou ennemis sur son chemin.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lvl} & Pointeur vers le niveau actuel. \\
+\hline
+{\em mario} & Pointeur vers l\textquotesingle{}objet \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 389 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_luigi_a747372705b9a150726ae4b746b78038b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_luigi_aeaa8118c306458fcc487fde447282d4e}\label{class_luigi_aeaa8118c306458fcc487fde447282d4e}} 
+\index{Luigi@{Luigi}!marcher\_normal@{marcher\_normal}}
+\index{marcher\_normal@{marcher\_normal}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{marcher\_normal()}{marcher\_normal()}}
+{\footnotesize\ttfamily void Luigi\+::marcher\+\_\+normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fait marcher \mbox{\hyperlink{class_luigi}{Luigi}} de manière normale en fonction de la position de \mbox{\hyperlink{class_mario}{Mario}} et des obstacles. 
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_luigi}{Luigi}} suit \mbox{\hyperlink{class_mario}{Mario}} sans le dépasser.
+\item Il saute s\textquotesingle{}il rencontre un obstacle ou un ennemi.
+\item Il adapte son mouvement en fonction de la direction de \mbox{\hyperlink{class_mario}{Mario}}. 
+\end{DoxyItemize}
+
+Definition at line 298 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_luigi_aeaa8118c306458fcc487fde447282d4e_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_luigi_a7e8754c308f0474333833fee2fdcd0ff}\label{class_luigi_a7e8754c308f0474333833fee2fdcd0ff}} 
+\index{Luigi@{Luigi}!level@{level}}
+\index{level@{level}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_level}{Level}}$\ast$ Luigi\+::level}
+
+
+
+Definition at line 78 of file Player.\+h.
+
+\mbox{\Hypertarget{class_luigi_abe4b68f5c9084b7ae476e5ecca13a3ac}\label{class_luigi_abe4b68f5c9084b7ae476e5ecca13a3ac}} 
+\index{Luigi@{Luigi}!mario@{mario}}
+\index{mario@{mario}!Luigi@{Luigi}}
+\doxysubsubsection{\texorpdfstring{mario}{mario}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_mario}{Mario}}$\ast$ Luigi\+::mario}
+
+
+
+Definition at line 79 of file Player.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+src/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="Level::update" name="Level::update">
+<area shape="rect" id="node1" title="Met à jour l&#39;état du niveau." alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node2" href="$classBlocMystere.html#adfdd9cb1184ea58167345ff2ff8cbacb" title="Met à jour l&#39;animation du bloc mystère." alt="" coords="164,5,320,32"/>
+</map>

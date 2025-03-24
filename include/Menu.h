@@ -20,7 +20,9 @@ class Menu {
 public:
     // Constructeur
     Menu(float width, float height);
-
+    ~Menu() {
+        std::cout << "Destruction de Menu" << std::endl;
+    }
     // Interaction menu/joueur
     void handleInput(sf::Event event, sf::RenderWindow &window, bool &luigiAI, bool &multijoueur); // est appelé par le main
 
@@ -44,7 +46,7 @@ private:
         sf::Text text;              // Texte de l'option du menu.
         sf::RectangleShape box;     // Boîte englobante pour l'affichage et la sélection.
     };
-
+    
     sf::Font font;                 // Police utilisée pour le texte des menus.
     sf::Texture backgroundTexture;  // Texture de l'arrière-plan du menu.
     sf::Sprite backgroundSprite;    // Sprite affichant l'arrière-plan.

@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Level\+:
-\nopagebreak
+Collaboration diagram for Level\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,36 +16,36 @@ Collaboration diagram for Level\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classLevel_a7a696c928ca5d5354db6e50e46d0f67d}{Level}} ()
-\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classLevel}{Level}}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classLevel_ac6cdb61bec67832b3db9e5874b479c0d}{$\sim$\+Level}} ()=default
-\item 
-const \mbox{\hyperlink{classDrapeau}{Drapeau}} \& \mbox{\hyperlink{classLevel_af8790ea6e256351803e1f094c2bb90c5}{get\+Drapeau}} () const
-\item 
-bool \mbox{\hyperlink{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c}{load\+From\+File}} (const std\+::string \&filename)
-\begin{DoxyCompactList}\small\item\em Charge un niveau à partir d\textquotesingle{}un fichier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLevel_ae345eb5365718679f7940d9df741c935}{afficher\+Etat\+Blocs\+Mysteres}} () const
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état des blocs mystères dans le niveau. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLevel_a20d356fa84aac7c21b39c631882642a6}{draw}} (sf\+::\+Render\+Window \&window)
 \begin{DoxyCompactList}\small\item\em Affiche le niveau dans la fenêtre S\+F\+ML. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLevel_a26651a6714ea0743e0b5d0ba7b71d615}{generate\+Background}} (float level\+Width, float level\+Height)
 \begin{DoxyCompactList}\small\item\em Génère le fond du niveau en alternant des textures. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classLevel_af2926af1c879a7febcc1bdd02cf72826}{is\+Colliding}} (const sf\+::\+Float\+Rect \&hitbox) const
-\begin{DoxyCompactList}\small\item\em Vérifie si une hitbox est en collision avec un bloc solide du niveau. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classBlocMystere}{Bloc\+Mystere}} $\ast$ \mbox{\hyperlink{classLevel_a3584eb17b5729938b1ccc2bcd130d6a1}{get\+Bloc\+Mystere\+Proche}} (const sf\+::\+Vector2f \&position)
 \begin{DoxyCompactList}\small\item\em Récupère un bloc mystère proche d\textquotesingle{}une position donnée. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classLevel_ae345eb5365718679f7940d9df741c935}{afficher\+Etat\+Blocs\+Mysteres}} () const
-\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état des blocs mystères dans le niveau. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classLevel_a7195ddd0c73216532169a1f013513cda}{get\+Width}} () const
+const \mbox{\hyperlink{classDrapeau}{Drapeau}} \& \mbox{\hyperlink{classLevel_af8790ea6e256351803e1f094c2bb90c5}{get\+Drapeau}} () const
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classEnnemi}{Ennemi}} $>$ $>$ \& \mbox{\hyperlink{classLevel_ac4462900464b74ddeb344e77dbe4212b}{get\+Ennemis}} () const
 \item 
 int \mbox{\hyperlink{classLevel_a2bc17614afdfca9a7c7ea5771a70426a}{get\+Height}} () const
 \item 
-void \mbox{\hyperlink{classLevel_a6566a46eb73657362a423f22cbdc59fb}{update}} (float delta\+Time, sf\+::\+Render\+Window \&window, const sf\+::\+Float\+Rect \&mario\+Bounds, const sf\+::\+Float\+Rect \&luigi\+Bounds)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état du niveau. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d}{is\+Tuyau\+Colliding}} (const sf\+::\+Float\+Rect \&player\+Bound) const
-\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en collision avec un tuyau. \end{DoxyCompactList}\item 
-const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classEnnemi}{Ennemi}} $>$ $>$ \& \mbox{\hyperlink{classLevel_ac4462900464b74ddeb344e77dbe4212b}{get\+Ennemis}} () const
+int \mbox{\hyperlink{classLevel_a7195ddd0c73216532169a1f013513cda}{get\+Width}} () const
 \item 
 void \mbox{\hyperlink{classLevel_a65f189a05ffa35afba1727c6184c16a2}{handle\+Tuyau\+Interaction}} (\mbox{\hyperlink{classPlayer}{Player}} \&mario, \mbox{\hyperlink{classPlayer}{Player}} $\ast$luigi, float delta\+Time)
-\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction des joueurs avec les tuyaux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction des joueurs avec les tuyaux. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLevel_af2926af1c879a7febcc1bdd02cf72826}{is\+Colliding}} (const sf\+::\+Float\+Rect \&hitbox) const
+\begin{DoxyCompactList}\small\item\em Vérifie si une hitbox est en collision avec un bloc solide du niveau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d}{is\+Tuyau\+Colliding}} (const sf\+::\+Float\+Rect \&player\+Bound) const
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur est en collision avec un tuyau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevel_a7a696c928ca5d5354db6e50e46d0f67d}{Level}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classLevel}{Level}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c}{load\+From\+File}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Charge un niveau à partir d\textquotesingle{}un fichier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLevel_a6566a46eb73657362a423f22cbdc59fb}{update}} (float delta\+Time, sf\+::\+Render\+Window \&window, const sf\+::\+Float\+Rect \&mario\+Bounds, const sf\+::\+Float\+Rect \&luigi\+Bounds)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état du niveau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevel_ac6cdb61bec67832b3db9e5874b479c0d}{$\sim$\+Level}} ()=default
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,39 +54,39 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classEnnemi}{Ennemi}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classLevel_a5c4a9634a6f6061e1862839a55e3679e}{grid}}
+sf\+::\+Music \mbox{\hyperlink{classLevel_afa0b779bfc8ef43fb45a636a7578bac1}{background\+Music}}
 \item 
-std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBloc}{Bloc}} $>$ $>$ \mbox{\hyperlink{classLevel_aa68bf3fee348b512234b0a83476258fe}{blocs}}
-\item 
-\mbox{\hyperlink{classDrapeau}{Drapeau}} \mbox{\hyperlink{classLevel_a3248ec59d3f9e882eb670709736c8566}{drapeau}}
+sf\+::\+Sprite \mbox{\hyperlink{classLevel_aec3d0982169832fae6d66a2a1c020368}{background\+Sprite}}
 \item 
 sf\+::\+Texture \mbox{\hyperlink{classLevel_a00b1f2909d08a615da24ab418e3f066a}{background\+Texture}}
 \item 
-sf\+::\+Sprite \mbox{\hyperlink{classLevel_aec3d0982169832fae6d66a2a1c020368}{background\+Sprite}}
+sf\+::\+Vertex\+Array \mbox{\hyperlink{classLevel_a8620d9b542bc1df4a37e030eeff9a51f}{background\+Vertices}}
 \item 
 sf\+::\+Texture \mbox{\hyperlink{classLevel_a1d5d6dd134b41b837e3d0e424e09ac8d}{bg\+Texture\+Left}}
 \item 
 sf\+::\+Texture \mbox{\hyperlink{classLevel_af35cdca2249e8db5cb89d445b2235fec}{bg\+Texture\+Right}}
 \item 
-sf\+::\+Vertex\+Array \mbox{\hyperlink{classLevel_a8620d9b542bc1df4a37e030eeff9a51f}{background\+Vertices}}
-\item 
 float \mbox{\hyperlink{classLevel_a16c19e74fe628cc6ab1638cc39647c1b}{bg\+Width}}
 \item 
-sf\+::\+Music \mbox{\hyperlink{classLevel_afa0b779bfc8ef43fb45a636a7578bac1}{background\+Music}}
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBloc}{Bloc}} $>$ $>$ \mbox{\hyperlink{classLevel_aa68bf3fee348b512234b0a83476258fe}{blocs}}
+\item 
+\mbox{\hyperlink{classDrapeau}{Drapeau}} \mbox{\hyperlink{classLevel_a3248ec59d3f9e882eb670709736c8566}{drapeau}}
+\item 
+bool \mbox{\hyperlink{classLevel_a3f18c3106adbf2a61cf032180b392025}{en\+Train\+De\+Descendre}} = false
+\item 
+bool \mbox{\hyperlink{classLevel_a331599f8182f39fe3976a4756890e2a2}{en\+Train\+De\+Monter}} = false
+\item 
+sf\+::\+Texture \mbox{\hyperlink{classLevel_a5902560e72d7e701db2f742aaad85998}{goomba\+Texture}}
+\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classLevel_a5c4a9634a6f6061e1862839a55e3679e}{grid}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classLevel_a8e8e01ab722cdfeb4133e6e48fd76b9b}{sortie\+Position}}
 \item 
 sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classLevel_a74b20daa1866ab4a65e261c1ab9d78b8}{tuyau\+Entree}}
 \item 
 sf\+::\+Rectangle\+Shape \mbox{\hyperlink{classLevel_a5b15e5b80d059f0023dd699115500d2a}{tuyau\+Sortie}}
 \item 
 float \mbox{\hyperlink{classLevel_a467ff269d9f24a6d8078b339ba3b8f22}{tuyau\+Timer}} = 0.\+0f
-\item 
-bool \mbox{\hyperlink{classLevel_a3f18c3106adbf2a61cf032180b392025}{en\+Train\+De\+Descendre}} = false
-\item 
-bool \mbox{\hyperlink{classLevel_a331599f8182f39fe3976a4756890e2a2}{en\+Train\+De\+Monter}} = false
-\item 
-sf\+::\+Vector2f \mbox{\hyperlink{classLevel_a8e8e01ab722cdfeb4133e6e48fd76b9b}{sortie\+Position}}
-\item 
-sf\+::\+Texture \mbox{\hyperlink{classLevel_a5902560e72d7e701db2f742aaad85998}{goomba\+Texture}}
 \end{DoxyCompactItemize}
 
 
@@ -155,6 +154,22 @@ Affiche le niveau dans la fenêtre S\+F\+ML.
 
 Definition at line 107 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a20d356fa84aac7c21b39c631882642a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classLevel_a20d356fa84aac7c21b39c631882642a6_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a26651a6714ea0743e0b5d0ba7b71d615}\label{classLevel_a26651a6714ea0743e0b5d0ba7b71d615}} 
 \index{Level@{Level}!generateBackground@{generateBackground}}
 \index{generateBackground@{generateBackground}!Level@{Level}}
@@ -176,6 +191,14 @@ Génère le fond du niveau en alternant des textures.
 
 Definition at line 319 of file Level.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a26651a6714ea0743e0b5d0ba7b71d615_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a3584eb17b5729938b1ccc2bcd130d6a1}\label{classLevel_a3584eb17b5729938b1ccc2bcd130d6a1}} 
 \index{Level@{Level}!getBlocMystereProche@{getBlocMystereProche}}
 \index{getBlocMystereProche@{getBlocMystereProche}!Level@{Level}}
@@ -198,6 +221,22 @@ Un pointeur vers le bloc mystère trouvé, ou nullptr si aucun n\textquotesingle
 
 Definition at line 275 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_af8790ea6e256351803e1f094c2bb90c5}\label{classLevel_af8790ea6e256351803e1f094c2bb90c5}} 
 \index{Level@{Level}!getDrapeau@{getDrapeau}}
 \index{getDrapeau@{getDrapeau}!Level@{Level}}
@@ -208,6 +247,14 @@ Definition at line 275 of file Level.\+cpp.
 
 Definition at line 24 of file Level.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{classLevel_af8790ea6e256351803e1f094c2bb90c5_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_ac4462900464b74ddeb344e77dbe4212b}\label{classLevel_ac4462900464b74ddeb344e77dbe4212b}} 
 \index{Level@{Level}!getEnnemis@{getEnnemis}}
 \index{getEnnemis@{getEnnemis}!Level@{Level}}
@@ -218,6 +265,14 @@ Definition at line 24 of file Level.\+h.
 
 Definition at line 51 of file Level.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_ac4462900464b74ddeb344e77dbe4212b_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a2bc17614afdfca9a7c7ea5771a70426a}\label{classLevel_a2bc17614afdfca9a7c7ea5771a70426a}} 
 \index{Level@{Level}!getHeight@{getHeight}}
 \index{getHeight@{getHeight}!Level@{Level}}
@@ -228,6 +283,14 @@ Definition at line 51 of file Level.\+h.
 
 Definition at line 42 of file Level.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a2bc17614afdfca9a7c7ea5771a70426a_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a7195ddd0c73216532169a1f013513cda}\label{classLevel_a7195ddd0c73216532169a1f013513cda}} 
 \index{Level@{Level}!getWidth@{getWidth}}
 \index{getWidth@{getWidth}!Level@{Level}}
@@ -238,6 +301,14 @@ Definition at line 42 of file Level.\+h.
 
 Definition at line 41 of file Level.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a7195ddd0c73216532169a1f013513cda_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a65f189a05ffa35afba1727c6184c16a2}\label{classLevel_a65f189a05ffa35afba1727c6184c16a2}} 
 \index{Level@{Level}!handleTuyauInteraction@{handleTuyauInteraction}}
 \index{handleTuyauInteraction@{handleTuyauInteraction}!Level@{Level}}
@@ -261,6 +332,22 @@ Gère l\textquotesingle{}interaction des joueurs avec les tuyaux.
 
 Definition at line 353 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_a65f189a05ffa35afba1727c6184c16a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{classLevel_a65f189a05ffa35afba1727c6184c16a2_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_af2926af1c879a7febcc1bdd02cf72826}\label{classLevel_af2926af1c879a7febcc1bdd02cf72826}} 
 \index{Level@{Level}!isColliding@{isColliding}}
 \index{isColliding@{isColliding}!Level@{Level}}
@@ -283,6 +370,22 @@ true si une collision est détectée, false sinon.
 
 Definition at line 227 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{classLevel_af2926af1c879a7febcc1bdd02cf72826_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_af2926af1c879a7febcc1bdd02cf72826_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d}\label{classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d}} 
 \index{Level@{Level}!isTuyauColliding@{isTuyauColliding}}
 \index{isTuyauColliding@{isTuyauColliding}!Level@{Level}}
@@ -305,6 +408,14 @@ true si une collision est détectée, sinon false.
 
 Definition at line 462 of file Level.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c}\label{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c}} 
 \index{Level@{Level}!loadFromFile@{loadFromFile}}
 \index{loadFromFile@{loadFromFile}!Level@{Level}}
@@ -327,6 +438,22 @@ true si le chargement a réussi, false sinon
 
 Definition at line 35 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel_ad859109cf361d0e9c0cb0ffbf8fcaa8c_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLevel_a6566a46eb73657362a423f22cbdc59fb}\label{classLevel_a6566a46eb73657362a423f22cbdc59fb}} 
 \index{Level@{Level}!update@{update}}
 \index{update@{update}!Level@{Level}}
@@ -352,6 +479,22 @@ Met à jour l\textquotesingle{}état du niveau.
 
 Definition at line 156 of file Level.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classLevel_a6566a46eb73657362a423f22cbdc59fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classLevel_a6566a46eb73657362a423f22cbdc59fb_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

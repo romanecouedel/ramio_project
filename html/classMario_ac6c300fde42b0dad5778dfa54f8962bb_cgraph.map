@@ -1,0 +1,4 @@
+<map id="Mario::Mario" name="Mario::Mario">
+<area shape="rect" id="node1" title="Constructeur de la classe Mario." alt="" coords="5,5,109,32"/>
+<area shape="rect" id="node2" href="$classPlayer.html#a882e381fc5db84bb067f1fa09b1bd92e" title="Initialise le joueur avec une texture et une position de départ." alt="" coords="157,5,325,32"/>
+</map>

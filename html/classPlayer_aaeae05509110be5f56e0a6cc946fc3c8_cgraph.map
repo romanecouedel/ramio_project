@@ -1,0 +1,4 @@
+<map id="Player::checkCollisionWithEnnemis" name="Player::checkCollisionWithEnnemis">
+<area shape="rect" id="node1" title="Vérifie les collisions entre le joueur et les ennemis." alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node2" href="$classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="248,13,427,39"/>
+</map>

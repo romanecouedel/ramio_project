@@ -21,8 +21,11 @@ protected:
  
 public: 
     Bloc() = default;
-    Bloc(const std::string& texturePath); 
-    virtual ~Bloc() = default;
+    virtual ~Bloc() {
+        //std::cout << "Destruction de Bloc" << std::endl;
+    }
+    //Bloc(const std::string& texturePath); 
+    //virtual ~Bloc() = default;
 
     virtual void draw(sf::RenderWindow& window) const { 
         window.draw(sprite); 
@@ -51,6 +54,9 @@ class BlocSol : public Bloc {
 public:
     // Constructeur
     BlocSol();
+    ~BlocSol() override {
+        //std::cout << "Destruction de BlocSol" << std::endl;
+    }
 };
 
 
@@ -72,6 +78,9 @@ private:
 public:
     // Constructeur
     BlocMystere();
+    ~BlocMystere() override {
+        //std::cout << "Destruction de BlocMystere" << std::endl;
+    }
     // Animation
     void update(float deltaTime, sf::RenderWindow& window);
     void onHit();
@@ -88,6 +97,9 @@ class Tuyau : public Bloc {
     public:
         enum class Type { ENTREE, SORTIE };
         Tuyau(Type type);
+        ~Tuyau() {
+        //std::cout << "Destruction de Tuyau" << std::endl;
+    }
         Type getType() const;
         bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
         Tuyau* getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const;

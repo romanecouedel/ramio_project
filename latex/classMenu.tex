@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Menu\+:
-\nopagebreak
+Collaboration diagram for Menu\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,49 +21,49 @@ struct \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classMenu_a8caa6100506d4b8e0d782e550dbc470e}{Menu}} (float width, float height)
-\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classMenu_a056b47b402bda75207c20151962b9c78}{handle\+Input}} (sf\+::\+Event event, sf\+::\+Render\+Window \&window, bool \&luigi\+AI, bool \&multijoueur)
-\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour la navigation dans le menu. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_a1443dcfd1c1c9844c40658d752c1fbab}{draw}} (sf\+::\+Render\+Window \&window)
 \begin{DoxyCompactList}\small\item\em Affiche le menu à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classMenu_ae439dbba732990735b97ab4703dff6c1}{is\+Game\+Starting}} () const
-\begin{DoxyCompactList}\small\item\em Vérifie si le jeu est prêt à être lancé. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classMenu_a2c983eb811673755b1f597a99c813e3f}{get\+Selected\+Level}} () const
 \item 
+void \mbox{\hyperlink{classMenu_a056b47b402bda75207c20151962b9c78}{handle\+Input}} (sf\+::\+Event event, sf\+::\+Render\+Window \&window, bool \&luigi\+AI, bool \&multijoueur)
+\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour la navigation dans le menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_ae439dbba732990735b97ab4703dff6c1}{is\+Game\+Starting}} () const
+\begin{DoxyCompactList}\small\item\em Vérifie si le jeu est prêt à être lancé. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMenu_a8caa6100506d4b8e0d782e550dbc470e}{Menu}} (float width, float height)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_ace1416aa3e45da9468f191390854339f}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Réinitialise le menu à son état initial. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classMenu_a12c330ef9fb7efdb90ca247791d0ae91}{setup\+Menu}} (std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \&menu, const std\+::vector$<$ std\+::string $>$ \&options, float width, float height)
-\begin{DoxyCompactList}\small\item\em Initialise un menu avec les options données. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_aa7fe5142f71315975d8082b1fa507961}{change\+Selection}} (std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \&menu, int direction)
 \begin{DoxyCompactList}\small\item\em Change l\textquotesingle{}option sélectionnée dans un menu donné. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_a3702385a691223d6b2f1c08bb8389abb}{set\+State}} (\mbox{\hyperlink{Menu_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} new\+State)
 \begin{DoxyCompactList}\small\item\em Change l\textquotesingle{}état actuel du menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a12c330ef9fb7efdb90ca247791d0ae91}{setup\+Menu}} (std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \&menu, const std\+::vector$<$ std\+::string $>$ \&options, float width, float height)
+\begin{DoxyCompactList}\small\item\em Initialise un menu avec les options données. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_acb7ed113d64e4574f0cb7c2595a95a21}{update\+Menu\+Colors}} (std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \&menu)
 \begin{DoxyCompactList}\small\item\em Met à jour les couleurs des options du menu pour indiquer l\textquotesingle{}option sélectionnée. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-sf\+::\+Font \mbox{\hyperlink{classMenu_a9446727ebf60c6063218b5d4bcae170a}{font}}
-\item 
-sf\+::\+Texture \mbox{\hyperlink{classMenu_aac039ffb0bb15cdaf732fd8414f64433}{background\+Texture}}
+std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_a0aaa66c7c7d50fe30806e2789485971f}{ai\+Menu}}
 \item 
 sf\+::\+Sprite \mbox{\hyperlink{classMenu_a115385e35a3911d235f40d85ab600088}{background\+Sprite}}
 \item 
+sf\+::\+Texture \mbox{\hyperlink{classMenu_aac039ffb0bb15cdaf732fd8414f64433}{background\+Texture}}
+\item 
 \mbox{\hyperlink{Menu_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} \mbox{\hyperlink{classMenu_a2c26c5e3f0b5f0eaecfa5d2d421fad44}{current\+State}}
 \item 
-int \mbox{\hyperlink{classMenu_aa751430d3702f0ccb6f0daa0028aee33}{selected\+Index}}
+sf\+::\+Font \mbox{\hyperlink{classMenu_a9446727ebf60c6063218b5d4bcae170a}{font}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_a5a9e735eebdbc12c8a0af34095e2e490}{level\+Menu}}
 \item 
 std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_a8f5c63cfb2c113632702c6bd102fb0bc}{main\+Menu}}
 \item 
 std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_abe1ce8f788577bba26b1222192bbb868}{player\+Menu}}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_a5a9e735eebdbc12c8a0af34095e2e490}{level\+Menu}}
-\item 
-std\+::vector$<$ \mbox{\hyperlink{structMenu_1_1MenuOption}{Menu\+Option}} $>$ \mbox{\hyperlink{classMenu_a0aaa66c7c7d50fe30806e2789485971f}{ai\+Menu}}
+int \mbox{\hyperlink{classMenu_aa751430d3702f0ccb6f0daa0028aee33}{selected\+Index}}
 \end{DoxyCompactItemize}
 
 
@@ -99,6 +98,14 @@ Initialise le menu avec différentes options et charge les ressources graphiques
 
 Definition at line 14 of file Menu.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classMenu_a8caa6100506d4b8e0d782e550dbc470e_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Function Documentation}
@@ -123,6 +130,22 @@ Change l\textquotesingle{}option sélectionnée dans un menu donné.
 
 Definition at line 231 of file Menu.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu_aa7fe5142f71315975d8082b1fa507961_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu_aa7fe5142f71315975d8082b1fa507961_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_a1443dcfd1c1c9844c40658d752c1fbab}\label{classMenu_a1443dcfd1c1c9844c40658d752c1fbab}} 
 \index{Menu@{Menu}!draw@{draw}}
 \index{draw@{draw}!Menu@{Menu}}
@@ -144,6 +167,14 @@ Dessine l\textquotesingle{}arrière-\/plan ainsi que les options du menu corresp
 
 Definition at line 191 of file Menu.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classMenu_a1443dcfd1c1c9844c40658d752c1fbab_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_a2c983eb811673755b1f597a99c813e3f}\label{classMenu_a2c983eb811673755b1f597a99c813e3f}} 
 \index{Menu@{Menu}!getSelectedLevel@{getSelectedLevel}}
 \index{getSelectedLevel@{getSelectedLevel}!Menu@{Menu}}
@@ -154,6 +185,14 @@ Definition at line 191 of file Menu.\+cpp.
 
 Definition at line 34 of file Menu.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{classMenu_a2c983eb811673755b1f597a99c813e3f_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_a056b47b402bda75207c20151962b9c78}\label{classMenu_a056b47b402bda75207c20151962b9c78}} 
 \index{Menu@{Menu}!handleInput@{handleInput}}
 \index{handleInput@{handleInput}!Menu@{Menu}}
@@ -179,6 +218,22 @@ Gère les entrées clavier pour la navigation dans le menu.
 
 Definition at line 82 of file Menu.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu_a056b47b402bda75207c20151962b9c78_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{classMenu_a056b47b402bda75207c20151962b9c78_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_ae439dbba732990735b97ab4703dff6c1}\label{classMenu_ae439dbba732990735b97ab4703dff6c1}} 
 \index{Menu@{Menu}!isGameStarting@{isGameStarting}}
 \index{isGameStarting@{isGameStarting}!Menu@{Menu}}
@@ -196,6 +251,14 @@ true si le jeu doit démarrer, false sinon.
 
 Definition at line 255 of file Menu.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classMenu_ae439dbba732990735b97ab4703dff6c1_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_ace1416aa3e45da9468f191390854339f}\label{classMenu_ace1416aa3e45da9468f191390854339f}} 
 \index{Menu@{Menu}!reset@{reset}}
 \index{reset@{reset}!Menu@{Menu}}
@@ -210,6 +273,22 @@ Revient au menu principal et remet toutes les sélections à zéro.
 
 Definition at line 277 of file Menu.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{classMenu_ace1416aa3e45da9468f191390854339f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classMenu_ace1416aa3e45da9468f191390854339f_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_a3702385a691223d6b2f1c08bb8389abb}\label{classMenu_a3702385a691223d6b2f1c08bb8389abb}} 
 \index{Menu@{Menu}!setState@{setState}}
 \index{setState@{setState}!Menu@{Menu}}
@@ -229,6 +308,14 @@ Change l\textquotesingle{}état actuel du menu.
 
 Definition at line 265 of file Menu.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu_a3702385a691223d6b2f1c08bb8389abb_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_a12c330ef9fb7efdb90ca247791d0ae91}\label{classMenu_a12c330ef9fb7efdb90ca247791d0ae91}} 
 \index{Menu@{Menu}!setupMenu@{setupMenu}}
 \index{setupMenu@{setupMenu}!Menu@{Menu}}
@@ -254,6 +341,14 @@ Initialise un menu avec les options données.
 
 Definition at line 44 of file Menu.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classMenu_a12c330ef9fb7efdb90ca247791d0ae91_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMenu_acb7ed113d64e4574f0cb7c2595a95a21}\label{classMenu_acb7ed113d64e4574f0cb7c2595a95a21}} 
 \index{Menu@{Menu}!updateMenuColors@{updateMenuColors}}
 \index{updateMenuColors@{updateMenuColors}!Menu@{Menu}}
@@ -273,6 +368,14 @@ Met à jour les couleurs des options du menu pour indiquer l\textquotesingle{}op
 
 Definition at line 242 of file Menu.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenu_acb7ed113d64e4574f0cb7c2595a95a21_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

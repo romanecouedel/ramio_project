@@ -1,0 +1,5 @@
+<map id="Tuyau::getSortieAssociee" name="Tuyau::getSortieAssociee">
+<area shape="rect" id="node1" title="Trouve la sortie associée au tuyau." alt="" coords="5,31,191,57"/>
+<area shape="rect" id="node2" href="$classBloc.html#a29b1e4ca6b73a0f7d93328e7bb93c76f" title=" " alt="" coords="239,5,369,32"/>
+<area shape="rect" id="node3" href="$classTuyau.html#a88c629eba65c52a8e24d9cb3e86f30f2" title="Retourne le type du tuyau (entrée ou sortie)." alt="" coords="245,56,363,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Menu::setupMenu" name="Menu::setupMenu">
+<area shape="rect" id="node1" title="Initialise un menu avec les options données." alt="" coords="156,5,295,32"/>
+<area shape="rect" id="node2" href="$classMenu.html#a8caa6100506d4b8e0d782e550dbc470e" title="Constructeur de la classe Menu." alt="" coords="5,5,108,32"/>
+</map>

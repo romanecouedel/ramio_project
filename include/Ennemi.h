@@ -10,7 +10,8 @@ class Ennemi : public Entity
 {
 public:
     Ennemi();
-
+    ~Ennemi() {
+    }
     void setPosition(float x, float y);
     void update(float deltaTime, class Level &level);
     void onPlayerCollision(bool fromAbove);

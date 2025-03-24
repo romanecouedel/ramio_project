@@ -1,0 +1,6 @@
+<map id="Player::checkCollisionWithEnnemis" name="Player::checkCollisionWithEnnemis">
+<area shape="rect" id="node1" title="Vérifie les collisions entre le joueur et les ennemis." alt="" coords="408,23,603,65"/>
+<area shape="rect" id="node2" href="$classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="244,31,360,57"/>
+<area shape="rect" id="node3" href="$tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="5,5,196,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="73,56,128,83"/>
+</map>

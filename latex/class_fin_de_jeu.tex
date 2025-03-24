@@ -1,0 +1,120 @@
+\hypertarget{class_fin_de_jeu}{}\doxysection{Fin\+De\+Jeu Class Reference}
+\label{class_fin_de_jeu}\index{FinDeJeu@{FinDeJeu}}
+
+
+{\ttfamily \#include $<$Fin\+Jeu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fin_de_jeu_a05662fed886a695d97a12ffabcdda6c8}{Fin\+De\+Jeu}} (float window\+Width, float window\+Height)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_fin_de_jeu}{Fin\+De\+Jeu}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fin_de_jeu_a0d7c29469725d46db941b2458d7a39e8}{afficher}} (sf\+::\+Render\+Window \&window, float temps\+Ecoule, int score, int nb\+Morts)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran de fin de jeu avec le score et le temps écoulé \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fin_de_jeu_a4b58eb2700f6be920228b09b4d731292}{handle\+Input}} (sf\+::\+Event event)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}entrée utilisateur pour détecter l\textquotesingle{}appui sur la touche Entrée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_fin_de_jeu_a52d2683e2e174004136f1a781638d1ae}{victoire}} =false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 8 of file Fin\+Jeu.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fin_de_jeu_a05662fed886a695d97a12ffabcdda6c8}\label{class_fin_de_jeu_a05662fed886a695d97a12ffabcdda6c8}} 
+\index{FinDeJeu@{FinDeJeu}!FinDeJeu@{FinDeJeu}}
+\index{FinDeJeu@{FinDeJeu}!FinDeJeu@{FinDeJeu}}
+\doxysubsubsection{\texorpdfstring{FinDeJeu()}{FinDeJeu()}}
+{\footnotesize\ttfamily Fin\+De\+Jeu\+::\+Fin\+De\+Jeu (\begin{DoxyParamCaption}\item[{float}]{window\+Width,  }\item[{float}]{window\+Height }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_fin_de_jeu}{Fin\+De\+Jeu}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Width} & Largeur de la fenêtre \\
+\hline
+{\em window\+Height} & Hauteur de la fenêtre \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9 of file Fin\+Jeu.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fin_de_jeu_a0d7c29469725d46db941b2458d7a39e8}\label{class_fin_de_jeu_a0d7c29469725d46db941b2458d7a39e8}} 
+\index{FinDeJeu@{FinDeJeu}!afficher@{afficher}}
+\index{afficher@{afficher}!FinDeJeu@{FinDeJeu}}
+\doxysubsubsection{\texorpdfstring{afficher()}{afficher()}}
+{\footnotesize\ttfamily void Fin\+De\+Jeu\+::afficher (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{float}]{temps\+Ecoule,  }\item[{int}]{score,  }\item[{int}]{nb\+Morts }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran de fin de jeu avec le score et le temps écoulé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre S\+F\+ML où afficher l\textquotesingle{}écran de fin \\
+\hline
+{\em temps\+Ecoule} & Temps total de la partie en secondes \\
+\hline
+{\em score} & Nombre de pièces collectées \\
+\hline
+{\em nb\+Morts} & Nombre de morts du joueur \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file Fin\+Jeu.\+cpp.
+
+\mbox{\Hypertarget{class_fin_de_jeu_a4b58eb2700f6be920228b09b4d731292}\label{class_fin_de_jeu_a4b58eb2700f6be920228b09b4d731292}} 
+\index{FinDeJeu@{FinDeJeu}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!FinDeJeu@{FinDeJeu}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily bool Fin\+De\+Jeu\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}entrée utilisateur pour détecter l\textquotesingle{}appui sur la touche Entrée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement S\+F\+ML capturé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si la touche Entrée est pressée, false sinon 
+\end{DoxyReturn}
+
+
+Definition at line 122 of file Fin\+Jeu.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_fin_de_jeu_a52d2683e2e174004136f1a781638d1ae}\label{class_fin_de_jeu_a52d2683e2e174004136f1a781638d1ae}} 
+\index{FinDeJeu@{FinDeJeu}!victoire@{victoire}}
+\index{victoire@{victoire}!FinDeJeu@{FinDeJeu}}
+\doxysubsubsection{\texorpdfstring{victoire}{victoire}}
+{\footnotesize\ttfamily bool Fin\+De\+Jeu\+::victoire =false}
+
+
+
+Definition at line 20 of file Fin\+Jeu.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_fin_jeu_8h}{Fin\+Jeu.\+h}}\item 
+src/\mbox{\hyperlink{_fin_jeu_8cpp}{Fin\+Jeu.\+cpp}}\end{DoxyCompactItemize}

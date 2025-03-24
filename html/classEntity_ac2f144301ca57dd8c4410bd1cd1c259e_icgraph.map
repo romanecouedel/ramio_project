@@ -1,0 +1,12 @@
+<map id="Entity::getGlobalBounds" name="Entity::getGlobalBounds">
+<area shape="rect" id="node1" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="752,173,931,200"/>
+<area shape="rect" id="node2" href="$tests_8cpp.html#a15cc11768575eaff7dbace436e629ac5" title=" " alt="" coords="511,5,702,32"/>
+<area shape="rect" id="node3" href="$classPlayer.html#aaeae05509110be5f56e0a6cc946fc3c8" title="Vérifie les collisions entre le joueur et les ennemis." alt="" coords="509,57,704,98"/>
+<area shape="rect" id="node4" href="$classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="295,123,411,149"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="73,199,128,225"/>
+<area shape="rect" id="node7" href="$classLevel.html#a65f189a05ffa35afba1727c6184c16a2" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="244,224,461,251"/>
+<area shape="rect" id="node8" href="$classTuyau.html#a5bf75bfc09cd6d65d41a337c17277af5" title="Vérifie si le joueur est sur le tuyau." alt="" coords="527,275,687,301"/>
+<area shape="rect" id="node9" href="$classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="523,325,691,352"/>
+<area shape="rect" id="node5" href="$tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="5,123,196,149"/>
+<area shape="rect" id="node10" href="$classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="277,300,428,327"/>
+</map>

@@ -1,0 +1,150 @@
+\hypertarget{class_menu}{}\doxysection{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_a8caa6100506d4b8e0d782e550dbc470e}{Menu}} (float width, float height)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_menu}{Menu}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a056b47b402bda75207c20151962b9c78}{handle\+Input}} (sf\+::\+Event event, sf\+::\+Render\+Window \&window, bool \&luigi\+AI, bool \&multijoueur)
+\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour la navigation dans le menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a1443dcfd1c1c9844c40658d752c1fbab}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Affiche le menu à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_ae439dbba732990735b97ab4703dff6c1}{is\+Game\+Starting}} () const
+\begin{DoxyCompactList}\small\item\em Vérifie si le jeu est prêt à être lancé. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_menu_a2c983eb811673755b1f597a99c813e3f}{get\+Selected\+Level}} () const
+\item 
+void \mbox{\hyperlink{class_menu_ace1416aa3e45da9468f191390854339f}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le menu à son état initial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 19 of file Menu.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_a8caa6100506d4b8e0d782e550dbc470e}\label{class_menu_a8caa6100506d4b8e0d782e550dbc470e}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_menu}{Menu}}. 
+
+Initialise le menu avec différentes options et charge les ressources graphiques.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Largeur de la fenêtre. \\
+\hline
+{\em height} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file Menu.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a1443dcfd1c1c9844c40658d752c1fbab}\label{class_menu_a1443dcfd1c1c9844c40658d752c1fbab}} 
+\index{Menu@{Menu}!draw@{draw}}
+\index{draw@{draw}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Menu\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu à l\textquotesingle{}écran. 
+
+Dessine l\textquotesingle{}arrière-\/plan ainsi que les options du menu correspondant à l\textquotesingle{}état actuel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu S\+F\+ML. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 191 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a2c983eb811673755b1f597a99c813e3f}\label{class_menu_a2c983eb811673755b1f597a99c813e3f}} 
+\index{Menu@{Menu}!getSelectedLevel@{getSelectedLevel}}
+\index{getSelectedLevel@{getSelectedLevel}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getSelectedLevel()}{getSelectedLevel()}}
+{\footnotesize\ttfamily int Menu\+::get\+Selected\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 34 of file Menu.\+h.
+
+\mbox{\Hypertarget{class_menu_a056b47b402bda75207c20151962b9c78}\label{class_menu_a056b47b402bda75207c20151962b9c78}} 
+\index{Menu@{Menu}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Menu\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{event,  }\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{bool \&}]{luigi\+AI,  }\item[{bool \&}]{multijoueur }\end{DoxyParamCaption})}
+
+
+
+Gère les entrées clavier pour la navigation dans le menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement S\+F\+ML capturé. \\
+\hline
+{\em window} & Référence vers la fenêtre de rendu. \\
+\hline
+{\em luigi\+AI} & Référence vers le booléen indiquant si \mbox{\hyperlink{class_luigi}{Luigi}} est contrôlé par l\textquotesingle{}IA. \\
+\hline
+{\em multijoueur} & Référence vers le booléen indiquant si le mode multijoueur est activé. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 82 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_ae439dbba732990735b97ab4703dff6c1}\label{class_menu_ae439dbba732990735b97ab4703dff6c1}} 
+\index{Menu@{Menu}!isGameStarting@{isGameStarting}}
+\index{isGameStarting@{isGameStarting}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{isGameStarting()}{isGameStarting()}}
+{\footnotesize\ttfamily bool Menu\+::is\+Game\+Starting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si le jeu est prêt à être lancé. 
+
+\begin{DoxyReturn}{Returns}
+true si le jeu doit démarrer, false sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 255 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_ace1416aa3e45da9468f191390854339f}\label{class_menu_ace1416aa3e45da9468f191390854339f}} 
+\index{Menu@{Menu}!reset@{reset}}
+\index{reset@{reset}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Menu\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Réinitialise le menu à son état initial. 
+
+Revient au menu principal et remet toutes les sélections à zéro. 
+
+Definition at line 277 of file Menu.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_menu_8h}{Menu.\+h}}\item 
+src/\mbox{\hyperlink{_menu_8cpp}{Menu.\+cpp}}\end{DoxyCompactItemize}

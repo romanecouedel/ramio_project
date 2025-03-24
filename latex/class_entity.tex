@@ -1,0 +1,156 @@
+\hypertarget{class_entity}{}\doxysection{Entity Class Reference}
+\label{class_entity}\index{Entity@{Entity}}
+
+
+Classe de base pour toutes les entités du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+
+
+Inheritance diagram for Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_entity__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_aa28e3afd0766aae4d570ee9ee3c4ae3b}{Entity}} ()=default
+\item 
+\mbox{\hyperlink{class_entity_a52edc34fe6ab14555380154bfc329d1d}{Entity}} (const std\+::string \&texture\+Path)
+\item 
+virtual \mbox{\hyperlink{class_entity_ac479d009ddde62dfb378ca0a70d81307}{$\sim$\+Entity}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_entity_a448a7080dd26026e73cfa69b6b1c53d2}{draw}} (sf\+::\+Render\+Window \&window) const =0
+\item 
+void \mbox{\hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{set\+Position}} (float x, float y)
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_entity_ac2f144301ca57dd8c4410bd1cd1c259e}{get\+Global\+Bounds}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le rectangle englobant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{get\+Position}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_entity_a48ef4ab143b8d0211877c9f6be42e824}{sprite}}
+\item 
+sf\+::\+Texture \mbox{\hyperlink{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}{texture}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe de base pour toutes les entités du jeu. 
+
+Definition at line 14 of file Entity.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_aa28e3afd0766aae4d570ee9ee3c4ae3b}\label{class_entity_aa28e3afd0766aae4d570ee9ee3c4ae3b}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{class_entity_a52edc34fe6ab14555380154bfc329d1d}\label{class_entity_a52edc34fe6ab14555380154bfc329d1d}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{texture\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line 7 of file Entity.\+cpp.
+
+\mbox{\Hypertarget{class_entity_ac479d009ddde62dfb378ca0a70d81307}\label{class_entity_ac479d009ddde62dfb378ca0a70d81307}} 
+\index{Entity@{Entity}!````~Entity@{$\sim$Entity}}
+\index{````~Entity@{$\sim$Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{$\sim$Entity()}{~Entity()}}
+{\footnotesize\ttfamily virtual Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_a448a7080dd26026e73cfa69b6b1c53d2}\label{class_entity_a448a7080dd26026e73cfa69b6b1c53d2}} 
+\index{Entity@{Entity}!draw@{draw}}
+\index{draw@{draw}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void Entity\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_player_a5e0147aee1248db63417987b9a203a9a}{Player}}, \mbox{\hyperlink{class_objet_interactif_ade01cbd8a8b9181cdb769cb236ab651d}{Objet\+Interactif}}, \mbox{\hyperlink{class_ennemi_a5c2ba8fb225ba35b30ae1d74004ebc56}{Ennemi}}, and \mbox{\hyperlink{class_piece_a7c1647dc3a04d50a36da669327afc651}{Piece}}.
+
+\mbox{\Hypertarget{class_entity_ac2f144301ca57dd8c4410bd1cd1c259e}\label{class_entity_ac2f144301ca57dd8c4410bd1cd1c259e}} 
+\index{Entity@{Entity}!getGlobalBounds@{getGlobalBounds}}
+\index{getGlobalBounds@{getGlobalBounds}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getGlobalBounds()}{getGlobalBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Entity\+::get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le rectangle englobant de l\textquotesingle{}entité. 
+
+\begin{DoxyReturn}{Returns}
+Rectangle englobant de l\textquotesingle{}entité. 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file Entity.\+cpp.
+
+\mbox{\Hypertarget{class_entity_a11d7f8fde1e714c76a20b69793fa157c}\label{class_entity_a11d7f8fde1e714c76a20b69793fa157c}} 
+\index{Entity@{Entity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Entity\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 30 of file Entity.\+h.
+
+\mbox{\Hypertarget{class_entity_a93306ecdce9446da37560f5f2b5307c0}\label{class_entity_a93306ecdce9446da37560f5f2b5307c0}} 
+\index{Entity@{Entity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Entity\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 27 of file Entity.\+h.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_entity_a48ef4ab143b8d0211877c9f6be42e824}\label{class_entity_a48ef4ab143b8d0211877c9f6be42e824}} 
+\index{Entity@{Entity}!sprite@{sprite}}
+\index{sprite@{sprite}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Entity\+::sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 16 of file Entity.\+h.
+
+\mbox{\Hypertarget{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}\label{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}} 
+\index{Entity@{Entity}!texture@{texture}}
+\index{texture@{texture}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily sf\+::\+Texture Entity\+::texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 17 of file Entity.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_entity_8h}{Entity.\+h}}\item 
+src/\mbox{\hyperlink{_entity_8cpp}{Entity.\+cpp}}\end{DoxyCompactItemize}

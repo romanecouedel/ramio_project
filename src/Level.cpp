@@ -43,7 +43,7 @@ bool Level::loadFromFile(const std::string &filename)
 
     grid.clear();
     blocs.clear();
-    ennemis.clear();
+    //ennemis.clear();
 
     const float blockSize = 64.0f;
     std::string line;
@@ -75,7 +75,7 @@ bool Level::loadFromFile(const std::string &filename)
             case '!':
                 drapeau.setPosition(position.x, position.y);
                 break;
-            case 'X': case 'K':
+            case 'X':
                 ennemi->setPosition(position.x, position.y);
                 ennemis.push_back(std::move(ennemi));
                 break;

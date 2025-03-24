@@ -1,0 +1,5 @@
+<map id="Player::initializePlayer" name="Player::initializePlayer">
+<area shape="rect" id="node1" title="Initialise le joueur avec une texture et une position de départ." alt="" coords="157,31,325,57"/>
+<area shape="rect" id="node2" href="$classLuigi.html#a5868582b5f8993b31d48bc3e87843c47" title="Constructeur de la classe Luigi." alt="" coords="11,5,103,32"/>
+<area shape="rect" id="node3" href="$classMario.html#ac6c300fde42b0dad5778dfa54f8962bb" title="Constructeur de la classe Mario." alt="" coords="5,56,109,83"/>
+</map>

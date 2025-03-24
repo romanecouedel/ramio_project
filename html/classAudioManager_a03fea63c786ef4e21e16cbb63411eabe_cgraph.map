@@ -1,0 +1,4 @@
+<map id="AudioManager::playOneUpSound" name="AudioManager::playOneUpSound">
+<area shape="rect" id="node1" title="Joue le son d&#39;obtention d&#39;une vie supplémentaire." alt="" coords="5,5,241,32"/>
+<area shape="rect" id="node2" href="$classAudioManager.html#a291e2f019e0d7b1a0a5d7ecb1e27c3d1" title="Modifie le volume d&#39;un son ou d&#39;une musique." alt="" coords="289,5,483,32"/>
+</map>

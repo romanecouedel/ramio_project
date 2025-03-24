@@ -1,0 +1,4 @@
+<map id="FinDeJeu::afficher" name="FinDeJeu::afficher">
+<area shape="rect" id="node1" title="Affiche l&#39;écran de fin de jeu avec le score et le temps écoulé" alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node2" href="$classFinDeJeu.html#a3edae146edd15eb9e0b56d95eb8b71a9" title="Configure un texte SFML avec une police, une position et une taille." alt="" coords="189,5,340,32"/>
+</map>

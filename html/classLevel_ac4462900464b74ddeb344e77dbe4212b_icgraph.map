@@ -1,0 +1,8 @@
+<map id="Level::getEnnemis" name="Level::getEnnemis">
+<area shape="rect" id="node1" title=" " alt="" coords="563,31,705,57"/>
+<area shape="rect" id="node2" href="$classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="347,5,515,32"/>
+<area shape="rect" id="node5" href="$classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="373,56,489,83"/>
+<area shape="rect" id="node3" href="$classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="128,5,279,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,60,57"/>
+<area shape="rect" id="node6" href="$tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="108,107,299,133"/>
+</map>

@@ -1,0 +1,202 @@
+\hypertarget{class_ennemi}{}\doxysection{Ennemi Class Reference}
+\label{class_ennemi}\index{Ennemi@{Ennemi}}
+
+
+{\ttfamily \#include $<$Ennemi.\+h$>$}
+
+
+
+Inheritance diagram for Ennemi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{class_ennemi__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ennemi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{class_ennemi__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ennemi_a9c5eb7ca82848b97f3dcf262fe625b3a}{Ennemi}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}ennemi Goomba. Initialise la texture, la taille de l\textquotesingle{}animation et la vitesse de déplacement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ennemi_a9e4144114974bf0cc31d7830a57cdab8}{set\+Position}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Définit la position de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ennemi_aab3cb3add8b7a21bbdcd61c6fa3d027c}{update}} (float delta\+Time, class \mbox{\hyperlink{class_level}{Level}} \&level)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état et le mouvement de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ennemi_acd15749c73e901ec382453a307a8d414}{on\+Player\+Collision}} (bool from\+Above)
+\begin{DoxyCompactList}\small\item\em Gère la collision avec le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ennemi_a5c2ba8fb225ba35b30ae1d74004ebc56}{draw}} (sf\+::\+Render\+Window \&window) const override
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}ennemi à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_ennemi_a0ddccd0f8b02702ec5022897dde6a5bc}{get\+Bounds}} () const
+\begin{DoxyCompactList}\small\item\em Obtient la boîte englobante de l\textquotesingle{}ennemi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_ennemi_a54ff13d6f25538d5d27b6672974eb778}{is\+Alive}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file Ennemi.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ennemi_a9c5eb7ca82848b97f3dcf262fe625b3a}\label{class_ennemi_a9c5eb7ca82848b97f3dcf262fe625b3a}} 
+\index{Ennemi@{Ennemi}!Ennemi@{Ennemi}}
+\index{Ennemi@{Ennemi}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{Ennemi()}{Ennemi()}}
+{\footnotesize\ttfamily Ennemi\+::\+Ennemi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de l\textquotesingle{}ennemi Goomba. Initialise la texture, la taille de l\textquotesingle{}animation et la vitesse de déplacement. 
+
+
+
+Definition at line 13 of file Ennemi.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ennemi_a5c2ba8fb225ba35b30ae1d74004ebc56}\label{class_ennemi_a5c2ba8fb225ba35b30ae1d74004ebc56}} 
+\index{Ennemi@{Ennemi}!draw@{draw}}
+\index{draw@{draw}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Ennemi\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine l\textquotesingle{}ennemi à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre d\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_entity_a448a7080dd26026e73cfa69b6b1c53d2}{Entity}}.
+
+
+
+Definition at line 131 of file Ennemi.\+cpp.
+
+\mbox{\Hypertarget{class_ennemi_a0ddccd0f8b02702ec5022897dde6a5bc}\label{class_ennemi_a0ddccd0f8b02702ec5022897dde6a5bc}} 
+\index{Ennemi@{Ennemi}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Ennemi\+::get\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient la boîte englobante de l\textquotesingle{}ennemi. 
+
+\begin{DoxyReturn}{Returns}
+Rectangle de collision de l\textquotesingle{}ennemi. 
+\end{DoxyReturn}
+
+
+Definition at line 140 of file Ennemi.\+cpp.
+
+\mbox{\Hypertarget{class_ennemi_acd15749c73e901ec382453a307a8d414}\label{class_ennemi_acd15749c73e901ec382453a307a8d414}} 
+\index{Ennemi@{Ennemi}!onPlayerCollision@{onPlayerCollision}}
+\index{onPlayerCollision@{onPlayerCollision}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{onPlayerCollision()}{onPlayerCollision()}}
+{\footnotesize\ttfamily void Ennemi\+::on\+Player\+Collision (\begin{DoxyParamCaption}\item[{bool}]{from\+Above }\end{DoxyParamCaption})}
+
+
+
+Gère la collision avec le joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+Above} & Indique si la collision vient du dessus (pour écraser l\textquotesingle{}ennemi). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 117 of file Ennemi.\+cpp.
+
+\mbox{\Hypertarget{class_ennemi_a9e4144114974bf0cc31d7830a57cdab8}\label{class_ennemi_a9e4144114974bf0cc31d7830a57cdab8}} 
+\index{Ennemi@{Ennemi}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Ennemi\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Définit la position de l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X. \\
+\hline
+{\em y} & Coordonnée Y. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file Ennemi.\+cpp.
+
+\mbox{\Hypertarget{class_ennemi_aab3cb3add8b7a21bbdcd61c6fa3d027c}\label{class_ennemi_aab3cb3add8b7a21bbdcd61c6fa3d027c}} 
+\index{Ennemi@{Ennemi}!update@{update}}
+\index{update@{update}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Ennemi\+::update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time,  }\item[{class \mbox{\hyperlink{class_level}{Level}} \&}]{level }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}état et le mouvement de l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Temps écoulé depuis la dernière mise à jour. \\
+\hline
+{\em level} & Référence au niveau pour gérer les collisions. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file Ennemi.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ennemi_aab3cb3add8b7a21bbdcd61c6fa3d027c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ennemi_a54ff13d6f25538d5d27b6672974eb778}\label{class_ennemi_a54ff13d6f25538d5d27b6672974eb778}} 
+\index{Ennemi@{Ennemi}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Ennemi@{Ennemi}}
+\doxysubsubsection{\texorpdfstring{isAlive}{isAlive}}
+{\footnotesize\ttfamily bool Ennemi\+::is\+Alive = true}
+
+
+
+Definition at line 19 of file Ennemi.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_ennemi_8h}{Ennemi.\+h}}\item 
+src/\mbox{\hyperlink{_ennemi_8cpp}{Ennemi.\+cpp}}\end{DoxyCompactItemize}

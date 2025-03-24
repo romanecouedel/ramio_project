@@ -1,0 +1,9 @@
+<map id="BOOST_AUTO_TEST_CASE" name="BOOST_AUTO_TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,196,108"/>
+<area shape="rect" id="node2" href="$classLevel.html#af2926af1c879a7febcc1bdd02cf72826" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="252,56,385,83"/>
+<area shape="rect" id="node5" href="$classLevel.html#ad859109cf361d0e9c0cb0ffbf8fcaa8c" title="Charge un niveau à partir d&#39;un fichier." alt="" coords="244,107,393,133"/>
+<area shape="rect" id="node3" href="$classLevel.html#a2bc17614afdfca9a7c7ea5771a70426a" title=" " alt="" coords="477,5,606,32"/>
+<area shape="rect" id="node4" href="$classLevel.html#a7195ddd0c73216532169a1f013513cda" title=" " alt="" coords="479,56,603,83"/>
+<area shape="rect" id="node6" href="$classLevel.html#a26651a6714ea0743e0b5d0ba7b71d615" title="Génère le fond du niveau en alternant des textures." alt="" coords="441,107,641,133"/>
+<area shape="rect" id="node7" href="$classEntity.html#a93306ecdce9446da37560f5f2b5307c0" title=" " alt="" coords="472,157,611,184"/>
+</map>

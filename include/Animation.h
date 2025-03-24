@@ -3,12 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
 
 class Animation
 {
 public:
     // Constructeurs
     Animation() = default;
+    ~Animation() {
+        //std::cout << "Destruction de Animation" << std::endl;
+    }
     Animation(sf::Texture *texture, sf::Vector2u imageCount, float switchTime);
 
     // Méthodes

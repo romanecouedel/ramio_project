@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Animation\+:
-\nopagebreak
+Collaboration diagram for Animation\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,29 +20,27 @@ Collaboration diagram for Animation\+:
 \item 
 \mbox{\hyperlink{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}{Animation}} (sf\+::\+Texture $\ast$texture, sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}{image\+Count}}, float \mbox{\hyperlink{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}{switch\+Time}})
 \begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}animation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}{update}} (float delta\+Time, bool face\+Right, bool is\+Jumping)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. \end{DoxyCompactList}\item 
-sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82772c37376eb13c40295f3e65e52ebc}{get\+Uv\+Rect}} () const
-\item 
 sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a4cc2a8a703cea8df904fdca5b2b43c60}{get\+Current\+Frame}} () const
 \item 
-void \mbox{\hyperlink{classAnimation_af928b8b48c570c067e5d3550930a2358}{set\+Frame}} (int row, int column)
-\end{DoxyCompactItemize}
+sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82772c37376eb13c40295f3e65e52ebc}{get\+Uv\+Rect}} () const
+\item 
+void \mbox{\hyperlink{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}{update}} (float delta\+Time, bool face\+Right, bool is\+Jumping)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_aeb23dec031861eff3dda1b759f4472fc}{current\+Image}}
 \item 
-sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}{uv\+Rect}}
-\item 
 sf\+::\+Vector2u \mbox{\hyperlink{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}{image\+Count}}
+\item 
+sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}{uv\+Rect}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-float \mbox{\hyperlink{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}{total\+Time}} = 0.\+0f
-\item 
 float \mbox{\hyperlink{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}{switch\+Time}}
+\item 
+float \mbox{\hyperlink{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}{total\+Time}} = 0.\+0f
 \end{DoxyCompactItemize}
 
 
@@ -99,6 +96,14 @@ Definition at line 9 of file Animation.\+cpp.
 
 Definition at line 19 of file Animation.\+h.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAnimation_a4cc2a8a703cea8df904fdca5b2b43c60_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classAnimation_a82772c37376eb13c40295f3e65e52ebc}\label{classAnimation_a82772c37376eb13c40295f3e65e52ebc}} 
 \index{Animation@{Animation}!getUvRect@{getUvRect}}
 \index{getUvRect@{getUvRect}!Animation@{Animation}}
@@ -108,12 +113,6 @@ Definition at line 19 of file Animation.\+h.
 
 
 Definition at line 16 of file Animation.\+h.
-
-\mbox{\Hypertarget{classAnimation_af928b8b48c570c067e5d3550930a2358}\label{classAnimation_af928b8b48c570c067e5d3550930a2358}} 
-\index{Animation@{Animation}!setFrame@{setFrame}}
-\index{setFrame@{setFrame}!Animation@{Animation}}
-\doxysubsubsection{\texorpdfstring{setFrame()}{setFrame()}}
-{\footnotesize\ttfamily void Animation\+::set\+Frame (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}\label{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}} 
 \index{Animation@{Animation}!update@{update}}
@@ -138,6 +137,14 @@ Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\t
 
 Definition at line 22 of file Animation.\+cpp.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}
@@ -149,7 +156,7 @@ Definition at line 22 of file Animation.\+cpp.
 
 
 
-Definition at line 21 of file Animation.\+h.
+Definition at line 20 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}\label{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}} 
 \index{Animation@{Animation}!imageCount@{imageCount}}
@@ -159,7 +166,7 @@ Definition at line 21 of file Animation.\+h.
 
 
 
-Definition at line 23 of file Animation.\+h.
+Definition at line 22 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}\label{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}} 
 \index{Animation@{Animation}!switchTime@{switchTime}}
@@ -169,7 +176,7 @@ Definition at line 23 of file Animation.\+h.
 
 
 
-Definition at line 29 of file Animation.\+h.
+Definition at line 28 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}\label{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}} 
 \index{Animation@{Animation}!totalTime@{totalTime}}
@@ -179,7 +186,7 @@ Definition at line 29 of file Animation.\+h.
 
 
 
-Definition at line 28 of file Animation.\+h.
+Definition at line 27 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}\label{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}} 
 \index{Animation@{Animation}!uvRect@{uvRect}}
@@ -189,7 +196,7 @@ Definition at line 28 of file Animation.\+h.
 
 
 
-Definition at line 22 of file Animation.\+h.
+Definition at line 21 of file Animation.\+h.
 
 
 

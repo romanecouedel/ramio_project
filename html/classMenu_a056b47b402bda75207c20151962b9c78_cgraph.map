@@ -1,0 +1,6 @@
+<map id="Menu::handleInput" name="Menu::handleInput">
+<area shape="rect" id="node1" title="Gère les entrées clavier pour la navigation dans le menu." alt="" coords="5,31,148,57"/>
+<area shape="rect" id="node2" href="$classMenu.html#aa7fe5142f71315975d8082b1fa507961" title="Change l&#39;option sélectionnée dans un menu donné." alt="" coords="196,5,369,32"/>
+<area shape="rect" id="node4" href="$classMenu.html#a3702385a691223d6b2f1c08bb8389abb" title="Change l&#39;état actuel du menu." alt="" coords="223,56,343,83"/>
+<area shape="rect" id="node3" href="$classMenu.html#acb7ed113d64e4574f0cb7c2595a95a21" title="Met à jour les couleurs des options du menu pour indiquer l&#39;option sélectionnée." alt="" coords="417,5,605,32"/>
+</map>

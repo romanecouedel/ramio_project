@@ -1,0 +1,9 @@
+<map id="Player::jump" name="Player::jump">
+<area shape="rect" id="node1" title="Fait sauter le joueur." alt="" coords="545,107,649,133"/>
+<area shape="rect" id="node2" href="$tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="307,5,497,32"/>
+<area shape="rect" id="node3" href="$classMario.html#a55a7949e89ad3623ef8e03bc537d0f9b" title="Gère les entrées clavier pour déplacer Mario." alt="" coords="111,56,255,83"/>
+<area shape="rect" id="node5" href="$classLuigi.html#aef6262c87fa79af9600c598244c3d89a" title="Gère les entrées clavier pour déplacer Luigi." alt="" coords="114,107,253,133"/>
+<area shape="rect" id="node6" href="$classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="108,157,259,184"/>
+<area shape="rect" id="node7" href="$classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="318,208,486,235"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,107,60,133"/>
+</map>

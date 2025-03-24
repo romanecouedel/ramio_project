@@ -1,0 +1,4 @@
+<map id="Player::jump" name="Player::jump">
+<area shape="rect" id="node1" title="Fait sauter le joueur." alt="" coords="5,5,109,32"/>
+<area shape="rect" id="node2" href="$classAudioManager.html#a992608915d048ad14be2400f5b7e5c36" title="Joue le son &quot;Yahoo!&quot;." alt="" coords="157,5,388,32"/>
+</map>

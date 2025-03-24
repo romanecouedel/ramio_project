@@ -80,6 +80,7 @@ int main()
                     float blockSize = 64.0f;
                     unsigned int windowWidth = level.getWidth() * blockSize;
                     unsigned int windowHeight = level.getHeight() * blockSize;
+                    window.close();
                     window.create(sf::VideoMode(windowWidth, windowHeight), "Mario");
                     clock.restart();
                 }
@@ -89,6 +90,7 @@ int main()
                 if (finDeJeu.handleInput(event))
                 {
                     gameState = GameState::MENU;
+                    window.close();
                     window.create(sf::VideoMode(900, 600), "Mario - Menu");
                     view.setCenter(450, 300);
                     window.setView(view);
@@ -140,6 +142,7 @@ int main()
                 finDeJeu.victoire = true;
                 gameState = GameState::FDG;
                 audioManager.playEndMusic(finDeJeu.victoire);
+                window.close();
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
 
@@ -164,6 +167,7 @@ int main()
             if (livesRemaining==-1)
             {
                 gameState = GameState::FDG;
+                window.close();
                 window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
             }
 
@@ -201,6 +205,6 @@ int main()
             window.display();
         }
     }
-
+    
     return 0;
 }

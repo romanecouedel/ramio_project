@@ -138,7 +138,7 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// constructeur</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classMario.html#ac6c300fde42b0dad5778dfa54f8962bb">Mario</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// entrées clavier pour déplacer Mario</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMario.html#a55a7949e89ad3623ef8e03bc537d0f9b">handleInput</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMario.html#a55a7949e89ad3623ef8e03bc537d0f9b">handleInput</a>() <span class="keyword">override</span>; <span class="comment">//polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">// ============================================= Classe Luigi ===========================================</span></div>
@@ -153,7 +153,7 @@ $(function() {
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classLuigi.html#a5868582b5f8993b31d48bc3e87843c47">Luigi</a>(); </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// entrées clavier pour déplacer Luigi en local</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLuigi.html#aef6262c87fa79af9600c598244c3d89a">handleInput</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLuigi.html#aef6262c87fa79af9600c598244c3d89a">handleInput</a>() <span class="keyword">override</span>;<span class="comment">//polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// déplacement de Luigi en fonction de Mario pour l&#39;IA</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e">marcher_normal</a>();</div>

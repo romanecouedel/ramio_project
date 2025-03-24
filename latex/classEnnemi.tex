@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Ennemi\+:
-\nopagebreak
+Inheritance diagram for Ennemi\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ Inheritance diagram for Ennemi\+:
 \end{figure}
 
 
-Collaboration diagram for Ennemi\+:
-\nopagebreak
+Collaboration diagram for Ennemi\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,18 +25,18 @@ Collaboration diagram for Ennemi\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{classEnnemi_a5c2ba8fb225ba35b30ae1d74004ebc56}{draw}} (sf\+::\+Render\+Window \&window) const override
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}ennemi à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classEnnemi_a9c5eb7ca82848b97f3dcf262fe625b3a}{Ennemi}} ()
 \begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}ennemi Goomba. Initialise la texture, la taille de l\textquotesingle{}animation et la vitesse de déplacement. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{classEnnemi_a0ddccd0f8b02702ec5022897dde6a5bc}{get\+Bounds}} () const
+\begin{DoxyCompactList}\small\item\em Obtient la boîte englobante de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEnnemi_acd15749c73e901ec382453a307a8d414}{on\+Player\+Collision}} (bool from\+Above)
+\begin{DoxyCompactList}\small\item\em Gère la collision avec le joueur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classEnnemi_a9e4144114974bf0cc31d7830a57cdab8}{set\+Position}} (float x, float y)
 \begin{DoxyCompactList}\small\item\em Définit la position de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classEnnemi_aab3cb3add8b7a21bbdcd61c6fa3d027c}{update}} (float delta\+Time, class \mbox{\hyperlink{classLevel}{Level}} \&level)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état et le mouvement de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classEnnemi_acd15749c73e901ec382453a307a8d414}{on\+Player\+Collision}} (bool from\+Above)
-\begin{DoxyCompactList}\small\item\em Gère la collision avec le joueur. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classEnnemi_a5c2ba8fb225ba35b30ae1d74004ebc56}{draw}} (sf\+::\+Render\+Window \&window) const override
-\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}ennemi à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
-sf\+::\+Float\+Rect \mbox{\hyperlink{classEnnemi_a0ddccd0f8b02702ec5022897dde6a5bc}{get\+Bounds}} () const
-\begin{DoxyCompactList}\small\item\em Obtient la boîte englobante de l\textquotesingle{}ennemi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état et le mouvement de l\textquotesingle{}ennemi. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,25 +45,25 @@ bool \mbox{\hyperlink{classEnnemi_a54ff13d6f25538d5d27b6672974eb778}{is\+Alive}}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-sf\+::\+Sprite \mbox{\hyperlink{classEnnemi_aec80e6d12d2577a058176312c8c8ffb2}{sprite}}
-\item 
-sf\+::\+Vector2f \mbox{\hyperlink{classEnnemi_a27378fe5616930e56016d579a1ff969c}{velocity}}
-\item 
-bool \mbox{\hyperlink{classEnnemi_a44ec59bbc6c90d782506b99faeb9ce1f}{is\+Squashed}}
-\item 
-float \mbox{\hyperlink{classEnnemi_adda8c441a1cc3c9f0064e31ed21f7b61}{squash\+Timer}} = 0.f
-\item 
 float \mbox{\hyperlink{classEnnemi_a5117539b1c102c6ab958baf001f703a5}{animation\+Timer}} = 0.f
 \item 
 int \mbox{\hyperlink{classEnnemi_afc16fe31eb8bd7733f94d0d9af02c86c}{current\+Frame}} = 0
 \item 
-float \mbox{\hyperlink{classEnnemi_afe6297edf860d0875d6981e70b767332}{gravity}} = 1000.f
-\item 
-bool \mbox{\hyperlink{classEnnemi_a24686b1f79dc11641484138f41427733}{on\+Ground}} = false
+int \mbox{\hyperlink{classEnnemi_aa74fa95985b3a1e0cfa75d735b313e9d}{frame\+Height}}
 \item 
 int \mbox{\hyperlink{classEnnemi_a1f5578810ebdd36d9bee67b4d8c069a6}{frame\+Width}}
 \item 
-int \mbox{\hyperlink{classEnnemi_aa74fa95985b3a1e0cfa75d735b313e9d}{frame\+Height}}
+float \mbox{\hyperlink{classEnnemi_afe6297edf860d0875d6981e70b767332}{gravity}} = 1000.f
+\item 
+bool \mbox{\hyperlink{classEnnemi_a44ec59bbc6c90d782506b99faeb9ce1f}{is\+Squashed}}
+\item 
+bool \mbox{\hyperlink{classEnnemi_a24686b1f79dc11641484138f41427733}{on\+Ground}} = false
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{classEnnemi_aec80e6d12d2577a058176312c8c8ffb2}{sprite}}
+\item 
+float \mbox{\hyperlink{classEnnemi_adda8c441a1cc3c9f0064e31ed21f7b61}{squash\+Timer}} = 0.f
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classEnnemi_a27378fe5616930e56016d579a1ff969c}{velocity}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -201,6 +199,22 @@ Met à jour l\textquotesingle{}état et le mouvement de l\textquotesingle{}ennem
 
 Definition at line 54 of file Ennemi.\+cpp.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEnnemi_aab3cb3add8b7a21bbdcd61c6fa3d027c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEnnemi_aab3cb3add8b7a21bbdcd61c6fa3d027c_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

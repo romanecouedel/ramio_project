@@ -1,0 +1,13 @@
+<map id="Level::handleTuyauInteraction" name="Level::handleTuyauInteraction">
+<area shape="rect" id="node1" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="5,223,223,250"/>
+<area shape="rect" id="node2" href="$classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="504,20,683,47"/>
+<area shape="rect" id="node3" href="$classBloc.html#a826d370d5d0f192b5f9d6187cf7795d3" title=" " alt="" coords="509,96,678,123"/>
+<area shape="rect" id="node4" href="$classEntity.html#a11d7f8fde1e714c76a20b69793fa157c" title=" " alt="" coords="293,96,433,123"/>
+<area shape="rect" id="node5" href="$classBloc.html#a29b1e4ca6b73a0f7d93328e7bb93c76f" title=" " alt="" coords="528,198,659,224"/>
+<area shape="rect" id="node6" href="$classTuyau.html#a0a893ba0fa1744af3dbd79da5e181688" title="Trouve la sortie associée au tuyau." alt="" coords="271,248,456,275"/>
+<area shape="rect" id="node7" href="$classTuyau.html#a88c629eba65c52a8e24d9cb3e86f30f2" title="Retourne le type du tuyau (entrée ou sortie)." alt="" coords="534,274,653,300"/>
+<area shape="rect" id="node8" href="$classTuyau.html#a5bf75bfc09cd6d65d41a337c17277af5" title="Vérifie si le joueur est sur le tuyau." alt="" coords="283,46,443,72"/>
+<area shape="rect" id="node9" href="$classPlayer.html#a4aea1eb521a27bb44cb43b7f83f3d274" title=" " alt="" coords="309,350,417,376"/>
+<area shape="rect" id="node10" href="$classPlayer.html#a985d7ab191e0bfd689e3db6727fc3a56" title="Modifie l&#39;opacité du sprite du joueur." alt="" coords="293,400,434,427"/>
+<area shape="rect" id="node11" href="$classEntity.html#a93306ecdce9446da37560f5f2b5307c0" title=" " alt="" coords="294,451,433,478"/>
+</map>

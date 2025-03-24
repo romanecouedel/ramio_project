@@ -1,0 +1,5 @@
+<map id="Level::isColliding" name="Level::isColliding">
+<area shape="rect" id="node1" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="5,31,139,57"/>
+<area shape="rect" id="node2" href="$classLevel.html#a2bc17614afdfca9a7c7ea5771a70426a" title=" " alt="" coords="187,5,316,32"/>
+<area shape="rect" id="node3" href="$classLevel.html#a7195ddd0c73216532169a1f013513cda" title=" " alt="" coords="189,56,313,83"/>
+</map>

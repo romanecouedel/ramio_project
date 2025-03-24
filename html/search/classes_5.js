@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['level_223',['Level',['../classLevel.html',1,'']]],
-  ['luigi_224',['Luigi',['../classLuigi.html',1,'']]]
+  ['level_219',['Level',['../classLevel.html',1,'']]],
+  ['luigi_220',['Luigi',['../classLuigi.html',1,'']]]
 ];
