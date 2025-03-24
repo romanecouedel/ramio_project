@@ -1,0 +1,7 @@
+"filename", "language", "C++", "CMake", "comment", "blank", "total"
+"/home/alberic/Documents/Cours/ramio_project/CMakeLists.txt", "CMake", 0, 16, 0, 6, 22
+"/home/alberic/Documents/Cours/ramio_project/include/Player.h", "C++", 0, 0, 0, 2, 2
+"/home/alberic/Documents/Cours/ramio_project/src/Level.cpp", "C++", 0, 0, 0, -2, -2
+"/home/alberic/Documents/Cours/ramio_project/src/main.cpp", "C++", 3, 0, 0, 1, 4
+"/home/alberic/Documents/Cours/ramio_project/src/tests.cpp", "C++", 52, 0, 3, 21, 76
+"Total", "-", 55, 16, 3, 28, 102

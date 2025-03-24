@@ -7,7 +7,11 @@
 #include <cmath>
 
 extern AudioManager audioManager;
-// constructeur
+
+
+/**
+ * @brief Constructeur de la classe Level
+ */
 Level::Level()
 {
 
@@ -23,6 +27,11 @@ Level::Level()
 }
 
 // ======================== Chargement du Niveau ========================
+/**
+ * @brief Charge un niveau à partir d'un fichier
+ * @param filename Nom du fichier de niveau
+ * @return true si le chargement a réussi, false sinon
+ */
 bool Level::loadFromFile(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -91,6 +100,10 @@ bool Level::loadFromFile(const std::string &filename)
 
 
 // ======================== Affichage du Niveau ========================
+/**
+ * @brief Affiche le niveau dans la fenêtre SFML
+ * @param window Fenêtre de rendu
+ */
 void Level::draw(sf::RenderWindow &window)
 {
     // Dessiner l'arrière-plan en utilisant un sf::RenderStates pour appliquer la texture
@@ -133,6 +146,13 @@ void Level::draw(sf::RenderWindow &window)
 }
 
 // ======================== Mise à Jour ========================
+/**
+ * @brief Met à jour l'état du niveau
+ * @param deltaTime Temps écoulé depuis la dernière mise à jour
+ * @param window Fenêtre SFML
+ * @param hitboxMario Hitbox de Mario
+ * @param hitboxLuigi Hitbox de Luigi
+ */
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
 
@@ -198,6 +218,12 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
 }
 
 // ======================== Détection de Collisions ========================
+/**
+ * @brief Vérifie si une hitbox est en collision avec un bloc solide du niveau.
+ * 
+ * @param hitbox La hitbox du joueur ou de l'objet à tester.
+ * @return true si une collision est détectée, false sinon.
+ */
 bool Level::isColliding(const sf::FloatRect &hitbox) const
 {
     // on regarde les collisions seulement autour du joueur
@@ -220,11 +246,35 @@ bool Level::isColliding(const sf::FloatRect &hitbox) const
     return false;
 }
 
+//==========================detection bloc mystere proche==========================
+/**
+ * @brief Affiche l'état des blocs mystères dans le niveau.
+ * 
+ * Affiche la position et l'état (touché ou non) de chaque bloc mystère.
+ */
+void Level::afficherEtatBlocsMysteres() const {
+    for (const auto& bloc : blocs) {
+        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
+            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
+            if (blocMystere->estTouche) {
+                std::cout << "Touché" << std::endl;
+            } else {
+                std::cout << "Non touché" << std::endl;
+            }
+        }
+    }
+}
 
 //==========================detection bloc mystere proche==========================
-// utile pour ia
-BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
-    float blockSize = 64.0f; // Taille d'un bloc dans ton niveau
+/**
+ * @brief Récupère un bloc mystère proche d'une position donnée.
+ * 
+ * @param position La position à partir de laquelle chercher.
+ * @return Un pointeur vers le bloc mystère trouvé, ou nullptr si aucun n'est proche.
+ */
+BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
+{
+    float blockSize = 64.0f;  // Taille d'un bloc dans ton niveau
     float tolerance = 500.0f; // Tolérance pour la vérification des positions
 
     // Définition des directions autour du joueur (haut, bas, gauche, droite)
@@ -260,22 +310,12 @@ BlocMystere* Level::getBlocMystereProche(const sf::Vector2f& position) {
     return nullptr; // Aucun bloc mystère valide trouvé
 }
 
-//debug
-void Level::afficherEtatBlocsMysteres() const {
-    for (const auto& bloc : blocs) {
-        if (auto* blocMystere = dynamic_cast<BlocMystere*>(bloc.get())) {
-            std::cout << "Bloc Mystere à (" << blocMystere->getPosition().x << ", " << blocMystere->getPosition().y << ") - ";
-            if (blocMystere->estTouche) {
-                std::cout << "Touché" << std::endl;
-            } else {
-                std::cout << "Non touché" << std::endl;
-            }
-        }
-    }
-}
-
-
 // ======================== Génération du Fond ========================
+/**
+ * @brief Génère le fond du niveau en alternant des textures.
+ * @param levelWidth Largeur du niveau.
+ * @param levelHeight Hauteur du niveau.
+ */
 void Level::generateBackground(float levelWidth, float levelHeight)
 {
     backgroundVertices.clear();
@@ -304,6 +344,12 @@ void Level::generateBackground(float levelWidth, float levelHeight)
 }
 
 //======================+Tuyau================================
+/**
+ * @brief Gère l'interaction des joueurs avec les tuyaux.
+ * @param mario Le joueur principal.
+ * @param luigi Le second joueur (optionnel).
+ * @param deltaTime Temps écoulé depuis la dernière mise à jour.
+ */
 void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime)
 {
     if (!enTrainDeDescendre && !enTrainDeMonter)
@@ -408,7 +454,11 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
     }
 }
 
-// utile pour ia 
+/**
+ * @brief Vérifie si le joueur est en collision avec un tuyau.
+ * @param playerBound Les limites du joueur.
+ * @return true si une collision est détectée, sinon false.
+ */
 bool Level::isTuyauColliding(const sf::FloatRect &playerBound) const {
     sf::FloatRect tuyauBounds; // Initialize tuyauBounds
     for (const auto& bloc : blocs) {

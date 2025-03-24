@@ -1,12 +1,24 @@
 #include "Animation.h"
 
+/**
+ * @brief Constructeur de l'animation.
+ * @param texture Pointeur vers la texture utilisée pour l'animation.
+ * @param imageCount Nombre d'images par ligne et colonne dans la spritesheet.
+ * @param switchTime Temps entre chaque changement de frame.
+ */
 Animation::Animation(sf::Texture *texture, sf::Vector2u imageCount, float switchTime)
     : imageCount(imageCount), switchTime(switchTime)
 {
-    uvRect.width = texture->getSize().x / 3;
-    uvRect.height = texture->getSize().y / 4;
+    uvRect.width = texture->getSize().x / 3;  ///< Largeur d'une frame dans la spritesheet.
+    uvRect.height = texture->getSize().y / 4; ///< Hauteur d'une frame dans la spritesheet.
 }
 
+/**
+ * @brief Met à jour l'animation en fonction du temps écoulé et de l'état du personnage.
+ * @param deltaTime Temps écoulé depuis la dernière mise à jour.
+ * @param faceRight Indique si le personnage fait face à droite.
+ * @param isJumping Indique si le personnage est en train de sauter.
+ */
 void Animation::update(float deltaTime, bool faceRight, bool isJumping) {
     // Choix de la ligne selon l'état
     int row = isJumping ? (faceRight ? 3 : 2) : (faceRight ? 0 : 1);
@@ -30,4 +42,3 @@ void Animation::update(float deltaTime, bool faceRight, bool isJumping) {
     uvRect.left = currentImage.x * uvRect.width;
     uvRect.top = currentImage.y * uvRect.height;
 }
-

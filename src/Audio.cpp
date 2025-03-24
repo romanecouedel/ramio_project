@@ -1,7 +1,15 @@
 #include "Audio.h"
 
+/**
+ * @brief Gestionnaire audio global.
+ */
 AudioManager audioManager; 
 
+/**
+ * @brief Constructeur de la classe AudioManager.
+ * 
+ * Initialise et charge les fichiers audio (musiques et effets sonores).
+ */
 AudioManager::AudioManager()
 {
     // Chargement des musiques de fond
@@ -41,14 +49,23 @@ AudioManager::AudioManager()
         oneUpSound.setBuffer(oneUpBuffer);
 }
 
-// Fonctions de lecture des musiques
+/**
+ * @brief Musique actuellement jouée.
+ */
 std::string currentMusic = "";
 
+/**
+ * @brief Récupère la musique actuellement jouée.
+ * @return Nom de la musique en cours.
+ */
 std::string AudioManager::getCurrentMusic()
 {
     return currentMusic;
 }
 
+/**
+ * @brief Joue la musique du menu principal.
+ */
 void AudioManager::playMenuMusic()
 {
     if (currentMusic == "menu") return;  // Empêche la relance si déjà en cours
@@ -58,6 +75,9 @@ void AudioManager::playMenuMusic()
     currentMusic = "menu";
 }
 
+/**
+ * @brief Joue la musique du jeu.
+ */
 void AudioManager::playGameMusic()
 {
     if (currentMusic == "game") return;
@@ -67,6 +87,11 @@ void AudioManager::playGameMusic()
     currentMusic = "game";
 }
 
+/**
+ * @brief Joue la musique de fin de partie.
+ * 
+ * @param victoire Indique si le joueur a gagné ou perdu.
+ */
 void AudioManager::playEndMusic(bool victoire)
 {
     audioManager.setVolume("end", 200.0f);
@@ -82,31 +107,47 @@ void AudioManager::playEndMusic(bool victoire)
     currentMusic = "end";
 }
 
-
-// Fonctions de lecture des effets sonores
+/**
+ * @brief Joue le son d'obtention d'une pièce.
+ */
 void AudioManager::playCoinSound()
 {
     audioManager.setVolume("coin", 50.0f);
     coinSound.play();
 }
 
+/**
+ * @brief Joue le son d'entrée dans un tuyau.
+ */
 void AudioManager::playTuyauSound()
 {
     audioManager.setVolume("tuyau", 50.0f);
     tuyauSound.play();
 }
 
+/**
+ * @brief Joue le son "Yahoo!".
+ */
 void AudioManager::playYahooSound()
 {
     yahooSound.play();
 }
 
+/**
+ * @brief Joue le son d'obtention d'une vie supplémentaire.
+ */
 void AudioManager::playOneUpSound()
 {
     audioManager.setVolume("oneup", 50.0f);
     oneUpSound.play();
 }
 
+/**
+ * @brief Modifie le volume d'un son ou d'une musique.
+ * 
+ * @param soundName Nom du son ou de la musique.
+ * @param volume Niveau de volume désiré.
+ */
 void AudioManager::setVolume(const std::string& soundName, float volume)
 {
     if (soundName == "menu") musiqueMenu.setVolume(volume);
