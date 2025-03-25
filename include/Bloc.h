@@ -24,9 +24,6 @@ public:
     virtual ~Bloc() {
         //std::cout << "Destruction de Bloc" << std::endl;
     }
-    //Bloc(const std::string& texturePath); 
-    //virtual ~Bloc() = default;
-
     virtual void draw(sf::RenderWindow& window) const { 
         window.draw(sprite); 
     }
@@ -108,3 +105,16 @@ class Tuyau : public Bloc {
 
     };
     
+
+// ======================== BLOC EAU ========================
+class Eau : public Bloc {
+public:
+    Eau();  // Constructeur
+    bool isPlayerInWater(const sf::FloatRect& playerHitbox) const;
+    void draw(sf::RenderWindow& window);
+    sf::FloatRect getGlobalBounds() const;
+    
+
+private:
+    static sf::Texture textureEau; 
+};

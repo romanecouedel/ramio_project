@@ -22,6 +22,7 @@ class Level
 
         std::vector<std::unique_ptr<Ennemi>> ennemis;
         const Drapeau &getDrapeau() const { return drapeau; }
+        const std::vector<std::unique_ptr<Bloc>>& getBlocs() const { return blocs; }
 
         // Chargement du niveau depuis un fichier txt
         bool loadFromFile(const std::string &filename);
@@ -51,6 +52,8 @@ class Level
         const std::vector<std::unique_ptr<Ennemi>>& getEnnemis() const { return ennemis; }
 
         void handleTuyauInteraction(Player &ramio, Player *guili, float deltaTime);
+
+        bool isPlayerInWater(const sf::FloatRect& playerBounds) const;
 
     private:
         // vecteur de vecteur d'entiers pour la grille

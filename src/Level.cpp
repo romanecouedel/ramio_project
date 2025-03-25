@@ -60,6 +60,7 @@ bool Level::loadFromFile(const std::string &filename)
 
             std::unique_ptr<Bloc> bloc;
             auto ennemi = std::make_unique<Ennemi>();
+            auto eau = std::make_unique<Eau>();
             switch (c)
             {
             case '#':
@@ -79,6 +80,10 @@ bool Level::loadFromFile(const std::string &filename)
                 ennemi->setPosition(position.x, position.y);
                 ennemis.push_back(std::move(ennemi));
                 break;
+            case 'O':
+                eau->setPosition(position.x, position.y);
+                blocs.push_back(std::move(eau));
+                break;
             case 'U': case 'V':
                 Tuyau::Type type = (c == 'U') ? Tuyau::Type::ENTREE : Tuyau::Type::SORTIE;
                 auto tuyau = std::make_unique<Tuyau>(type);
@@ -94,7 +99,6 @@ bool Level::loadFromFile(const std::string &filename)
     {
         generateBackground(grid[0].size() * 64, grid.size() * 64);
     }
-    std::cout << "Nombre d'ennemis chargés : " << ennemis.size() << std::endl;
     return true;
 }
 
@@ -136,6 +140,10 @@ void Level::draw(sf::RenderWindow &window)
                 blocMystere->getPiece()->draw(window);
                 audioManager.playCoinSound();
             }
+        }
+        if (auto *eau = dynamic_cast<Eau *>(bloc.get()))
+        {
+            eau->draw(window);
         }
     }
     for (const auto &ennemi : ennemis)
@@ -470,3 +478,5 @@ bool Level::isTuyauColliding(const sf::FloatRect &playerBound) const {
 
     return playerBound.intersects(tuyauBounds);
 }
+
+

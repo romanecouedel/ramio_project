@@ -27,11 +27,15 @@ protected:
     float jumpForce = -650.f;
     float speed = 350.f;
     float gravity = 980.f;
+    float swimSpeed = 150.f; 
+    float swimGravity = 50.f;
+    float jumpCooldown = 0.0f; 
 
     // variables de saut, nottament utilisée pour l'ia de guili
     bool isJumping = false;
     bool canJump = true;
     bool onGround = false;
+    bool isSwimming = false;
 
 
 public:
@@ -39,7 +43,6 @@ public:
     Player();
     virtual ~Player() {
         std::cout << "Destruction de Player" << std::endl;
-        
     }
     bool faceRight = true; // Direction du personnage, sert pour l'animation
     bool isDead = false;// sert à compter les morts

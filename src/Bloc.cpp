@@ -9,6 +9,7 @@
 sf::Texture Bloc::textureBlocSol;
 sf::Texture Bloc::textureBlocMystere;
 sf::Texture Bloc::textureTuyau;
+sf::Texture Eau::textureEau;
 
 // ======================== BlocSol ========================
 /**
@@ -159,4 +160,50 @@ bool Tuyau::isPlayerOnTop(const Player& player) const {
                       (playerBounds.top + playerBounds.height) >= tuyauBounds.top - 5.0f;
 
     return horizontalOk && verticalOk;
+}
+
+// ======================== Eau ========================
+/**
+ * @brief Constructeur de la classe Eau, charge la texture si ce n'est pas encore fait.
+ */
+Eau::Eau() {
+    if (textureEau.getSize().x == 0) {
+        if (!textureEau.loadFromFile("../img/eau.png")) {
+              std::cerr << "Erreur chargement texture Eau" << std::endl;
+        }
+    }
+    sprite.setTexture(textureEau);
+    sprite.setScale(64.0f / textureEau.getSize().x, 64.0f / textureEau.getSize().y);
+    sf::Color color = sprite.getColor(); 
+    color.a = 150;  
+    sprite.setColor(color); 
+}
+
+
+
+/**
+ * @brief Vérifie si un joueur est dans l'eau.
+ * @param player Le joueur à vérifier (Mario ou Luigi).
+ * @return True si le joueur est dans l'eau, False sinon.
+ */
+bool Eau::isPlayerInWater(const sf::FloatRect& playerHitbox) const
+{
+    return playerHitbox.intersects(this->getGlobalBounds());  // Vérifier si la hitbox du joueur intersecte l'eau
+}
+
+
+/**
+ * @brief Affiche l'eau sur l'écran.
+ * @param window Fenêtre SFML.
+ */
+void Eau::draw(sf::RenderWindow& window) {
+    window.draw(sprite);
+}
+
+/**
+ * @brief Retourne les coordonnées du bloc d'eau.
+ * @return Les coordonnées du bloc.
+ */
+sf::FloatRect Eau::getGlobalBounds() const {
+    return sprite.getGlobalBounds();
 }

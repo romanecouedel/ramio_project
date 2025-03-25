@@ -56,7 +56,36 @@ void Player::update(float deltaTime, const Level &level) {
         isDead = true;
         return;
     }
+    // Vérifie si le joueur est dans l'eau
+    bool isInWater = false;
+    for (const auto& bloc : level.getBlocs()) {
+        if (auto* eau = dynamic_cast<Eau*>(bloc.get())) {
+            if (eau->isPlayerInWater(getGlobalBounds())) {
+                isInWater = true;
+                break;  // Le joueur est dans l'eau, on peut arrêter la recherche
+            }
+        }
+    }
+    if (isInWater) {
+        gravity = 50.f;  
+        speed = 100.f;   
+        jumpForce = -100.f; 
 
+        // On incrémente le timer de cooldown uniquement si le joueur est dans l'eau
+        jumpCooldown += deltaTime;
+
+        // Si 2 secondes sont passées, on permet de sauter
+        if (jumpCooldown >= 0.5f) {
+            canJump = true;  // Permet au joueur de sauter
+            jumpCooldown=0.0f;
+        }
+    } else {// si le joueur n'est pas dans l'eau 
+        gravity = 980.f;  
+        speed = 350.f;    
+        jumpForce = -650.f; 
+        
+        jumpCooldown = 0.0f;
+    }
     // Applique la gravité
     velocity.y += gravity * deltaTime;
 
@@ -76,6 +105,7 @@ void Player::update(float deltaTime, const Level &level) {
         isJumping = true;
     }
     checkCollisionWithEnnemis(level.getEnnemis());
+    
     // Met à jour l'animation du joueur
     currentAnimation->update(deltaTime, faceRight, isJumping);
     sprite.setTextureRect(currentAnimation->getCurrentFrame());
@@ -115,6 +145,7 @@ void Player::update(float deltaTime, const Level &level) {
             isJumping = false; 
         }
     }
+    
 }
 
 
@@ -138,12 +169,15 @@ void Player::setOpacity(sf::Uint8 alpha)
  * 
  * Applique une force vers le haut et change l'animation pour celle du saut.
  */
-void Player::jump()
-{
-    velocity.y = jumpForce;
-    canJump = false;
-    currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
-    audioManager.playYahooSound();
+
+void Player::jump() {
+    
+        // Si on n'est pas dans l'eau, on applique le saut normalement
+        velocity.y = jumpForce;
+        canJump = false;
+        currentAnimation = faceRight ? &animationJumpRight : &animationJumpLeft;
+        audioManager.playYahooSound();
+    
 }
 
 /**
@@ -206,6 +240,7 @@ void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>
         }
     }
 }
+
 
 //==========================Classes Filles==========================//
 //===============================================Ramio=============================================/
