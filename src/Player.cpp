@@ -217,7 +217,7 @@ void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>
  */
 Ramio::Ramio()
 {
-    initializePlayer("../img/sprite_mario.png", {100, 100});
+    initializePlayer("../img/sprite_ramio.png", {100, 100});
 }
 
 /**
@@ -254,7 +254,7 @@ void Ramio::handleInput()
  */
 Guili::Guili()
 {
-    initializePlayer("../img/sprite_luigi.png", {150, 100});
+    initializePlayer("../img/sprite_guili.png", {150, 100});
 }
 
 
