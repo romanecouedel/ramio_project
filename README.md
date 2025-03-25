@@ -36,7 +36,7 @@ rm -rf build # si besoin
 mkdir build && cd build  
 cmake ..  
 make  
-./mario
+./ramio
 
 ```
 
