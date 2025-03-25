@@ -150,8 +150,8 @@ void Level::draw(sf::RenderWindow &window)
  * @brief Met à jour l'état du niveau
  * @param deltaTime Temps écoulé depuis la dernière mise à jour
  * @param window Fenêtre SFML
- * @param hitboxMario Hitbox de Mario
- * @param hitboxLuigi Hitbox de Luigi
+ * @param hitboxMario Hitbox de Ramio
+ * @param hitboxLuigi Hitbox de Guili
  */
 void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRect &hitboxMario, const sf::FloatRect &hitboxLuigi)
 {
@@ -168,7 +168,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
             hitboxAvecTolerance.top -= 3.0f;
             hitboxAvecTolerance.height += 6.0f;
 
-            // Vérifie si Mario ou Luigi frappe le bloc mystère
+            // Vérifie si Ramio ou Guili frappe le bloc mystère
             for (const auto &hitboxJoueur : {hitboxMario, hitboxLuigi})
             {
                 if (hitboxJoueur.intersects(hitboxAvecTolerance))
@@ -346,11 +346,11 @@ void Level::generateBackground(float levelWidth, float levelHeight)
 //======================+Tuyau================================
 /**
  * @brief Gère l'interaction des joueurs avec les tuyaux.
- * @param mario Le joueur principal.
- * @param luigi Le second joueur (optionnel).
+ * @param ramio Le joueur principal.
+ * @param guili Le second joueur (optionnel).
  * @param deltaTime Temps écoulé depuis la dernière mise à jour.
  */
-void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime)
+void Level::handleTuyauInteraction(Player &ramio, Player *guili, float deltaTime)
 {
     if (!enTrainDeDescendre && !enTrainDeMonter)
     {
@@ -360,8 +360,8 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
             if (tuyau && tuyau->getType() == Tuyau::Type::ENTREE)
             {
 
-                bool marioSurTuyau = tuyau->isPlayerOnTop(mario) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
-                bool luigiSurTuyau = luigi && tuyau->isPlayerOnTop(*luigi) && sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+                bool marioSurTuyau = tuyau->isPlayerOnTop(ramio) && sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+                bool luigiSurTuyau = guili && tuyau->isPlayerOnTop(*guili) && sf::Keyboard::isKeyPressed(sf::Keyboard::S);
 
                 if (marioSurTuyau || luigiSurTuyau)
                 {
@@ -376,17 +376,17 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
 
                     sf::Vector2f tuyauPos = tuyau->getPosition();
                     sf::FloatRect tuyauBounds = tuyau->getGlobalBounds();
-                    sf::FloatRect marioBounds = mario.getGlobalBounds();
+                    sf::FloatRect marioBounds = ramio.getGlobalBounds();
 
                     float marioNewX = tuyauPos.x + (tuyauBounds.width - marioBounds.width) / 2.0f;
-                    mario.setPosition(marioNewX, mario.getPosition().y);
+                    ramio.setPosition(marioNewX, ramio.getPosition().y);
 
-                    // Centrer Luigi seulement en mode multijoueur
-                    if (luigi)
+                    // Centrer Guili seulement en mode multijoueur
+                    if (guili)
                     {
-                        sf::FloatRect luigiBounds = luigi->getGlobalBounds();
+                        sf::FloatRect luigiBounds = guili->getGlobalBounds();
                         float luigiNewX = tuyauPos.x + (tuyauBounds.width - luigiBounds.width) / 2.0f;
-                        luigi->setPosition(luigiNewX, luigi->getPosition().y);
+                        guili->setPosition(luigiNewX, guili->getPosition().y);
                     }
                     return;
                 }
@@ -400,24 +400,24 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
         tuyauTimer += deltaTime;
         float descenteSpeed = 100.0f;
 
-        mario.move(0, descenteSpeed * deltaTime);
-        if (luigi)
-            luigi->move(0, descenteSpeed * deltaTime);
+        ramio.move(0, descenteSpeed * deltaTime);
+        if (guili)
+            guili->move(0, descenteSpeed * deltaTime);
 
         float alpha = 255 * (1.0f - (tuyauTimer / 0.5f));
-        mario.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
-        if (luigi)
-            luigi->setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+        ramio.setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
+        if (guili)
+            guili->setOpacity(static_cast<sf::Uint8>(std::max(0.0f, alpha)));
 
         if (tuyauTimer >= 0.5f)
         {
-            mario.setPosition(sortiePosition.x, sortiePosition.y + 64.0f);
-            if (luigi)
-                luigi->setPosition(sortiePosition.x, sortiePosition.y + 74.0f);
+            ramio.setPosition(sortiePosition.x, sortiePosition.y + 64.0f);
+            if (guili)
+                guili->setPosition(sortiePosition.x, sortiePosition.y + 74.0f);
 
-            mario.setOpacity(0);
-            if (luigi)
-                luigi->setOpacity(0);
+            ramio.setOpacity(0);
+            if (guili)
+                guili->setOpacity(0);
 
             enTrainDeDescendre = false;
             enTrainDeMonter = true;
@@ -431,24 +431,24 @@ void Level::handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime
         tuyauTimer += deltaTime;
         float monteeSpeed = 100.0f;
 
-        mario.move(0, -monteeSpeed * deltaTime);
-        if (luigi)
-            luigi->move(0, -monteeSpeed * deltaTime);
+        ramio.move(0, -monteeSpeed * deltaTime);
+        if (guili)
+            guili->move(0, -monteeSpeed * deltaTime);
 
         float alpha = 255 * (tuyauTimer / 0.5f);
-        mario.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
-        if (luigi)
-            luigi->setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+        ramio.setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
+        if (guili)
+            guili->setOpacity(static_cast<sf::Uint8>(std::min(255.0f, alpha)));
 
         if (tuyauTimer >= 0.5f)
         {
             enTrainDeMonter = false;
             tuyauTimer = 0.0f;
 
-            mario.setOpacity(255);
-            if (luigi)
+            ramio.setOpacity(255);
+            if (guili)
             {
-                luigi->setOpacity(255);
+                guili->setOpacity(255);
             }
         }
     }

@@ -193,14 +193,14 @@ void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>
             float playerFeet = playerBounds.top + playerBounds.height; // Position des pieds du joueur
             float ennemiTop = ennemiBounds.top + (ennemiBounds.height * 0.2f); // Marge pour éviter les faux positifs
 
-            if (playerFeet < ennemiTop) //  Mario saute bien sur l'ennemi
+            if (playerFeet < ennemiTop) //  Ramio saute bien sur l'ennemi
             {
-                velocity.y = -300.f; // Fait rebondir Mario après un saut sur l'ennemi
+                velocity.y = -300.f; // Fait rebondir Ramio après un saut sur l'ennemi
                 ennemi->onPlayerCollision(true);
             }
             else //  Collision latérale = mort
             {
-                std::cout << "Mario est mort en touchant l'ennemi !" << std::endl;
+                std::cout << "Ramio est mort en touchant l'ennemi !" << std::endl;
                 isDead = true;
             }
         }
@@ -208,26 +208,26 @@ void Player::checkCollisionWithEnnemis(const std::vector<std::unique_ptr<Ennemi>
 }
 
 //==========================Classes Filles==========================//
-//===============================================Mario=============================================/
+//===============================================Ramio=============================================/
 
 /**
- * @brief Constructeur de la classe Mario.
+ * @brief Constructeur de la classe Ramio.
  * 
- * Initialise Mario avec sa texture et sa position de départ.
+ * Initialise Ramio avec sa texture et sa position de départ.
  */
-Mario::Mario()
+Ramio::Ramio()
 {
     initializePlayer("../img/sprite_mario.png", {100, 100});
 }
 
 /**
- * @brief Gère les entrées clavier pour déplacer Mario.
+ * @brief Gère les entrées clavier pour déplacer Ramio.
  * 
  * - Gauche : Flèche gauche.
  * - Droite : Flèche droite.
- * - Saut : Flèche haut (uniquement si Mario peut sauter).
+ * - Saut : Flèche haut (uniquement si Ramio peut sauter).
  */
-void Mario::handleInput()
+void Ramio::handleInput()
 {
     velocity.x = 0;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -248,24 +248,24 @@ void Mario::handleInput()
 
 //==================================================LUIGI==========================================//
 /**
- * @brief Constructeur de la classe Luigi.
+ * @brief Constructeur de la classe Guili.
  * 
- * Initialise Luigi avec sa texture et sa position de départ.
+ * Initialise Guili avec sa texture et sa position de départ.
  */
-Luigi::Luigi()
+Guili::Guili()
 {
     initializePlayer("../img/sprite_luigi.png", {150, 100});
 }
 
 
 /**
- * @brief Gère les entrées clavier pour déplacer Luigi.
+ * @brief Gère les entrées clavier pour déplacer Guili.
  * 
  * - Gauche : Touche 'Q'.
  * - Droite : Touche 'D'.
- * - Saut : Touche 'Z' (uniquement si Luigi peut sauter).
+ * - Saut : Touche 'Z' (uniquement si Guili peut sauter).
  */
-void Luigi::handleInput()
+void Guili::handleInput()
 {
     velocity.x = 0;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -287,25 +287,25 @@ void Luigi::handleInput()
 }
 
 
-//=========================================IA de Luigi=========================================//
+//=========================================IA de Guili=========================================//
 /**
- * @brief Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles.
+ * @brief Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles.
  * 
- * - Luigi suit Mario sans le dépasser.
+ * - Guili suit Ramio sans le dépasser.
  * - Il saute s'il rencontre un obstacle ou un ennemi.
- * - Il adapte son mouvement en fonction de la direction de Mario.
+ * - Il adapte son mouvement en fonction de la direction de Ramio.
  */
-void Luigi::marcher_normal()
+void Guili::marcher_normal()
 {
     sf::FloatRect hitbox = getGlobalBounds();
 
-    // Vérifie si Luigi est sur le point de dépasser Mario
-    if (mario->faceRight)
+    // Vérifie si Guili est sur le point de dépasser Ramio
+    if (ramio->faceRight)
     {
         hitbox.left += 0.25 * speed; // Simulation de la position future à droite
-        if (sprite.getPosition().x > mario->getPosition().x - 100)
+        if (sprite.getPosition().x > ramio->getPosition().x - 100)
         {
-            velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
+            velocity.x = 0; // Arrête Guili pour ne pas dépasser Ramio
         }
         else
         {
@@ -332,7 +332,7 @@ void Luigi::marcher_normal()
             sf::FloatRect ennemiBounds = ennemi->getBounds();
             if (hitbox.intersects(ennemiBounds) && canJump)
             {
-                std::cout << "Luigi détecte un ennemi et saute" << std::endl;
+                std::cout << "Guili détecte un ennemi et saute" << std::endl;
                 jump();
             }
         }
@@ -340,9 +340,9 @@ void Luigi::marcher_normal()
     else
     {
         hitbox.left -= 0.25 * speed; // Simulation de la position future à droite
-        if (sprite.getPosition().x < mario->getPosition().x + 100)
+        if (sprite.getPosition().x < ramio->getPosition().x + 100)
         {
-            velocity.x = 0; // Arrête Luigi pour ne pas dépasser Mario
+            velocity.x = 0; // Arrête Guili pour ne pas dépasser Ramio
         }
         else
         {
@@ -368,7 +368,7 @@ void Luigi::marcher_normal()
             sf::FloatRect ennemiBounds = ennemi->getBounds();
             if (hitbox.intersects(ennemiBounds) && canJump)
             {
-                std::cout << "Luigi détecte un ennemi et saute" << std::endl;
+                std::cout << "Guili détecte un ennemi et saute" << std::endl;
                 jump();
             }
         }
@@ -376,20 +376,20 @@ void Luigi::marcher_normal()
 }
 
 /**
- * @brief Gère l'IA de Luigi en fonction des objets du niveau.
+ * @brief Gère l'IA de Guili en fonction des objets du niveau.
  * 
- * Luigi prend des décisions en fonction de :
- * - La position de Mario.
+ * Guili prend des décisions en fonction de :
+ * - La position de Ramio.
  * - La présence de blocs mystères.
  * - Les obstacles ou ennemis sur son chemin.
  * 
  * @param lvl Pointeur vers le niveau actuel.
- * @param mario Pointeur vers l'objet Mario.
+ * @param ramio Pointeur vers l'objet Ramio.
  */
-void Luigi::handleInputAI(Level *lvl, const Mario *mario)
+void Guili::handleInputAI(Level *lvl, const Ramio *ramio)
 {
     this->level = lvl;
-    this->mario = mario;
+    this->ramio = ramio;
 
     BlocMystere *blocProche = level->getBlocMystereProche(sprite.getPosition());
     if (blocProche != nullptr)
@@ -403,12 +403,12 @@ void Luigi::handleInputAI(Level *lvl, const Mario *mario)
             velocity.x = -0.5 * speed;
             faceRight = false;
             currentAnimation = &animationWalkLeft;
-            std::cout << "Luigi se déplace vers la gauche" << std::endl;
-            // Vérifie si Luigi a atteint le bloc mystère
+            std::cout << "Guili se déplace vers la gauche" << std::endl;
+            // Vérifie si Guili a atteint le bloc mystère
             if (std::abs(sprite.getPosition().x - position.x) < 32.0f && sprite.getPosition().y > position.y)
             {
                 // Je suis en dessous de la boîte
-                std::cout << "Luigi saute pour atteindre le bloc mystère" << std::endl;
+                std::cout << "Guili saute pour atteindre le bloc mystère" << std::endl;
                 jump();
             }
         }

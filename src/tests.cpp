@@ -8,20 +8,20 @@
 
 BOOST_AUTO_TEST_CASE(test_player_initialization)
 {
-    Mario mario;
-    BOOST_CHECK_EQUAL(mario.isDead, false);
-    BOOST_CHECK(mario.getGlobalBounds().width > 0);
+    Ramio ramio;
+    BOOST_CHECK_EQUAL(ramio.isDead, false);
+    BOOST_CHECK(ramio.getGlobalBounds().width > 0);
 }
 
 BOOST_AUTO_TEST_CASE(test_player_jump)
 {
-    Mario mario;
-    float initialY = mario.getPosition().y;
+    Ramio ramio;
+    float initialY = ramio.getPosition().y;
     
-    mario.jump();
-    mario.update(0.1f, Level()); // Simule une mise à jour après le saut
+    ramio.jump();
+    ramio.update(0.1f, Level()); // Simule une mise à jour après le saut
 
-    BOOST_CHECK(mario.getPosition().y < initialY); // Maintenant Mario doit avoir bougé vers le haut
+    BOOST_CHECK(ramio.getPosition().y < initialY); // Maintenant Ramio doit avoir bougé vers le haut
 }
 
 // ==================== TESTS ENNEMI ====================

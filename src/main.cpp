@@ -18,20 +18,20 @@ enum class GameState
 int main()
 {
     // Initialisation des variables
-    bool luigiAI = false;     // Si Luigi est contrôlé par l'IA
+    bool luigiAI = false;     // Si Guili est contrôlé par l'IA
     bool multijoueur = false; // Mode multijoueur activé ?
     int nbMortsMario = 0;
     int nbMortsLuigi = 0;
 
     AudioManager audioManager;
     GameState gameState = GameState::MENU; // Initialisation de l'état du jeu
-    sf::RenderWindow window(sf::VideoMode(900, 600), "Mario - Menu");
+    sf::RenderWindow window(sf::VideoMode(900, 600), "Ramio - Menu");
 
     // Initialisation des composants du jeu
     Menu menu(900, 600);
     Level level;
-    Mario mario;
-    Luigi luigi;
+    Ramio ramio;
+    Guili guili;
     FinDeJeu finDeJeu(window.getSize().x, window.getSize().y);
     sf::Clock clock;                              // Horloge
 
@@ -76,16 +76,16 @@ int main()
                     }
 
                     audioManager.playGameMusic();
-                    mario.setPosition(startPositionMario.x, startPositionMario.y);
+                    ramio.setPosition(startPositionMario.x, startPositionMario.y);
                     if (multijoueur)
-                        luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
+                        guili.setPosition(startPositionLuigi.x, startPositionLuigi.y);
 
                     // // Ajuster la taille de la fenêtre en fonction du niveau
                     float blockSize = 64.0f;
                     unsigned int windowWidth = level.getWidth() * blockSize;
                     unsigned int windowHeight = level.getHeight() * blockSize;
                     window.close();
-                    window.create(sf::VideoMode(windowWidth, windowHeight), "Mario");
+                    window.create(sf::VideoMode(windowWidth, windowHeight), "Ramio");
                     clock.restart();
                 }
             }
@@ -95,7 +95,7 @@ int main()
                 {
                     gameState = GameState::MENU;
                     window.close();
-                    window.create(sf::VideoMode(900, 600), "Mario - Menu");
+                    window.create(sf::VideoMode(900, 600), "Ramio - Menu");
                     view.setCenter(450, 300);
                     window.setView(view);
                     // Réinitialisation des variables
@@ -121,49 +121,49 @@ int main()
             totalTime += deltaTime; // Ajouter le deltaTime au temps total
 
             // Mise à jour des personnages
-            mario.handleInput();
-            mario.update(deltaTime, level);
-            level.handleTuyauInteraction(mario, &luigi, deltaTime);
+            ramio.handleInput();
+            ramio.update(deltaTime, level);
+            level.handleTuyauInteraction(ramio, &guili, deltaTime);
 
             if (multijoueur)
             {
-                level.handleTuyauInteraction(mario, nullptr, deltaTime);
+                level.handleTuyauInteraction(ramio, nullptr, deltaTime);
                 if (luigiAI)
-                    luigi.handleInputAI(&level, &mario);
+                    guili.handleInputAI(&level, &ramio);
                 else
-                    luigi.handleInput();
+                    guili.handleInput();
 
-                luigi.update(deltaTime, level);
+                guili.update(deltaTime, level);
             }
 
             // Vérification du drapeau pour terminer le niveau
-            if ((mario.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) ||
-                 (multijoueur && luigi.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()))))
+            if ((ramio.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()) ||
+                 (multijoueur && guili.getGlobalBounds().intersects(level.getDrapeau().getGlobalBounds()))))
             {
                 std::cout << "Niveau terminé !" << std::endl;
-                mario.setPosition(startPositionMario.x, startPositionMario.y);
+                ramio.setPosition(startPositionMario.x, startPositionMario.y);
                 if (multijoueur)
-                    luigi.setPosition(startPositionLuigi.x, startPositionLuigi.y);
+                    guili.setPosition(startPositionLuigi.x, startPositionLuigi.y);
 
                 finDeJeu.victoire = true;
                 gameState = GameState::FDG;
                 audioManager.playEndMusic(finDeJeu.victoire);
                 window.close();
-                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
+                window.create(sf::VideoMode(900, 600), "Ramio - Fin de niveau");
             }
 
             
             // Gestion des vies et des morts
             int livesRemaining = 5 - (nbMortsMario + nbMortsLuigi);
-            if (mario.isDead)
+            if (ramio.isDead)
             {
-                mario.respawn();
+                ramio.respawn();
                 nbMortsMario++;
                 std::cout << "Vies restantes: " << livesRemaining << std::endl;
             }
-            if (luigi.isDead)
+            if (guili.isDead)
             {
-                luigi.respawn();
+                guili.respawn();
                 nbMortsLuigi++;
                 std::cout << "Vies restantes: " << livesRemaining << std::endl;
             }
@@ -173,12 +173,12 @@ int main()
             {
                 gameState = GameState::FDG;
                 window.close();
-                window.create(sf::VideoMode(900, 600), "Mario - Fin de niveau");
+                window.create(sf::VideoMode(900, 600), "Ramio - Fin de niveau");
             }
 
-            // Suivi de Mario et Luigi par la caméra
-            sf::Vector2f posMario = mario.getPosition();
-            sf::Vector2f posLuigi = multijoueur ? luigi.getPosition() : sf::Vector2f(0, 0);
+            // Suivi de Ramio et Guili par la caméra
+            sf::Vector2f posMario = ramio.getPosition();
+            sf::Vector2f posLuigi = multijoueur ? guili.getPosition() : sf::Vector2f(0, 0);
             float playerPosX = multijoueur ? std::max(posMario.x, posLuigi.x) : posMario.x;
 
             float levelWidth = level.getWidth() * 64.0f;
@@ -192,14 +192,14 @@ int main()
 
             // Mise à jour et dessin du niveau et des personnages
             if (multijoueur)
-                level.update(deltaTime, window, mario.getGlobalBounds(), luigi.getGlobalBounds());
+                level.update(deltaTime, window, ramio.getGlobalBounds(), guili.getGlobalBounds());
             else
-                level.update(deltaTime, window, mario.getGlobalBounds(), sf::FloatRect());
+                level.update(deltaTime, window, ramio.getGlobalBounds(), sf::FloatRect());
 
             level.draw(window);
-            mario.draw(window);
+            ramio.draw(window);
             if (multijoueur)
-                luigi.draw(window);
+                guili.draw(window);
 
             window.display();
             window.clear();

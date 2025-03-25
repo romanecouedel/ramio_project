@@ -11,7 +11,7 @@ class Ennemi;
 
 // ============================================= Classe Player ===========================================$
 // classe fille de Entity
-// classe mère de mario et luigi
+// classe mère de ramio et guili
 
 class Player : public Entity {
 protected:
@@ -28,7 +28,7 @@ protected:
     float speed = 350.f;
     float gravity = 980.f;
 
-    // variables de saut, nottament utilisée pour l'ia de luigi
+    // variables de saut, nottament utilisée pour l'ia de guili
     bool isJumping = false;
     bool canJump = true;
     bool onGround = false;
@@ -63,42 +63,42 @@ public:
     
 };
 
-// ============================================= Classe Mario ===========================================
+// ============================================= Classe Ramio ===========================================
 // classe fille de Player
-// représente le personnage Mario jouable uniquement par l'utilisateur
-class Mario : public Player {
+// représente le personnage Ramio jouable uniquement par l'utilisateur
+class Ramio : public Player {
 public:
     // constructeur
-    Mario();
-    ~Mario() override {
-        std::cout << "Destruction de Mario" << std::endl;
+    Ramio();
+    ~Ramio() override {
+        std::cout << "Destruction de Ramio" << std::endl;
     }
-    // entrées clavier pour déplacer Mario
-    void handleInput() override; //polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes
+    // entrées clavier pour déplacer Ramio
+    void handleInput() override; //polymorphisme car peut etre utilisé par guili ou ramio et faire des actions différentes
 };
 
-// ============================================= Classe Luigi ===========================================
+// ============================================= Classe Guili ===========================================
 // classe fille de Player
-// représente le personnage Luigi pour un jeu 2 joueurs en local ou avec l'ordinateur
-class Luigi : public Player {
+// représente le personnage Guili pour un jeu 2 joueurs en local ou avec l'ordinateur
+class Guili : public Player {
 public:
     Level* level;
-    const Mario* mario; // Référence à Mario pour l'IA
+    const Ramio* ramio; // Référence à Ramio pour l'IA
 
     // constructeur
-    Luigi();
-    ~Luigi() override {
-        std::cout << "Destruction de Luigi" << std::endl;
+    Guili();
+    ~Guili() override {
+        std::cout << "Destruction de Guili" << std::endl;
         level = nullptr; 
-        mario = nullptr;
+        ramio = nullptr;
     } 
 
-    // entrées clavier pour déplacer Luigi en local
-    void handleInput() override;//polymorphisme car peut etre utilisé par luigi ou mario et faire des actions différentes
+    // entrées clavier pour déplacer Guili en local
+    void handleInput() override;//polymorphisme car peut etre utilisé par guili ou ramio et faire des actions différentes
 
-    // déplacement de Luigi en fonction de Mario pour l'IA
+    // déplacement de Guili en fonction de Ramio pour l'IA
     void marcher_normal();
-    void handleInputAI(Level* lvl, const Mario* mario);
+    void handleInputAI(Level* lvl, const Ramio* ramio);
 
 };
 

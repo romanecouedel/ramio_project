@@ -32,7 +32,7 @@ class Level
         // gestion des collisions
         bool isColliding(const sf::FloatRect &hitbox) const;
 
-        // utile pour ia, savoir si il y a un bloc mystere près de luigi
+        // utile pour ia, savoir si il y a un bloc mystere près de guili
         BlocMystere* getBlocMystereProche(const sf::Vector2f& position);
         // utile pour ia, afficher les blocs mysteres et leur état, DEBUG
         void afficherEtatBlocsMysteres() const ;
@@ -50,7 +50,7 @@ class Level
         // utilisé dans player pour update les morts en fonctione des collisions ennemis
         const std::vector<std::unique_ptr<Ennemi>>& getEnnemis() const { return ennemis; }
 
-        void handleTuyauInteraction(Player &mario, Player *luigi, float deltaTime);
+        void handleTuyauInteraction(Player &ramio, Player *guili, float deltaTime);
 
     private:
         // vecteur de vecteur d'entiers pour la grille
