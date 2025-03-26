@@ -61,12 +61,11 @@ public:
 // Classe fille de Bloc
 class BlocMystere : public Bloc {
 private:
-    // utile pour animation
-    sf::Vector2f startPosition;
     bool animating = false;
     float animationTime = 0.0f;
     const float animationDuration = 0.2f;
     const float animationHeight = 5.0f;
+     sf::Vector2f startPosition;  // utile pour animation
     sf::Texture textureFoncee;
     std::unique_ptr<Piece> piece;
 
@@ -113,7 +112,6 @@ public:
     bool isPlayerInWater(const sf::FloatRect& playerHitbox) const;
     void draw(sf::RenderWindow& window);
     sf::FloatRect getGlobalBounds() const;
-    
 
 private:
     static sf::Texture textureEau; 

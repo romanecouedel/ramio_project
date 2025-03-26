@@ -18,8 +18,6 @@ public:
     // Méthodes
     void update(float deltaTime, bool faceRight, bool isJumping);
     sf::IntRect getUvRect() const { return uvRect; }
-
-    // Ajout de la méthode manquante
     sf::IntRect getCurrentFrame() const { return uvRect; }
     sf::Vector2u currentImage;
     sf::IntRect uvRect;

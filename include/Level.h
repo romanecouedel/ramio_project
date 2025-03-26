@@ -53,8 +53,6 @@ class Level
 
         void handleTuyauInteraction(Player &ramio, Player *guili, float deltaTime);
 
-        bool isPlayerInWater(const sf::FloatRect& playerBounds) const;
-
     private:
         // vecteur de vecteur d'entiers pour la grille
         std::vector<std::vector<int>> grid;

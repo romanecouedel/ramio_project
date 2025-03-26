@@ -24,6 +24,7 @@ protected:
     Animation animationIdleLeft;
     Animation* currentAnimation;
     sf::Vector2f velocity;
+    
     float jumpForce = -650.f;
     float speed = 350.f;
     float gravity = 980.f;

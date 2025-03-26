@@ -1,7 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
@@ -77,4 +76,4 @@ private:
 
 };
 
-#endif // ENTITY_H
+#endif
