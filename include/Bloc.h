@@ -96,7 +96,7 @@ class Tuyau : public Bloc {
         Tuyau(Type type);
         ~Tuyau() {
         //std::cout << "Destruction de Tuyau" << std::endl;
-    }
+        }
         Type getType() const;
         bool isPlayerOnTop(const Player& player) const; // Ajout de la déclaration
         Tuyau* getSortieAssociee(const std::vector<std::unique_ptr<Bloc>>& blocs) const;

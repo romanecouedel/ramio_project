@@ -1,0 +1,163 @@
+\hypertarget{classEau}{}\doxysection{Eau Class Reference}
+\label{classEau}\index{Eau@{Eau}}
+
+
+{\ttfamily \#include $<$Bloc.\+h$>$}
+
+
+
+Inheritance diagram for Eau\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classEau__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Eau\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classEau__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEau_a6b602bd303a33f896d80f8a6708903c2}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}eau sur l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEau_aeebcde96afd822158f1c5f5daee8b67b}{Eau}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classEau}{Eau}}, charge la texture si ce n\textquotesingle{}est pas encore fait. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{classEau_af0f77d3643dfa15666b7bc3705d0dd0f}{get\+Global\+Bounds}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les coordonnées du bloc d\textquotesingle{}eau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEau_a760401b65c1e3bcfdba56f530af8fc10}{is\+Player\+In\+Water}} (const sf\+::\+Float\+Rect \&player\+Hitbox) const
+\begin{DoxyCompactList}\small\item\em Vérifie si un joueur est dans l\textquotesingle{}eau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static sf\+::\+Texture \mbox{\hyperlink{classEau_a20e64f34979c3ebe1ff3b086f3f228be}{texture\+Eau}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 110 of file Bloc.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEau_aeebcde96afd822158f1c5f5daee8b67b}\label{classEau_aeebcde96afd822158f1c5f5daee8b67b}} 
+\index{Eau@{Eau}!Eau@{Eau}}
+\index{Eau@{Eau}!Eau@{Eau}}
+\doxysubsubsection{\texorpdfstring{Eau()}{Eau()}}
+{\footnotesize\ttfamily Eau\+::\+Eau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{classEau}{Eau}}, charge la texture si ce n\textquotesingle{}est pas encore fait. 
+
+
+
+Definition at line 169 of file Bloc.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEau_a6b602bd303a33f896d80f8a6708903c2}\label{classEau_a6b602bd303a33f896d80f8a6708903c2}} 
+\index{Eau@{Eau}!draw@{draw}}
+\index{draw@{draw}!Eau@{Eau}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Eau\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}eau sur l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre S\+F\+ML. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 199 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classEau_af0f77d3643dfa15666b7bc3705d0dd0f}\label{classEau_af0f77d3643dfa15666b7bc3705d0dd0f}} 
+\index{Eau@{Eau}!getGlobalBounds@{getGlobalBounds}}
+\index{getGlobalBounds@{getGlobalBounds}!Eau@{Eau}}
+\doxysubsubsection{\texorpdfstring{getGlobalBounds()}{getGlobalBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Eau\+::get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne les coordonnées du bloc d\textquotesingle{}eau. 
+
+\begin{DoxyReturn}{Returns}
+Les coordonnées du bloc. 
+\end{DoxyReturn}
+
+
+Definition at line 207 of file Bloc.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEau_af0f77d3643dfa15666b7bc3705d0dd0f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEau_a760401b65c1e3bcfdba56f530af8fc10}\label{classEau_a760401b65c1e3bcfdba56f530af8fc10}} 
+\index{Eau@{Eau}!isPlayerInWater@{isPlayerInWater}}
+\index{isPlayerInWater@{isPlayerInWater}!Eau@{Eau}}
+\doxysubsubsection{\texorpdfstring{isPlayerInWater()}{isPlayerInWater()}}
+{\footnotesize\ttfamily bool Eau\+::is\+Player\+In\+Water (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{player\+Hitbox }\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si un joueur est dans l\textquotesingle{}eau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Le joueur à vérifier (Mario ou Luigi). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True si le joueur est dans l\textquotesingle{}eau, False sinon. 
+\end{DoxyReturn}
+
+
+Definition at line 189 of file Bloc.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEau_a760401b65c1e3bcfdba56f530af8fc10_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEau_a20e64f34979c3ebe1ff3b086f3f228be}\label{classEau_a20e64f34979c3ebe1ff3b086f3f228be}} 
+\index{Eau@{Eau}!textureEau@{textureEau}}
+\index{textureEau@{textureEau}!Eau@{Eau}}
+\doxysubsubsection{\texorpdfstring{textureEau}{textureEau}}
+{\footnotesize\ttfamily sf\+::\+Texture Eau\+::texture\+Eau\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 119 of file Bloc.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Bloc_8h}{Bloc.\+h}}\item 
+src/\mbox{\hyperlink{Bloc_8cpp}{Bloc.\+cpp}}\end{DoxyCompactItemize}

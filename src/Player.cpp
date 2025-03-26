@@ -75,7 +75,7 @@ void Player::update(float deltaTime, const Level &level) {
         jumpCooldown += deltaTime;
 
         // Si 2 secondes sont passées, on permet de sauter
-        if (jumpCooldown >= 0.5f) {
+        if (jumpCooldown >= 0.2f) {
             canJump = true;  // Permet au joueur de sauter
             jumpCooldown=0.0f;
         }

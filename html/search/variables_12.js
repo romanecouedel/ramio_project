@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['windowheight_424',['windowHeight',['../classFinDeJeu.html#a7271884b4c8e48e5580372b1ff93df5c',1,'FinDeJeu']]],
-  ['windowwidth_425',['windowWidth',['../classFinDeJeu.html#ab98be0d74a19db9c0019f3f941e1ebb4',1,'FinDeJeu']]]
+  ['velocity_459',['velocity',['../classEnnemi.html#a27378fe5616930e56016d579a1ff969c',1,'Ennemi::velocity()'],['../classPlayer.html#ae2d680d4b61069b02991123099c79c1c',1,'Player::velocity()']]],
+  ['victoire_460',['victoire',['../classFinDeJeu.html#a52d2683e2e174004136f1a781638d1ae',1,'FinDeJeu']]]
 ];

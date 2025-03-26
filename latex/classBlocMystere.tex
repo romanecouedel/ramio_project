@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Bloc\+Mystere\+:\nopagebreak
+Inheritance diagram for Bloc\+Mystere\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Bloc\+Mystere\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Bloc\+Mystere\+:\nopagebreak
+Collaboration diagram for Bloc\+Mystere\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,7 +36,9 @@ bool \mbox{\hyperlink{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}{is\+An
 void \mbox{\hyperlink{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}{on\+Hit}} ()
 \begin{DoxyCompactList}\small\item\em Action lorsque le bloc mystère est frappé. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classBlocMystere_adfdd9cb1184ea58167345ff2ff8cbacb}{update}} (float delta\+Time, sf\+::\+Render\+Window \&window)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation du bloc mystère. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation du bloc mystère. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBlocMystere_a0a700cbfb1b1f764c6430a1644adff90}{$\sim$\+Bloc\+Mystere}} () override
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,7 +72,7 @@ sf\+::\+Texture \mbox{\hyperlink{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b
 \doxysubsection{Detailed Description}
 
 
-Definition at line 59 of file Bloc.\+h.
+Definition at line 62 of file Bloc.\+h.
 
 
 
@@ -85,7 +89,17 @@ Constructeur de \mbox{\hyperlink{classBlocMystere}{Bloc\+Mystere}}, charge la te
 
 
 
-Definition at line 31 of file Bloc.\+cpp.
+Definition at line 32 of file Bloc.\+cpp.
+
+\mbox{\Hypertarget{classBlocMystere_a0a700cbfb1b1f764c6430a1644adff90}\label{classBlocMystere_a0a700cbfb1b1f764c6430a1644adff90}} 
+\index{BlocMystere@{BlocMystere}!````~BlocMystere@{$\sim$BlocMystere}}
+\index{````~BlocMystere@{$\sim$BlocMystere}!BlocMystere@{BlocMystere}}
+\doxysubsubsection{\texorpdfstring{$\sim$BlocMystere()}{~BlocMystere()}}
+{\footnotesize\ttfamily Bloc\+Mystere\+::$\sim$\+Bloc\+Mystere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Definition at line 78 of file Bloc.\+h.
 
 
 
@@ -102,10 +116,9 @@ Change la texture du bloc mystère après activation.
 
 
 
-Definition at line 67 of file Bloc.\+cpp.
+Definition at line 68 of file Bloc.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -120,7 +133,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 81 of file Bloc.\+h.
+Definition at line 87 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}\label{classBlocMystere_a094688ec4a770e5ceae934d7128e6a02}} 
 \index{BlocMystere@{BlocMystere}!isAnimating@{isAnimating}}
@@ -137,7 +150,7 @@ True si en animation, False sinon.
 \end{DoxyReturn}
 
 
-Definition at line 94 of file Bloc.\+cpp.
+Definition at line 95 of file Bloc.\+cpp.
 
 \mbox{\Hypertarget{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}\label{classBlocMystere_aa5e7258cc5dcd88be013d01827ab3c9a}} 
 \index{BlocMystere@{BlocMystere}!onHit@{onHit}}
@@ -151,10 +164,9 @@ Action lorsque le bloc mystère est frappé.
 
 
 
-Definition at line 50 of file Bloc.\+cpp.
+Definition at line 51 of file Bloc.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -180,10 +192,9 @@ Met à jour l\textquotesingle{}animation du bloc mystère.
 \end{DoxyParams}
 
 
-Definition at line 76 of file Bloc.\+cpp.
+Definition at line 77 of file Bloc.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -201,7 +212,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 63 of file Bloc.\+h.
+Definition at line 66 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_ade93b86f40121af263df97a28a8ece59}\label{classBlocMystere_ade93b86f40121af263df97a28a8ece59}} 
 \index{BlocMystere@{BlocMystere}!animationDuration@{animationDuration}}
@@ -211,7 +222,7 @@ Definition at line 63 of file Bloc.\+h.
 
 
 
-Definition at line 65 of file Bloc.\+h.
+Definition at line 68 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_af881e6235f320cece97a06fe6289ab3a}\label{classBlocMystere_af881e6235f320cece97a06fe6289ab3a}} 
 \index{BlocMystere@{BlocMystere}!animationHeight@{animationHeight}}
@@ -221,7 +232,7 @@ Definition at line 65 of file Bloc.\+h.
 
 
 
-Definition at line 66 of file Bloc.\+h.
+Definition at line 69 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_a1143883928a4e999248f5f67a95a90b1}\label{classBlocMystere_a1143883928a4e999248f5f67a95a90b1}} 
 \index{BlocMystere@{BlocMystere}!animationTime@{animationTime}}
@@ -231,7 +242,7 @@ Definition at line 66 of file Bloc.\+h.
 
 
 
-Definition at line 64 of file Bloc.\+h.
+Definition at line 67 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_a23911824bfb394d6e5d58661b8048050}\label{classBlocMystere_a23911824bfb394d6e5d58661b8048050}} 
 \index{BlocMystere@{BlocMystere}!estTouche@{estTouche}}
@@ -241,7 +252,7 @@ Definition at line 64 of file Bloc.\+h.
 
 
 
-Definition at line 79 of file Bloc.\+h.
+Definition at line 85 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_a0199fcf4b7417edd80dc8d435ef0f0b0}\label{classBlocMystere_a0199fcf4b7417edd80dc8d435ef0f0b0}} 
 \index{BlocMystere@{BlocMystere}!piece@{piece}}
@@ -251,7 +262,7 @@ Definition at line 79 of file Bloc.\+h.
 
 
 
-Definition at line 68 of file Bloc.\+h.
+Definition at line 71 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_ae7f88a142fb56ceb39faea56d9372c06}\label{classBlocMystere_ae7f88a142fb56ceb39faea56d9372c06}} 
 \index{BlocMystere@{BlocMystere}!startPosition@{startPosition}}
@@ -261,7 +272,7 @@ Definition at line 68 of file Bloc.\+h.
 
 
 
-Definition at line 62 of file Bloc.\+h.
+Definition at line 65 of file Bloc.\+h.
 
 \mbox{\Hypertarget{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b098}\label{classBlocMystere_abf9a6361bc2fa7c781e1bcad4d04b098}} 
 \index{BlocMystere@{BlocMystere}!textureFoncee@{textureFoncee}}
@@ -271,7 +282,7 @@ Definition at line 62 of file Bloc.\+h.
 
 
 
-Definition at line 67 of file Bloc.\+h.
+Definition at line 70 of file Bloc.\+h.
 
 
 

@@ -1,0 +1,17 @@
+<map id="include/Player.h" name="include/Player.h">
+<area shape="rect" id="node1" title=" " alt="" coords="274,5,399,32"/>
+<area shape="rect" id="node2" href="$Entity_8h.html" title=" " alt="" coords="48,304,119,331"/>
+<area shape="rect" id="node7" href="$Animation_8h.html" title=" " alt="" coords="579,155,681,181"/>
+<area shape="rect" id="node9" href="$Ennemi_8h.html" title=" " alt="" coords="205,80,287,107"/>
+<area shape="rect" id="node10" href="$Level_8h.html" title=" " alt="" coords="302,155,371,181"/>
+<area shape="rect" id="node14" title=" " alt="" coords="437,80,503,107"/>
+<area shape="rect" id="node15" title=" " alt="" coords="527,80,586,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="297,379,443,405"/>
+<area shape="rect" id="node4" title=" " alt="" coords="98,379,157,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="467,379,547,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,379,73,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="564,229,627,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="526,304,603,331"/>
+<area shape="rect" id="node12" title=" " alt="" coords="223,229,349,256"/>
+<area shape="rect" id="node13" href="$Bloc_8h.html" title=" " alt="" coords="425,229,488,256"/>
+</map>

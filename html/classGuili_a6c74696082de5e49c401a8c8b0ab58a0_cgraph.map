@@ -1,0 +1,12 @@
+<map id="Guili::marcher_normal" name="Guili::marcher_normal">
+<area shape="rect" id="node1" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="5,132,172,159"/>
+<area shape="rect" id="node2" href="$classLevel.html#ac4462900464b74ddeb344e77dbe4212b" title=" " alt="" coords="238,5,381,32"/>
+<area shape="rect" id="node3" href="$classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="220,56,399,83"/>
+<area shape="rect" id="node4" href="$classEntity.html#a11d7f8fde1e714c76a20b69793fa157c" title=" " alt="" coords="239,107,379,133"/>
+<area shape="rect" id="node5" href="$classLevel.html#af2926af1c879a7febcc1bdd02cf72826" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="243,157,376,184"/>
+<area shape="rect" id="node8" href="$classLevel.html#ae31dee7d1c05eb535f2561b0eb1e1e8d" title="Vérifie si le joueur est en collision avec un tuyau." alt="" coords="224,208,395,235"/>
+<area shape="rect" id="node9" href="$classPlayer.html#a70e21ca98281b7d72f105f2693113d7e" title="Fait sauter le joueur." alt="" coords="257,259,361,285"/>
+<area shape="rect" id="node6" href="$classLevel.html#a2bc17614afdfca9a7c7ea5771a70426a" title=" " alt="" coords="497,132,627,159"/>
+<area shape="rect" id="node7" href="$classLevel.html#a7195ddd0c73216532169a1f013513cda" title=" " alt="" coords="500,183,624,209"/>
+<area shape="rect" id="node10" href="$classAudioManager.html#a992608915d048ad14be2400f5b7e5c36" title="Joue le son &quot;Yahoo!&quot;." alt="" coords="447,259,677,285"/>
+</map>

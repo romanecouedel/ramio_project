@@ -1,6 +1,6 @@
 <map id="Tuyau::getType" name="Tuyau::getType">
 <area shape="rect" id="node1" title="Retourne le type du tuyau (entrée ou sortie)." alt="" coords="607,31,725,57"/>
 <area shape="rect" id="node2" href="$classTuyau.html#a0a893ba0fa1744af3dbd79da5e181688" title="Trouve la sortie associée au tuyau." alt="" coords="373,5,559,32"/>
-<area shape="rect" id="node3" href="$classLevel.html#a65f189a05ffa35afba1727c6184c16a2" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="108,31,325,57"/>
+<area shape="rect" id="node3" href="$classLevel.html#a9274939efb1b017b95653e6790402f5a" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="108,31,325,57"/>
 <area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,60,57"/>
 </map>

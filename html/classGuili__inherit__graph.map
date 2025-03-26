@@ -1,0 +1,5 @@
+<map id="Guili" name="Guili">
+<area shape="rect" id="node1" title=" " alt="" coords="41,725,196,876"/>
+<area shape="rect" id="node2" href="$classPlayer.html" title=" " alt="" coords="5,233,232,677"/>
+<area shape="rect" id="node3" href="$classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="39,5,198,185"/>
+</map>

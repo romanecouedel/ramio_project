@@ -77,7 +77,7 @@ Collaboration diagram for Level:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLevel__coll__graph.png" border="0" usemap="#Level_coll__map" alt="Collaboration graph"/></div>
 <map name="Level_coll__map" id="Level_coll__map">
-<area shape="rect" title=" " alt="" coords="5,516,223,960"/>
+<area shape="rect" title=" " alt="" coords="5,516,223,901"/>
 <area shape="rect" href="classDrapeau.html" title="Classe représentant le drapeau de fin de niveau." alt="" coords="63,376,165,453"/>
 <area shape="rect" href="classObjetInteractif.html" title="Classe représentant un objet interactif dans le jeu." alt="" coords="43,235,185,327"/>
 <area shape="rect" href="classEntity.html" title="Classe de base pour toutes les entités du jeu." alt="" coords="35,5,193,185"/>
@@ -98,6 +98,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3584eb17b5729938b1ccc2bcd130d6a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBlocMystere.html">BlocMystere</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a3584eb17b5729938b1ccc2bcd130d6a1">getBlocMystereProche</a> (const sf::Vector2f &amp;position)</td></tr>
 <tr class="memdesc:a3584eb17b5729938b1ccc2bcd130d6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un bloc mystère proche d'une position donnée.  <a href="classLevel.html#a3584eb17b5729938b1ccc2bcd130d6a1">More...</a><br /></td></tr>
 <tr class="separator:a3584eb17b5729938b1ccc2bcd130d6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0ab2b008e59ebb45ef59fef13d79ad"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classBloc.html">Bloc</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a0b0ab2b008e59ebb45ef59fef13d79ad">getBlocs</a> () const</td></tr>
+<tr class="separator:a0b0ab2b008e59ebb45ef59fef13d79ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8790ea6e256351803e1f094c2bb90c5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classDrapeau.html">Drapeau</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#af8790ea6e256351803e1f094c2bb90c5">getDrapeau</a> () const</td></tr>
 <tr class="separator:af8790ea6e256351803e1f094c2bb90c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4462900464b74ddeb344e77dbe4212b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classEnnemi.html">Ennemi</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#ac4462900464b74ddeb344e77dbe4212b">getEnnemis</a> () const</td></tr>
@@ -106,12 +108,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2bc17614afdfca9a7c7ea5771a70426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7195ddd0c73216532169a1f013513cda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a7195ddd0c73216532169a1f013513cda">getWidth</a> () const</td></tr>
 <tr class="separator:a7195ddd0c73216532169a1f013513cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65f189a05ffa35afba1727c6184c16a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a65f189a05ffa35afba1727c6184c16a2">handleTuyauInteraction</a> (<a class="el" href="classPlayer.html">Player</a> &amp;mario, <a class="el" href="classPlayer.html">Player</a> *luigi, float deltaTime)</td></tr>
-<tr class="memdesc:a65f189a05ffa35afba1727c6184c16a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère l'interaction des joueurs avec les tuyaux.  <a href="classLevel.html#a65f189a05ffa35afba1727c6184c16a2">More...</a><br /></td></tr>
-<tr class="separator:a65f189a05ffa35afba1727c6184c16a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9274939efb1b017b95653e6790402f5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#a9274939efb1b017b95653e6790402f5a">handleTuyauInteraction</a> (<a class="el" href="classPlayer.html">Player</a> &amp;ramio, <a class="el" href="classPlayer.html">Player</a> *guili, float deltaTime)</td></tr>
+<tr class="memdesc:a9274939efb1b017b95653e6790402f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère l'interaction des joueurs avec les tuyaux.  <a href="classLevel.html#a9274939efb1b017b95653e6790402f5a">More...</a><br /></td></tr>
+<tr class="separator:a9274939efb1b017b95653e6790402f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2926af1c879a7febcc1bdd02cf72826"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#af2926af1c879a7febcc1bdd02cf72826">isColliding</a> (const sf::FloatRect &amp;hitbox) const</td></tr>
 <tr class="memdesc:af2926af1c879a7febcc1bdd02cf72826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si une hitbox est en collision avec un bloc solide du niveau.  <a href="classLevel.html#af2926af1c879a7febcc1bdd02cf72826">More...</a><br /></td></tr>
 <tr class="separator:af2926af1c879a7febcc1bdd02cf72826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7c954ebe6cbcbf026cf7e5e07b9d4fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#ac7c954ebe6cbcbf026cf7e5e07b9d4fb">isPlayerInWater</a> (const sf::FloatRect &amp;playerBounds) const</td></tr>
+<tr class="separator:ac7c954ebe6cbcbf026cf7e5e07b9d4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae31dee7d1c05eb535f2561b0eb1e1e8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel.html#ae31dee7d1c05eb535f2561b0eb1e1e8d">isTuyauColliding</a> (const sf::FloatRect &amp;playerBound) const</td></tr>
 <tr class="memdesc:ae31dee7d1c05eb535f2561b0eb1e1e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le joueur est en collision avec un tuyau.  <a href="classLevel.html#ae31dee7d1c05eb535f2561b0eb1e1e8d">More...</a><br /></td></tr>
 <tr class="separator:ae31dee7d1c05eb535f2561b0eb1e1e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,7 +242,7 @@ Private Attributes</h2></td></tr>
 <p>Affiche l'état des blocs mystères dans le niveau. </p>
 <p>Affiche la position et l'état (touché ou non) de chaque bloc mystère. </p>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00255">255</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00263">263</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +270,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00107">107</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00111">111</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -325,7 +329,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00319">319</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00327">327</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -365,7 +369,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Un pointeur vers le bloc mystère trouvé, ou nullptr si aucun n'est proche. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00275">275</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00283">283</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -381,8 +385,46 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_icgraph.png" border="0" usemap="#classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_icgraph" alt=""/></div>
 <map name="classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_icgraph" id="classLevel_a3584eb17b5729938b1ccc2bcd130d6a1_icgraph">
 <area shape="rect" title="Récupère un bloc mystère proche d&#39;une position donnée." alt="" coords="307,5,517,32"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="108,5,259,32"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="108,5,259,32"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0b0ab2b008e59ebb45ef59fef13d79ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0ab2b008e59ebb45ef59fef13d79ad">&#9670;&nbsp;</a></span>getBlocs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::unique_ptr&lt;<a class="el" href="classBloc.html">Bloc</a>&gt; &gt;&amp; Level::getBlocs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00025">25</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLevel_a0b0ab2b008e59ebb45ef59fef13d79ad_icgraph.png" border="0" usemap="#classLevel_a0b0ab2b008e59ebb45ef59fef13d79ad_icgraph" alt=""/></div>
+<map name="classLevel_a0b0ab2b008e59ebb45ef59fef13d79ad_icgraph" id="classLevel_a0b0ab2b008e59ebb45ef59fef13d79ad_icgraph">
+<area shape="rect" title=" " alt="" coords="408,31,529,57"/>
+<area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="244,31,360,57"/>
+<area shape="rect" href="tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="5,5,196,32"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="73,56,128,83"/>
 </map>
 </div>
 
@@ -447,16 +489,16 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00051">51</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00052">52</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLevel_ac4462900464b74ddeb344e77dbe4212b_icgraph.png" border="0" usemap="#classLevel_ac4462900464b74ddeb344e77dbe4212b_icgraph" alt=""/></div>
 <map name="classLevel_ac4462900464b74ddeb344e77dbe4212b_icgraph" id="classLevel_ac4462900464b74ddeb344e77dbe4212b_icgraph">
-<area shape="rect" title=" " alt="" coords="563,31,705,57"/>
-<area shape="rect" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="347,5,515,32"/>
-<area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="373,56,489,83"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="128,5,279,32"/>
+<area shape="rect" title=" " alt="" coords="561,31,704,57"/>
+<area shape="rect" href="classGuili.html#a6c74696082de5e49c401a8c8b0ab58a0" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="347,5,513,32"/>
+<area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="372,56,488,83"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="128,5,279,32"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,60,57"/>
 <area shape="rect" href="tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="108,107,299,133"/>
 </map>
@@ -487,7 +529,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00042">42</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00043">43</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -498,9 +540,9 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,157,60,184"/>
 <area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="384,157,500,184"/>
 <area shape="rect" href="tests_8cpp.html#a2561b7c29a92187dbd17a6bf993711c6" title=" " alt="" coords="347,5,537,32"/>
-<area shape="rect" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="358,56,526,83"/>
+<area shape="rect" href="classGuili.html#a6c74696082de5e49c401a8c8b0ab58a0" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="359,56,525,83"/>
 <area shape="rect" href="classEnnemi.html#aab3cb3add8b7a21bbdcd61c6fa3d027c" title="Met à jour l&#39;état et le mouvement de l&#39;ennemi." alt="" coords="380,107,504,133"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
 <area shape="rect" href="tests_8cpp.html#a80fd2e8acf83c06c05a4cb59c441f84e" title=" " alt="" coords="108,107,299,133"/>
 <area shape="rect" href="tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="108,208,299,235"/>
 </map>
@@ -531,7 +573,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00041">41</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00042">42</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -541,10 +583,10 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classLevel.html#af2926af1c879a7febcc1bdd02cf72826" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="585,107,719,133"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,157,60,184"/>
 <area shape="rect" href="tests_8cpp.html#a2561b7c29a92187dbd17a6bf993711c6" title=" " alt="" coords="347,5,537,32"/>
-<area shape="rect" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="358,56,526,83"/>
+<area shape="rect" href="classGuili.html#a6c74696082de5e49c401a8c8b0ab58a0" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="359,56,525,83"/>
 <area shape="rect" href="classEnnemi.html#aab3cb3add8b7a21bbdcd61c6fa3d027c" title="Met à jour l&#39;état et le mouvement de l&#39;ennemi." alt="" coords="380,107,504,133"/>
 <area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="384,157,500,184"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
 <area shape="rect" href="tests_8cpp.html#a80fd2e8acf83c06c05a4cb59c441f84e" title=" " alt="" coords="108,107,299,133"/>
 <area shape="rect" href="tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="108,208,299,235"/>
 </map>
@@ -552,8 +594,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a65f189a05ffa35afba1727c6184c16a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65f189a05ffa35afba1727c6184c16a2">&#9670;&nbsp;</a></span>handleTuyauInteraction()</h2>
+<a id="a9274939efb1b017b95653e6790402f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9274939efb1b017b95653e6790402f5a">&#9670;&nbsp;</a></span>handleTuyauInteraction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -562,13 +604,13 @@ Here is the caller graph for this function:</div>
           <td class="memname">void Level::handleTuyauInteraction </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> &amp;&#160;</td>
-          <td class="paramname"><em>mario</em>, </td>
+          <td class="paramname"><em>ramio</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
-          <td class="paramname"><em>luigi</em>, </td>
+          <td class="paramname"><em>guili</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -587,19 +629,19 @@ Here is the caller graph for this function:</div>
 <p>Gère l'interaction des joueurs avec les tuyaux. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mario</td><td>Le joueur principal. </td></tr>
-    <tr><td class="paramname">luigi</td><td>Le second joueur (optionnel). </td></tr>
+    <tr><td class="paramname">ramio</td><td>Le joueur principal. </td></tr>
+    <tr><td class="paramname">guili</td><td>Le second joueur (optionnel). </td></tr>
     <tr><td class="paramname">deltaTime</td><td>Temps écoulé depuis la dernière mise à jour. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00353">353</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00361">361</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLevel_a65f189a05ffa35afba1727c6184c16a2_cgraph.png" border="0" usemap="#classLevel_a65f189a05ffa35afba1727c6184c16a2_cgraph" alt=""/></div>
-<map name="classLevel_a65f189a05ffa35afba1727c6184c16a2_cgraph" id="classLevel_a65f189a05ffa35afba1727c6184c16a2_cgraph">
+<div class="center"><img src="classLevel_a9274939efb1b017b95653e6790402f5a_cgraph.png" border="0" usemap="#classLevel_a9274939efb1b017b95653e6790402f5a_cgraph" alt=""/></div>
+<map name="classLevel_a9274939efb1b017b95653e6790402f5a_cgraph" id="classLevel_a9274939efb1b017b95653e6790402f5a_cgraph">
 <area shape="rect" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="5,223,223,250"/>
 <area shape="rect" href="classEntity.html#ac2f144301ca57dd8c4410bd1cd1c259e" title="Retourne le rectangle englobant de l&#39;entité." alt="" coords="504,20,683,47"/>
 <area shape="rect" href="classBloc.html#a826d370d5d0f192b5f9d6187cf7795d3" title=" " alt="" coords="509,96,678,123"/>
@@ -616,8 +658,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLevel_a65f189a05ffa35afba1727c6184c16a2_icgraph.png" border="0" usemap="#classLevel_a65f189a05ffa35afba1727c6184c16a2_icgraph" alt=""/></div>
-<map name="classLevel_a65f189a05ffa35afba1727c6184c16a2_icgraph" id="classLevel_a65f189a05ffa35afba1727c6184c16a2_icgraph">
+<div class="center"><img src="classLevel_a9274939efb1b017b95653e6790402f5a_icgraph.png" border="0" usemap="#classLevel_a9274939efb1b017b95653e6790402f5a_icgraph" alt=""/></div>
+<map name="classLevel_a9274939efb1b017b95653e6790402f5a_icgraph" id="classLevel_a9274939efb1b017b95653e6790402f5a_icgraph">
 <area shape="rect" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="108,5,325,32"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>
@@ -650,7 +692,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true si une collision est détectée, false sinon. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00227">227</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00235">235</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -668,15 +710,33 @@ Here is the caller graph for this function:</div>
 <map name="classLevel_af2926af1c879a7febcc1bdd02cf72826_icgraph" id="classLevel_af2926af1c879a7febcc1bdd02cf72826_icgraph">
 <area shape="rect" title="Vérifie si une hitbox est en collision avec un bloc solide du niveau." alt="" coords="585,81,719,108"/>
 <area shape="rect" href="tests_8cpp.html#a2561b7c29a92187dbd17a6bf993711c6" title=" " alt="" coords="347,5,537,32"/>
-<area shape="rect" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="358,56,526,83"/>
+<area shape="rect" href="classGuili.html#a6c74696082de5e49c401a8c8b0ab58a0" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="359,56,525,83"/>
 <area shape="rect" href="classEnnemi.html#aab3cb3add8b7a21bbdcd61c6fa3d027c" title="Met à jour l&#39;état et le mouvement de l&#39;ennemi." alt="" coords="380,107,504,133"/>
 <area shape="rect" href="classPlayer.html#a003481f011031773f5042e353716aa3d" title="Met à jour l&#39;état du joueur en fonction du temps écoulé et du niveau." alt="" coords="384,157,500,184"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="128,56,279,83"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,107,60,133"/>
 <area shape="rect" href="tests_8cpp.html#a80fd2e8acf83c06c05a4cb59c441f84e" title=" " alt="" coords="108,107,299,133"/>
 <area shape="rect" href="tests_8cpp.html#a94ac15658c5c6fa9aee71866d04c7d84" title=" " alt="" coords="108,208,299,235"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="ac7c954ebe6cbcbf026cf7e5e07b9d4fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7c954ebe6cbcbf026cf7e5e07b9d4fb">&#9670;&nbsp;</a></span>isPlayerInWater()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Level::isPlayerInWater </td>
+          <td>(</td>
+          <td class="paramtype">const sf::FloatRect &amp;&#160;</td>
+          <td class="paramname"><em>playerBounds</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -705,15 +765,15 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true si une collision est détectée, sinon false. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00462">462</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00470">470</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d_icgraph.png" border="0" usemap="#classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d_icgraph" alt=""/></div>
 <map name="classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d_icgraph" id="classLevel_ae31dee7d1c05eb535f2561b0eb1e1e8d_icgraph">
-<area shape="rect" title="Vérifie si le joueur est en collision avec un tuyau." alt="" coords="523,5,693,32"/>
-<area shape="rect" href="classLuigi.html#aeaa8118c306458fcc487fde447282d4e" title="Fait marcher Luigi de manière normale en fonction de la position de Mario et des obstacles." alt="" coords="307,5,475,32"/>
-<area shape="rect" href="classLuigi.html#a747372705b9a150726ae4b746b78038b" title="Gère l&#39;IA de Luigi en fonction des objets du niveau." alt="" coords="108,5,259,32"/>
+<area shape="rect" title="Vérifie si le joueur est en collision avec un tuyau." alt="" coords="521,5,692,32"/>
+<area shape="rect" href="classGuili.html#a6c74696082de5e49c401a8c8b0ab58a0" title="Fait marcher Guili de manière normale en fonction de la position de Ramio et des obstacles." alt="" coords="307,5,473,32"/>
+<area shape="rect" href="classGuili.html#a60d271dc95dc6af8c4cacf7d28dbd4fe" title="Gère l&#39;IA de Guili en fonction des objets du niveau." alt="" coords="108,5,259,32"/>
 <area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
@@ -812,13 +872,13 @@ Here is the caller graph for this function:</div>
   <table class="params">
     <tr><td class="paramname">deltaTime</td><td>Temps écoulé depuis la dernière mise à jour </td></tr>
     <tr><td class="paramname">window</td><td>Fenêtre SFML </td></tr>
-    <tr><td class="paramname">hitboxMario</td><td>Hitbox de <a class="el" href="classMario.html">Mario</a> </td></tr>
-    <tr><td class="paramname">hitboxLuigi</td><td>Hitbox de <a class="el" href="classLuigi.html">Luigi</a> </td></tr>
+    <tr><td class="paramname">hitboxMario</td><td>Hitbox de <a class="el" href="classRamio.html">Ramio</a> </td></tr>
+    <tr><td class="paramname">hitboxLuigi</td><td>Hitbox de <a class="el" href="classGuili.html">Guili</a> </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00156">156</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8cpp_source.html#l00164">164</a> of file <a class="el" href="Level_8cpp_source.html">Level.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -861,7 +921,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00070">70</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00073">73</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -885,7 +945,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00064">64</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00067">67</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -909,7 +969,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00063">63</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00066">66</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -933,7 +993,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00066">66</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00069">69</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -957,7 +1017,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00065">65</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00068">68</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1041,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00065">65</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00068">68</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1065,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00067">67</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00070">70</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1029,7 +1089,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00058">58</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00061">61</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1113,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00060">60</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00063">63</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1153,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00076">76</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00079">79</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1177,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00077">77</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00080">80</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1201,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00081">81</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00084">84</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1225,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00057">57</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00060">60</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1249,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00078">78</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00081">81</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1273,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00073">73</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00076">76</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1237,7 +1297,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00074">74</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00077">77</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>
@@ -1261,7 +1321,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00075">75</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Level_8h_source.html#l00078">78</a> of file <a class="el" href="Level_8h_source.html">Level.h</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,7 @@
+<map id="Bloc" name="Bloc">
+<area shape="rect" id="node1" title=" " alt="" coords="233,5,398,215"/>
+<area shape="rect" id="node2" href="$classBlocMystere.html" title=" " alt="" coords="5,263,159,531"/>
+<area shape="rect" id="node3" href="$classBlocSol.html" title=" " alt="" coords="183,351,290,443"/>
+<area shape="rect" id="node4" href="$classEau.html" title=" " alt="" coords="315,336,473,457"/>
+<area shape="rect" id="node5" href="$classTuyau.html" title=" " alt="" coords="497,329,661,465"/>
+</map>

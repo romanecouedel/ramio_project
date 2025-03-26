@@ -1,0 +1,4 @@
+<map id="Eau::getGlobalBounds" name="Eau::getGlobalBounds">
+<area shape="rect" id="node1" title="Retourne les coordonnées du bloc d&#39;eau." alt="" coords="209,5,375,32"/>
+<area shape="rect" id="node2" href="$classEau.html#a760401b65c1e3bcfdba56f530af8fc10" title="Vérifie si un joueur est dans l&#39;eau." alt="" coords="5,5,161,32"/>
+</map>

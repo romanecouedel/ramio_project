@@ -1,10 +1,10 @@
-############################
-#                          #
-#                          #
-#OOOOOOOOOOOOOOOOOOOOOOV ! #
-#OOOOOOOOO?OOOOOOOOOOOO#####
-#OOOOOOOOOOOOOOOOOOOOOOOOOO#
-#######OOOOOOOOO?OOOOOOOOOO#
-#OOOOOOOOOOOOOOOOOOOOOOOOOO#
-#UOOOOOOOOO#OOOOOOOOOOOOOOO#
-############################
+############################   ###########################
+#                          #   #                         #
+#                          #   #                      !  #
+#  ?                                               #######
+#                  ?                           #X  #     #
+#              X           #OOO#               #####     #
+#           #?##           #OOO#     #    X#             #
+# ?                     ## #OOO#     #######             #
+#U         #V     X   # X U#OOO#V      X   X     X    #  #
+######  ####################OOO###  ######################

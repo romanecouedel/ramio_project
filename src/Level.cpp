@@ -43,20 +43,19 @@ bool Level::loadFromFile(const std::string &filename)
 
     grid.clear();
     blocs.clear();
-    //ennemis.clear();
 
     const float blockSize = 64.0f;
     std::string line;
     int y = 0;
 
-    while (std::getline(file, line))
+    while (std::getline(file, line))//tant qu'on lit une ligne
     {
         std::vector<int> row;
-        for (int x = 0; x < static_cast<int>(line.size()); ++x)
+        for (int x = 0; x < static_cast<int>(line.size()); ++x) //on parcours chque caractere de la ligne
         {
             char c = line[x];
             row.push_back(c);
-            sf::Vector2f position(x * blockSize, y * blockSize);
+            sf::Vector2f position(x * blockSize, y * blockSize);//place le bloc au bon endroit dans le niveau
 
             std::unique_ptr<Bloc> bloc;
             auto ennemi = std::make_unique<Ennemi>();
@@ -92,7 +91,7 @@ bool Level::loadFromFile(const std::string &filename)
                 break;
             }
             }
-        grid.push_back(row);
+        grid.push_back(row);//une fois la ligne traité on l'ajoute dans la grille
         ++y;
     }
     if (!grid.empty())
@@ -117,15 +116,13 @@ void Level::draw(sf::RenderWindow &window)
     statesRight.texture = &bgTextureRight;
 
     // Dessiner séparément chaque moitié
-    for (size_t i = 0; i < backgroundVertices.getVertexCount(); i += 4)
+    for (size_t i = 0; i < backgroundVertices.getVertexCount(); i += 4)// contient toute les tuiles du fond 
     {
-        if ((i / 4) % 2 == 0)
-            window.draw(&backgroundVertices[i], 4, sf::Quads, statesLeft);
+        if ((i / 4) % 2 == 0)//on alterne
+            window.draw(&backgroundVertices[i], 4, sf::Quads, statesLeft);//une partie du fond 
         else
             window.draw(&backgroundVertices[i], 4, sf::Quads, statesRight);
     }
-
-    // generateBackground(grid[0].size() * 64, grid.size() * 64);
 
     // Dessiner les blocs
     for (const auto &bloc : blocs)
@@ -166,7 +163,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
 
     for (auto &bloc : blocs)
     {
-        auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get());
+        auto *blocMystere = dynamic_cast<BlocMystere *>(bloc.get()); // on verifie si un bloc est un blocMystere sinon il pointera vers nullptr
         if (blocMystere)
         {
             blocMystere->update(deltaTime, window);
@@ -218,7 +215,7 @@ void Level::update(float deltaTime, sf::RenderWindow &window, const sf::FloatRec
     }
     for (auto it = ennemis.begin(); it != ennemis.end();)
     {
-        if (!it->get()->isAlive) // Accès explicite avec `get()`
+        if (!it->get()->isAlive) // Si ls'ennemi est mort 
             it = ennemis.erase(it); // Supprime et récupère le nouvel itérateur valide
         else
             ++it; // Passe à l'ennemi suivant
@@ -303,7 +300,7 @@ BlocMystere *Level::getBlocMystereProche(const sf::Vector2f &position)
             {
                 sf::Vector2f blocPosition = blocMystere->getPosition();
                 if (std::abs(blocPosition.x - checkPosition.x) < tolerance &&
-                    std::abs(blocPosition.y - checkPosition.y) < tolerance)
+                    std::abs(blocPosition.y - checkPosition.y) < tolerance)//on verifie que le bloc est suffisamment proche
                 {
                     // Vérifie si le bloc mystère contient encore un objet (non vide)
                     if (!blocMystere->estTouche)

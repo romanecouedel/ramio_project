@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Menu\+:\nopagebreak
+Collaboration diagram for Menu\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,7 +33,9 @@ bool \mbox{\hyperlink{classMenu_ae439dbba732990735b97ab4703dff6c1}{is\+Game\+Sta
 \mbox{\hyperlink{classMenu_a8caa6100506d4b8e0d782e550dbc470e}{Menu}} (float width, float height)
 \begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenu_ace1416aa3e45da9468f191390854339f}{reset}} ()
-\begin{DoxyCompactList}\small\item\em Réinitialise le menu à son état initial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Réinitialise le menu à son état initial. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMenu_a831387f51358cfb88cd018e1777bc980}{$\sim$\+Menu}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -98,14 +101,23 @@ Initialise le menu avec différentes options et charge les ressources graphiques
 
 Definition at line 14 of file Menu.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=297pt]{classMenu_a8caa6100506d4b8e0d782e550dbc470e_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classMenu_a831387f51358cfb88cd018e1777bc980}\label{classMenu_a831387f51358cfb88cd018e1777bc980}} 
+\index{Menu@{Menu}!````~Menu@{$\sim$Menu}}
+\index{````~Menu@{$\sim$Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Menu()}{~Menu()}}
+{\footnotesize\ttfamily Menu\+::$\sim$\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 23 of file Menu.\+h.
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -130,16 +142,14 @@ Change l\textquotesingle{}option sélectionnée dans un menu donné.
 
 Definition at line 231 of file Menu.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classMenu_aa7fe5142f71315975d8082b1fa507961_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -167,8 +177,7 @@ Dessine l\textquotesingle{}arrière-\/plan ainsi que les options du menu corresp
 
 Definition at line 191 of file Menu.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -183,10 +192,9 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 34 of file Menu.\+h.
+Definition at line 36 of file Menu.\+h.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -209,7 +217,7 @@ Gère les entrées clavier pour la navigation dans le menu.
 \hline
 {\em window} & Référence vers la fenêtre de rendu. \\
 \hline
-{\em luigi\+AI} & Référence vers le booléen indiquant si \mbox{\hyperlink{classLuigi}{Luigi}} est contrôlé par l\textquotesingle{}IA. \\
+{\em luigi\+AI} & Référence vers le booléen indiquant si Luigi est contrôlé par l\textquotesingle{}IA. \\
 \hline
 {\em multijoueur} & Référence vers le booléen indiquant si le mode multijoueur est activé. \\
 \hline
@@ -218,16 +226,14 @@ Gère les entrées clavier pour la navigation dans le menu.
 
 Definition at line 82 of file Menu.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classMenu_a056b47b402bda75207c20151962b9c78_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -251,8 +257,7 @@ true si le jeu doit démarrer, false sinon.
 
 Definition at line 255 of file Menu.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -273,16 +278,14 @@ Revient au menu principal et remet toutes les sélections à zéro.
 
 Definition at line 277 of file Menu.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=331pt]{classMenu_ace1416aa3e45da9468f191390854339f_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -308,8 +311,7 @@ Change l\textquotesingle{}état actuel du menu.
 
 Definition at line 265 of file Menu.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -341,8 +343,7 @@ Initialise un menu avec les options données.
 
 Definition at line 44 of file Menu.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -368,8 +369,7 @@ Met à jour les couleurs des options du menu pour indiquer l\textquotesingle{}op
 
 Definition at line 242 of file Menu.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -387,7 +387,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 59 of file Menu.\+h.
+Definition at line 61 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_a115385e35a3911d235f40d85ab600088}\label{classMenu_a115385e35a3911d235f40d85ab600088}} 
 \index{Menu@{Menu}!backgroundSprite@{backgroundSprite}}
@@ -397,7 +397,7 @@ Definition at line 59 of file Menu.\+h.
 
 
 
-Definition at line 50 of file Menu.\+h.
+Definition at line 52 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_aac039ffb0bb15cdaf732fd8414f64433}\label{classMenu_aac039ffb0bb15cdaf732fd8414f64433}} 
 \index{Menu@{Menu}!backgroundTexture@{backgroundTexture}}
@@ -407,7 +407,7 @@ Definition at line 50 of file Menu.\+h.
 
 
 
-Definition at line 49 of file Menu.\+h.
+Definition at line 51 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_a2c26c5e3f0b5f0eaecfa5d2d421fad44}\label{classMenu_a2c26c5e3f0b5f0eaecfa5d2d421fad44}} 
 \index{Menu@{Menu}!currentState@{currentState}}
@@ -417,7 +417,7 @@ Definition at line 49 of file Menu.\+h.
 
 
 
-Definition at line 52 of file Menu.\+h.
+Definition at line 54 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_a9446727ebf60c6063218b5d4bcae170a}\label{classMenu_a9446727ebf60c6063218b5d4bcae170a}} 
 \index{Menu@{Menu}!font@{font}}
@@ -427,7 +427,7 @@ Definition at line 52 of file Menu.\+h.
 
 
 
-Definition at line 48 of file Menu.\+h.
+Definition at line 50 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_a5a9e735eebdbc12c8a0af34095e2e490}\label{classMenu_a5a9e735eebdbc12c8a0af34095e2e490}} 
 \index{Menu@{Menu}!levelMenu@{levelMenu}}
@@ -437,7 +437,7 @@ Definition at line 48 of file Menu.\+h.
 
 
 
-Definition at line 58 of file Menu.\+h.
+Definition at line 60 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_a8f5c63cfb2c113632702c6bd102fb0bc}\label{classMenu_a8f5c63cfb2c113632702c6bd102fb0bc}} 
 \index{Menu@{Menu}!mainMenu@{mainMenu}}
@@ -447,7 +447,7 @@ Definition at line 58 of file Menu.\+h.
 
 
 
-Definition at line 56 of file Menu.\+h.
+Definition at line 58 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_abe1ce8f788577bba26b1222192bbb868}\label{classMenu_abe1ce8f788577bba26b1222192bbb868}} 
 \index{Menu@{Menu}!playerMenu@{playerMenu}}
@@ -457,7 +457,7 @@ Definition at line 56 of file Menu.\+h.
 
 
 
-Definition at line 57 of file Menu.\+h.
+Definition at line 59 of file Menu.\+h.
 
 \mbox{\Hypertarget{classMenu_aa751430d3702f0ccb6f0daa0028aee33}\label{classMenu_aa751430d3702f0ccb6f0daa0028aee33}} 
 \index{Menu@{Menu}!selectedIndex@{selectedIndex}}
@@ -467,7 +467,7 @@ Definition at line 57 of file Menu.\+h.
 
 
 
-Definition at line 53 of file Menu.\+h.
+Definition at line 55 of file Menu.\+h.
 
 
 

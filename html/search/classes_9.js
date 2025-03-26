@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tuyau_227',['Tuyau',['../classTuyau.html',1,'']]]
+  ['piece_243',['Piece',['../classPiece.html',1,'']]],
+  ['player_244',['Player',['../classPlayer.html',1,'']]]
 ];

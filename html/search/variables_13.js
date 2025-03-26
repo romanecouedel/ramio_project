@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['yahoobuffer_426',['yahooBuffer',['../classAudioManager.html#a2742266983de5409c0f7be6e6c5365ae',1,'AudioManager']]],
-  ['yahoosound_427',['yahooSound',['../classAudioManager.html#a28317ad0c6c30fb0de7a7bcecb8cbb96',1,'AudioManager']]]
+  ['windowheight_461',['windowHeight',['../classFinDeJeu.html#a7271884b4c8e48e5580372b1ff93df5c',1,'FinDeJeu']]],
+  ['windowwidth_462',['windowWidth',['../classFinDeJeu.html#ab98be0d74a19db9c0019f3f941e1ebb4',1,'FinDeJeu']]]
 ];

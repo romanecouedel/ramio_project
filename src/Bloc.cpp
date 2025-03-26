@@ -49,7 +49,7 @@ BlocMystere::BlocMystere() {
  * @brief Action lorsque le bloc mystère est frappé.
  */
 void BlocMystere::onHit() {
-    if (!animating && sprite.getTexture() != &textureFoncee) {
+    if (!animating && sprite.getTexture() != &textureFoncee) {//si l'animatione est pas deja en cours et que la texture a pas changé
         animating = true;
         animationTime = 0.0f;
         startPosition = sprite.getPosition();
@@ -188,7 +188,7 @@ Eau::Eau() {
  */
 bool Eau::isPlayerInWater(const sf::FloatRect& playerHitbox) const
 {
-    return playerHitbox.intersects(this->getGlobalBounds());  // Vérifier si la hitbox du joueur intersecte l'eau
+    return playerHitbox.intersects(this->getGlobalBounds());  // Vérifier si la hitbox du joueur est dans  l'eau
 }
 
 

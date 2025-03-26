@@ -1,0 +1,239 @@
+\hypertarget{classGuili}{}\doxysection{Guili Class Reference}
+\label{classGuili}\index{Guili@{Guili}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Inheritance diagram for Guili\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classGuili__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Guili\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classGuili__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGuili_a86f96f9813ff430c2bb2290b7d447daf}{Guili}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{classGuili}{Guili}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGuili_a9ba2656a35849d8c893ab68ab0b5f594}{handle\+Input}} () override
+\begin{DoxyCompactList}\small\item\em Gère les entrées clavier pour déplacer \mbox{\hyperlink{classGuili}{Guili}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGuili_a60d271dc95dc6af8c4cacf7d28dbd4fe}{handle\+Input\+AI}} (\mbox{\hyperlink{classLevel}{Level}} $\ast$lvl, const \mbox{\hyperlink{classRamio}{Ramio}} $\ast$\mbox{\hyperlink{classGuili_ab04d5f43553d23626e420ecc816002f5}{ramio}})
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}IA de \mbox{\hyperlink{classGuili}{Guili}} en fonction des objets du niveau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGuili_a6c74696082de5e49c401a8c8b0ab58a0}{marcher\+\_\+normal}} ()
+\begin{DoxyCompactList}\small\item\em Fait marcher \mbox{\hyperlink{classGuili}{Guili}} de manière normale en fonction de la position de \mbox{\hyperlink{classRamio}{Ramio}} et des obstacles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGuili_a6465b2bf536e9efd0b3381a4c7f5b253}{$\sim$\+Guili}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLevel}{Level}} $\ast$ \mbox{\hyperlink{classGuili_a977b75861c1e36e6b5381715d4db3590}{level}}
+\item 
+const \mbox{\hyperlink{classRamio}{Ramio}} $\ast$ \mbox{\hyperlink{classGuili_ab04d5f43553d23626e420ecc816002f5}{ramio}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 86 of file Player.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGuili_a86f96f9813ff430c2bb2290b7d447daf}\label{classGuili_a86f96f9813ff430c2bb2290b7d447daf}} 
+\index{Guili@{Guili}!Guili@{Guili}}
+\index{Guili@{Guili}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{Guili()}{Guili()}}
+{\footnotesize\ttfamily Guili\+::\+Guili (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{classGuili}{Guili}}. 
+
+Initialise \mbox{\hyperlink{classGuili}{Guili}} avec sa texture et sa position de départ. 
+
+Definition at line 290 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classGuili_a86f96f9813ff430c2bb2290b7d447daf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGuili_a6465b2bf536e9efd0b3381a4c7f5b253}\label{classGuili_a6465b2bf536e9efd0b3381a4c7f5b253}} 
+\index{Guili@{Guili}!````~Guili@{$\sim$Guili}}
+\index{````~Guili@{$\sim$Guili}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{$\sim$Guili()}{~Guili()}}
+{\footnotesize\ttfamily Guili\+::$\sim$\+Guili (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Definition at line 93 of file Player.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGuili_a9ba2656a35849d8c893ab68ab0b5f594}\label{classGuili_a9ba2656a35849d8c893ab68ab0b5f594}} 
+\index{Guili@{Guili}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Guili\+::handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées clavier pour déplacer \mbox{\hyperlink{classGuili}{Guili}}. 
+
+
+\begin{DoxyItemize}
+\item Gauche \+: Touche \textquotesingle{}Q\textquotesingle{}.
+\item Droite \+: Touche \textquotesingle{}D\textquotesingle{}.
+\item Saut \+: Touche \textquotesingle{}Z\textquotesingle{} (uniquement si \mbox{\hyperlink{classGuili}{Guili}} peut sauter). 
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{classPlayer_a89b45a9ed0cf0bbb1d3940bfbaccbdfd}{Player}}.
+
+
+
+Definition at line 303 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGuili_a9ba2656a35849d8c893ab68ab0b5f594_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classGuili_a9ba2656a35849d8c893ab68ab0b5f594_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGuili_a60d271dc95dc6af8c4cacf7d28dbd4fe}\label{classGuili_a60d271dc95dc6af8c4cacf7d28dbd4fe}} 
+\index{Guili@{Guili}!handleInputAI@{handleInputAI}}
+\index{handleInputAI@{handleInputAI}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{handleInputAI()}{handleInputAI()}}
+{\footnotesize\ttfamily void Guili\+::handle\+Input\+AI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevel}{Level}} $\ast$}]{lvl,  }\item[{const \mbox{\hyperlink{classRamio}{Ramio}} $\ast$}]{ramio }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}IA de \mbox{\hyperlink{classGuili}{Guili}} en fonction des objets du niveau. 
+
+\mbox{\hyperlink{classGuili}{Guili}} prend des décisions en fonction de \+:
+\begin{DoxyItemize}
+\item La position de \mbox{\hyperlink{classRamio}{Ramio}}.
+\item La présence de blocs mystères.
+\item Les obstacles ou ennemis sur son chemin.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lvl} & Pointeur vers le niveau actuel. \\
+\hline
+{\em ramio} & Pointeur vers l\textquotesingle{}objet \mbox{\hyperlink{classRamio}{Ramio}}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 424 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGuili_a60d271dc95dc6af8c4cacf7d28dbd4fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classGuili_a60d271dc95dc6af8c4cacf7d28dbd4fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGuili_a6c74696082de5e49c401a8c8b0ab58a0}\label{classGuili_a6c74696082de5e49c401a8c8b0ab58a0}} 
+\index{Guili@{Guili}!marcher\_normal@{marcher\_normal}}
+\index{marcher\_normal@{marcher\_normal}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{marcher\_normal()}{marcher\_normal()}}
+{\footnotesize\ttfamily void Guili\+::marcher\+\_\+normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fait marcher \mbox{\hyperlink{classGuili}{Guili}} de manière normale en fonction de la position de \mbox{\hyperlink{classRamio}{Ramio}} et des obstacles. 
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{classGuili}{Guili}} suit \mbox{\hyperlink{classRamio}{Ramio}} sans le dépasser.
+\item Il saute s\textquotesingle{}il rencontre un obstacle ou un ennemi.
+\item Il adapte son mouvement en fonction de la direction de \mbox{\hyperlink{classRamio}{Ramio}}. 
+\end{DoxyItemize}
+
+Definition at line 333 of file Player.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGuili_a6c74696082de5e49c401a8c8b0ab58a0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGuili_a6c74696082de5e49c401a8c8b0ab58a0_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGuili_a977b75861c1e36e6b5381715d4db3590}\label{classGuili_a977b75861c1e36e6b5381715d4db3590}} 
+\index{Guili@{Guili}!level@{level}}
+\index{level@{level}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLevel}{Level}}$\ast$ Guili\+::level}
+
+
+
+Definition at line 88 of file Player.\+h.
+
+\mbox{\Hypertarget{classGuili_ab04d5f43553d23626e420ecc816002f5}\label{classGuili_ab04d5f43553d23626e420ecc816002f5}} 
+\index{Guili@{Guili}!ramio@{ramio}}
+\index{ramio@{ramio}!Guili@{Guili}}
+\doxysubsubsection{\texorpdfstring{ramio}{ramio}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRamio}{Ramio}}$\ast$ Guili\+::ramio}
+
+
+
+Definition at line 89 of file Player.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Player_8h}{Player.\+h}}\item 
+src/\mbox{\hyperlink{Player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

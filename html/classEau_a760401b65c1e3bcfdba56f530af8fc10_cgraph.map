@@ -1,0 +1,4 @@
+<map id="Eau::isPlayerInWater" name="Eau::isPlayerInWater">
+<area shape="rect" id="node1" title="Vérifie si un joueur est dans l&#39;eau." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node2" href="$classEau.html#af0f77d3643dfa15666b7bc3705d0dd0f" title="Retourne les coordonnées du bloc d&#39;eau." alt="" coords="209,5,375,32"/>
+</map>

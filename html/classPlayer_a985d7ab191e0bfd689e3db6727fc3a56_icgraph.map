@@ -1,5 +1,5 @@
 <map id="Player::setOpacity" name="Player::setOpacity">
 <area shape="rect" id="node1" title="Modifie l&#39;opacité du sprite du joueur." alt="" coords="373,5,515,32"/>
-<area shape="rect" id="node2" href="$classLevel.html#a65f189a05ffa35afba1727c6184c16a2" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="108,5,325,32"/>
+<area shape="rect" id="node2" href="$classLevel.html#a9274939efb1b017b95653e6790402f5a" title="Gère l&#39;interaction des joueurs avec les tuyaux." alt="" coords="108,5,325,32"/>
 <area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>

@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Animation\+:\nopagebreak
+Collaboration diagram for Animation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,7 +26,9 @@ sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a4cc2a8a703cea8df904fdca5b2b43
 sf\+::\+Int\+Rect \mbox{\hyperlink{classAnimation_a82772c37376eb13c40295f3e65e52ebc}{get\+Uv\+Rect}} () const
 \item 
 void \mbox{\hyperlink{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}{update}} (float delta\+Time, bool face\+Right, bool is\+Jumping)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\textquotesingle{}état du personnage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAnimation_a401b68793d4fbf48d481c030ee4b2a16}{$\sim$\+Animation}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,7 +50,7 @@ float \mbox{\hyperlink{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}{total\+
 \doxysubsection{Detailed Description}
 
 
-Definition at line 7 of file Animation.\+h.
+Definition at line 8 of file Animation.\+h.
 
 
 
@@ -57,6 +60,16 @@ Definition at line 7 of file Animation.\+h.
 \index{Animation@{Animation}!Animation@{Animation}}
 \doxysubsubsection{\texorpdfstring{Animation()}{Animation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Animation\+::\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classAnimation_a401b68793d4fbf48d481c030ee4b2a16}\label{classAnimation_a401b68793d4fbf48d481c030ee4b2a16}} 
+\index{Animation@{Animation}!````~Animation@{$\sim$Animation}}
+\index{````~Animation@{$\sim$Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{$\sim$Animation()}{~Animation()}}
+{\footnotesize\ttfamily Animation\+::$\sim$\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 13 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}\label{classAnimation_a6353d585c4a1aa26cfbc6ee24d314969}} 
 \index{Animation@{Animation}!Animation@{Animation}}
@@ -94,10 +107,9 @@ Definition at line 9 of file Animation.\+cpp.
 
 
 
-Definition at line 19 of file Animation.\+h.
+Definition at line 23 of file Animation.\+h.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -112,7 +124,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 16 of file Animation.\+h.
+Definition at line 20 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}\label{classAnimation_a82602cdb5fdb839819c6ddbfd6e6a72e}} 
 \index{Animation@{Animation}!update@{update}}
@@ -137,8 +149,7 @@ Met à jour l\textquotesingle{}animation en fonction du temps écoulé et de l\t
 
 Definition at line 22 of file Animation.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -156,7 +167,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 20 of file Animation.\+h.
+Definition at line 24 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}\label{classAnimation_ae4bc32c6c921bd2161350152ce12e09c}} 
 \index{Animation@{Animation}!imageCount@{imageCount}}
@@ -166,7 +177,7 @@ Definition at line 20 of file Animation.\+h.
 
 
 
-Definition at line 22 of file Animation.\+h.
+Definition at line 26 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}\label{classAnimation_a7b2fb4577ab94e863b88ec6cf96cc8b6}} 
 \index{Animation@{Animation}!switchTime@{switchTime}}
@@ -176,7 +187,7 @@ Definition at line 22 of file Animation.\+h.
 
 
 
-Definition at line 28 of file Animation.\+h.
+Definition at line 32 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}\label{classAnimation_a04f09b9faedd40c52a9b60b800e10ea8}} 
 \index{Animation@{Animation}!totalTime@{totalTime}}
@@ -186,7 +197,7 @@ Definition at line 28 of file Animation.\+h.
 
 
 
-Definition at line 27 of file Animation.\+h.
+Definition at line 31 of file Animation.\+h.
 
 \mbox{\Hypertarget{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}\label{classAnimation_a82c41dd15d9a98ecc0699ecca09fd056}} 
 \index{Animation@{Animation}!uvRect@{uvRect}}
@@ -196,7 +207,7 @@ Definition at line 27 of file Animation.\+h.
 
 
 
-Definition at line 21 of file Animation.\+h.
+Definition at line 25 of file Animation.\+h.
 
 
 

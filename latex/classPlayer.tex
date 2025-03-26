@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Player\+:\nopagebreak
+Inheritance diagram for Player\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Player\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Player\+:\nopagebreak
+Collaboration diagram for Player\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,7 +50,9 @@ void \mbox{\hyperlink{classPlayer_a2d9618468a712a8f09d93a23a8057877}{set\+Collis
 void \mbox{\hyperlink{classPlayer_a985d7ab191e0bfd689e3db6727fc3a56}{set\+Opacity}} (sf\+::\+Uint8 alpha)
 \begin{DoxyCompactList}\small\item\em Modifie l\textquotesingle{}opacité du sprite du joueur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPlayer_a003481f011031773f5042e353716aa3d}{update}} (float delta\+Time, const \mbox{\hyperlink{classLevel}{Level}} \&level)
-\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état du joueur en fonction du temps écoulé et du niveau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état du joueur en fonction du temps écoulé et du niveau. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlayer_a8981c201ffb2270c0b6dbd467b627376}{$\sim$\+Player}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -81,11 +85,19 @@ float \mbox{\hyperlink{classPlayer_a941efcdf3d69b0845158e393ed30f817}{gravity}} 
 \item 
 bool \mbox{\hyperlink{classPlayer_aab294bec9f8fed91bb7d599e37bfd5f6}{is\+Jumping}} = false
 \item 
+bool \mbox{\hyperlink{classPlayer_a3bca3c00cd167f3db966db438319694c}{is\+Swimming}} = false
+\item 
+float \mbox{\hyperlink{classPlayer_ac4400a3e507d395d8c5c9d124e1fe7b0}{jump\+Cooldown}} = 0.\+0f
+\item 
 float \mbox{\hyperlink{classPlayer_ac57d797630e4f4eb1e9e0b9f5c6d3260}{jump\+Force}} = -\/650.f
 \item 
 bool \mbox{\hyperlink{classPlayer_a12c8bb2a50785eeb6ce4cc3fdafe0c63}{on\+Ground}} = false
 \item 
 float \mbox{\hyperlink{classPlayer_a770942101eff683b030edde9f730d537}{speed}} = 350.f
+\item 
+float \mbox{\hyperlink{classPlayer_afcfbad8ad1fcbb962c7df72d08ec8657}{swim\+Gravity}} = 50.f
+\item 
+float \mbox{\hyperlink{classPlayer_ae15fddb2f2d06284226d1810785fafe1}{swim\+Speed}} = 150.f
 \item 
 sf\+::\+Vector2f \mbox{\hyperlink{classPlayer_ae2d680d4b61069b02991123099c79c1c}{velocity}}
 \end{DoxyCompactItemize}
@@ -113,6 +125,16 @@ Initialise l\textquotesingle{}animation par défaut du joueur à l\textquotesing
 
 Definition at line 15 of file Player.\+cpp.
 
+\mbox{\Hypertarget{classPlayer_a8981c201ffb2270c0b6dbd467b627376}\label{classPlayer_a8981c201ffb2270c0b6dbd467b627376}} 
+\index{Player@{Player}!````~Player@{$\sim$Player}}
+\index{````~Player@{$\sim$Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{$\sim$Player()}{~Player()}}
+{\footnotesize\ttfamily virtual Player\+::$\sim$\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 44 of file Player.\+h.
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -124,7 +146,7 @@ Definition at line 15 of file Player.\+cpp.
 
 
 
-Definition at line 52 of file Player.\+h.
+Definition at line 59 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_aaeae05509110be5f56e0a6cc946fc3c8}\label{classPlayer_aaeae05509110be5f56e0a6cc946fc3c8}} 
 \index{Player@{Player}!checkCollisionWithEnnemis@{checkCollisionWithEnnemis}}
@@ -149,18 +171,16 @@ Cette fonction détecte si le joueur entre en contact avec un ennemi et gère le
 \end{DoxyParams}
 
 
-Definition at line 184 of file Player.\+cpp.
+Definition at line 218 of file Player.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classPlayer_aaeae05509110be5f56e0a6cc946fc3c8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -190,8 +210,7 @@ Implements \mbox{\hyperlink{classEntity_a448a7080dd26026e73cfa69b6b1c53d2}{Entit
 
 Definition at line 36 of file Player.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -206,7 +225,7 @@ Here is the caller graph for this function\+:
 
 
 
-Implemented in \mbox{\hyperlink{classLuigi_aef6262c87fa79af9600c598244c3d89a}{Luigi}}, and \mbox{\hyperlink{classMario_a55a7949e89ad3623ef8e03bc537d0f9b}{Mario}}.
+Implemented in \mbox{\hyperlink{classGuili_a9ba2656a35849d8c893ab68ab0b5f594}{Guili}}, and \mbox{\hyperlink{classRamio_a2e868fdd508b561364c3f0f9898328f2}{Ramio}}.
 
 \mbox{\Hypertarget{classPlayer_a882e381fc5db84bb067f1fa09b1bd92e}\label{classPlayer_a882e381fc5db84bb067f1fa09b1bd92e}} 
 \index{Player@{Player}!initializePlayer@{initializePlayer}}
@@ -229,14 +248,14 @@ Charge la texture, définit la position et initialise les animations.
 \end{DoxyParams}
 
 
-Definition at line 157 of file Player.\+cpp.
+Definition at line 191 of file Player.\+cpp.
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=320pt]{classPlayer_a882e381fc5db84bb067f1fa09b1bd92e_icgraph}
+\includegraphics[width=328pt]{classPlayer_a882e381fc5db84bb067f1fa09b1bd92e_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classPlayer_a70e21ca98281b7d72f105f2693113d7e}\label{classPlayer_a70e21ca98281b7d72f105f2693113d7e}} 
@@ -251,10 +270,9 @@ Fait sauter le joueur.
 
 Applique une force vers le haut et change l\textquotesingle{}animation pour celle du saut. 
 
-Definition at line 141 of file Player.\+cpp.
+Definition at line 173 of file Player.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -277,7 +295,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 46 of file Player.\+h.
+Definition at line 53 of file Player.\+h.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -301,8 +319,7 @@ Réinitialise la position et l\textquotesingle{}état du joueur après une mort.
 
 Definition at line 23 of file Player.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -317,7 +334,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 51 of file Player.\+h.
+Definition at line 58 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_a985d7ab191e0bfd689e3db6727fc3a56}\label{classPlayer_a985d7ab191e0bfd689e3db6727fc3a56}} 
 \index{Player@{Player}!setOpacity@{setOpacity}}
@@ -338,7 +355,7 @@ Cette fonction est utilisée notamment lors du passage dans un tuyau.
 \end{DoxyParams}
 
 
-Definition at line 128 of file Player.\+cpp.
+Definition at line 159 of file Player.\+cpp.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -385,8 +402,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classPlayer_a003481f011031773f5042e353716aa3d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -464,7 +480,7 @@ Definition at line 20 of file Player.\+h.
 
 
 
-Definition at line 33 of file Player.\+h.
+Definition at line 36 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_a97891a5b8e7153c15a596ed78e4931a8}\label{classPlayer_a97891a5b8e7153c15a596ed78e4931a8}} 
 \index{Player@{Player}!collisionsActive@{collisionsActive}}
@@ -474,7 +490,7 @@ Definition at line 33 of file Player.\+h.
 
 
 
-Definition at line 42 of file Player.\+h.
+Definition at line 49 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_a2a29a1845565adbf3ce0980ae6561257}\label{classPlayer_a2a29a1845565adbf3ce0980ae6561257}} 
 \index{Player@{Player}!currentAnimation@{currentAnimation}}
@@ -494,7 +510,7 @@ Definition at line 25 of file Player.\+h.
 
 
 
-Definition at line 40 of file Player.\+h.
+Definition at line 47 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_a941efcdf3d69b0845158e393ed30f817}\label{classPlayer_a941efcdf3d69b0845158e393ed30f817}} 
 \index{Player@{Player}!gravity@{gravity}}
@@ -514,13 +530,33 @@ Definition at line 29 of file Player.\+h.
 
 
 
-Definition at line 41 of file Player.\+h.
+Definition at line 48 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_aab294bec9f8fed91bb7d599e37bfd5f6}\label{classPlayer_aab294bec9f8fed91bb7d599e37bfd5f6}} 
 \index{Player@{Player}!isJumping@{isJumping}}
 \index{isJumping@{isJumping}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{isJumping}{isJumping}}
 {\footnotesize\ttfamily bool Player\+::is\+Jumping = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 35 of file Player.\+h.
+
+\mbox{\Hypertarget{classPlayer_a3bca3c00cd167f3db966db438319694c}\label{classPlayer_a3bca3c00cd167f3db966db438319694c}} 
+\index{Player@{Player}!isSwimming@{isSwimming}}
+\index{isSwimming@{isSwimming}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isSwimming}{isSwimming}}
+{\footnotesize\ttfamily bool Player\+::is\+Swimming = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 38 of file Player.\+h.
+
+\mbox{\Hypertarget{classPlayer_ac4400a3e507d395d8c5c9d124e1fe7b0}\label{classPlayer_ac4400a3e507d395d8c5c9d124e1fe7b0}} 
+\index{Player@{Player}!jumpCooldown@{jumpCooldown}}
+\index{jumpCooldown@{jumpCooldown}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{jumpCooldown}{jumpCooldown}}
+{\footnotesize\ttfamily float Player\+::jump\+Cooldown = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -544,7 +580,7 @@ Definition at line 27 of file Player.\+h.
 
 
 
-Definition at line 34 of file Player.\+h.
+Definition at line 37 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_a770942101eff683b030edde9f730d537}\label{classPlayer_a770942101eff683b030edde9f730d537}} 
 \index{Player@{Player}!speed@{speed}}
@@ -555,6 +591,26 @@ Definition at line 34 of file Player.\+h.
 
 
 Definition at line 28 of file Player.\+h.
+
+\mbox{\Hypertarget{classPlayer_afcfbad8ad1fcbb962c7df72d08ec8657}\label{classPlayer_afcfbad8ad1fcbb962c7df72d08ec8657}} 
+\index{Player@{Player}!swimGravity@{swimGravity}}
+\index{swimGravity@{swimGravity}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{swimGravity}{swimGravity}}
+{\footnotesize\ttfamily float Player\+::swim\+Gravity = 50.f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 31 of file Player.\+h.
+
+\mbox{\Hypertarget{classPlayer_ae15fddb2f2d06284226d1810785fafe1}\label{classPlayer_ae15fddb2f2d06284226d1810785fafe1}} 
+\index{Player@{Player}!swimSpeed@{swimSpeed}}
+\index{swimSpeed@{swimSpeed}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{swimSpeed}{swimSpeed}}
+{\footnotesize\ttfamily float Player\+::swim\+Speed = 150.f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 30 of file Player.\+h.
 
 \mbox{\Hypertarget{classPlayer_ae2d680d4b61069b02991123099c79c1c}\label{classPlayer_ae2d680d4b61069b02991123099c79c1c}} 
 \index{Player@{Player}!velocity@{velocity}}

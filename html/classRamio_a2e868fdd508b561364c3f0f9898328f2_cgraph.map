@@ -1,0 +1,5 @@
+<map id="Ramio::handleInput" name="Ramio::handleInput">
+<area shape="rect" id="node1" title="Gère les entrées clavier pour déplacer Ramio." alt="" coords="5,5,155,32"/>
+<area shape="rect" id="node2" href="$classPlayer.html#a70e21ca98281b7d72f105f2693113d7e" title="Fait sauter le joueur." alt="" coords="203,5,307,32"/>
+<area shape="rect" id="node3" href="$classAudioManager.html#a992608915d048ad14be2400f5b7e5c36" title="Joue le son &quot;Yahoo!&quot;." alt="" coords="355,5,585,32"/>
+</map>
